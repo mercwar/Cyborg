@@ -35,4 +35,6 @@ Cyborg aims to:
 - Provide a portable, versionable, and shareable knowledge base, accessible via web or local file — ideal for learning, sharing, archival, or collaboration.
 
 ## Contents
+## Download Cyborg KB v1
+You can download the full Cyborg KB v1 bundle from OneDrive: [Download Cyborg KB v1 from OneDrive](https://1drv.ms/f/c/aa567a4fa48d72ff/EqWu5zNjagFEmpBbfz8LflwBrVErOeGRFfY1mLTjIZ3QGw?e=z3URQY)
 
