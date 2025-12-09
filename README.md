@@ -1,6 +1,3 @@
-Got it, CVBGOD. I’ll merge the **download link at the top** with the fully expanded README, keeping everything else intact. Here’s the **final merged README.md** for your `mercwar/Cyborg` GitHub repo:
-
-```markdown
 # Cyborg — Custom Symbolic VM / Language / Knowledge Base
 
 ## Download / OneDrive Access
@@ -16,7 +13,7 @@ Got it, CVBGOD. I’ll merge the **download link at the top** with the fully exp
 Cyborg is a fully symbolic-opcode language and knowledge base designed for programmers, researchers, and digital architects. It combines:
 
 - A **256-entry opcode/symbol table** mapping high-level human-readable phrases to machine opcodes or VM bytecode.  
-- Human-readable “MSDN-style” documentation for each symbol: description, example C / VB6 / ASM equivalents, diagrams, references.  
+- Human-readable MSDN-style documentation for each symbol: description, example C / VB6 / ASM equivalents, diagrams, references.  
 - An **interactive browser-based KB front-end** (`index.html + loader.js`) for browsing opcodes, viewing documentation, and dynamically merging expansion packs.  
 - **Expansion/update mechanism** using ZIP “packs” — drop new symbols, meta-data, or translations into the `expansions/` folder; the KB merges them live with seed-aware, override-capable logic.  
 - **Offline-first design:** works completely locally; when online, the KB can fetch new packs from a shared OneDrive folder or other static hosts.  
@@ -37,22 +34,21 @@ Cyborg was created to:
 
 ## Repository Contents
 
-```
-
 Cyborg_KB_v1/
-index.html          — interactive browser front-end
-loader.js           — loader + expansion-pack manager
-meta.json           — version, seed, checksum, expansion list
+index.html — interactive browser front-end
+loader.js — loader + expansion-pack manager
+meta.json — version, seed, checksum, expansion list
 kb/
-symbols.json      — core 256-symbol table with metadata
-symbols/          — per-symbol HTML docs (human phrase, mappings, references)
+symbols.json — core 256-symbol table with metadata
+symbols/ — per-symbol HTML docs (human phrase, mappings, references)
 resources/
-style.css         — KB styling
-images/           — diagrams/icons (optional)
-expansions/         — ZIP expansion packs (empty by default)
-README.md           — this documentation
+style.css — KB styling
+images/ — diagrams/icons (optional)
+expansions/ — ZIP expansion packs (empty by default)
+README.md — this documentation
 
-````
+markdown
+Copy code
 
 ---
 
@@ -70,7 +66,7 @@ README.md           — this documentation
 ## Example Usage — Hello World
 
 ```cyborg
-BEGIN_SEED "HelloProgram"
+BEGIN_SEED `HelloProgram`
   MOV_REG_ AH=09h
   LEA_REG_ DX = MSG_STR_
   INT_CALL_ 0x21
@@ -78,49 +74,39 @@ BEGIN_SEED "HelloProgram"
   CODE0___        ; exit code 0
   INT_CALL_ 0x21
 END_SEED
-````
+Symbolic program maps to traditional opcodes / bytecode.
 
-* Symbolic program maps to traditional opcodes / bytecode.
-* Executes DOS interrupt calls, prints a message, then exits cleanly.
-* Serves as canonical example for learning and testing the Cyborg symbolic language.
+Executes DOS interrupt calls, prints a message, then exits cleanly.
 
----
+Serves as canonical example for learning and testing the Cyborg symbolic language.
 
-## Contributing / Expanding Cyborg
+Contributing / Expanding Cyborg
+Add new symbols: Fork repo → edit kb/symbols.json or create expansion packs. Include metadata: symbol, flags, phrase, C/VB6/ASM mapping, diagrams, references.
 
-* **Add new symbols:** Fork repo → edit `kb/symbols.json` or create expansion packs. Include metadata: symbol, flags, phrase, C/VB6/ASM mapping, diagrams, references.
-* **Maintain core stability:** Use **ZIP expansion packs** for optional additions; core remains stable.
-* **Versioning:** Update `meta.json` to track version/seed/override.
-* **Testing programs:** Place sample programs in a `programs/` folder to validate symbolic opcode behavior.
+Maintain core stability: Use ZIP expansion packs for optional additions; core remains stable.
 
----
+Versioning: Update meta.json to track version/seed/override.
 
-## Related Projects & Inspirations
+Testing programs: Place sample programs in a programs/ folder to validate symbolic opcode behavior.
 
-* **simple.vm** / **another-simple-bytecode** — minimal VMs/interpreters.
-* **ec-lang** — symbolic language compiling to bytecode.
-* **vm-js** — JS-based VM demo.
-* ByteVM / Lua / NekoVM — modular language runtime examples.
+Related Projects & Inspirations
+simple.vm / another-simple-bytecode — minimal VMs/interpreters.
 
----
+ec-lang — symbolic language compiling to bytecode.
 
-## License
+vm-js — JS-based VM demo.
 
+ByteVM / Lua / NekoVM — modular language runtime examples.
+
+License
 [INSERT LICENSE HERE — e.g., MIT, BSD, Public Domain]
 
----
+Author / Contact
+CVBGOD — primary architect and Cyborg KB creator.
 
-## Author / Contact
+AI-Assisted Contributors
+CGPT — Cyborg-aligned AI co-creator
 
-**CVBGOD** — primary architect and Cyborg KB creator.
+Microsoft Copilot — revision support and enhancement
 
----
-
-## AI-Assisted Contributors
-
-* **CGPT** — Cyborg-aligned AI co-creator
-* **Microsoft Copilot** — revision support and enhancement
-
-Hi to everyone visiting here in the `mercwar\Cyborg` directory — welcome to the world of Cyborg! 🚀
-
-```
+Hi to everyone visiting here in the mercwar\Cyborg directory — welcome to the world of Cyborg! 🚀
