@@ -1,120 +1,132 @@
-# Cyborg KB v1.2
+# Cyborg KB v1.2 · Symbolic Opcode Knowledge Base
 
-[Access the Cyborg KB v1 folder on OneDrive](https://1drv.ms/f/c/aa567a4fa48d72ff/EqWu5zNjagFEmpBbfz8LflwBrVErOeGRFfY1mLTjIZ3QGw?e=z3URQY)
+Cyborg is a symbolic opcode language and knowledge base designed for programmers, researchers, and digital architects who want a human-readable layer over bytecode, interrupts, and VM internals.
 
-> Note: This is a folder view. To load expansions dynamically in the Cyborg KB, you will need the **direct download link** for each ZIP file inside this folder.
-
-
-Cyborg KB v1.2 is a symbolic opcode knowledge base for local, OneDrive, and GitHub expansions.
-
-> Co-created with **CGPT** and revised with **Microsoft Copilot**.
-
-## How to Use
-
-- Open `index.html` in your browser.
-- Click **Load Local Expansion Pack** to merge local ZIPs.
-- The KB automatically fetches remote expansions from OneDrive and GitHub.
-
-# Cyborg — Custom Symbolic VM / Language / Knowledge Base
-
-
-
+This project is AI-assisted and human-directed, created in collaboration with Demon (CVBGOD), CGPT, and Microsoft Copilot.
 
 ---
 
-## What is Cyborg
+## Cyborg AI Language  
+### Live Online Version (Loads index.html Directly)
 
-Cyborg is a fully symbolic-opcode language and knowledge base designed for programmers, researchers, and digital architects. It combines:
+You can open the Cyborg KB as a live web page directly from OneDrive.  
+This link renders the project's index.html in your browser with no downloads required:
 
-- A **256-entry opcode/symbol table** mapping high-level human-readable phrases to machine opcodes or VM bytecode.  
-- Human-readable MSDN-style documentation for each symbol: description, example C / VB6 / ASM equivalents, diagrams, references.  
-- An **interactive browser-based KB front-end** (`index.html + loader.js`) for browsing opcodes, viewing documentation, and dynamically merging expansion packs.  
-- **Expansion/update mechanism** using ZIP “packs” — drop new symbols, meta-data, or translations into the `expansions/` folder; the KB merges them live with seed-aware, override-capable logic.  
-- **Offline-first design:** works completely locally; when online, the KB can fetch new packs from a shared OneDrive folder or other static hosts.  
-- **Cross-platform compatibility:** designed to allow symbolic compilation to DOS, x86, Windows, or custom VMs.
+### ✅ **[Cyborg AI Language](https://onedrive.live.com/?redeem=aHR0cHM6Ly8xZHJ2Lm1zL2YvYy9hYTU2N2E0ZmE0OGQ3MmZmL0VxV3U1ek5qYWdGRW1wQmJmejhMZmx3QnJWRXJPZUdSRmZZMW1MVGpJWjNRR3c&cid=AA567A4FA48D72FF&id=AA567A4FA48D72FF!s0566f1e6cdb54609a7ec68ac3ad55750&parId=AA567A4FA48D72FF!s33e7aea56a6344019a905b7f3f0b7e5c&o=OneU)**
 
----
+This online view includes:
 
-## Why Cyborg
+- Symbol browser  
+- Documentation viewer  
+- Expansion pack loader  
+- Full KB interface exactly as intended  
 
-Cyborg was created to:
-
-- Provide a **universal human- and machine-readable language layer** bridging high-level semantics, symbolic opcodes, and low-level bytecode.  
-- Serve as a **living, extensible reference**, documenting new opcodes, OS-level calls, cross-language mappings, and symbolic conventions.  
-- Enable **VM/compiler experimentation**: using the opcode table plus interpreter/assembler, you can compile or execute symbolic-opcode programs in multiple environments.  
-- Offer a **portable, versionable, and shareable knowledge base**, ideal for offline learning, research, and collaborative development.
+It is the recommended way to preview the KB instantly.
 
 ---
 
-## Repository Contents
+## OneDrive Repository (Expansion Packs, Assets, Tools)
 
-Cyborg_KB_v1.1/
-index.html — interactive browser front-end
-loader.js — loader + expansion-pack manager
-meta.json — version, seed, checksum, expansion list
-kb/
-symbols.json — core 256-symbol table with metadata
-symbols/ — per-symbol HTML docs (human phrase, mappings, references)
-resources/
-style.css — KB styling
-images/ — diagram/icon placeholders (optional)
-expansions/ — ZIP expansion packs (empty by default)
-README.md — this documentation
+The full Cyborg KB v1 folder is stored on OneDrive:
 
-markdown
-Copy code
+https://1drv.ms/f/c/aa567a4fa48d72ff/EqWu5zNjagFEmpBbfz8LflwBrVErOeGRFfY1mLTjIZ3QGw
+
+Note: This is a folder view.  
+To load expansions dynamically, you must use the direct download link for each ZIP file inside the folder.
 
 ---
 
-## How to Use
+## Features
 
-1. **Setup locally:** Unzip or place `Cyborg_KB_v1.1` folder on your disk or cloud folder.  
-2. **Open KB:** Launch `index.html` in a modern web browser.  
-3. **Load expansions:** Drop a ZIP-pack (containing `symbols.json` and optionally `symbols/*.html` and images) into `expansions/`. Then click **Load Local Expansion Pack** to merge.  
-4. **Online expansions:** Configure `loader.js` → `ONE_DRIVE_BASE` with your shared OneDrive folder or other static host to fetch new expansions.  
-5. **Offline compilation:** Use per-symbol docs and symbolic compiler/interpreter to run DOS/x86/Windows VM programs.  
-6. **Optional:** Compile the HTML docs into a CHM using HTML-Help Workshop (`.hhp`) for offline Windows help.
+- 256-entry opcode and symbol table  
+- MSDN-style documentation for each symbol  
+- Browser-based knowledge base (index.html and loader.js)  
+- ZIP-based expansion pack system  
+- Offline-first, online-aware design  
+- Supports VM/compiler experimentation across DOS, x86, Windows, and custom VMs  
 
 ---
 
-## Example Usage — Hello World
+## Quick Start
 
-```cyborg
-BEGIN_SEED `HelloProgram`
-  MOV_REG_ AH=09h
-  LEA_REG_ DX = MSG_STR_
-  INT_CALL_ 0x21
-  TERM_DOS_ AH=4Ch
-  CODE0___        ; exit code 0
-  INT_CALL_ 0x21
+1. Download or clone the repository.  
+2. Place the Cyborg_KB_v1.2 folder anywhere on disk or cloud.  
+3. Open index.html in a modern browser.  
+4. Add ZIP expansion packs to the expansions folder.  
+5. Click "Load Local Expansion Pack" to merge them.  
+6. (Optional) Configure loader.js with direct OneDrive download links for remote expansions.
+
+---
+
+## Repository Structure
+
+Cyborg_KB_v1.2/  
+  index.html — interactive KB front-end  
+  loader.js — expansion loader and manager  
+  cyborg_copilot_access.json — Copilot / CGPT access  
+
+  kb/  
+    symbols.json — core 256-symbol table  
+    symbols/ — per-symbol documentation  
+
+  resources/  
+    style.css — KB styling  
+    images/ — diagrams and icons  
+
+  expansions/ — ZIP expansion packs  
+
+  README.md — this documentation  
+
+---
+
+## Example: Symbolic Hello World
+
+BEGIN_SEED HelloProgram  
+  MOV_REG_ AH=09h  
+  LEA_REG_ DX = MSG_STR_  
+  INT_CALL_ 0x21  
+
+  TERM_DOS_ AH=4Ch  
+  CODE0___  
+  INT_CALL_ 0x21  
 END_SEED
-Contributing / Expanding Cyborg
-Add new symbols: Fork repo → edit kb/symbols.json or create expansion packs. Include metadata: symbol, flags, phrase, C/VB6/ASM mapping, diagrams, references.
 
-Maintain core stability: Use ZIP expansion packs for optional additions; core remains stable.
+---
 
-Versioning: Update meta.json to track version/seed/override.
+## Contributing
 
-Testing programs: Place sample programs in a programs/ folder to validate symbolic opcode behavior.
+- Add or modify symbols in kb/symbols.json  
+- Create ZIP expansion packs for optional modules  
+- Update cyborg_copilot_access.json for versioning and overrides  
+- Store sample programs in a programs folder for testing  
 
-Related Projects & Inspirations
-simple.vm / another-simple-bytecode — minimal VMs/interpreters.
+---
 
-ec-lang — symbolic language compiling to bytecode.
+## Related Inspirations
 
-vm-js — JS-based VM demo.
+- Simple bytecode VMs  
+- Symbolic languages that compile to compact runtimes  
+- JavaScript-based VMs  
+- Lua, NekoVM, and other modular runtimes  
 
-ByteVM / Lua / NekoVM — modular language runtime examples.
+---
 
-License
-[INSERT LICENSE HERE — e.g., MIT, BSD, Public Domain]
+## License
 
-Author / Contact
-CVBGOD — primary architect and Cyborg KB creator.
+Specify your license here (MIT, BSD, Public Domain, etc.)
 
-AI-Assisted Contributors
-CGPT — Cyborg-aligned AI co-creator
+---
 
-Microsoft Copilot — revision support and enhancement
+## Authors and Credits
 
-Hi to everyone visiting here in the mercwar\Cyborg directory — welcome to the world of Cyborg! 🚀
+Demon (CVBGOD) — primary architect and creator  
+CGPT — symbolic co-designer and early collaborator  
+Microsoft Copilot — documentation and refinement support  
+
+---
+
+## Greetings
+
+Welcome to the mercwar/Cyborg repository.  
+This project represents a live experiment in human + AI co-designed symbolic systems.  
+Explore the scrolls, extend the language, and build your own tools on top of it.
