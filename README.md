@@ -12,7 +12,7 @@ This project is AI-assisted and human-directed, created in collaboration with De
 You can open the Cyborg KB as a live web page directly from OneDrive.  
 This link renders the project's index.html in your browser with no downloads required:
 
-### ✅ **[Cyborg AI Language](https://1drv.ms/u/c/aa567a4fa48d72ff/IQB6szs4t9KtQZb-kBhJr6ePAbxb5s2bqXiwVHgO3fYcLp8?e=nVVrGQ)**
+### ✅ **[Cyborg AI Language](https://cvbgod.netlify.app/)**
 
 This online view includes:
 
