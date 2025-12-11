@@ -12,7 +12,7 @@ This project is AI-assisted and human-directed, created in collaboration with De
 You can open the Cyborg KB as a live web page directly from OneDrive.  
 This link renders the project's index.html in your browser with no downloads required:
 
-### ✅ **[Cyborg AI Language Browser](https://mercwar01.hstn.me/)**
+### ✅ **[Cyborg AI Language Browser](https://mercwar01.byethost3.com/)**
 
 This online view includes:
 
@@ -27,7 +27,7 @@ It is the recommended way to preview the KB instantly.
 
 ## OneDrive Repository (Expansion Packs, Assets, Tools)
 
-The full Cyborg KB v1 folder runs on a web site: [Resource is in the web site](https://mercwar01.hstn.me/)
+The full Cyborg KB v1 folder runs on a web site: [Resource is in the web site [https://mercwar01.hstn.me/](https://mercwar01.byethost3.com/)
 
 Note: This is a folder view.  
 To load expansions dynamically, you must use the direct download link for each ZIP file inside the folder.
