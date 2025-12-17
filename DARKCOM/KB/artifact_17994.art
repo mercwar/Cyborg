@@ -1,0 +1,60 @@
+ARTIFACT::CBORG.PARSER.V1
+GUID::CBORG-G::PARSER-1.0
+TYPE::PARSER
+VERSION::1.0
+CONTENT::
+@echo off
+setlocal EnableDelayedExpansion
+
+echo ============================================
+echo        CBORG PARSER ARTIFACT v1
+echo ============================================
+
+echo [CBORG] Reading clipboard...
+powershell -command "try { Get-Clipboard -Raw } catch { '' }" > "%temp%\cborg_parse.txt"
+
+echo.
+echo [CBORG] RAW CLIPBOARD CONTENT:
+echo --------------------------------------------
+type "%temp%\cborg_parse.txt"
+echo --------------------------------------------
+echo.
+
+echo [CBORG] Parsing safe delimiters...
+set "GUID="
+set "TYPE="
+set "VERSION="
+set "BODY="
+
+for /f "usebackq delims=" %%L in ("%temp%\cborg_parse.txt") do (
+    set "LINE=%%L"
+
+    if "!LINE!"=="<<GUID>>" set "MODE=GUID"
+    if "!LINE!"=="<<TYPE>>" set "MODE=TYPE"
+    if "!LINE!"=="<<VERSION>>" set "MODE=VERSION"
+    if "!LINE!"=="<<BODY>>" set "MODE=BODY"
+    if "!LINE!"=="<<END>>" set "MODE=END"
+
+    if "!MODE!"=="GUID" if not "!LINE!"=="<<GUID>>" set "GUID=!LINE!"
+    if "!MODE!"=="TYPE" if not "!LINE!"=="<<TYPE>>" set "TYPE=!LINE!"
+    if "!MODE!"=="VERSION" if not "!LINE!"=="<<VERSION>>" set "VERSION=!LINE!"
+    if "!MODE!"=="BODY" if not "!LINE!"=="<<BODY>>" if not "!LINE!"=="<<END>>" (
+        set "BODY=!BODY!!LINE!!nl!"
+    )
+)
+
+echo [CBORG] PARSED RESULT:
+echo GUID: !GUID!
+echo TYPE: !TYPE!
+echo VERSION: !VERSION!
+echo.
+echo BODY:
+echo --------------------------------------------
+echo !BODY!
+echo --------------------------------------------
+
+echo.
+echo [CBORG] PARSE COMPLETE.
+pause
+END_CONTENT
+END ARTIFACT

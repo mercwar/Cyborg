@@ -1,0 +1,15 @@
+ARTIFACT::TEST.MINIMAL.BATCH
+GUID::CBORG-G::TEST-BATCH-2.0
+TYPE::BATCH_WRAPPER
+VERSION::2.0
+CONTENT::
+@echo off
+echo ============================================
+echo   THIS IS A BAT FILE MATERIALIZED CORRECTLY
+echo ============================================
+echo.
+echo If you see this, the TYPE mapping is fixed.
+echo.
+pause
+END_CONTENT
+END ARTIFACT

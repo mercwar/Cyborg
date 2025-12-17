@@ -1,0 +1,53 @@
+{
+  "symsys": {
+    "version": "3.0.0",
+    "realm": "SYMDISK_01",
+    "artifacts": [
+      {
+        "artifact_id": "ARTIFACTS.SYMSYS.CONFIG.SHELL_V3",
+        "guid": "CYBORG-G::CONFIG-SYMSYS-SHELL-3.0",
+        "type": "CONFIG",
+        "role": "CORE_SHELL_CONFIG",
+        "version": "3.0.0",
+        "compatible_with": "3.x",
+        "description": "Core configuration for SYMSYS Shell v3: KB root, index file, and type-to-extension mapping.",
+        "config": {
+          "wrapper_version": "3.0.0",
+          "kb_root_env": "%USERPROFILE%\\SYMSYS_KB",
+          "kb_index_file": "index.txt",
+          "paths": {
+            "kb_root_resolved_example": "C:\\Users\\<USER>\\SYMSYS_KB",
+            "kb_index_resolved_example": "C:\\Users\\<USER>\\SYMSYS_KB\\index.txt"
+          },
+          "type_to_extension": {
+            "BATCH_WRAPPER": ".bat",
+            "SOURCE_SNIPPET": ".bat",
+            "CLIPBOARD_ARTIFACT": ".txt",
+            "DEFAULT": ".txt"
+          }
+        },
+        "batch_hardcode_section": {
+          "label": ":CONFIG_SYMSYS_V3",
+          "lines": [
+            "set \"WRAPPER_VERSION=3.0.0\"",
+            "set \"KB_ROOT=%USERPROFILE%\\SYMSYS_KB\"",
+            "set \"KB_INDEX=%KB_ROOT%\\index.txt\"",
+            "",
+            "if not exist \"%KB_ROOT%\" mkdir \"%KB_ROOT%\"",
+            "if not exist \"%KB_INDEX%\" (",
+            "    echo ; SYMSYS ARTIFACT KB INDEX > \"%KB_INDEX%\"",
+            "    echo ; GUID ^| RAWFILE ^| MATERIALIZED ^| TYPE ^| DATE ^| VERSION >> \"%KB_INDEX%\"",
+            ")",
+            "",
+            ":: Type-to-extension mapping",
+            "set \"SYMSYS_EXT_DEFAULT=.txt\"",
+            "set \"SYMSYS_EXT_BATCH_WRAPPER=.bat\"",
+            "set \"SYMSYS_EXT_SOURCE_SNIPPET=.bat\"",
+            "set \"SYMSYS_EXT_CLIPBOARD_ARTIFACT=.txt\"",
+            "goto :eof"
+          ]
+        }
+      }
+    ]
+  }
+}

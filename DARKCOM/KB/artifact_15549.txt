@@ -1,0 +1,87 @@
+ARTIFACT::ARTIFACTS.LANGUAGES.BATCH.WRAPPER
+    GUID::CYBORG-G::WRAP-BATCH-UNIFIED-SHELL-3.1
+    TYPE::BATCH_WRAPPER
+    VERSION::3.1
+    COMPATIBLE_WITH::3.x
+    ROLE::UNIFIED_SHELL
+    CONTENT::
+        @echo off
+        setlocal EnableDelayedExpansion
+
+        :: ============================================================
+        ::  SYMSYS UNIFIED SHELL v3.1
+        ::  PURPOSE:
+        ::      - Display a new shell interface
+        ::      - Enumerate all artifacts in G:\Darkcom\KB
+        ::      - Allow launching any materialized artifact
+        :: ============================================================
+
+        set "KB_ROOT=G:\Darkcom\KB"
+        set "KB_INDEX=%KB_ROOT%\index.txt"
+
+        if not exist "%KB_ROOT%" (
+            echo [UNIFIED] KB root not found: %KB_ROOT%
+            pause
+            exit /b
+        )
+
+        :MAIN_MENU
+        cls
+        echo ============================================================
+        echo                 SYMSYS UNIFIED SHELL v3.1
+        echo ============================================================
+        echo KB Root: %KB_ROOT%
+        echo.
+        echo 1. List installed artifacts
+        echo 2. Launch a materialized artifact
+        echo 3. Exit
+        echo ============================================================
+        set /p CH=Choose:
+
+        if "%CH%"=="1" goto LIST_ARTIFACTS
+        if "%CH%"=="2" goto LAUNCH_ARTIFACT
+        if "%CH%"=="3" exit /b
+        goto MAIN_MENU
+
+        :LIST_ARTIFACTS
+        cls
+        echo ============================================================
+        echo                INSTALLED ARTIFACTS
+        echo ============================================================
+        if exist "%KB_INDEX%" (
+            type "%KB_INDEX%"
+        ) else (
+            echo [UNIFIED] No KB index found.
+        )
+        echo.
+        pause
+        goto MAIN_MENU
+
+        :LAUNCH_ARTIFACT
+        cls
+        echo ============================================================
+        echo              LAUNCH MATERIALIZED ARTIFACT
+        echo ============================================================
+        echo Enter the filename of the materialized artifact:
+        echo (Example: mat_12345.bat)
+        echo.
+        set /p FILE=File:
+
+        set "TARGET=%KB_ROOT%\%FILE%"
+
+        if not exist "%TARGET%" (
+            echo [UNIFIED] File not found: %TARGET%
+            pause
+            goto MAIN_MENU
+        )
+
+        echo [UNIFIED] Launching: %TARGET%
+        echo.
+        call "%TARGET%"
+        echo.
+        pause
+        goto MAIN_MENU
+
+        endlocal
+    END_CONTENT
+END ARTIFACT

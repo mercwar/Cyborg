@@ -1,0 +1,5 @@
+; SYMSYS CLIPBOARD KB INDEX 
+; GUID | FILE | DATE | VERSION 
+CYBORG-G | G:\Darkcom\KB\clip_artifact_1.0_7823.txt | 2025-12-17 | 1.0
+CBORG-G::PARSER-1.0 | G:\Darkcom\KB\artifact_17994.art | G:\Darkcom\KB\mat_17994.txt | PARSER | 2025-12-17 | 1.0
+CBORG-G::TEST-BATCH-2.0 | G:\Darkcom\KB\artifact_29179.art | G:\Darkcom\KB\mat_29179.bat | BATCH_WRAPPER | 2025-12-17 | 2.0
