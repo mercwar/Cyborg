@@ -3,3 +3,17 @@
 CYBORG-G | G:\Darkcom\KB\clip_artifact_1.0_7823.txt | 2025-12-17 | 1.0
 CBORG-G::PARSER-1.0 | G:\Darkcom\KB\artifact_17994.art | G:\Darkcom\KB\mat_17994.txt | PARSER | 2025-12-17 | 1.0
 CBORG-G::TEST-BATCH-2.0 | G:\Darkcom\KB\artifact_29179.art | G:\Darkcom\KB\mat_29179.bat | BATCH_WRAPPER | 2025-12-17 | 2.0
+CBORG-G::DARKCOM-LOADER-1.0 | G:\Darkcom\KB\artifact_27142.art | G:\Darkcom\KB\mat_27142.bat | BATCH_WRAPPER | 2025-12-17 | 1.0
+CBORG-G::DARKCOM-SHELL-1.0 | G:\Darkcom\KB\artifact_15549.art | G:\Darkcom\KB\mat_15549.bat | BATCH_WRAPPER | 2025-12-17 | 1.0
+CBORG-G::DARKCOM-SHELL-2.0 | G:\Darkcom\KB\artifact_20353.art | G:\Darkcom\KB\mat_20353.bat | BATCH_WRAPPER | 2025-12-17 | 2.0
+CBORG-G::DARKCOM-SHELL-2.0 | G:\Darkcom\KB\artifact_1069.art | G:\Darkcom\KB\mat_1069.bat | BATCH_WRAPPER | 2025-12-17 | 2.0
+CBORG-G::DARKCOM-RUNNER-1.0 | G:\Darkcom\KB\artifact_30626.art | G:\Darkcom\KB\mat_30626.bat | BATCH_WRAPPER | 2025-12-17 | 1.0
+CBORG-G::DARKCOM-LAUNCHER-1.0 | G:\Darkcom\KB\artifact_32514.art | G:\Darkcom\KB\mat_32514.bat | BATCH_WRAPPER | 2025-12-17 | 1.0
+CBORG-G::DARKCOM-SHORTCUT-1.0 | G:\Darkcom\KB\artifact_14105.art | G:\Darkcom\KB\mat_14105.bat | BATCH_WRAPPER | 2025-12-17 | 1.0
+CBORG-G::DARKCOM-SHELL-3.0 | G:\Darkcom\KB\artifact_13086.art | G:\Darkcom\KB\mat_13086.bat | BATCH_WRAPPER | 2025-12-17 | 3.0
+CBORG-G::DARKCOM-SHELL-3.0 | G:\Darkcom\KB\artifact_32383.art | G:\Darkcom\KB\mat_32383.bat | BATCH_WRAPPER | 2025-12-17 | 3.0
+CBORG-G::DARKCOM-SHELL-5.0 | G:\Darkcom\KB\artifact_15220.art | G:\Darkcom\KB\mat_15220.bat | BATCH_WRAPPER | 2025-12-17 | 5.0
+CBORG-G::DARKCOM-SHELL-6.0 | G:\Darkcom\KB\artifact_2077.art | G:\Darkcom\KB\mat_2077.bat | BATCH_WRAPPER | 2025-12-17 | 6.0
+CBORG-G::DARKCOM-CLIPBOARD-2.0 | G:\Darkcom\KB\artifact_3416.art | G:\Darkcom\KB\mat_3416.bat | BATCH_WRAPPER | 2025-12-17 | 2.0
+CBORG-G::DARKCOM-SHORTCUT-SERVICE-1.0 | G:\Darkcom\KB\artifact_8990.art | G:\Darkcom\KB\mat_8990.bat | BATCH_WRAPPER | 2025-12-17 | 1.0
+CBORG-G::DARKCOM-SHELL-7.0 | G:\Darkcom\KB\artifact_10221.art | G:\Darkcom\KB\mat_10221.bat | BATCH_WRAPPER | 2025-12-17 | 7.0

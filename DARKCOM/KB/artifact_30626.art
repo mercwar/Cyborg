@@ -1,0 +1,21 @@
+ARTIFACT::DARKCOM.RUNNER.V1
+GUID::CBORG-G::DARKCOM-RUNNER-1.0
+TYPE::BATCH_WRAPPER
+VERSION::1.0
+CONTENT::
+@echo off
+echo ============================================
+echo        DARKCOM BATCH FILE PRINTER
+echo ============================================
+echo.
+echo This artifact prints a batch file template:
+echo.
+echo --------------------------------------------
+echo @echo off
+echo echo DARKCOM GENERATED BATCH FILE
+echo pause
+echo --------------------------------------------
+echo.
+pause
+END_CONTENT
+END ARTIFACT

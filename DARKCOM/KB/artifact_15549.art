@@ -1,0 +1,99 @@
+ARTIFACT::DARKCOM.SHELL.V1
+GUID::CBORG-G::DARKCOM-SHELL-1.0
+TYPE::BATCH_WRAPPER
+VERSION::1.0
+CONTENT::
+@echo off
+setlocal EnableDelayedExpansion
+
+title DARKCOM SHELL v1.0
+
+:main
+cls
+echo ============================================
+echo              DARKCOM SHELL v1.0
+echo ============================================
+echo KB Root: G:\Darkcom\KB
+echo.
+echo 1. List KB Artifacts
+echo 2. Run an Artifact by GUID
+echo 3. Exit
+echo.
+set /p choice=Choose:
+
+if "%choice%"=="1" goto list
+if "%choice%"=="2" goto run
+if "%choice%"=="3" exit /b
+goto main
+
+:list
+cls
+echo ============================================
+echo           DARKCOM KB ARTIFACT LIST
+echo ============================================
+echo.
+
+set "INDEX=G:\Darkcom\KB\index.txt"
+
+for /f "usebackq tokens=1-6 delims=|" %%A in ("%INDEX%") do (
+    set "GUID=%%A"
+    set "ARTFILE=%%B"
+    set "MATFILE=%%C"
+    set "TYPE=%%D"
+    set "DATE=%%E"
+    set "VER=%%F"
+
+    rem Trim leading spaces
+    for %%X in (GUID ARTFILE MATFILE TYPE DATE VER) do (
+        set "VAL=!%%X!"
+        for /l %%i in (1,1,50) do if "!VAL:~0,1!"==" " set "VAL=!VAL:~1!"
+        set "%%X=!VAL!"
+    )
+
+    if not "!GUID:~0,1!"==";" (
+        echo GUID: !GUID!
+        echo TYPE: !TYPE!
+        echo VERSION: !VER!
+        echo MATERIALIZED: !MATFILE!
+        echo --------------------------------------------
+    )
+)
+
+echo.
+pause
+goto main
+
+:run
+cls
+echo ============================================
+echo           RUN ARTIFACT BY GUID
+echo ============================================
+echo.
+set /p target=Enter GUID:
+
+set "INDEX=G:\Darkcom\KB\index.txt"
+set "FOUND="
+
+for /f "usebackq tokens=1-6 delims=|" %%A in ("%INDEX%") do (
+    set "GUID=%%A"
+    set "MATFILE=%%C"
+
+    rem Trim
+    set "G=!GUID!"
+    for /l %%i in (1,1,50) do if "!G:~0,1!"==" " set "G=!G:~1!"
+
+    if /i "!G!"=="%target%" (
+        set "FOUND=1"
+        call "!MATFILE!"
+    )
+)
+
+if not defined FOUND (
+    echo.
+    echo [ERROR] GUID not found.
+    pause
+)
+
+goto main
+END_CONTENT
+END ARTIFACT
