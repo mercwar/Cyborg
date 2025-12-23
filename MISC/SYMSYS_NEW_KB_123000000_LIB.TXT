@@ -1,0 +1,59 @@
+#ifndef COMPONENT_H
+#define COMPONENT_H
+
+// Basic component types
+typedef enum {
+    COMP_RESISTOR,
+    COMP_CAPACITOR,
+    COMP_INDUCTOR,
+    COMP_WIRE
+} ComponentType;
+
+// A single circuit component
+typedef struct {
+    ComponentType type;   // resistor, capacitor, etc.
+    float value;          // ohms, farads, henrys (wire = 0)
+    int node_a;           // first connection point
+    int node_b;           // second connection point
+} Component;
+
+#endif // COMPONENT_H
+
+#ifndef CIRCUIT_H
+#define CIRCUIT_H
+
+#include "component.h"
+
+// A simple circuit object
+typedef struct {
+    int node_count;        // number of nodes in the circuit
+    int component_count;   // number of components
+    Component *components; // dynamic array of components
+} Circuit;
+
+#endif // CIRCUIT_H
+
+#ifndef NODES_H
+#define NODES_H
+
+// A node is just an integer index, but we typedef for clarity
+typedef int Node;
+
+#endif // NODES_H
+
+
+#ifndef CIRCUIT_OPS_H
+#define CIRCUIT_OPS_H
+
+#include "circuit.h"
+
+// Initialize a circuit with N nodes and M components
+void circuit_init(Circuit *c, int node_count, int component_count);
+
+// Free circuit memory
+void circuit_free(Circuit *c);
+
+// Add a component to the circuit
+void circuit_set_component(Circuit *c, int index, Component comp);
+
+#endif // CIRCUIT_OPS_H
