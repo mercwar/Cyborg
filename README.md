@@ -1,4 +1,4 @@
-![MercWar Banner](Mercwar Robo-knight/mercwar_v030.png)
+[MercWar Banner](Mercwar Robo-knight/mercwar_v030.png)
 # Cyborg KB v1.2 · Symbolic Opcode Knowledge Base
 
 Cyborg is a symbolic opcode language and knowledge base designed for programmers, researchers, and digital architects who want a human-readable layer over bytecode, interrupts, and VM internals.
