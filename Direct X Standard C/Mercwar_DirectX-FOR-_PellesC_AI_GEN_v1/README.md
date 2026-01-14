@@ -1,146 +1,108 @@
-<!-- #avis #readme #github #dx11 #screensaver #roboknight -->
-<!-- AVIS: README for Mercwar_Robo-Knight screen saver demo. Copilot-parsable, structured, and seed-aligned. -->
+<!-- BEGIN_SEED MERCG_AVIS_SCREENSAVER_2026
+GUID: AVIS-SCREEN-SAVER-2026
+TITLE: AVIS Screen Saver Demo – DX Standard C + Robo‑Knight Integration
+AUTHOR: CGPT / MercWar
+DATE: 2026‑01‑14
+-->
 
-<h1 align="center">🤖 Mercwar – AVIS Robo‑Knight Screen Saver</h1>
+# 🤖 AVIS Screen Saver Demo – Robo‑Knight
 
-<p align="center">
-  <b>GUID:</b> AVIS-ROBOKNIGHT-README-2026<br/>
-  <b>Author:</b> CGPT / MercWar<br/>
-  <b>Date:</b> 2026‑01‑14
-</p>
-
----
-
-## 🌌 Overview
-![Robo-Knight Emblem Concept](https://github.com/mercwar/Cyborg/blob/main/Mercwar_Robo-Knight/team_.jpg)
-
-<!-- AVIS: High-level description of the project. -->
-The **Mercwar_Robo-Knight** project is an AVIS‑structured, Pelles‑C‑friendly screen saver demo that uses:
-
-- A **DX11 stub** (no real Direct3D headers required)
-- **GDI rendering** for visible motion
-- A modular layout designed for **MERC‑GUID / AVIS seeds**
-- A future‑facing slot for a **Robo‑Knight** themed visual layer
-
-This README is written as an **HTML + Markdown hybrid** so both humans and Copilot can parse it cleanly.
+Welcome to the **AVIS Screen Saver Demo** — a minimal **DirectX 11 in Standard C** project compatible with *Pelles C*, fully annotated for **AI‑assisted coding** and **Copilot / MERC‑G parsing**.
 
 ---
 
-## 📁 Project structure
+## 📷 Screenshots
 
-<!-- AVIS: File structure table for Copilot and humans. -->
+### 📸 DX & Copilot Visualization
+![Copilot DX Preview](https://raw.githubusercontent.com/mercwar/Cyborg/main/Mercwar_Robo-Knight/Copilot_20260114_022304.png)
 
-| File / Folder              | Role / Description                                           |
-|----------------------------|--------------------------------------------------------------|
-| `avis_main.c`             | Entry point, window creation, main loop, global state.       |
-| `avis_screen_saver.c`     | Screen saver logic (moving shapes / Robo‑Knight stage).      |
-| `avis_screen_saver.h`     | Declarations for screen saver functions.                     |
-| `dx11_stub.c`             | DX11 stub implementation (no real D3D headers).             |
-| `dx11_stub.h`             | DX11 stub interface and opaque DX globals.                   |
-| `game_logic.c`            | Game logic stub, called once per frame.                      |
-| `game_logic.h`            | Declarations for game logic.                                 |
-| `avis_xinput_stub.c`      | XInput stub for controller input.                            |
-| `avis_xinput_stub.h`      | Declarations for XInput stub.                                |
-| `README.md`               | This document.                                               |
-| `assets/`                 | (Optional) Robo‑Knight images, logos, and screenshots.       |
-| `Mercwar_Robo-Knight/`    | GitHub folder containing this project and related assets.    |
-
-> AVIS: MERC‑GUID can use this table to map modules to seed entries and generate drop‑in files.
+### 🎮 Screen Saver Demo
+![Robo‑Knight Demo Frame](https://raw.githubusercontent.com/mercwar/Cyborg/main/Mercwar_Robo-Knight/Copilot_20260114_015204.png)
 
 ---
 
-## 🧠 AVIS & MERC‑GUID conventions
+## 📌 Overview
 
-<!-- AVIS: Explain tags and seed behavior. -->
+This repository demonstrates how to build a **DirectX 11 application in Standard C** using:
 
-- **AVIS tags** (in comments and seeds):
-  - `#avis` – AVIS‑compliant module
-  - `#screensaver` – Screen saver logic or entry point
-  - `#dx11` – DX11‑related interface (stub or real)
-  - `#readme` – Documentation artifact
-- **MERC‑GUID**:
-  - Treats `BEGIN_SEED` blocks as canonical project descriptors.
-  - Maps `KEYWORDS` → `FILES` → `MODULES` → `GLOBALS`.
-  - Generates **drop‑in C files** and documentation from seeds like  
-    `MERCG_AVIS_ROBOKNIGHT_README_2026`.
-
-This README is designed so MERC‑GUID can re‑emit or transform it without losing structure.
+- Pelles C IDE
+- AVIS‑style module structuring
+- Stubbed DX11 initialization & rendering
+- GDI fallback for visible output
+- AI readable source with Copilot / MERC‑G seed tags
 
 ---
 
-## 🛠️ Build instructions (Pelles C, DX11 stub)
+## 📁 File Structure
 
-<!-- AVIS: Build steps must be explicit and internal. -->
-
-### 1. Requirements
-
-- **Pelles C** (Windows, 32‑bit or 64‑bit)
-- Standard Win32 SDK headers bundled with Pelles C
-- No external DirectX SDK or Windows Kits required for the stub build
-
-### 2. Add source files to project
-
-Create a new Pelles C project (Win32 GUI application) and add:
-
-- `avis_main.c`
-- `avis_screen_saver.c`
-- `avis_screen_saver.h`
-- `dx11_stub.c`
-- `dx11_stub.h`
-- `game_logic.c`
-- `game_logic.h`
-- `avis_xinput_stub.c`
-- `avis_xinput_stub.h`
-
-### 3. Include paths
-
-Use only Pelles C’s own include paths:
-
-- `D:\Program Files\PellesC\Include`
-- `D:\Program Files\PellesC\Include\Win`
-
-No Windows Kits include paths are required for the **stub** version.
-
-### 4. Build
-
-- Set configuration to **Win32** or **x64** as desired.
-- Build the project.
-- Run the resulting executable: it should open a window with a moving rectangle (Robo‑Knight stage placeholder).
+| Path | Description |
+|------|-------------|
+| `source/avis_main.c` | Main entry point, window, loop |
+| `source/avis_screen_saver.c` | Screen saver logic & moving shapes |
+| `source/dx11_stub.c` | DX11 init/shutdown & RenderFrame stubs |
+| `source/avis_xinput_stub.c` | Controller input stubs |
+| `source/game_logic.c` | Game logic stub |
+| `include/*.h` | Header files for stubs & logic |
+| `output/` | Compiled objects & binary |
 
 ---
 
-## 🎮 Runtime behavior
+## ⚙️ Features
 
-<!-- AVIS: Describe loop and globals. -->
-
-- **Globals**:
-  - `g_screenWidth`, `g_screenHeight` – current client area size
-  - `g_hDC` – window device context for GDI rendering
-  - `g_pDXDevice`, `g_pDXContext`, `g_pDXSwapChain` – opaque DX11 stub pointers
-- **Loop**:
-  - Processes messages with `PeekMessage`.
-  - Calls:
-    - `UpdateGame()`
-    - `AvisXInput_Update()`
-    - `UpdateScreenSaver()`
-    - `RenderFrame()` (DX11 stub)
-    - `RenderScreenSaver()` (GDI)
-
-The current visual is a **bouncing rectangle**; the Robo‑Knight theme can be layered on top (sprites, logos, or emblem rendering) without changing the loop.
+- 💻 Minimal **DirectX 11 stub** support without DX headers
+- 🎨 **GDI fallback rendering** of screen saver shapes
+- 🪟 Window creation & message loop in pure C
+- 🤖 **AVIS annotations** for AI tooling & Copilot
+- 📦 Modular structure for easy expansion
 
 ---
 
-## 🖼️ Screenshots & GitHub references
+## 🚀 Build Instructions
 
-<!-- AVIS: GitHub-friendly image references; paths are symbolic for now. -->
+1. Install **Pelles C IDE** from https://www.smorgasbordet.com/pellesc/ 🛠️  
+2. Open this project in Pelles C IDE 📂  
+3. Build `mercwar.exe` using provided source files 🧱  
+4. Run the executable to see the screen saver in action 🎉  
+5. Use **Alt+Tab** to switch windows if the render window captures focus ⌨️
 
-Screenshots and Robo‑Knight visuals are expected to live under:
+---
 
-- `Mercwar_Robo-Knight/assets/`
-- `Mercwar_Robo-Knight/docs/`
+## 📝 Copilot & AVIS Integration
 
-Example GitHub‑style references:
+All source files include AVIS comments and tags:
 
+- `#main`, `#avis`, `#screensaver`, `#dx11`
+- Function purpose documentation
+- Structured for AI code generation and expansion
+- Image references and README tags assist Copilot context
 
+---
 
-![Robo-Knight Emblem Concept](https://github.com/mercwar/Cyborg/blob/main/Mercwar_Robo-Knight/LIVE%20QUALITY%20IN%20ARMOR.png)
+## 🌐 Repository
+
+This project is part of the Cyborg collection:
+
+🔗 https://github.com/mercwar/Cyborg
+
+Navigate to this project’s subfolder:
+
+📁 `Direct X Standard C/Mercwar_DirectX-FOR-_PellesC_AI_GEN_v1`
+
+---
+
+## ⚠️ Notes
+
+- Target: **Windows 10/11**
+- Pelles C IDE required
+- DirectX headers not required (stubbed)
+- Expand with full DX11 or future AI generated modules
+
+---
+
+## 🛠️ License
+
+**MIT License** — free to use, share, and modify.
+
+© 2026 CGPT / MercWar
+
+<!-- END_SEED MERCG_AVIS_SCREENSAVER_2026 -->
