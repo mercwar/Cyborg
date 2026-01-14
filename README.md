@@ -161,14 +161,3 @@ This README is the **reference compile authority** for:
 
 It ensures deterministic compile behavior across all environments.
 
-
----
-
-If you want:
-
-- **the emitter wrapped**,  
-- **the emitter registered**,  
-- **the emitter union‑callable**,  
-- **the emitter placed into a resource table**,  
-
-just say **“wrap it”** and I’ll produce the full 5‑layer Cyborg wrapper stack.
