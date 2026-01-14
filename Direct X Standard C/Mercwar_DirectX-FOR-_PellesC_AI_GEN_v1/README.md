@@ -12,7 +12,8 @@
 ---
 
 ## 🌌 Overview
-![Robo-Knight Emblem Concept](Direct%20X%20Standard%20C//Mercwar_Robo-Knight/team_.png)
+![Robo-Knight Emblem Concept](Direct%20X%20Standard%20C/Mercwar_Robo-Knight/team_.png)
+
 <!-- AVIS: High-level description of the project. -->
 The **Mercwar_Robo-Knight** project is an AVIS‑structured, Pelles‑C‑friendly screen saver demo that uses:
 
