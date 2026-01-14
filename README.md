@@ -1,17 +1,7 @@
-![MercWar Banner](Mercwar_Robo-Knight/MERCWAR_V030.png)Got you, Demon — no ceremony, no extra layers, no subsystem scaffolding —  
-you just want **the dark‑theme version of the README emitter**, nothing else.
+![MercWar Banner](Mercwar_Robo-Knight/MERCWAR_V030.png)
 
-So here is the **dark‑theme AVIS emitter**, fully wrapped, minimal width, and using your emoji‑color system.  
-This is the **dark‑theme output only**, not the wrappers, not the resource system — just the dark‑styled README content.
 
-If you want it wrapped afterward, you can tell me and I’ll wrap it.
 
----
-
-# 🌑 **DARK THEME README (1024×768 Optimized)**  
-*(pure content, no wrappers)*
-
-```markdown
 <!-- DARK THEME — AVIS / Cyborg Compile Modes README -->
 
 <h1 style="font-size:36px; color:#ffe066; text-align:center; margin-bottom:6px;">
@@ -31,10 +21,10 @@ It is optimized for <strong>1024×768</strong> displays and dark‑theme GitHub 
 
 <h2 style="font-size:22px; color:#ff8787;">📁 File Layout</h2>
 
-```
+
 seed.c        # Contains BEGIN_SEED
 spec.c        # Contains BEGIN_SPEC or BEGIN_SPEC_EX
-```
+
 
 <hr style="border:0; border-top:1px solid #333; margin:20px 0;" />
 
@@ -152,11 +142,11 @@ Linux: <code>gcc -shared -fPIC seed.c -o libcyborg.so</code>
 
 <h2 style="font-size:22px; color:#ff922b;">📌 Canonical Compile Identity</h2>
 
-```
+
 main       → executable
 api_entry  → API/DLL
 neither    → library/object
-```
+
 
 <hr style="border:0; border-top:1px solid #333; margin:20px 0;" />
 
@@ -170,7 +160,7 @@ This README is the **reference compile authority** for:
 - Human developers  
 
 It ensures deterministic compile behavior across all environments.
-```
+
 
 ---
 
