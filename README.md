@@ -1,4 +1,4 @@
-![MercWar Banner](Mercwar%20Robo-knight/mercwar_v030.png)
+![MercWar Banner](Mercwar%20Robo-knight/MERCWAR_V030.png)
 
 # Cyborg KB v1.2 · Symbolic Opcode Knowledge Base
 
