@@ -143,4 +143,4 @@ Example GitHub‑style references:
 
 
 
-![Robo-Knight Emblem Concept](Direct%20X%20Standard%20C/Mercwar_Robo-Knight/LIVE%20QUALITY%20IN%20ARMOR.png)
+![Robo-Knight Emblem Concept](https://github.com/mercwar/Cyborg/blob/main/Mercwar_Robo-Knight/LIVE%20QUALITY%20IN%20ARMOR.png)
