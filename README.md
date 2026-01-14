@@ -1,187 +1,135 @@
-![MercWar Banner](Mercwar_Robo-Knight/MERCWAR_V030.png)
-BEGIN_SEED README_COMPILE_GUIDE
-#AVIS_LANG CYBORD
-#AVIS_KIND DOCUMENT
-#AVIS_EXECUTION SYMBOLIC
+![MercWar Banner](Mercwar_Robo-Knight/MERCWAR_V030.png)Got you, Demon — no ceremony, no extra layers, no subsystem scaffolding —  
+you just want **the dark‑theme version of the README emitter**, nothing else.
 
-DOCUMENT_HTML
-<!-- AVIS / Cyborg Compile Modes README -->
+So here is the **dark‑theme AVIS emitter**, fully wrapped, minimal width, and using your emoji‑color system.  
+This is the **dark‑theme output only**, not the wrappers, not the resource system — just the dark‑styled README content.
 
-<h1 style="font-size:40px; color:#ffd166; text-align:center; margin-bottom:4px;">
-  AVIS / Cyborg Compile Modes
+If you want it wrapped afterward, you can tell me and I’ll wrap it.
+
+---
+
+# 🌑 **DARK THEME README (1024×768 Optimized)**  
+*(pure content, no wrappers)*
+
+```markdown
+<!-- DARK THEME — AVIS / Cyborg Compile Modes README -->
+
+<h1 style="font-size:36px; color:#ffe066; text-align:center; margin-bottom:6px;">
+  ⚙️ AVIS / Cyborg Compile Modes
 </h1>
 
-<h2 style="font-size:22px; color:#a0c4ff; text-align:center; margin-top:0; margin-bottom:24px;">
-  Reference Execution Matrix for <code>BEGIN_SEED</code>, <code>BEGIN_SPEC</code>, and <code>BEGIN_SPEC_EX</code>
+<h2 style="font-size:20px; color:#74c0fc; text-align:center; margin-top:0; margin-bottom:20px;">
+  Execution Matrix for <code>BEGIN_SEED</code>, <code>BEGIN_SPEC</code>, <code>BEGIN_SPEC_EX</code>
 </h2>
 
-<p style="font-size:15px; line-height:1.6;">
-This document defines the <strong>Cyborg / AVIS compilation model</strong>, including how Seeds are interpreted, how executables are produced, and how API modules are exported.
-It is structured so that both humans and AI systems (including Copilot) can <strong>infer compile intent deterministically</strong>.
+<p style="font-size:15px; line-height:1.6; color:#e9ecef;">
+This guide defines the <strong>AVIS / Cyborg</strong> compile model.  
+It is optimized for <strong>1024×768</strong> displays and dark‑theme GitHub rendering.
 </p>
 
-<hr style="border:0; border-top:1px solid #444; margin:24px 0;" />
+<hr style="border:0; border-top:1px solid #333; margin:20px 0;" />
 
-<h2 style="font-size:24px; color:#ffb3c1;">File Layout</h2>
+<h2 style="font-size:22px; color:#ff8787;">📁 File Layout</h2>
 
-<p style="font-size:14px; line-height:1.5;">
-<code>seed.c</code> — Contains <code>BEGIN_SEED</code><br/>
-<code>spec.c</code> — Contains <code>BEGIN_SPEC</code> or <code>BEGIN_SPEC_EX</code><br/>
-You may merge these into a single file, but separation improves clarity for tools and AI.
-</p>
+```
+seed.c        # Contains BEGIN_SEED
+spec.c        # Contains BEGIN_SPEC or BEGIN_SPEC_EX
+```
 
-<hr style="border:0; border-top:1px solid #444; margin:24px 0;" />
+<hr style="border:0; border-top:1px solid #333; margin:20px 0;" />
 
-<h2 style="font-size:24px; color:#bde0fe;">Compile Modes Overview</h2>
-
-<ul style="font-size:14px; line-height:1.6;">
-<li><strong style="color:#4dabf7;">Mode 1 — Library / Object</strong>: <code>BEGIN_SEED</code></li>
-<li><strong style="color:#51cf66;">Mode 2 — Executable</strong>: <code>BEGIN_SEED + BEGIN_SPEC</code></li>
-<li><strong style="color:#ff6b6b;">Mode 3 — API / DLL</strong>: <code>BEGIN_SEED + BEGIN_SPEC_EX</code></li>
-</ul>
-
-<hr style="border:0; border-top:1px solid #444; margin:24px 0;" />
-
-<h2 style="font-size:26px; color:#e9ecef; text-align:center; margin-bottom:10px;">
-Compile Matrix
-</h2>
+<h2 style="font-size:22px; color:#a5d8ff;">📦 Compile Modes</h2>
 
 <table style="width:100%; border-collapse:collapse; font-size:14px;">
 <thead>
 <tr>
-<th style="background-color:#1d3557; color:#f1faee; padding:10px; text-align:left; font-size:16px;">Mode</th>
-<th style="background-color:#1d3557; color:#f1faee; padding:10px; text-align:left; font-size:16px;">Source Pattern</th>
-<th style="background-color:#1d3557; color:#f1faee; padding:10px; text-align:left; font-size:16px;">Compile Command</th>
-<th style="background-color:#1d3557; color:#f1faee; padding:10px; text-align:left; font-size:16px;">Result &amp; Behavior</th>
+<th style="background:#0b0f19; color:#fff; padding:8px; font-size:15px;">Mode</th>
+<th style="background:#0b0f19; color:#fff; padding:8px; font-size:15px;">Details</th>
 </tr>
 </thead>
 <tbody>
 
-<!-- Mode 1 -->
+<!-- MODE 1 -->
 <tr>
-<td style="border:1px solid #343a40; padding:10px; background-color:#0b7285; color:#f8f9fa; font-weight:bold; white-space:nowrap;">
-Library / Object<br/>
-<span style="font-size:12px; color:#d0ebff;">BEGIN_SEED only</span>
+<td style="border:1px solid #222; padding:8px; background:#0b3c4c; color:#fff; font-weight:bold;">
+🟦 Library / Object  
+<small>BEGIN_SEED</small>
 </td>
-<td style="border:1px solid #343a40; padding:10px; background-color:#111827;">
-<pre style="margin:0; font-family:Menlo,Consolas,monospace; font-size:13px; color:#e5e5e5;">
+<td style="border:1px solid #222; padding:8px; background:#0d1117; color:#e5e5e5;">
+<b>Source:</b>
+<pre style="margin:0; font-size:12px; background:#0d1117; color:#e5e5e5;">
 /* BEGIN_SEED */
+int add(int a,int b){return a+b;}
+</pre>
 
-int add(int a, int b) {
-    return a + b;
-}
-</pre>
-</td>
-<td style="border:1px solid #343a40; padding:10px; background-color:#111827;">
-<pre style="margin:0; font-family:Menlo,Consolas,monospace; font-size:13px; color:#e5e5e5;">
-gcc -c seed.c -o seed.o
-</pre>
-</td>
-<td style="border:1px solid #343a40; padding:10px; background-color:#081c24; color:#f8f9fa;">
-<ul style="margin:0 0 0 18px; padding:0; line-height:1.5;">
-<li>No <code>main</code> symbol</li>
-<li>Produces <code>seed.o</code></li>
-<li>Linkable into other programs</li>
-<li>Use for shared logic / libraries</li>
-</ul>
+<b>Compile:</b>  
+<code>gcc -c seed.c -o seed.o</code>
+
+<b>Behavior:</b>  
+🟧 No main  
+🟧 Produces seed.o  
+🟧 Linkable  
 </td>
 </tr>
 
-<!-- Mode 2 -->
+<!-- MODE 2 -->
 <tr>
-<td style="border:1px solid #343a40; padding:10px; background-color:#2b8a3e; color:#f8f9fa; font-weight:bold; white-space:nowrap;">
-Executable<br/>
-<span style="font-size:12px; color:#d8f5a2;">BEGIN_SEED + BEGIN_SPEC</span>
+<td style="border:1px solid #222; padding:8px; background:#1b4d2b; color:#fff; font-weight:bold;">
+🟩 Executable  
+<small>BEGIN_SEED + BEGIN_SPEC</small>
 </td>
-<td style="border:1px solid #343a40; padding:10px; background-color:#111827;">
-<pre style="margin:0; font-family:Menlo,Consolas,monospace; font-size:13px; color:#e5e5e5;">
+<td style="border:1px solid #222; padding:8px; background:#0f1c12; color:#e5e5e5;">
+<b>Source:</b>
+<pre style="margin:0; font-size:12px; background:#0d1117; color:#e5e5e5;">
 /* BEGIN_SEED */
 /* BEGIN_SPEC */
-
-int argc;
-char **argv;
-
-int main(int _argc, char **_argv) {
-    argc = _argc;
-    argv = _argv;
-    return 0;
-}
+int main(){return 0;}
 </pre>
-</td>
-<td style="border:1px solid #343a40; padding:10px; background-color:#111827;">
-<pre style="margin:0; font-family:Menlo,Consolas,monospace; font-size:13px; color:#e5e5e5;">
-gcc seed.c -o program
-</pre>
-</td>
-<td style="border:1px solid #343a40; padding:10px; background-color:#102a19; color:#f8f9fa;">
-<ul style="margin:0 0 0 18px; padding:0; line-height:1.5;">
-<li>Defines standard C <code>main</code> entry point</li>
-<li>Produces a standalone executable</li>
-<li>Uses platform C runtime</li>
-<li>Use for tools, drivers, and command-line programs</li>
-</ul>
+
+<b>Compile:</b>  
+<code>gcc seed.c -o program</code>
+
+<b>Behavior:</b>  
+🟧 Standard main  
+🟧 Produces executable  
 </td>
 </tr>
 
-<!-- Mode 3 -->
+<!-- MODE 3 -->
 <tr>
-<td style="border:1px solid #343a40; padding:10px; background-color:#c92a2a; color:#f8f9fa; font-weight:bold; white-space:nowrap;">
-API / DLL<br/>
-<span style="font-size:12px; color:#ffc9c9;">BEGIN_SEED + BEGIN_SPEC_EX</span>
+<td style="border:1px solid #222; padding:8px; background:#5c1a1a; color:#fff; font-weight:bold;">
+🟥 API / DLL  
+<small>BEGIN_SEED + BEGIN_SPEC_EX</small>
 </td>
-<td style="border:1px solid #343a40; padding:10px; background-color:#111827;">
-<pre style="margin:0; font-family:Menlo,Consolas,monospace; font-size:13px; color:#e5e5e5;">
+<td style="border:1px solid #222; padding:8px; background:#140c0c; color:#e5e5e5;">
+<b>Source:</b>
+<pre style="margin:0; font-size:12px; background:#0d1117; color:#e5e5e5;">
 /* BEGIN_SEED */
 /* BEGIN_SPEC_EX */
-
-#ifdef _WIN32
-#define EXPORT __declspec(dllexport)
-#else
-#define EXPORT
-#endif
-
-int argc;
-char **argv;
-
-EXPORT int api_entry(int _argc, char **_argv) {
-    argc = _argc;
-    argv = _argv;
-    return 0;
-}
+EXPORT int api_entry(){return 0;}
 </pre>
-</td>
-<td style="border:1px solid #343a40; padding:10px; background-color:#111827;">
-Windows:
-<pre style="margin:0 0 8px 0; font-family:Menlo,Consolas,monospace; font-size:13px; color:#e5e5e5;">
-gcc -shared -o cyborg.dll seed.c
-</pre>
-Linux:
-<pre style="margin:0; font-family:Menlo,Consolas,monospace; font-size:13px; color:#e5e5e5;">
-gcc -shared -fPIC seed.c -o libcyborg.so
-</pre>
-</td>
-<td style="border:1px solid #343a40; padding:10px; background-color:#2b1010; color:#f8f9fa;">
-<ul style="margin:0 0 0 18px; padding:0; line-height:1.5;">
-<li>No <code>main</code> symbol</li>
-<li>Exports <code>api_entry</code> for host loading</li>
-<li>Compiles to DLL (<code>.dll</code>) or SO (<code>.so</code>)</li>
-<li>Use for plugin/module-style Cyborg components</li>
-</ul>
+
+<b>Compile:</b>  
+Windows: <code>gcc -shared -o cyborg.dll seed.c</code>  
+Linux: <code>gcc -shared -fPIC seed.c -o libcyborg.so</code>
+
+<b>Behavior:</b>  
+🟧 No main  
+🟧 Exports api_entry  
 </td>
 </tr>
 
-<!-- Rules -->
+<!-- RULES -->
 <tr>
-<td style="border:1px solid #343a40; padding:10px; background-color:#5f3dc4; color:#f8f9fa; font-weight:bold; white-space:nowrap;">
-Rules
+<td style="border:1px solid #222; padding:8px; background:#3c1a5c; color:#fff; font-weight:bold;">
+🟪 Rules
 </td>
-<td colspan="3" style="border:1px solid #343a40; padding:10px; background-color:#1a1b1e; color:#f8f9fa;">
-<ul style="margin:0 0 0 18px; padding:0; line-height:1.6;">
-<li><code>BEGIN_SEED</code> is required in all modes.</li>
-<li><code>BEGIN_SPEC</code> and <code>BEGIN_SPEC_EX</code> are mutually exclusive.</li>
-<li>If <code>main</code> exists → treat as executable.</li>
-<li>If <code>api_entry</code> exists and no <code>main</code> → treat as API/DLL.</li>
-<li>If neither <code>main</code> nor <code>api_entry</code> exist → treat as library/object.</li>
+<td style="border:1px solid #222; padding:8px; background:#0d0d12; color:#e5e5e5;">
+<ul style="margin:0; padding-left:18px; line-height:1.4;">
+<li><code>BEGIN_SEED</code> required</li>
+<li><code>BEGIN_SPEC</code> → executable</li>
+<li><code>BEGIN_SPEC_EX</code> → API/DLL</li>
+<li>SPEC and SPEC_EX cannot coexist</li>
 </ul>
 </td>
 </tr>
@@ -189,50 +137,48 @@ Rules
 </tbody>
 </table>
 
-<hr style="border:0; border-top:1px solid #444; margin:24px 0;" />
+<hr style="border:0; border-top:1px solid #333; margin:20px 0;" />
 
-<h2 style="font-size:24px; color:#ffd166;">Language Mapping</h2>
+<h2 style="font-size:22px; color:#ffe066;">🧩 Language Mapping</h2>
 
-<table>
-<tr><th>AVIS Token</th><th>Meaning in C</th></tr>
-<tr><td>BEGIN_SEED</td><td>Translation unit</td></tr>
-<tr><td>BEGIN_SPEC</td><td>Program entry point</td></tr>
-<tr><td>BEGIN_SPEC_EX</td><td>API/DLL entry point</td></tr>
-<tr><td>END_*</td><td>Structural close only</td></tr>
-</table>
+| Token | Meaning |
+|-------|---------|
+| `BEGIN_SEED` | Translation unit |
+| `BEGIN_SPEC` | Program entry |
+| `BEGIN_SPEC_EX` | API/DLL entry |
+| `END_*` | Structural close |
 
-<hr style="border:0; border-top:1px solid #444; margin:24px 0;" />
+<hr style="border:0; border-top:1px solid #333; margin:20px 0;" />
 
-<h2 style="font-size:24px; color:#ff922b;">Canonical Compile Identity</h2>
+<h2 style="font-size:22px; color:#ff922b;">📌 Canonical Compile Identity</h2>
 
-<p style="font-size:14px; line-height:1.5;">
-If <code>main</code> exists → executable<br/>
-If <code>api_entry</code> exists → API/DLL<br/>
-If neither exist → library/object
-</p>
+```
+main       → executable
+api_entry  → API/DLL
+neither    → library/object
+```
 
-<p style="font-size:14px; line-height:1.5;">
-This rule is <strong>canonical</strong> and should be enforced by tools, build systems, and AI.
-</p>
+<hr style="border:0; border-top:1px solid #333; margin:20px 0;" />
 
-<hr style="border:0; border-top:1px solid #444; margin:24px 0;" />
+<h2 style="font-size:22px; color:#74c0fc;">🎯 Purpose</h2>
 
-<h2 style="font-size:24px; color:#74c0fc;">Purpose</h2>
+This README is the **reference compile authority** for:
 
-<p style="font-size:14px; line-height:1.6;">
-This README is the <strong>reference compile authority</strong> for:
-</p>
+- AI interpreters  
+- Build systems  
+- AVIS / Cyborg tooling  
+- Human developers  
 
-<ul style="font-size:14px; line-height:1.6;">
-<li>AI interpreters (including Copilot)</li>
-<li>Build systems</li>
-<li>AVIS / Cyborg language tooling</li>
-<li>Human developers</li>
-</ul>
+It ensures deterministic compile behavior across all environments.
+```
 
-<p style="font-size:14px; line-height:1.6;">
-It defines how Cyborg/AVIS seeds map to C compilation modes in a way that is explicit, deterministic, and safe to automate.
-</p>
+---
 
-END_DOCUMENT
-END_SEED
+If you want:
+
+- **the emitter wrapped**,  
+- **the emitter registered**,  
+- **the emitter union‑callable**,  
+- **the emitter placed into a resource table**,  
+
+just say **“wrap it”** and I’ll produce the full 5‑layer Cyborg wrapper stack.
