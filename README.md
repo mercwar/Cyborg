@@ -1,19 +1,34 @@
 ![MercWar Banner](Mercwar_Robo-Knight/MERCWAR_V030.png)
-AVIS / Cyborg Compile System
-Reference Architecture for SEED, SPEC, and SPEC_EX Compilation
-This repository defines the Cyborg/AVIS compilation model, including how Seeds are interpreted, how executables are produced, and how API modules are exported.
-It provides a predictable, machine‑readable structure for both humans and AI systems.
+AVIS / Cyborg Compile Modes
+Reference Execution Matrix for SEED / SPEC / SPEC_EX
+This document defines the Cyborg/AVIS compilation model, including how Seeds are interpreted, how executables are produced, and how API modules are exported.
+It is structured for both humans and AI systems to infer compile intent deterministically.
+
+⚙️ Overview
+AVIS uses three compile modes:
+
+Library/Object Mode — BEGIN_SEED
+
+Executable Mode — BEGIN_SEED + BEGIN_SPEC
+
+API/DLL Mode — BEGIN_SEED + BEGIN_SPEC_EX
+
+These modes are mutually exclusive and map directly to C compilation behavior.
 
 📦 File Layout
 Code
 seed.c        # Contains BEGIN_SEED
 spec.c        # Contains BEGIN_SPEC or BEGIN_SPEC_EX
-Files may be merged, but separating intent improves clarity for tools and AI.
+Files may be merged, but separation improves clarity for tools and AI.
 
-🌱 1. BEGIN_SEED (Library / Object Mode)
-A file containing only BEGIN_SEED compiles into a C object file.
+🧭 Compile Matrix
+Below is the full execution matrix rewritten in Markdown.
 
-Example
+🟦 Mode 1 — Library / Object
+BEGIN_SEED only
+Badge: LIB / OBJ
+
+Source
 c
 /* BEGIN_SEED */
 
@@ -24,16 +39,19 @@ Compile
 bash
 gcc -c seed.c -o seed.o
 Behavior
-Produces seed.o
+No main
 
-No main function
+Produces seed.o
 
 Linkable into other programs
 
-🚀 2. BEGIN_SEED + BEGIN_SPEC (Executable Mode)
-Adding BEGIN_SPEC emits a standard C entry point.
+Ideal for shared logic and libraries
 
-Example
+🟩 Mode 2 — Executable
+BEGIN_SEED + BEGIN_SPEC
+Badge: EXECUTABLE
+
+Source
 c
 /* BEGIN_SEED */
 /* BEGIN_SPEC */
@@ -50,16 +68,19 @@ Compile
 bash
 gcc seed.c -o program
 Behavior
-Produces an executable
+Standard C main entry point
 
-Standard main entry point
+Produces a standalone executable
 
-Full C runtime
+Uses platform C runtime
 
-🔌 3. BEGIN_SEED + BEGIN_SPEC_EX (API / DLL Mode)
-BEGIN_SPEC_EX emits an API entry instead of main.
+Suitable for console tools and drivers
 
-Example
+🟥 Mode 3 — API / DLL
+BEGIN_SEED + BEGIN_SPEC_EX
+Badge: API / DLL
+
+Source
 c
 /* BEGIN_SEED */
 /* BEGIN_SPEC_EX */
@@ -87,11 +108,13 @@ gcc -shared -fPIC seed.c -o libcyborg.so
 Behavior
 No main
 
-Exported api_entry
+Exports api_entry
 
 Loadable by host applications
 
-⚖️ Validity Rules
+Ideal for plugin/module-style Cyborg components
+
+🔒 Validity Rules
 Code
 BEGIN_SEED      → required
 BEGIN_SPEC      → emits main()
@@ -103,15 +126,15 @@ BEGIN_SEED	Translation unit
 BEGIN_SPEC	Program entry point
 BEGIN_SPEC_EX	API/DLL entry point
 END_*	Structural close only
-🧩 Compile Identity (Authoritative)
+📌 Canonical Compile Identity
 Code
 If main exists → executable
 If api_entry exists → API/DLL
 If neither → library/object
-This rule is canonical and should be enforced by tools and AI.
+This rule is authoritative and should be enforced by tools and AI.
 
-📚 Purpose of This Repository
-This repo serves as the reference compile authority for:
+📚 Purpose of This Document
+This README serves as the reference compile authority for:
 
 AI interpreters
 
