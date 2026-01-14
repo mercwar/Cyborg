@@ -76,7 +76,7 @@ Check out the project on GitHub: [https://github.com/mercwar/Cyborg](https://git
 
 ## 🎨 Screenshots
 
-![Robo-Knight Screen Saver Frame]([https://raw.githubusercontent.com/mercwar/Cyborg/mERCWAR_rOBO-](https://github.com/mercwar/Cyborg/blob/main/Mercwar_Robo-Knight/Copilot_20260114_015204.png)
+![Robo-Knight DX Demo](https://github.com/mercwar/Cyborg/blob/main/Mercwar_Robo-Knight/Copilot_20260114.png)
 
 ---
 
