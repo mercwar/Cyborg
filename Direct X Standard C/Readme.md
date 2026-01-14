@@ -1,17 +1,22 @@
-<!-- AVIS / Cyborg DirectX Standard C README -->
+<!-- BEGIN_SEED MERCG_AVIS_SCREENSAVER_2026 
+GUID: AVIS-SCREEN-SAVER-2026
+TITLE: AVIS Screen Saver Demo – AI SEED HIGH LEVEL OP CODE WITH MERC-G INCLUDE AI.FVS
+AUTHOR: CGPT / MercWar
+DATE: 2026-01-14
+-->
 
-<h1 style="text-align:center; color:#ffd166; font-size:48px;">🚀 AVIS Screen Saver Demo</h1>
+<h1 style="text-align:center; color:#ffd166; font-size:48px;">🤖 AVIS Screen Saver Demo – Robo-Knight</h1>
 
 <div style="text-align:center;">
-  <img src="https://raw.githubusercontent.com/mercwar/Cyborg/main/IMAGE%20ARTIFACTS/a%20futuristic%20armored4.png" 
-       alt="Cyborg DX Demo" style="max-width:80%; border-radius:12px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+  <img src="https://raw.githubusercontent.com/mercwar/Cyborg/main/IMAGE%20ARTIFACTS/ner_roboknight.png" 
+       alt="Robo-Knight DX Demo" style="max-width:80%; border-radius:12px; box-shadow: 0 4px 20px rgba(0,0,0,0.4);">
 </div>
 
 <p style="font-size:18px; text-align:center; margin-top:12px;">
-<strong>DirectX in Standard C</strong> – Minimal DX11 setup, screen saver demo, and AVIS-style structured comments for AI-assisted coding. 🖥️🎮
+<strong>DirectX in Standard C</strong> – Minimal DX11 setup, screen saver demo, and AVIS-style structured comments for AI-assisted coding. 🖥️⚡
 </p>
 
-<hr style="border:1px solid #ffd166;">
+<hr style="border:2px solid #ffd166;">
 
 <h2 style="color:#06d6a0;">📌 Overview</h2>
 <p>This project demonstrates building a <strong>DirectX 11 application in Standard C</strong> using Pelles C, including:</p>
@@ -79,7 +84,7 @@
 <h2 style="color:#06d6a0;">📝 AVIS Comments & Copilot Integration</h2>
 <p>All source files use AVIS-style comments:</p>
 <ul>
-  <li>#main, #dx11, #avis, #screensaver tags</li>
+  <li>#main, #avis, #screensaver, #dx11 tags</li>
   <li>Function purpose documentation included</li>
   <li>MessageBox debug frames can halt execution for inspection 🛑</li>
 </ul>
@@ -89,8 +94,8 @@
 
 <h2 style="color:#06d6a0;">🎨 Screenshots</h2>
 <div style="display:flex; justify-content:center;">
-  <img src="https://raw.githubusercontent.com/mercwar/Cyborg/main/IMAGE%20ARTIFACTS/a%20futuristic%20armored4.png" 
-       alt="Screen Saver Frame" style="max-width:60%; border-radius:10px; margin:10px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+  <img src="https://raw.githubusercontent.com/mercwar/Cyborg/main/IMAGE%20ARTIFACTS/ner_roboknight.png" 
+       alt="Robo-Knight Screen Saver Frame" style="max-width:60%; border-radius:10px; margin:10px; box-shadow: 0 4px 20px rgba(0,0,0,0.4);">
 </div>
 
 <h2 style="color:#06d6a0;">⚠️ Notes</h2>
@@ -103,5 +108,7 @@
 <h2 style="color:#06d6a0;">🛠️ License</h2>
 <p>MIT License – free to use and modify.</p>
 
-<hr style="border:1px solid #ffd166;">
+<hr style="border:2px solid #ffd166;">
 <p style="text-align:center; color:#06d6a0;">&copy; 2026 CGPT / MercWar</p>
+
+<!-- END_SEED MERCG_AVIS_SCREENSAVER_2026 -->
