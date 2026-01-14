@@ -7,7 +7,7 @@ DATE: 2026-01-14
 
 # 🤖 AVIS Screen Saver Demo – Robo-Knight
 
-![Robo-Knight DX Demo](https://raw.githubusercontent.com/mercwar/Cyborg/main/IMAGE%20ARTIFACTS/ner_roboknight.png)
+![Robo-Knight DX Demo]([https://raw.githubusercontent.com/mercwar/Cyborg/main/IMAGE%20ARTIFACTS/ner_roboknight.png](https://github.com/mercwar/Cyborg/blob/main/Mercwar_Robo-Knight/Copilot_20260114_024301.png))
 
 **DirectX in Standard C** – Minimal DX11 setup, screen saver demo, and AVIS-style structured comments for AI-assisted coding. 🖥️⚡
 
