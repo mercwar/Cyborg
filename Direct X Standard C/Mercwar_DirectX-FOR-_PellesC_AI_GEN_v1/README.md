@@ -12,7 +12,7 @@
 ---
 
 ## 🌌 Overview
-![Robo-Knight Emblem Concept](Mercwar_Robo-Knight/team_.png)
+![Robo-Knight Emblem Concept](../Mercwar_Robo-Knight/team_.png)
 <!-- AVIS: High-level description of the project. -->
 The **Mercwar_Robo-Knight** project is an AVIS‑structured, Pelles‑C‑friendly screen saver demo that uses:
 
@@ -140,6 +140,6 @@ Screenshots and Robo‑Knight visuals are expected to live under:
 
 Example GitHub‑style references:
 
-```markdown
 
-![Robo-Knight Emblem Concept](Mercwar_Robo-Knight/laser bike.png)
+
+![Robo-Knight Emblem Concept](../Mercwar_Robo-Knight/laser bike.png)
