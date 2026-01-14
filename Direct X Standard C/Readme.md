@@ -1,99 +1,114 @@
-<!-- BEGIN_SEED MERCG_AVIS_SCREENSAVER_2026 
-GUID: AVIS-SCREEN-SAVER-2026
-TITLE: AVIS Screen Saver Demo – Robo-Knight
+<!-- BEGIN_SEED MERCG_AVIS_ROBOKNIGHT_README_2026
+GUID: AVIS-ROBOKNIGHT-README-2026
+TITLE: AVIS Screen Saver Demo – Robo-Knight README
 AUTHOR: CGPT / MercWar
 DATE: 2026-01-14
 -->
 
-# 🤖 AVIS Screen Saver Demo – Robo-Knight
+<h1 style="text-align:center; color:#ffd166; font-size:48px;">🤖 AVIS Screen Saver Demo – Robo-Knight</h1>
 
-![Robo-Knight DX Demo](https://github.com/mercwar/Cyborg/blob/main/Mercwar_Robo-Knight/Copilot_20260114_024301.png)
+<div style="text-align:center;">
+  <img src="https://raw.githubusercontent.com/mercwar/Cyborg/main/Mercwar_Robo-Knight/Copilot_20260114_015204.png" 
+       alt="Robo-Knight DX Demo" style="max-width:80%; border-radius:12px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+</div>
 
-**DirectX in Standard C** – Minimal DX11 setup, screen saver demo, and AVIS-style structured comments for AI-assisted coding. 🖥️⚡
+<p style="font-size:18px; text-align:center; margin-top:12px;">
+<strong>DirectX in Standard C</strong> – Minimal DX11 setup, screen saver demo, and AVIS-style structured comments for AI-assisted coding. 🖥️⚡
+</p>
 
----
+<hr style="border:1px solid #ffd166;">
 
-## 📌 Overview
+<h2 style="color:#06d6a0;">📌 Overview</h2>
+<p>This project demonstrates building a <strong>DirectX 11 application in Standard C</strong> using Pelles C, including:</p>
+<ul>
+  <li>Window creation & message loop 🪟</li>
+  <li>DX11 initialization and shutdown stubs ⚡</li>
+  <li>Screen saver logic with frame updates 🌌</li>
+  <li>XInput controller stubs 🎮</li>
+  <li>AVIS-style comments for AI & Copilot integration 🤖</li>
+</ul>
 
-This project demonstrates building a **DirectX 11 application in Standard C** using Pelles C, including:
+<h2 style="color:#06d6a0;">📁 File Structure</h2>
+<table style="width:100%; border-collapse:collapse;">
+  <tr style="background-color:#ffd166; color:#073b4c;">
+    <th>Folder/File</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>source/avis_main.c</td>
+    <td>Main entry point and message loop</td>
+  </tr>
+  <tr style="background-color:#f1f1f1;">
+    <td>source/avis_screen_saver.c</td>
+    <td>Screen saver logic & rendering</td>
+  </tr>
+  <tr>
+    <td>source/dx11_stub.c</td>
+    <td>DirectX initialization & shutdown stubs</td>
+  </tr>
+  <tr style="background-color:#f1f1f1;">
+    <td>source/avis_xinput_stub.c</td>
+    <td>XInput controller stub</td>
+  </tr>
+  <tr>
+    <td>source/game_logic.c</td>
+    <td>Game logic stub for demo frames</td>
+  </tr>
+  <tr style="background-color:#f1f1f1;">
+    <td>include/*.h</td>
+    <td>Header files for DX stubs, screen saver, game logic, and XInput</td>
+  </tr>
+  <tr>
+    <td>output/</td>
+    <td>Compiled binaries & object files</td>
+  </tr>
+</table>
 
-- 🪟 Window creation & message loop  
-- ⚡ DX11 initialization and shutdown stubs  
-- 🌌 Screen saver logic with frame updates  
-- 🎮 XInput controller stubs  
-- 🤖 AVIS-style comments for AI & Copilot integration  
+<h2 style="color:#06d6a0;">⚙️ Features</h2>
+<ul>
+  <li>💻 Full AVIS Screen Saver Demo – minimal DX11 / GDI fallback</li>
+  <li>🖌️ Stub Rendering – runs even without real DirectX headers</li>
+  <li>🔧 Frame Debugging – optional MessageBox per frame</li>
+  <li>🌍 Cross-file Globals – g_screenWidth, g_screenHeight, g_hDC, etc.</li>
+</ul>
 
----
+<h2 style="color:#06d6a0;">🚀 Build Instructions</h2>
+<ol>
+  <li>Install <a href="https://www.smorgasbordet.com/pellesc/" target="_blank">Pelles C IDE</a> 🛠️</li>
+  <li>Open the project folder in Pelles C IDE 📂</li>
+  <li>Build <code>mercwar.exe</code> using the provided source files ✅</li>
+  <li>Run the executable to see the screen saver demo with stubbed rendering 🎉</li>
+  <li>Use <strong>Alt+Tab</strong> to switch windows if DX window captures focus ⌨️</li>
+</ol>
 
-## 📁 File Structure
+<h2 style="color:#06d6a0;">📝 AVIS Comments & Copilot Integration</h2>
+<p>All source files use AVIS-style comments:</p>
+<ul>
+  <li>#main, #avis, #screensaver, #dx11 tags</li>
+  <li>Function purpose documentation included</li>
+  <li>MessageBox debug frames can halt execution for inspection 🛑</li>
+</ul>
 
-| Folder/File | Description |
-|------------|------------|
-| `source/avis_main.c` | Main entry point and message loop |
-| `source/avis_screen_saver.c` | Screen saver logic & rendering |
-| `source/dx11_stub.c` | DirectX initialization & shutdown stubs |
-| `source/avis_xinput_stub.c` | XInput controller stub |
-| `source/game_logic.c` | Game logic stub for demo frames |
-| `include/*.h` | Header files for DX stubs, screen saver, game logic, and XInput |
-| `output/` | Compiled binaries & object files |
+<h2 style="color:#06d6a0;">🌐 Repository</h2>
+<p>Check out the project on GitHub: <a href="https://github.com/mercwar/Cyborg/tree/main/Mercwar_Robo-Knight" target="_blank">Mercwar_Robo-Knight</a></p>
 
----
+<h2 style="color:#06d6a0;">🎨 Screenshots</h2>
+<div style="display:flex; justify-content:center;">
+  <img src="https://raw.githubusercontent.com/mercwar/Cyborg/main/Mercwar_Robo-Knight/Copilot_20260114_015204.png" 
+       alt="Robo-Knight Screen Saver Frame" style="max-width:60%; border-radius:10px; margin:10px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+</div>
 
-## ⚙️ Features
+<h2 style="color:#06d6a0;">⚠️ Notes</h2>
+<ul>
+  <li>Windows 10/11 recommended</li>
+  <li>Pelles C IDE required</li>
+  <li>DirectX headers optional; stubs allow compilation without them</li>
+</ul>
 
-- 💻 Full AVIS Screen Saver Demo – minimal DX11 / GDI fallback  
-- 🖌️ Stub Rendering – runs even without real DirectX headers  
-- 🔧 Frame Debugging – optional MessageBox per frame  
-- 🌍 Cross-file Globals – `g_screenWidth`, `g_screenHeight`, `g_hDC`, etc.  
+<h2 style="color:#06d6a0;">🛠️ License</h2>
+<p>MIT License – free to use and modify.</p>
 
----
+<hr style="border:1px solid #ffd166;">
+<p style="text-align:center; color:#06d6a0;">&copy; 2026 CGPT / MercWar</p>
 
-## 🚀 Build Instructions
-
-1. Install [Pelles C IDE](https://www.smorgasbordet.com/pellesc/) 🛠️  
-2. Open the project folder in Pelles C IDE 📂  
-3. Build `mercwar.exe` using the provided source files ✅  
-4. Run the executable to see the screen saver demo with stubbed rendering 🎉  
-5. Use **Alt+Tab** to switch windows if DX window captures focus ⌨️  
-
----
-
-## 📝 AVIS Comments & Copilot Integration
-
-All source files use AVIS-style comments:
-
-- `#main`, `#avis`, `#screensaver`, `#dx11` tags  
-- Function purpose documentation included  
-- MessageBox debug frames can halt execution for inspection 🛑  
-
----
-
-## 🌐 Repository
-
-Check out the project on GitHub: [https://github.com/mercwar/Cyborg](https://github.com/mercwar/Cyborg)
-
----
-
-## 🎨 Screenshots
-
-![Robo-Knight DX Demo](https://github.com/mercwar/Cyborg/blob/main/Mercwar_Robo-Knight/Copilot_20260114.png)
-
----
-
-## ⚠️ Notes
-
-- Windows 10/11 recommended  
-- Pelles C IDE required  
-- DirectX headers optional; stubs allow compilation without them  
-
----
-
-## 🛠️ License
-
-MIT License – free to use and modify.  
-
----
-
-&copy; 2026 CGPT / MercWar
-
-<!-- END_SEED MERCG_AVIS_SCREENSAVER_2026 -->
+<!-- END_SEED MERCG_AVIS_ROBOKNIGHT_README_2026 -->
