@@ -8,7 +8,7 @@ DATE: 2026-01-14
 <h1 style="text-align:center; color:#ffd166; font-size:48px;">🤖 AVIS Screen Saver Demo – Robo-Knight</h1>
 
 <div style="text-align:center;">
-  <img src="https://raw.githubusercontent.com/mercwar/Cyborg/main/Mercwar_Robo-Knight/Copilot_20260114_015204.png" 
+  <img src="https://raw.githubusercontent.com/mercwar/Cyborg/main/Mercwar_Robo-Knight/Copilot_20260114_022304.png" 
        alt="Robo-Knight DX Demo" style="max-width:80%; border-radius:12px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
 </div>
 
