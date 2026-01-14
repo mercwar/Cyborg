@@ -161,7 +161,7 @@ int main(){return 0;}
 /* BEGIN_SPEC_EX */
 EXPORT int api_entry(){return 0;}
 </pre>
-
+![MercWar Banner](Mercwar_Robo-Knight/MERCWAR_V030.png)
 <b>Compile:</b>  
 Windows: <code>gcc -shared -o cyborg.dll seed.c</code>  
 Linux: <code>gcc -shared -fPIC seed.c -o libcyborg.so</code>
