@@ -73,7 +73,7 @@ And ends with:
 
 # Code
 <div align="center" style="margin-bottom:25px;">
-  <img src="https://raw.githubusercontent.com/mercwar/Robo-Knight-Demos/main/Direct%20X%20Standard%20C/Mercwar_Robo-Knight/Copilot_20260114_020131.png"
+  <img src="https://raw.githubusercontent.com/mercwar/Robo-Knight-Demos/main/Direct%20X%20Standard%20C/Mercwar_Robo-Knight/Copilot_20260114_024301.png"
        alt="AVIS Greeting Image"
        style="max-width:85%; border-radius:14px; box-shadow:0 6px 20px rgba(0,0,0,0.45);">
 </div>
