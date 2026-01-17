@@ -294,7 +294,14 @@ AVIS + SeedLang work with:
        style="max-width:85%; border-radius:14px; box-shadow:0 6px 20px rgba(0,0,0,0.45);">
 </div>
 
-© 2026 MercWar / CGPT  
-**Cyborg Engine – AVIS + Seed Language Specification**
+
+## 🤖 Author
+
+Demonizer — forging ceremonial DHTML with precision.
+
+---
+
+© 2026 CGPT / MercWar  
+**RoboNight Series – AVIS Compatible**
 
 <!-- END_SEED MERCG_AVIS_CORE_2026 -->
