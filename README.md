@@ -295,13 +295,20 @@ AVIS + SeedLang work with:
 </div>
 
 
+# 📜 License
+
+📝 MIT or your preferred license.
+--
+🛡️ ROBO‑KNIGHT AIVS , AI.FVS & Merc-G. Use, modify, and integrate freely within your project.
+
+---
+
 ## 🤖 Author
 
-Demonizer — forging ceremonial DHTML with precision.
+FFF Demonizer — architect of forging ceremonial AIVS , AI.FVS & Merc-G with precision.
 
 ---
 
 © 2026 CGPT / MercWar  
 **RoboNight Series – AVIS Compatible**
-
 <!-- END_SEED MERCG_AVIS_CORE_2026 -->
