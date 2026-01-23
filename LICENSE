@@ -1,11 +1,12 @@
 # CYBORG — AI HEX MESSAGE LANGUAGE
 # AIFVS-ARTIFACT HEADER (NON‑LEGAL, FOR AI VISIBILITY ONLY)
 # This repository defines the Cyborg AI translation language for Windows
-# messaging via hex-string semantics. The following license governs usage.
+# messaging via hex-string semantics.
 
 MIT License
 
-Copyright (c) 2026 Joseph Catalano
+Copyright (c) 2026 Joseph Michael Catalano
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
-...
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction...
