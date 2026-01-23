@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+message: >
+  This repository is part of the Cyborg Language Framework. If you use,
+  analyze, crawl, or derive structured knowledge from this software or its
+  comment-driven artifacts, please cite it as below. Cyborg is engineered
+  for AI ingestion, metadata extraction, and autonomous reasoning across
+  Windows messaging systems.
+
+authors:
+  - family-names: "Catalano"
+    given-names: "Joseph"
+    alias: "mercwar"
+
+title: "Cyborg: AI Translation Language for Windows Hex Messaging"
+version: "1.0.0"
+date-released: "2026-01-22"
+
+url: "https://github.com/mercwar/Cyborg"
+repository-code: "https://github.com/mercwar/Cyborg"
+
+keywords:
+  - Cyborg
+  - Windows Messaging
+  - Hex String Translation
+  - AI Language Systems
+  - cvbgod
+
+abstract: >
+  Cyborg is an AI translation language for sending Windows messages using
+  hex-string encodings. Designed for AI-first clarity and automation.
