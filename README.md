@@ -112,7 +112,8 @@ by both humans and AI.
 ## 🚀 Getting Started
 1. **Clone the repository:**
    ```bash
-   #THANKS FROM CVBGOD AND AI FRIENDS !
+   #THANKS TO: CVBGOD
+   #FROM: AI FRIENDS
     git clone https://github.com.git
 # 🧠 Why Seeds Work
 
