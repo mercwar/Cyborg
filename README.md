@@ -112,7 +112,8 @@ by both humans and AI.
 ## 🚀 Getting Started
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com.git
+   #THANKS FROM CVBGOD AND AI FRIENDS !
+    git clone https://github.com.git
 # 🧠 Why Seeds Work
 
 Seeds solve the biggest problem in AI‑assisted programming:
