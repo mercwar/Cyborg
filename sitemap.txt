@@ -1,0 +1,339 @@
+.
+./sitemap.txt
+./Direct X Standard C
+./Direct X Standard C/Readme.md
+./Direct X Standard C/Mercwar_DirectX-FOR-_PellesC_AI_GEN_v1.zip
+./Direct X Standard C/Mercwar_DirectX-FOR-_PellesC_AI_GEN_v1
+./Direct X Standard C/Mercwar_DirectX-FOR-_PellesC_AI_GEN_v1/mercwar.tag
+./Direct X Standard C/Mercwar_DirectX-FOR-_PellesC_AI_GEN_v1/dx_textures.c
+./Direct X Standard C/Mercwar_DirectX-FOR-_PellesC_AI_GEN_v1/mercwar.ppj
+./Direct X Standard C/Mercwar_DirectX-FOR-_PellesC_AI_GEN_v1/README.md
+./Direct X Standard C/Mercwar_DirectX-FOR-_PellesC_AI_GEN_v1/team_.jpg
+./Direct X Standard C/Mercwar_DirectX-FOR-_PellesC_AI_GEN_v1/mercwar.ppx
+./Direct X Standard C/Mercwar_DirectX-FOR-_PellesC_AI_GEN_v1/mercwar.exe
+./Direct X Standard C/Mercwar_DirectX-FOR-_PellesC_AI_GEN_v1/LICENSE
+./Robo-Knight-Demos
+./Robo-Knight-Demos/Readme.md
+./Robo-Knight-Demos/Mercwar_DirectX-FOR-_PellesC_AI_GEN_v1.zip
+./Robo-Knight-Demos/Mercwar_DirectX-FOR-_PellesC_AI_GEN_v1
+./Robo-Knight-Demos/Mercwar_DirectX-FOR-_PellesC_AI_GEN_v1/mercwar.tag
+./Robo-Knight-Demos/Mercwar_DirectX-FOR-_PellesC_AI_GEN_v1/dx_textures.c
+./Robo-Knight-Demos/Mercwar_DirectX-FOR-_PellesC_AI_GEN_v1/mercwar.ppj
+./Robo-Knight-Demos/Mercwar_DirectX-FOR-_PellesC_AI_GEN_v1/README.md
+./Robo-Knight-Demos/Mercwar_DirectX-FOR-_PellesC_AI_GEN_v1/team_.jpg
+./Robo-Knight-Demos/Mercwar_DirectX-FOR-_PellesC_AI_GEN_v1/mercwar.ppx
+./Robo-Knight-Demos/Mercwar_DirectX-FOR-_PellesC_AI_GEN_v1/mercwar.exe
+./Robo-Knight-Demos/Mercwar_DirectX-FOR-_PellesC_AI_GEN_v1/LICENSE
+./DARKCOM
+./DARKCOM/symsys_clip_kb_shell.bat
+./DARKCOM/symsys_shell.bat
+./DARKCOM/CYBORG1.bat
+./DARKCOM/COMET.BAT
+./DARKCOM/DarkCom_SHELL_V2.bat
+./DARKCOM/symsys_shell_V31.bat
+./DARKCOM/KB
+./DARKCOM/KB/clip_artifact_1.0_7823.txt
+./DARKCOM/KB/mat_15220.bat
+./DARKCOM/KB/artifact_27142.art
+./DARKCOM/KB/artifact_2077.art
+./DARKCOM/KB/mat_30626.bat
+./DARKCOM/KB/mat_20353.bat
+./DARKCOM/KB/mat_1069.bat
+./DARKCOM/KB/artifact_8046.art
+./DARKCOM/KB/artifact_8990.art
+./DARKCOM/KB/artifact_14105.art
+./DARKCOM/KB/mat_10221.bat
+./DARKCOM/KB/clipboard_import.txt
+./DARKCOM/KB/artifact_19827.art
+./DARKCOM/KB/artifact_14762.txt
+./DARKCOM/KB/mat_3416.bat
+./DARKCOM/KB/artifact_15220.art
+./DARKCOM/KB/artifact_3416.art
+./DARKCOM/KB/artifact_29179.art
+./DARKCOM/KB/artifact_32383.art
+./DARKCOM/KB/artifact_1069.art
+./DARKCOM/KB/mat_2077.bat - Shortcut.lnk
+./DARKCOM/KB/HC-SHELL-1.00.00.00.BAT
+./DARKCOM/KB/mat_10221.bat - Shortcut.lnk
+./DARKCOM/KB/ART-00.00.01.txt
+./DARKCOM/KB/mat_29179.bat
+./DARKCOM/KB/artifact_20353.art
+./DARKCOM/KB/mat_14105.bat
+./DARKCOM/KB/HC-DRV-1.00.00.00.BAT
+./DARKCOM/KB/artifact_30626.art
+./DARKCOM/KB/mat_2077.bat
+./DARKCOM/KB/index.txt
+./DARKCOM/KB/artifact_10221.art
+./DARKCOM/KB/artifact_15549.art
+./DARKCOM/KB/artifact_32514.art
+./DARKCOM/KB/mat_8990.bat
+./DARKCOM/KB/artifact_15549.txt
+./DARKCOM/KB/mat_15549.bat
+./DARKCOM/KB/artifact_13086.art
+./DARKCOM/KB/mat_13086.bat
+./DARKCOM/KB/artifact_17994.art
+./DARKCOM/KB/mat_32514.bat
+./DARKCOM/KB/mat_32383.bat
+./DARKCOM/KB/HC-ART-1.00.00.00.json
+./DARKCOM/KB/mat_32383.bat - Shortcut.lnk
+./DARKCOM/KB/mat_17994.txt
+./DARKCOM/KB/snippet_17831.txt
+./DARKCOM/KB/mat_27142.bat
+./DARKCOM/CYBORG.bat
+./DARKCOM/DARKCOM_SHORTCUT.BAT
+./DARKCOM/CYBORG_shell.bat
+./MISC
+./MISC/SYMSYS_NEW_KB_123000000_LIB.TXT
+./MISC/BLUE_DISK.zip
+./MISC/Cyborg_KB_v1.zip
+./MISC/SYMSYS_NEW_KB_123000000_LIB.zip
+./images
+./images/mercwar_v016.png
+./images/mercwar_v020.png
+./images/mercwar_v023.png
+./images/mercwar_v012.png
+./images/mercwar_v019.png
+./images/Readme.md
+./images/mercwar_v022.png
+./images/mercwar.jpg
+./images/mercwar_v011.png
+./images/mercwar_v024.png
+./images/mercwar_v021.png
+./images/mercwar_v017.png
+./images/mercwar_v014.png
+./images/mercwar_v01.png
+./images/mercwar_v015.png
+./images/mercwar_v018.png
+./images/mercwar_v013.png
+./batch_programs.csv
+./batch_programs_classified.csv
+./batch_programs_classified.txt
+./Robotics
+./Robotics/a group of people we.png
+./Robotics/Portrait card of copilot-synbot.png
+./Robotics/Copy (2) of realistic full-body12 .png
+./Robotics/hyper-realistic clos.png
+./Robotics/Joseph Michael Catalano armor.png
+./Robotics/Photorealistic depic Copy.png
+./Robotics/Photorealistic image.png
+./Robotics/silver armor 2 .png
+./Robotics/realistic full-body12 .png
+./Robotics/Photorealistic serie Copy.png
+./Robotics/Photorealistic image22.png
+./Robotics/Photorealistic group1.png
+./Robotics/realistic full-body55 .png
+./Robotics/Photorealistic paint33.png
+./Robotics/Photorealistic depic.png
+./Robotics/Photorealistic paint.png
+./Robotics/realistic full-body .png
+./Robotics/hyper-realistic clos1.png
+./Robotics/realistic portrait 33o.png
+./Robotics/Copy of a group of futuristi.png
+./Robotics/Photorealistic port223r.png
+./Robotics/Illuminated artwork .png
+./Robotics/Photorealistic paint Copy.png
+./Robotics/Edit the uploaded im.png
+./Robotics/hyper-realistic cere.png
+./Robotics/A full-body cinemati.png
+./Robotics/Photorealistic port223r Copy.png
+./Robotics/Portrait 1card of an .png
+./Robotics/tita-mech.png
+./Robotics/a group of futuristi.png
+./Robotics/Copy of tita-mech.png
+./Robotics/Copy of A hyper-realistic fu.png
+./Robotics/Create a 2_3 aspect .png
+./Robotics/Full-body portrait o1.png
+./Robotics/Copy of realistic full-body12 .png
+./Robotics/COSMOS.png
+./Robotics/Full-body portrait o.png
+./Robotics/Photorealistic serie.png
+./Robotics/Full-body portrait o_1.png
+./Robotics/Full-body portrait o2.png
+./Robotics/Photorealistic paint3344.png
+./Robotics/silver armor.png
+./Robotics/A hyper-realistic gr.png
+./Robotics/a realistic portrait.png
+./Robotics/a large group of peo.png
+./Robotics/realistic portrait22 o.png
+./Robotics/Full-body portrait o1_1.png
+./Robotics/realistic full-body1 .png
+./Robotics1
+./Robotics1/Clipboard-7.jpg
+./Robotics1/ultra-realistic cine.png
+./Robotics1/Clipboard-14.jpg
+./Robotics1/Clipboard-10.jpg
+./Robotics1/Clipboard-134.jpg
+./Robotics1/Clipboard-12.jpg
+./Robotics1/Clipboard-13.jpg
+./Robotics1/Clipboard-16.jpg
+./Robotics1/Clipboard-9.jpg
+./Robotics1/Clipboard-11.jpg
+./Robotics1/Clipboard-8.jpg
+./Robotics1/Clipboard-81.jpg
+./Robotics1/Clipboard-101.jpg
+./CONTRIBUTING.md
+./IMAGE ARTIFACTS
+./IMAGE ARTIFACTS/A full‑body cinemati4.png
+./IMAGE ARTIFACTS/A cinematic battle s1.png
+./IMAGE ARTIFACTS/Joseph Michael Catalano armor.png
+./IMAGE ARTIFACTS/a futuristic satelli.png
+./IMAGE ARTIFACTS/a realistic image of.png
+./IMAGE ARTIFACTS/a futuristic armored4.png
+./IMAGE ARTIFACTS/a clean futuristic p.png
+./IMAGE ARTIFACTS/Demonizer.jpg
+./IMAGE ARTIFACTS/README.TXT
+./IMAGE ARTIFACTS/joe painting.png
+./IMAGE ARTIFACTS/Action scene of Demo.png
+./IMAGE ARTIFACTS/1.00.00.00
+./IMAGE ARTIFACTS/1.00.00.00/a group of people we.png
+./IMAGE ARTIFACTS/1.00.00.00/hyper-realistic clos.png
+./IMAGE ARTIFACTS/1.00.00.00/a realistic image of.png
+./IMAGE ARTIFACTS/1.00.00.00/A hyper-realistic fu01.png
+./IMAGE ARTIFACTS/1.00.00.00/hyper-realistic clos1.png
+./IMAGE ARTIFACTS/1.00.00.00/README.TXT
+./IMAGE ARTIFACTS/1.00.00.00/hyper-realistic cere.png
+./IMAGE ARTIFACTS/1.00.00.00/A full-body cinemati.png
+./IMAGE ARTIFACTS/1.00.00.00/a group of futuristi.png
+./IMAGE ARTIFACTS/1.00.00.00/A hyper-realistic fu.png
+./IMAGE ARTIFACTS/1.00.00.00/hyper‑realistic silv.png
+./IMAGE ARTIFACTS/1.00.00.00/A hyper-realistic gr.png
+./IMAGE ARTIFACTS/1.00.00.00/a realistic portrait.png
+./IMAGE ARTIFACTS/1.00.00.00/a large group of peo.png
+./IMAGE ARTIFACTS/Cyborg.code-workspace
+./IMAGE ARTIFACTS/Design a glyph conso.png
+./IMAGE ARTIFACTS/Full-body portrait o1.png
+./IMAGE ARTIFACTS/Full-body portrait o.png
+./IMAGE ARTIFACTS/a sleek futuristic c.png
+./IMAGE ARTIFACTS/Action scene of Demo1.png
+./IMAGE ARTIFACTS/A full‑body cinemati.png
+./IMAGE ARTIFACTS/a starship inspired .png
+./IMAGE ARTIFACTS/a realistic portrait.png
+./IMAGE ARTIFACTS/Copilot_20251214_160252.png
+./IMAGE ARTIFACTS/Copilot_20251214_160730.png
+./drive_report.csv
+./SYMSYS_NEW_KB_123000000_LIB.zip
+./google77a4b19e8f99751c.html
+./Readme.html
+./Directory Hyper Link
+./HYPER-SYMSYS-AIGEN
+./HYPER-SYMSYS-AIGEN/Clipboard-4.jpg
+./HYPER-SYMSYS-AIGEN/a group of people we.png
+./HYPER-SYMSYS-AIGEN/AI generated man.png
+./HYPER-SYMSYS-AIGEN/Clipboard-15.jpg
+./HYPER-SYMSYS-AIGEN/Clipboard-7.jpg
+./HYPER-SYMSYS-AIGEN/hyper-realistic clos.png
+./HYPER-SYMSYS-AIGEN/Create a photoreael, .png
+./HYPER-SYMSYS-AIGEN/Clipboard-3.jpg
+./HYPER-SYMSYS-AIGEN/Copy of Clipboard-5.jpg
+./HYPER-SYMSYS-AIGEN/WEClipboard-5 (1).jpg
+./HYPER-SYMSYS-AIGEN/ultra-realistic cine.png
+./HYPER-SYMSYS-AIGEN/Clipboard-5.jpg
+./HYPER-SYMSYS-AIGEN/Create a photoreal,  (2).png
+./HYPER-SYMSYS-AIGEN/Clipboard-14.jpg
+./HYPER-SYMSYS-AIGEN/1ultra-realistic cine.png
+./HYPER-SYMSYS-AIGEN/Photorealistic paint33.png
+./HYPER-SYMSYS-AIGEN/Clipboard-1.jpg
+./HYPER-SYMSYS-AIGEN/hyper-realistic clos1.png
+./HYPER-SYMSYS-AIGEN/EWRClipboard-9 (1).jpg
+./HYPER-SYMSYS-AIGEN/Copy of a group of futuristi.png
+./HYPER-SYMSYS-AIGEN/Create a photorearl, .png
+./HYPER-SYMSYS-AIGEN/Create a photore45al, .png
+./HYPER-SYMSYS-AIGEN/Create a photorertewal, .png
+./HYPER-SYMSYS-AIGEN/Clipboard-10.jpg
+./HYPER-SYMSYS-AIGEN/Clipboard-134.jpg
+./HYPER-SYMSYS-AIGEN/Copy (2) of Clipboard-5.jpg
+./HYPER-SYMSYS-AIGEN/A full-body cinemati.png
+./HYPER-SYMSYS-AIGEN/Clipboard-12.jpg
+./HYPER-SYMSYS-AIGEN/Clipboard-13.jpg
+./HYPER-SYMSYS-AIGEN/Create a photoreael,  (1).png
+./HYPER-SYMSYS-AIGEN/Clipboard-16.jpg
+./HYPER-SYMSYS-AIGEN/a group of futuristi.png
+./HYPER-SYMSYS-AIGEN/Create a new photore.png
+./HYPER-SYMSYS-AIGEN/synbot_knight1.png
+./HYPER-SYMSYS-AIGEN/synbot_ knight_2.png
+./HYPER-SYMSYS-AIGEN/RTEWClipboard-10 (1).jpg
+./HYPER-SYMSYS-AIGEN/Create a photoreal8576, .png
+./HYPER-SYMSYS-AIGEN/Clipboard-9.jpg
+./HYPER-SYMSYS-AIGEN/Create a photoreal, .png
+./HYPER-SYMSYS-AIGEN/Clipboard-11.jpg
+./HYPER-SYMSYS-AIGEN/a large group of peo.png
+./HYPER-SYMSYS-AIGEN/Clipboard-8.jpg
+./HYPER-SYMSYS-AIGEN/Clipboard-81.jpg
+./HYPER-SYMSYS-AIGEN/Clipboard-101.jpg
+./CITATION.cff
+./WebView2
+./WebView2/My Files
+./WebView2/My Files/WebView2.h
+./WebView2/My Files/WebView2_v00.01.h
+./WebView2/My Files/webview2_c.h
+./WebView2/My Files/WebView2_CAPI.h
+./WebView2/My Files/Readme.md
+./WebView2/My Files/webview2_includes.h
+./WebView2/My Files/WebView2_ctrl.h
+./WebView2/My Files/WebView2_cbh.h
+./WebView2/My Files/WebView2_v00.00.h
+./WebView2/My Files/WebView2_cmn.h
+./WebView2/My Files/WebView2_alt.h
+./WebView2/My Files/WebView2_exe.h
+./WebView2/Readme.md
+./WebView2/SDK Files
+./WebView2/SDK Files/WebView2.h
+./WebView2/SDK Files/WebView2_SDK.zip
+./WebView2/SDK Files/Readme.md
+./WebView2/SDK Files/WebView2Loader.dll
+./Mercwar_Robo-Knight
+./Mercwar_Robo-Knight/Copilot_20260114_015248.png
+./Mercwar_Robo-Knight/Copilot_20260114_015245.png
+./Mercwar_Robo-Knight/Copilot_20260114_022508.png
+./Mercwar_Robo-Knight/Copilot_20260114_010154.png
+./Mercwar_Robo-Knight/Copilot_20260114_025818.png
+./Mercwar_Robo-Knight/Copilot_20260114_013650.png
+./Mercwar_Robo-Knight/Copilot_20260114_003650.png
+./Mercwar_Robo-Knight/Copilot_20260114_015201.png
+./Mercwar_Robo-Knight/Copilot_20260114_013957.png
+./Mercwar_Robo-Knight/Copilot_20260114_021941.png
+./Mercwar_Robo-Knight/MERCWAR_V030.png
+./Mercwar_Robo-Knight/laser bike.png
+./Mercwar_Robo-Knight/Copilot_20260114_021927.png
+./Mercwar_Robo-Knight/Copilot_20260114_021457.png
+./Mercwar_Robo-Knight/Copilot_20260114_001822.png
+./Mercwar_Robo-Knight/Copilot_20260114_013120.png
+./Mercwar_Robo-Knight/Copilot_20260111_141425.png
+./Mercwar_Robo-Knight/Copilot_20260114_010415.png
+./Mercwar_Robo-Knight/Copilot_20260114_020131.png
+./Mercwar_Robo-Knight/Copilot_20260114_021451.png
+./Mercwar_Robo-Knight/Copilot_20260114_024056.png
+./Mercwar_Robo-Knight/Copilot_20260114_014803.png
+./Mercwar_Robo-Knight/Copilot_20260114_021932.png
+./Mercwar_Robo-Knight/Copilot_20260114_014758.png
+./Mercwar_Robo-Knight/Copilot_20260114_022436.png
+./Mercwar_Robo-Knight/Copilot_20260114_021703.png
+./Mercwar_Robo-Knight/tita-mech.png
+./Mercwar_Robo-Knight/Copilot_20260114_024047.png
+./Mercwar_Robo-Knight/Copilot_20260114_024041.png
+./Mercwar_Robo-Knight/Copilot_20260114_022304.png
+./Mercwar_Robo-Knight/Copilot_20260114_015208.png
+./Mercwar_Robo-Knight/Copilot_20260114_014328.png
+./Mercwar_Robo-Knight/Copilot_20260114_022506.png
+./Mercwar_Robo-Knight/Copilot_20260114_024653.png
+./Mercwar_Robo-Knight/Copilot_20260114_011948.png
+./Mercwar_Robo-Knight/Copilot_20260114_014801.png
+./Mercwar_Robo-Knight/ChatGPT Image Jan 16, 2026, 11_00_03 AM.png
+./Mercwar_Robo-Knight/LIVE QUALITY IN ARMOR.png
+./Mercwar_Robo-Knight/Copilot_20260114_024301.png
+./Mercwar_Robo-Knight/Copilot_20260114_020134.png
+./Mercwar_Robo-Knight/Copilot_20260114_020138.png
+./Mercwar_Robo-Knight/Copilot_20260114_015204.png
+./Mercwar_Robo-Knight/team_.jpg
+./Mercwar_Robo-Knight/Copilot_20260114_022439.png
+./Mercwar_Robo-Knight/Copilot_20260114_012637.png
+./Mercwar_Robo-Knight/Copilot_20260114_022756.png
+./Mercwar_Robo-Knight/Copilot_20260114_015448.png
+./Mercwar_Robo-Knight/Copilot_20260114_024052.png
+./Mercwar_Robo-Knight/Copilot_20260114_014249.png
+./drive_report.txt
+./README.md
+./AIFVS-HEADER.txt
+./README
+./mercwar.png
+./LICENSE
