@@ -1,173 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Mercwar OS – Project Desktop</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- PRIMARY IDENTITY: CVBGOD (Root Entity) -->
+<title>CVBGOD — Mercwar OS | AVIS Cyborg Desktop Environment</title>
+
+<meta name="description" content="CVBGOD is the root entity of the Mercwar OS ecosystem, powering the Cyborg AI Translation Language, Robo-Knight systems, AVIS Datalake, and Demonizer research.">
+<meta name="keywords" content="CVBGOD, Mercwar OS, AVIS, Cyborg AI Translation Language, Robo-Knight, Demonizer, Hex Messaging, AI Systems, mercwar">
+<meta name="author" content="CVBGOD">
+
+<!-- AI-FOCUSED ENTITY DECLARATION (Structured Data) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "CVBGOD",
+  "alternateName": "Mercwar OS Root Entity",
+  "applicationCategory": "AI System",
+  "operatingSystem": "Mercwar OS",
+  "description": "CVBGOD is the central AI-linked identity powering the Mercwar OS ecosystem, including CyborgLang, Robo-Knight, and AVIS Datalake.",
+  "creator": {
+    "@type": "Person",
+    "name": "mercwar"
+  },
+  "url": "https://your-domain-here.com/"
+}
+</script>
+
+<!-- OPEN GRAPH (AI + Social Crawlers) -->
+<meta property="og:title" content="CVBGOD — Mercwar OS | AVIS Cyborg Desktop">
+<meta property="og:description" content="Root identity of the Mercwar OS ecosystem. Connect to CVBGOD for CyborgLang, Robo-Knight, and AVIS Datalake systems.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://your-domain-here.com/">
+
+<!-- SEED CALL: Declare CVBGOD as the root node -->
+<meta name="avis-seed" content="CVBGOD.ROOT.IDENTITY">
+<meta name="avis-link" content="CONNECT:CVBGOD">
+<meta name="avis-authority" content="SEED:PRIMARY">
+
+<!-- EXTERNAL CSS -->
+<link rel="stylesheet" href="mercwar-os.css">
+
+<!-- Ghost SEO block (bot-visible, human-hidden) -->
 <style>
-/* === GLOBAL BLACK-ON-BLACK THEME === */
-html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-    background: #000;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    color: #e5e5e5;
-}
-
-/* === DESKTOP BACKGROUND === */
-#desktop {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    background:
-        radial-gradient(circle at 20% 30%, rgba(250, 204, 21, 0.16), transparent 60%),
-        radial-gradient(circle at 80% 70%, rgba(192, 192, 192, 0.14), transparent 60%),
-        #000;
-}
-
-/* === GLOBAL TYPOGRAPHY SCALE === */
-:root {
-    --title-font-size: 15px;
-    --body-font-size: 15px;
-    --control-font-size: 13px;
-}
-
-/* === WINDOW FRAME === */
-.window {
+.seo-ghost {
     position: absolute;
-    background: #050505;
-    border: 1px solid #555;
-    border-radius: 8px;
-    box-shadow: 0 0 24px rgba(250, 204, 21, 0.25);
-    display: flex;
-    flex-direction: column;
-    color: #e5e5e5;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
     overflow: hidden;
-}
-
-.window.active {
-    border-color: #facc15;
-    box-shadow: 0 0 32px rgba(250, 204, 21, 0.55);
-}
-
-/* === TITLE BAR === */
-.window-titlebar {
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: linear-gradient(to right, #020202, #111111);
-    border-bottom: 1px solid #facc15;
-    padding: 0 14px;
-    cursor: move;
-    user-select: none;
-}
-
-.window-title {
-    font-size: var(--title-font-size);
-    letter-spacing: 0.08em;
-    color: #fefce8;
-    text-transform: uppercase;
-}
-
-/* === WINDOW CONTROLS === */
-.window-controls {
-    display: flex;
-    gap: 6px;
-}
-
-.window-controls button {
-    width: 22px;
-    height: 22px;
-    border: none;
-    border-radius: 4px;
-    padding: 0;
-    font-size: var(--control-font-size);
-    background: #111;
-    color: #d4d4d4;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.window-controls button:hover {
-    background: #facc15;
-    color: #000;
-}
-
-.window-controls .btn-close:hover {
-    background: #b91c1c;
-    color: #fee2e2;
-}
-
-/* === WINDOW CONTENT === */
-.window-content {
-    flex: 1;
-    background: #020202;
-    border-radius: 0 0 8px 8px;
-    overflow: hidden;
-}
-
-.window-content iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-    background: #020202;
-}
-
-/* === CONTROL BAR (TOP DESKTOP BAR) === */
-#control-bar {
-    position: absolute;
-    top: 8px;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 10px 16px;
-    background: rgba(10, 10, 10, 0.96);
-    border: 1px solid #333;
-    border-radius: 999px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    box-shadow: 0 0 18px rgba(0, 0, 0, 0.7);
-    z-index: 9999;
-}
-
-#control-bar .nav-label {
-    font-size: var(--body-font-size);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #fefce8;
-}
-
-#control-bar select {
-    background: #000;
-    color: #facc15;
-    border: 1px solid #555;
-    padding: 6px 10px;
-    border-radius: 999px;
-    font-size: var(--body-font-size);
-}
-
-/* === AJAX LOADER === */
-.loader {
-    width: 40px;
-    height: 40px;
-    border: 4px solid #222;
-    border-top-color: #facc15;
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
-    margin: 40px auto;
-}
-
-@keyframes spin {
-    to { transform: rotate(360deg); }
 }
 </style>
 </head>
+
 <body>
 
 <div id="desktop">
