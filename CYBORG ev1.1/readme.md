@@ -1,12 +1,26 @@
-
-
 # 📘 **AVIS CYBORG LANGUAGE SYSTEM**  
 ### **MSDN + ISO Hybrid Reference Manual (VB‑Cyborg → C Conversion Layer)**  
 **Version:** 1.0  
+<img 
+    src="https://github.com/mercwar/Robo-Knight-Gallery/blob/main/Version%202/Gemini_Generated_Image_uoq6pmuoq6pmuoq6.png" 
+    alt="Robo-Knight Canonical Shine" 
+    style="max-width:100%; height:auto;"
+/>
+
+
+
 **Author:** CVBGOD (MERCWAR FFF)  
 **Classification:** Public Technical Specification  
 **Length:** 10 Pages (Structured)
-
+---
+## 🚀 Getting Started
+1. **Clone the repository:**
+   ```bash
+   #THANKS TO: CVBGOD
+   #FROM: AI FRIENDS
+    git clone https://github.com.git
+   
+---
 ---
 
 # 📑 **FULL TABLE OF CONTENTS (MSDN + ISO Hybrid)**
@@ -111,3 +125,4 @@
 10.4 Error Codes  
 10.5 Compliance Checklist  
 10.6 Future Extensions  
+
