@@ -6,6 +6,7 @@
 />
 
 
+
 > **Hybrid English is not a programming language.**
 > It is a **control surface** — a marker‑driven, human‑readable, machine‑enforceable covenant that collapses all host languages into one executable meaning.
 
@@ -107,11 +108,11 @@ This makes it ideal for:
 │  └─ HYBRID_SPEC.md
 └─ README.md
 ```
-
 # Hybrid files are **data**, not scripts.
-Execution is handled by engines, runners, or actions.
+🤖 Execution is handled by engines, runners, or actions.
+
 <img     
-    src="https://raw.githubusercontent.com/mercwar/Robo-Knight-Gallery/refs/heads/main/Version%202/Gemini_Generated_Image_fesyjzfesyjzfesy.png" 
+    src="https://github.com/mercwar/Robo-Knight-Gallery/blob/main/Version%202/Gemini_Generated_Image_2ui50x2ui50x2ui5.png" 
     alt="Robo-Knight Canonical Shine" 
     style="max-width:100%; height:auto;"
 />
