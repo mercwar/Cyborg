@@ -71,12 +71,50 @@ body {
     border-top:1px solid #7a6318;
     color:#9a822f;
 }
+
+    /* ===== WINDOW CONTENT SCROLLING ===== */
+.content {
+    padding: 6px;
+    background: #050505;
+    max-height: 320px;
+    overflow: auto;
+}
+
+/* Scrollbar styling (WebKit) */
+.content::-webkit-scrollbar {
+    width: 10px;
+}
+.content::-webkit-scrollbar-track {
+    background: #000;
+}
+.content::-webkit-scrollbar-thumb {
+    background: #c9a227;
+    border: 2px solid #3a2f0b;
+}
+
+/* File viewer */
+.viewer {
+    background: #000;
+    color: #f5d76e;
+    padding: 10px;
+    white-space: pre-wrap;
+    font-family: Consolas, monospace;
+    font-size: 13px;
+}
+
+/* Images inside viewer */
+.viewer img {
+    max-width: 100%;
+    border: 1px solid #7a6318;
+}
+
 </style>
+
+    
 </head>
 
 <body>
 <div id="desktop"></div>
-
 <script>
 const owner = "mercwar";
 const repo  = "Cyborg";
@@ -84,14 +122,14 @@ const repo  = "Cyborg";
 let zIndexTop = 10;
 let offset = 30;
 
-/* ===== CREATE WINDOW ===== */
-function createWindow(path, title) {
+/* ===== WINDOW SPAWNER ===== */
+function createWindow(title) {
     const win = document.createElement("div");
     win.className = "window";
     win.style.left = offset + "px";
     win.style.top  = offset + "px";
     win.style.zIndex = ++zIndexTop;
-    offset += 25;
+    offset += 28;
 
     const bar = document.createElement("div");
     bar.className = "titlebar";
@@ -103,7 +141,7 @@ function createWindow(path, title) {
 
     const footer = document.createElement("div");
     footer.className = "footer";
-    footer.textContent = "GitHub LIVE";
+    footer.textContent = "CYBORG LIVE";
 
     win.appendChild(bar);
     win.appendChild(content);
@@ -111,16 +149,16 @@ function createWindow(path, title) {
     document.getElementById("desktop").appendChild(win);
 
     makeDraggable(win, bar);
-    loadDirectory(path, content, title);
-
     win.onclick = () => win.style.zIndex = ++zIndexTop;
+
+    return content;
 }
 
-/* ===== LOAD REAL DIRECTORY ===== */
-function loadDirectory(path, container, title) {
-    const url = `https://api.github.com/repos/${owner}/${repo}/contents/${encodeURIComponent(path)}`;
+/* ===== LOAD DIRECTORY ===== */
+function openDirectory(path, title) {
+    const container = createWindow("📁 " + title);
 
-    fetch(url)
+    fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${encodeURIComponent(path)}`)
         .then(r => r.json())
         .then(items => {
             container.innerHTML = "";
@@ -130,47 +168,53 @@ function loadDirectory(path, container, title) {
                 const row = document.createElement("div");
                 row.className = "entry";
 
-                const icon = document.createElement("span");
-                icon.className = "icon";
-                icon.textContent = item.type === "dir" ? "📁" : "📄";
+                row.innerHTML = `
+                    <span class="icon">${item.type === "dir" ? "📁" : "📄"}</span>
+                    <span>${item.name}</span>
+                `;
 
-                const name = document.createElement("span");
-                name.textContent = item.name;
-
-                row.appendChild(icon);
-                row.appendChild(name);
-
-                row.onclick = (e) => {
+                row.onclick = e => {
                     e.stopPropagation();
-                    if (item.type === "dir") {
-                        createWindow(item.path, item.name);
-                    } else {
-                        window.open(item.html_url, "_blank");
-                    }
+                    item.type === "dir"
+                        ? openDirectory(item.path, item.name)
+                        : openFile(item);
                 };
 
                 container.appendChild(row);
             });
         })
-        .catch(() => container.textContent = "Failed to load directory.");
+        .catch(() => container.textContent = "Directory load failed.");
+}
+
+/* ===== FILE VIEWER ===== */
+function openFile(item) {
+    const viewer = createWindow("📄 " + item.name);
+    viewer.classList.add("viewer");
+
+    fetch(item.download_url)
+        .then(r => r.text())
+        .then(data => {
+            if (item.name.match(/\.(png|jpg|jpeg|gif|webp)$/i)) {
+                viewer.innerHTML = `<img src="${item.download_url}">`;
+            } else {
+                viewer.textContent = data;
+            }
+        })
+        .catch(() => viewer.textContent = "File load failed.");
 }
 
 /* ===== DRAGGING ===== */
 function makeDraggable(win, handle) {
-    let x=0,y=0,dx=0,dy=0;
+    let dx=0,dy=0;
 
     handle.onmousedown = e => {
         e.preventDefault();
-        dx = e.clientX;
-        dy = e.clientY;
+        dx = e.clientX - win.offsetLeft;
+        dy = e.clientY - win.offsetTop;
 
         document.onmousemove = e2 => {
-            x = dx - e2.clientX;
-            y = dy - e2.clientY;
-            dx = e2.clientX;
-            dy = e2.clientY;
-            win.style.top  = (win.offsetTop - y) + "px";
-            win.style.left = (win.offsetLeft - x) + "px";
+            win.style.left = (e2.clientX - dx) + "px";
+            win.style.top  = (e2.clientY - dy) + "px";
         };
 
         document.onmouseup = () => {
@@ -181,7 +225,8 @@ function makeDraggable(win, handle) {
 }
 
 /* ===== BOOT ===== */
-createWindow("CYBORG eV1.0", "🛡️ CYBORG eV1.0");
+openDirectory("CYBORG eV1.0", "CYBORG eV1.0");
 </script>
+
 </body>
 </html>
