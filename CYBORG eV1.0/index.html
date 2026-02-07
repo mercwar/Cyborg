@@ -2,53 +2,79 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>CYBORG Desktop</title>
+<title>CYBORG Desktop — Robo Knight</title>
 
 <style>
+/* ===== ROBO KNIGHT GOLD THEME ===== */
 body {
-    margin:0;
-    background:#008080;
-    font-family:Tahoma, Segoe UI, sans-serif;
+    margin: 0;
+    background: radial-gradient(circle at top, #111 0%, #000 70%);
+    font-family: Segoe UI, Tahoma, sans-serif;
+    color: #f5d76e;
 }
 
 #desktop {
-    padding:20px;
+    padding: 24px;
 }
 
+/* Window */
 .window {
-    width:420px;
-    background:#c0c0c0;
-    border:2px solid #000;
-    box-shadow:4px 4px #404040;
+    width: 520px;
+    background: linear-gradient(#1a1a1a, #0b0b0b);
+    border: 2px solid #c9a227;
+    box-shadow:
+        0 0 20px rgba(201,162,39,0.4),
+        6px 6px 0 #000;
 }
 
+/* Title bar */
 .titlebar {
-    background:#000080;
-    color:white;
-    padding:4px 8px;
-    font-weight:bold;
+    background: linear-gradient(90deg, #3a2f0b, #c9a227, #3a2f0b);
+    color: #000;
+    padding: 6px 10px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 0 #fff6;
 }
 
+/* Content area */
 .content {
-    background:#fff;
-    padding:8px;
+    background: #050505;
+    padding: 6px;
+    border-top: 1px solid #7a6318;
 }
 
+/* Entries */
 .entry {
-    display:flex;
-    align-items:center;
-    padding:4px;
-    cursor:pointer;
+    display: flex;
+    align-items: center;
+    padding: 6px 8px;
+    cursor: pointer;
+    border-bottom: 1px solid #1f1a08;
 }
 
 .entry:hover {
-    background:#000080;
-    color:white;
+    background: linear-gradient(90deg, #2b2208, #5a470f);
+    color: #ffe9a6;
 }
 
+/* Icons */
 .icon {
-    width:24px;
-    margin-right:8px;
+    width: 26px;
+    text-align: center;
+    margin-right: 8px;
+    font-size: 16px;
+}
+
+.file { color: #e6c35c; }
+.folder { color: #f5d76e; }
+
+.footer {
+    padding: 4px 8px;
+    font-size: 11px;
+    color: #9a822f;
+    background: #000;
+    border-top: 1px solid #7a6318;
 }
 </style>
 </head>
@@ -56,41 +82,66 @@ body {
 <body>
 <div id="desktop">
     <div class="window">
-        <div class="titlebar">CYBORG eV1.0</div>
-        <div class="content" id="explorer"></div>
+        <div class="titlebar">🛡️ CYBORG eV1.0 — Robo Knight Explorer</div>
+        <div class="content" id="explorer">
+            Loading directory…
+        </div>
+        <div class="footer">LIVE DATA · GitHub API</div>
     </div>
 </div>
 
 <script>
-fetch('cyborg.dir.json')
-.then(r => r.json())
-.then(dir => {
-    const explorer = document.getElementById('explorer');
+/*
+ REAL directory listing via GitHub Contents API
+*/
+const owner = "mercwar";
+const repo  = "Cyborg";
+const path  = "CYBORG eV1.0";
 
-    dir.entries.forEach(e => {
-        const row = document.createElement('div');
-        row.className = 'entry';
+const apiURL = `https://api.github.com/repos/${owner}/${repo}/contents/${encodeURIComponent(path)}`;
 
-        const icon = document.createElement('span');
-        icon.className = 'icon';
-        icon.textContent = e.type === 'folder' ? '📁' : '📄';
+fetch(apiURL)
+    .then(res => res.json())
+    .then(items => {
+        const explorer = document.getElementById("explorer");
+        explorer.innerHTML = "";
 
-        const name = document.createElement('span');
-        name.textContent = e.name;
+        if (!Array.isArray(items)) {
+            explorer.textContent = "Error loading directory.";
+            return;
+        }
 
-        row.appendChild(icon);
-        row.appendChild(name);
+        // Folders first, then files
+        items.sort((a,b) => a.type.localeCompare(b.type));
 
-        row.onclick = () => {
-            if (e.type === 'file') {
-                window.open(e.name, '_blank');
-            }
-        };
+        items.forEach(item => {
+            const row = document.createElement("div");
+            row.className = "entry";
 
-        explorer.appendChild(row);
+            const icon = document.createElement("span");
+            icon.className = "icon " + (item.type === "dir" ? "folder" : "file");
+            icon.textContent = item.type === "dir" ? "📁" : "📄";
+
+            const name = document.createElement("span");
+            name.textContent = item.name;
+
+            row.appendChild(icon);
+            row.appendChild(name);
+
+            row.onclick = () => {
+                if (item.html_url) {
+                    window.open(item.html_url, "_blank");
+                }
+            };
+
+            explorer.appendChild(row);
+        });
+    })
+    .catch(err => {
+        document.getElementById("explorer").textContent =
+            "Failed to connect to GitHub API.";
+        console.error(err);
     });
-});
 </script>
-
 </body>
 </html>
