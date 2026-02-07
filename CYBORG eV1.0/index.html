@@ -107,6 +107,25 @@ body {
     max-width: 100%;
     border: 1px solid #7a6318;
 }
+/* ===== HTML / MARKDOWN FRAME ===== */
+.html-frame {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: #000;
+}
+
+/* Viewer window sizing boost */
+.window.viewer-window {
+    width: 640px;
+    height: 420px;
+}
+
+.window.viewer-window .content {
+    height: 360px;
+    padding: 0;
+    overflow: hidden;
+}
 
 </style>
 
@@ -188,20 +207,51 @@ function openDirectory(path, title) {
 
 /* ===== FILE VIEWER ===== */
 function openFile(item) {
+    const ext = item.name.split(".").pop().toLowerCase();
+
+    // HTML or Markdown → iframe viewer
+    if (["html", "htm", "md"].includes(ext)) {
+        openHtmlViewer(item);
+        return;
+    }
+
+    // Images
+    if (item.name.match(/\.(png|jpg|jpeg|gif|webp)$/i)) {
+        const viewer = createWindow("🖼️ " + item.name);
+        viewer.parentElement.classList.add("viewer-window");
+        viewer.innerHTML = `<img src="${item.download_url}" style="max-width:100%">`;
+        return;
+    }
+function openHtmlViewer(item) {
+    const content = createWindow("🌐 " + item.name);
+    const win = content.parentElement;
+
+    win.classList.add("viewer-window");
+
+    const iframe = document.createElement("iframe");
+    iframe.className = "html-frame";
+
+    // Prefer Pages URL for proper rendering
+    const pagesURL = item.html_url
+        .replace("github.com", "raw.githack.com")
+        .replace("/blob/", "/");
+
+    iframe.src = pagesURL;
+
+    content.innerHTML = "";
+    content.appendChild(iframe);
+}
+
+    // Default: text
     const viewer = createWindow("📄 " + item.name);
     viewer.classList.add("viewer");
 
     fetch(item.download_url)
         .then(r => r.text())
-        .then(data => {
-            if (item.name.match(/\.(png|jpg|jpeg|gif|webp)$/i)) {
-                viewer.innerHTML = `<img src="${item.download_url}">`;
-            } else {
-                viewer.textContent = data;
-            }
-        })
+        .then(data => viewer.textContent = data)
         .catch(() => viewer.textContent = "File load failed.");
 }
+
 
 /* ===== DRAGGING ===== */
 function makeDraggable(win, handle) {
