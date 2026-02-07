@@ -162,16 +162,18 @@ function createWindow(title) {
     footer.className = "footer";
     footer.textContent = "CYBORG LIVE";
 
-    win.appendChild(bar);
-    win.appendChild(content);
-    win.appendChild(footer);
+    win.append(bar, content, footer);
     document.getElementById("desktop").appendChild(win);
 
     makeDraggable(win, bar);
     win.onclick = () => win.style.zIndex = ++zIndexTop;
 
+    /* 🔥 NEW: window controls */
+    attachWindowControls(win, bar, content);
+
     return content;
 }
+
 
 /* ===== LOAD DIRECTORY ===== */
 function openDirectory(path, title) {
@@ -277,6 +279,7 @@ function makeDraggable(win, handle) {
 /* ===== BOOT ===== */
 openDirectory("CYBORG eV1.0", "CYBORG eV1.0");
 </script>
+<script src="cyborg.window.controls.js"></script>
 
 </body>
 </html>
