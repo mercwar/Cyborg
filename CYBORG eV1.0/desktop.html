@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CYBORG Desktop</title>
+
+<style>
+body {
+    margin:0;
+    background:#008080;
+    font-family:Tahoma, Segoe UI, sans-serif;
+}
+
+#desktop {
+    padding:20px;
+}
+
+.window {
+    width:420px;
+    background:#c0c0c0;
+    border:2px solid #000;
+    box-shadow:4px 4px #404040;
+}
+
+.titlebar {
+    background:#000080;
+    color:white;
+    padding:4px 8px;
+    font-weight:bold;
+}
+
+.content {
+    background:#fff;
+    padding:8px;
+}
+
+.entry {
+    display:flex;
+    align-items:center;
+    padding:4px;
+    cursor:pointer;
+}
+
+.entry:hover {
+    background:#000080;
+    color:white;
+}
+
+.icon {
+    width:24px;
+    margin-right:8px;
+}
+</style>
+</head>
+
+<body>
+<div id="desktop">
+    <div class="window">
+        <div class="titlebar">CYBORG eV1.0</div>
+        <div class="content" id="explorer"></div>
+    </div>
+</div>
+
+<script>
+fetch('cyborg.dir.json')
+.then(r => r.json())
+.then(dir => {
+    const explorer = document.getElementById('explorer');
+
+    dir.entries.forEach(e => {
+        const row = document.createElement('div');
+        row.className = 'entry';
+
+        const icon = document.createElement('span');
+        icon.className = 'icon';
+        icon.textContent = e.type === 'folder' ? '📁' : '📄';
+
+        const name = document.createElement('span');
+        name.textContent = e.name;
+
+        row.appendChild(icon);
+        row.appendChild(name);
+
+        row.onclick = () => {
+            if (e.type === 'file') {
+                window.open(e.name, '_blank');
+            }
+        };
+
+        explorer.appendChild(row);
+    });
+});
+</script>
+
+</body>
+</html>
