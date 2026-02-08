@@ -4,7 +4,7 @@ TITLE: AVIS – AI Visual Instruction System & Seed Language Specification
 AUTHOR: CGPT / MercWar
 DATE: 2026-01-14
 -->
-
+# 🛡️ [Click Here to view CVBGOD's Robo-Knight CYBORG Ev.1](https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/)
 
 
 # 🧠 AVIS — AI Visual Instruction System  
