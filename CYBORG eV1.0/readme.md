@@ -1,4 +1,5 @@
-# 📘 **AVIS CYBORG LANGUAGE SYSTEM**  
+# 📘 * CYBORG Ev.1 * 
+# [Click here to read it NOW in the Cyborg Live viewer](https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/) 
 ### **MSDN + ISO Hybrid Reference Manual (VB‑Cyborg → C Conversion Layer)**  
 **Version:** 1.0  
 <img 
@@ -252,3 +253,4 @@ All permission requests must be made in writing and explicitly approved by the c
 No permission is granted by silence or absence of response.
 
 ---
+
