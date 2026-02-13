@@ -18,3 +18,8 @@
 [AVIS-SH] Status: Building Hardware Chain...
 [AVIS-ASM] Identity: fire-gem-asm -> hello
 [AVIS-END] Chain Sync Complete. HAHA!
+[AVIS-YML] Identity: fire-gem-yml
+[AVIS-YML] Status: Path Verified
+[AVIS-SH] ENGAGED: Starting fire-gem.sh
+[AVIS-BEGIN] LOADING INI: fire-gem/fire-gem.ini
+[AVIS-ENGINE] Parsing Macro INI...
