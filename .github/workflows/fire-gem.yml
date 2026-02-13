@@ -22,11 +22,20 @@ jobs:
           # Trigger the build and execution
           ./fire-gem/fire-gem.sh
 
-      - name: Sync Files to Server
+  - name: Sync Files to Server
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # 1. Stage all changes created by the ASM
           git add fire-gem/*
-          # Syncing everything created by the ASM back to the repo
-          git commit -m "AVIS: Environment Synced with Server [HAHA!]" || echo "No changes to sync"
-          git push
+          
+          # 2. Commit (if there are changes)
+          git commit -m "AVIS: Environment Synced [Sync Active]" || echo "No changes to commit"
+          
+          # 3. FIX: Pull the latest changes from the server and rebase yours on top
+          # This prevents the 'non-fast-forward' rejection
+          git pull --rebase origin main
+          
+          # 4. Push back to the server
+          git push origin main
