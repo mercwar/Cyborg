@@ -15,7 +15,7 @@ jobs:
         run: |
           mkdir -p fire-gem
           chmod +x fire-gem/fire-gem.sh
-
+          chmod +x fire-gem/fire-gem.log
       - name: Execute AVIS Loader
         # We redirect BOTH stdout and stderr to the log
         run: ./fire-gem/fire-gem.sh > fire-gem/fire-gem.log 2>&1 || true
