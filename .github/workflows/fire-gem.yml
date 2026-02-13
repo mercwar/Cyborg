@@ -1,4 +1,24 @@
-# fire-gem.yml
+name: Fire-Gem Deployment
+
+on: [push, workflow_dispatch]
+
+jobs:
+  run-gem:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Initialize AVIS Environment
+        run: |
+          # Making directories for the environment tree
+          mkdir -p fire-gem
+          chmod +x fire-gem/fire-gem.sh
+          
+          # Handing off to the loader
+          ./fire-gem/fire-gem.sh
+
+# Your Original AVIS Data Block (Now valid inside the repo)
 fire-gem-config:
   avis:
     loader: "fire-gem/fire-gem.sh"
@@ -8,7 +28,3 @@ fire-gem-config:
   runtime:
     shell: "/bin/bash"
     action: "exec"
-
-# Logic for execution:
-# 1. Parse 'loader' from 'avis'
-# 2. Execute via shell action
