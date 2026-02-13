@@ -13,23 +13,33 @@ jobs:
           fetch-depth: 0
 
       - name: Install Assembly Tools
+        # Kept active so the runner is ready for the next phase
         run: sudo apt-get update && sudo apt-get install -y nasm binutils
 
       - name: YML Level Logging
         run: |
           mkdir -p fire-gem
+          # Writing only YML-level AVIS to prove base authority
           echo "[AVIS-YML] Identity: fire-gem-yml" >> fire-gem/fire-gem.log
           echo "[AVIS-YML] Status: Path Verified" >> fire-gem/fire-gem.log
 
-      - name: Execute SH Level
-        # COMMENT OUT THIS LINE to stop at YML level
-        run: chmod +x fire-gem/fire-gem.sh && ./fire-gem/fire-gem.sh
+      # - name: Execute SH Level
+      #   # HANDOFF STOPPED: Uncomment this only when YML sync is proven
+      #   run: chmod +x fire-gem/fire-gem.sh && ./fire-gem/fire-gem.sh
 
       - name: Final Server Sync
         run: |
           git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add fire-gem/*
-          git commit -m "AVIS: Syncing Chain Results" || echo "No changes"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          
+          # Stage the log file specifically
+          git add fire-gem/fire-gem.log
+          
+          # Commit the AVIS log
+          git commit -m "AVIS: YML Level Log Sync" || echo "No changes to commit"
+          
+          # Force pull/rebase to avoid the 'rejected' error
           git pull --rebase origin main
+          
+          # Push the code to the server
           git push origin main
