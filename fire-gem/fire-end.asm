@@ -1,26 +1,28 @@
+; fire-gem/fire-end.asm
 section .data
-    done_msg db "[SYNC] AVIS Environment Complete. HAHA!", 0xa
-    done_len equ $ - done_msg
     log_path db "fire-gem/fire-gem.log", 0
+    end_msg  db "[AVIS-END] Chain Sync Complete. HAHA!", 0xa
+    end_len  equ $ - end_msg
 
 section .text
     global _start
+
 _start:
-    ; Open log in Append mode
+    ; Open log in Append mode (1089)
     mov rax, 2          ; sys_open
     mov rdi, log_path
-    mov rsi, 1089       ; O_CREAT | O_WRONLY | O_APPEND
+    mov rsi, 1089       
     mov rdx, 0644o
     syscall
-
-    ; Write termination signal
+    
+    ; Write the terminator signal
     mov rdi, rax
     mov rax, 1          ; sys_write
-    mov rsi, done_msg
-    mov rdx, done_len
+    mov rsi, end_msg
+    mov rdx, end_len
     syscall
 
-    ; Final Kernel Exit
-    mov rax, 60         ; sys_exit
+    ; Final exit
+    mov rax, 60
     xor rdi, rdi
     syscall
