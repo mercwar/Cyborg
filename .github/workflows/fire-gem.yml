@@ -12,15 +12,17 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Install Assembly Tools
+        # Required for the SH level to build the ASM
+        run: sudo apt-get update && sudo apt-get install -y nasm binutils
+
       - name: YML Level Logging
         run: |
           mkdir -p fire-gem
-          # Proven base-level path authority
           echo "[AVIS-YML] Identity: fire-gem-yml" >> fire-gem/fire-gem.log
           echo "[AVIS-YML] Status: Path Verified" >> fire-gem/fire-gem.log
 
       - name: Execute SH Level
-        # Triggers the SH loader for Step 2
         run: chmod +x fire-gem/fire-gem.sh && ./fire-gem/fire-gem.sh
 
       - name: Commit and Push to Repository
@@ -28,13 +30,10 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           
-          # FIX: Add the log file, not the txt file
           git add fire-gem/fire-gem.log
           
-          # Check if there are changes to avoid exit code 1
           if ! git diff --staged --quiet; then
-            git commit -m "AVIS: YML + SH Log Sync"
-            # Pull to stay in sync with the server before pushing
+            git commit -m "AVIS: YML + SH + ASM Log Sync"
             git pull --rebase origin main
             git push origin main
           else
