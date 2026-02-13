@@ -23,19 +23,12 @@ jobs:
         # Triggers the SH loader for Step 2
         run: chmod +x fire-gem/fire-gem.sh && ./fire-gem/fire-gem.sh
 
-      - name: Final Server Sync
+      - name: Commit and Push to Repository
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           
-          # 1. Stage EVERYTHING in the folder to prevent "unstaged changes" errors
-          git add fire-gem/*
-          
-          # 2. Commit whatever is there
-          git commit -m "AVIS: YML + SH Level Sync" || echo "No changes to commit"
-          
-          # 3. Pull with rebase - if there's a conflict, favor our local log changes
-          git pull --rebase -X theirs origin main
-          
-          # 4. Push back to the server
-          git push origin main
+          git add fire-gem/fire-gem.txt
+          # Only commit if there are changes to avoid workflow errors
+          git diff --quiet && git diff --staged --quiet || git commit -m "AVIS: Persisting fire-gem object"
+          git push
