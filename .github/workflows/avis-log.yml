@@ -1,11 +1,12 @@
-name: AVIS Hello Log
+name: AVIS Hello Log Persistence
 on: [push, workflow_dispatch]
 
 jobs:
   avis-process:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # REQUIRED to push back to the repo
     env:
-      # Scalar block for your AVIS data
       AVIS_BLOCK: |
         fire-gem-config:
           avis:
@@ -14,15 +15,29 @@ jobs:
             identity: "fire-gem-txt"
 
     steps:
-      - name: Force Write AVIS Log
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Full history needed for the push
+
+      - name: Create Object and Log
         run: |
-          #mkdir -p fire-gem
+          # 1. Create the directory (no longer commented out)
+          mkdir -p fire-gem
           
-          # Using double quotes is CRITICAL to preserve multi-line variables
-          # This writes the AVIS_BLOCK exactly as formatted above
+          # 2. Write the object
           echo "$AVIS_BLOCK" > fire-gem/fire-gem.txt
           
-          # Immediate check: If the cat is empty, the variable itself is the glitch
-          echo "--- LOG CONTENT START ---"
+          # 3. Verification check
+          echo "--- OBJECT VERIFICATION ---"
           cat fire-gem/fire-gem.txt
-          echo "--- LOG CONTENT END ---"
+
+      - name: Commit and Push to Repository
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          
+          git add fire-gem/fire-gem.txt
+          # Only commit if there are changes to avoid workflow errors
+          git diff --quiet && git diff --staged --quiet || git commit -m "AVIS: Persisting fire-gem object"
+          git push
