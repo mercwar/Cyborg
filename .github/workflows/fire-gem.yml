@@ -12,18 +12,15 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install Assembly Tools
-        # Kept active so the runner is ready for the next phase
-        run: sudo apt-get update && sudo apt-get install -y nasm binutils
-
-           - name: YML Level Logging
+      - name: YML Level Logging
         run: |
           mkdir -p fire-gem
+          # Proven base-level path authority
           echo "[AVIS-YML] Identity: fire-gem-yml" >> fire-gem/fire-gem.log
           echo "[AVIS-YML] Status: Path Verified" >> fire-gem/fire-gem.log
 
       - name: Execute SH Level
-        # UNCOMMENTED: Triggering the SH loader
+        # Triggers the SH loader for Step 2
         run: chmod +x fire-gem/fire-gem.sh && ./fire-gem/fire-gem.sh
 
       - name: Final Server Sync
@@ -31,6 +28,6 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add fire-gem/fire-gem.log
-          git commit -m "AVIS: YML + SH Level Sync" || echo "No changes"
+          git commit -m "AVIS: YML + SH Level Sync" || echo "No changes to commit"
           git pull --rebase origin main
           git push origin main
