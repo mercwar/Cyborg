@@ -1,19 +1,17 @@
-; avis-fvs.asm
+; =============================================================================
+;  AVIS FIRMWARE VERIFICATION SIGNATURE
+;  FILE: avis-fvs.asm
+; =============================================================================
 section .data
     log_path db "fire-gem/fire-gem.log", 0
-    msg      db "[AVIS-FVS] Identity Verified: Registers Cleared. HAHA!", 0xa
-    len      equ $ - msg
+    fvs_msg  db "[AVIS-FVS] Identity Verified: Registers Cleared. HAHA!", 0xa
+    fvs_len  equ $ - fvs_msg
 
 section .text
     global _start
 _start:
-    ; 1. Clear GPRs for baseline
-    xor rax, rax
+    xor rax, rax        ; Clear registers for FVS baseline
     xor rbx, rbx
-    xor rcx, rcx
-    xor rdx, rdx
-
-    ; 2. Log FVS Handshake
     mov rax, 2          ; sys_open
     mov rdi, log_path
     mov rsi, 1089       ; O_CREAT|O_WRONLY|O_APPEND
@@ -21,11 +19,9 @@ _start:
     syscall
     mov rdi, rax
     mov rax, 1          ; sys_write
-    mov rsi, msg
-    mov rdx, len
+    mov rsi, fvs_msg
+    mov rdx, fvs_len
     syscall
-
-    ; 3. Exit
-    mov rax, 60
+    mov rax, 60         ; sys_exit
     xor rdi, rdi
     syscall
