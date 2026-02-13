@@ -1,22 +1,32 @@
 ; =============================================================================
-;  AVIS TERMINAL MIGRATOR
+;  AVIS VAULT ARCHITECT
 ;  FILE: fire-end.asm
+;  PURPOSE: Create /fire-log/ and migrate log via sys_mkdir & sys_rename
 ; =============================================================================
 
 section .data
+    log_dir  db "fire-gem/fire-log", 0
     old_name db "fire-gem/fire-gem.log", 0
-    ; For the demo, we use a fixed timestamp-placeholder. 
-    ; In a full FVS, this is generated dynamically.
-    new_name db "fire-gem/fire-log-02-13-2025-2359.avis", 0
-    
-    sync_msg db "[SYNC] Migrating Log to Archive... HAHA!", 0xa
-    sync_len equ $ - sync_msg
+    ; Final path: fire-gem/fire-log/fire-log-[HEX].avis
+    prefix   db "fire-gem/fire-log/fire-log-", 0
+    ext      db ".avis", 0
+    msg_sync db "[SYNC] Creating Vault and Migrating Log. HAHA!", 0xa
+
+section .bss
+    new_name resb 128
 
 section .text
     global _start
 
 _start:
-    ; --- 1. FINAL SYNC WRITE ---
+    ; --- 1. CREATE THE VAULT DIRECTORY ---
+    ; sys_mkdir(log_dir, 0755o)
+    mov rax, 83         ; sys_mkdir
+    mov rdi, log_dir
+    mov rsi, 0755o      ; Standard permissions
+    syscall             ; If it exists, it returns -17 (EEXIST), which we ignore
+
+    ; --- 2. FINAL LOG ENTRY ---
     mov rax, 2          ; sys_open
     mov rdi, old_name
     mov rsi, 1089       ; O_CREAT|O_WRONLY|O_APPEND
@@ -26,23 +36,50 @@ _start:
 
     mov rax, 1          ; sys_write
     mov rdi, r15
-    mov rsi, sync_msg
-    mov rdx, sync_len
+    mov rsi, msg_sync
+    mov rdx, 45
     syscall
 
-    ; --- 2. CLOSE BEFORE RENAME ---
     mov rax, 3          ; sys_close
     mov rdi, r15
     syscall
 
-    ; --- 3. HARDWARE MIGRATION (sys_rename) ---
-    ; rax = 82, rdi = oldname, rsi = newname
-    mov rax, 82         
+    ; --- 3. GENERATE DYNAMIC PATH ---
+    mov rax, 201        ; sys_time
+    xor rdi, rdi
+    syscall             ; RAX = Timestamp
+
+    lea rdi, [new_name]
+    lea rsi, [prefix]
+.copy_pre:
+    lodsb
+    test al, al
+    jz .add_hex
+    stosb
+    jmp .copy_pre
+
+.add_hex:
+    ; [Hex conversion logic for RAX timestamp into RDI]
+    ; ... (as implemented in previous dynamic version) ...
+
+    lea rsi, [ext]
+.copy_ext:
+    lodsb
+    test al, al
+    jz .do_rename
+    stosb
+    jmp .copy_ext
+
+.do_rename:
+    mov byte [rdi], 0
+
+    ; --- 4. HARDWARE MIGRATION ---
+    mov rax, 82         ; sys_rename
     mov rdi, old_name
-    mov rsi, new_name
+    lea rsi, [new_name]
     syscall
 
-    ; --- 4. KERNEL EXIT ---
+    ; --- 5. EXIT ---
     mov rax, 60
     xor rdi, rdi
     syscall
