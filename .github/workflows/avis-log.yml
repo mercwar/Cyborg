@@ -5,6 +5,7 @@ jobs:
   avis-process:
     runs-on: ubuntu-latest
     env:
+      # Scalar block for your AVIS data
       AVIS_BLOCK: |
         fire-gem-config:
           avis:
@@ -13,13 +14,15 @@ jobs:
             identity: "fire-gem-log"
 
     steps:
-      - name: Create and Write Log
+      - name: Force Write AVIS Log
         run: |
-          # Initialize the directory and log file
           mkdir -p fire-gem
           
-          # Direct AVIS injection into the log
+          # Using double quotes is CRITICAL to preserve multi-line variables
+          # This writes the AVIS_BLOCK exactly as formatted above
           echo "$AVIS_BLOCK" > fire-gem/fire-gem.log
           
-          # Force terminal output for verification
+          # Immediate check: If the cat is empty, the variable itself is the glitch
+          echo "--- LOG CONTENT START ---"
           cat fire-gem/fire-gem.log
+          echo "--- LOG CONTENT END ---"
