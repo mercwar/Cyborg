@@ -11,7 +11,7 @@ jobs:
           avis:
             message: "hello"
             status: "active"
-            identity: "fire-gem-log"
+            identity: "fire-gem-txt"
 
     steps:
       - name: Force Write AVIS Log
@@ -20,9 +20,9 @@ jobs:
           
           # Using double quotes is CRITICAL to preserve multi-line variables
           # This writes the AVIS_BLOCK exactly as formatted above
-          echo "$AVIS_BLOCK" > fire-gem/fire-gem.log
+          echo "$AVIS_BLOCK" > fire-gem/fire-gem.txt
           
           # Immediate check: If the cat is empty, the variable itself is the glitch
           echo "--- LOG CONTENT START ---"
-          cat fire-gem/fire-gem.log
+          cat fire-gem/fire-gem.txt
           echo "--- LOG CONTENT END ---"
