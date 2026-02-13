@@ -4,42 +4,29 @@ on: [push, workflow_dispatch]
 jobs:
   deploy-gem:
     runs-on: ubuntu-latest
-    env:
-      FIRE_GEM_CONFIG: |
-        fire-gem-config:
-          avis:
-            loader: "fire-gem/fire-gem.sh"
-            path: "./fire-gem/"
-            executable: "fire-gem.exe"
-            message_type: "hello_world"
-          runtime:
-            shell: "/bin/bash"
-            action: "exec"
-
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
       - name: Install Assembly Tools
-        # This is the missing link. It installs nasm and the ld linker.
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y nasm binutils
+        run: sudo apt-get update && sudo apt-get install -y nasm binutils
 
       - name: Initialize Environment
         run: |
           mkdir -p fire-gem
-          echo "$FIRE_GEM_CONFIG" > fire-gem/fire-gem.yml
           chmod +x fire-gem/fire-gem.sh
 
       - name: Execute AVIS Loader
-        run: ./fire-gem/fire-gem.sh
+        # We redirect BOTH stdout and stderr to the log
+        run: ./fire-gem/fire-gem.sh > fire-gem/fire-gem.log 2>&1 || true
 
-      - name: Display Log Output
-        # This forces the log to show up in your GitHub Actions console
+      - name: FORCE DEBUG OUTPUT
+        # This is the step that fixes the "Empty Log" mystery
         run: |
+          echo "--- START OF LOG ---"
           if [ -f fire-gem/fire-gem.log ]; then
             cat fire-gem/fire-gem.log
           else
-            echo "Log file not found."
+            echo "FILE NOT FOUND: fire-gem/fire-gem.log"
           fi
+          echo "--- END OF LOG ---"
