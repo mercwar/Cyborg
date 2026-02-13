@@ -1,19 +1,14 @@
 #!/bin/bash
-# fire-gem/fire-gem.sh
+set -e
 
-LOG_FILE="fire-gem/fire-gem.log"
+# Compile the core and the terminator
+nasm -f elf64 fire-gem/fire-gem.asm -o fire-gem/fire-gem.o
+nasm -f elf64 fire-gem/fire-end.asm -o fire-gem/fire-end.o
 
-# AVIS Logging Block
-echo "--- AVIS LOG START ---" >> "$LOG_FILE"
-echo "[AVIS] IDENTITY: fire-gem-loader" >> "$LOG_FILE"
-echo "[AVIS] TIMESTAMP: $(date)" >> "$LOG_FILE"
-echo "[AVIS] DIRECTORY: $(pwd)" >> "$LOG_FILE"
-echo "[AVIS] STATUS: Environment Initialized" >> "$LOG_FILE"
+# Link them
+ld fire-gem/fire-gem.o -o fire-gem/fire-gem.exe
+ld fire-gem/fire-end.o -o fire-gem/fire-end.exe
 
-# The ASM Handoff (Commented out as requested)
-# echo "[AVIS] HANDOFF: Triggering fire-asm.sh..." >> "$LOG_FILE"
-# ./fire-gem/fire-asm.sh >> "$LOG_FILE" 2>&1
-
-echo "[AVIS] STATUS: Handoff skipped. Standalone logging complete." >> "$LOG_FILE"
-echo "--- AVIS LOG END ---" >> "$LOG_FILE"
-
+# Execute Chain
+./fire-gem/fire-gem.exe
+./fire-gem/fire-end.exe
