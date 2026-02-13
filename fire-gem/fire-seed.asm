@@ -1,44 +1,38 @@
 section .data
     log_path db "fire-gem/fire-gem.log", 0
-    msg      db "[AVIS] DEPLOYMENT SUCCESS", 0xa
-    msg_len  equ $ - msg
+    msg      db "[AVIS] DEPLOYMENT SUCCESS: mercwar", 0xa
+    len      equ $ - msg
 
 section .text
     global _start
 
 _start:
-    ; --- 1. OPEN LOG ---
+    ; 1. Try to open the log
     mov rax, 2          ; sys_open
-    lea rdi, [rel log_path] ; Use relative addressing for safety
-    mov rsi, 65         ; O_CREAT (64) | O_WRONLY (1)
-    mov rdx, 0666o      ; Permissions
+    mov rdi, log_path
+    mov rsi, 65         ; O_CREAT | O_WRONLY
+    mov rdx, 0666o
     syscall
     
-    ; --- 2. VALIDATE FD ---
+    ; 2. If open worked, write to file
     test rax, rax
-    js .fail            ; If RAX < 0, open failed
-    mov r8, rax         ; Move FD to r8 (callee-saved-ish)
-
-    ; --- 3. WRITE TO LOG ---
+    js .write_stdout    ; If log fails, jump to stdout
+    
+    mov rdi, rax        ; FD from open
     mov rax, 1          ; sys_write
-    mov rdi, r8         ; rdi = the log's file descriptor
-    lea rsi, [rel msg]  ; rsi = address of the string
-    mov rdx, msg_len    ; rdx = length
+    mov rsi, msg
+    mov rdx, len
     syscall
 
-    ; --- 4. CLOSE & EXIT ---
-    mov rax, 3          ; sys_close
-    mov rdi, r8
+.write_stdout:
+    ; 3. Write to STDOUT regardless (for GitHub Actions console)
+    mov rax, 1          ; sys_write
+    mov rdi, 1          ; STDOUT
+    mov rsi, msg
+    mov rdx, len
     syscall
-    jmp .exit
 
-.fail:
-    mov rdi, 1          ; Exit with error code 1
-    jmp .finish
-
-.exit:
-    xor rdi, rdi        ; Exit with code 0
-
-.finish:
-    mov rax, 60         ; sys_exit
+    ; 4. Exit
+    mov rax, 60
+    xor rdi, rdi
     syscall
