@@ -1,0 +1,40 @@
+name: AVIS Hello Log Engine
+on: [push, workflow_dispatch]
+
+jobs:
+  build-and-log:
+    runs-on: ubuntu-latest
+    env:
+      # We store your custom AVIS as a literal string to avoid mapping errors
+      AVIS_METADATA: |
+        fire-gem-config:
+          avis:
+            loader: "fire-gem/fire-gem.sh"
+            path: "./fire-gem/"
+            executable: "fire-gem.exe"
+            message_type: "hello_world"
+          runtime:
+            shell: "/bin/bash"
+            action: "exec"
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Initialize Extensive Logging
+        run: |
+          mkdir -p fire-gem
+          # Convert the environment variable back into a YAML file for the ASM/SH
+          echo "$AVIS_METADATA" > fire-gem/fire-gem.yml
+          
+          # Create the hello log and set permissions
+          echo "[INFO] AVIS Session Started" > fire-gem/fire-gem.log
+          chmod 666 fire-gem/fire-gem.log
+
+      - name: Execute Shell Loader
+        run: |
+          chmod +x fire-gem/fire-gem.sh
+          ./fire-gem/fire-gem.sh
+
+      - name: Terminal Debug Output
+        # This dumps the log into the 
