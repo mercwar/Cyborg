@@ -7,12 +7,14 @@ section .text
     global _start
 
 _start:
-    ; 1. Try to open the log
+    ; OPEN LOG WITH TRUNCATE
+    ; Flags: O_CREAT (64) | O_WRONLY (1) | O_TRUNC (512) = 577
     mov rax, 2          ; sys_open
     mov rdi, log_path
-    mov rsi, 65         ; O_CREAT | O_WRONLY
+    mov rsi, 577        ; This clears the old log every run
     mov rdx, 0666o
     syscall
+
     
     ; 2. If open worked, write to file
     test rax, rax
