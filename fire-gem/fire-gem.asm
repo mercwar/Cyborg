@@ -1,69 +1,62 @@
-; fire-gem.asm - Core Loader with Debug Logging
+; fire-gem.asm
 section .data
-    ; Paths
-    log_path    db "fire-gem/fire-gem.log", 0
-    sh_loader   db "fire-gem/fire-gem.sh", 0
+    ; Use a leading dot to ensure relative pathing is explicit
+    log_path    db "./fire-gem/fire-gem.log", 0
     
-    ; Logging Messages
-    msg_init    db "[AVIS] Starting fire-gem.asm...", 0xa
-    msg_err_log db "[CRITICAL] Cannot open fire-gem.log", 0xa
-    msg_sh_exec db "[AVIS] Handing off to fire-gem.sh", 0xa
+    msg_init    db "[AVIS] START: Loading fire-gem.sh", 0xa
+    msg_len     equ $ - msg_init
     
-    ; Argv for fire-gem.sh
-    arg0        db "fire-gem.sh", 0
-    argv        dq arg0, 0
-    envp        dq 0
+    msg_err     db "[ERROR] Could not open log file", 0xa
+    err_len     equ $ - msg_err
 
 section .text
     global _start
 
 _start:
-    ; --- 1. OPEN LOG (fire-gem/fire-gem.log) ---
-    ; sys_open flags: O_CREAT (0x40) | O_WRONLY (0x1) | O_APPEND (0x400) = 0x441
+    ; --- 1. OPEN LOG ---
+    ; Flags: O_CREAT(64) | O_WRONLY(1) | O_APPEND(1024) | O_SYNC(1048576)
+    ; Total = 1050049 (0x100441)
     mov rax, 2          ; sys_open
     mov rdi, log_path
-    mov rsi, 0x441      ; O_CREAT | O_WRONLY | O_APPEND
-    mov rdx, 0666o      ; Permissions
+    mov rsi, 0x100441   ; Synchronous Append mode
+    mov rdx, 0666o      ; Read/Write permissions
     syscall
     
-    ; Verify file descriptor (negative = error)
-    test rax, rax
-    js .log_error_fallback
-    mov r15, rax        ; Store Log FD in r15
+    ; Check if open failed (RAX < 0)
+    cmp rax, 0
+    jl .emergency_exit
 
-    ; --- 2. LOG INITIALIZATION ---
+    mov r15, rax        ; Store FD in r15
+
+    ; --- 2. FORCE WRITE ---
     mov rax, 1          ; sys_write
-    mov rdi, r15
+    mov rdi, r15        ; Use the Log FD
     mov rsi, msg_init
-    mov rdx, 33
+    mov rdx, msg_len
     syscall
 
-    ; --- 3. LOG BASH HANDOFF ---
-    mov rax, 1
+    ; --- 3. FSYNC (Force Disk Commit) ---
+    mov rax, 74         ; sys_fsync
     mov rdi, r15
-    mov rsi, msg_sh_exec
-    mov rdx, 33
     syscall
 
-    ; --- 4. EXECUTE fire-gem.sh ---
-    mov rax, 59         ; sys_execve
-    mov rdi, sh_loader
-    mov rsi, argv
-    mov rdx, envp
+    ; --- 4. CLOSE & EXIT ---
+    mov rax, 3          ; sys_close
+    mov rdi, r15
     syscall
 
-    ; If execve returns, it failed
-    jmp .exit
-
-.log_error_fallback:
-    ; Write error message to STDERR (FD 2) if log file failed
-    mov rax, 1          ; sys_write
-    mov rdi, 2          ; STDERR
-    mov rsi, msg_err_log
-    mov rdx, 35
-    syscall
-
-.exit:
     mov rax, 60         ; sys_exit
     xor rdi, rdi
+    syscall
+
+.emergency_exit:
+    ; If the log failed, print error to your actual terminal (FD 1)
+    mov rax, 1
+    mov rdi, 1          ; stdout
+    mov rsi, msg_err
+    mov rdx, err_len
+    syscall
+    
+    mov rax, 60
+    mov rdi, 1          ; Exit code 1 (Error)
     syscall
