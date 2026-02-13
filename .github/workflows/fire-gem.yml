@@ -27,7 +27,15 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add fire-gem/fire-gem.log
+          
+          # 1. Stage EVERYTHING in the folder to prevent "unstaged changes" errors
+          git add fire-gem/*
+          
+          # 2. Commit whatever is there
           git commit -m "AVIS: YML + SH Level Sync" || echo "No changes to commit"
-          git pull --rebase origin main
+          
+          # 3. Pull with rebase - if there's a conflict, favor our local log changes
+          git pull --rebase -X theirs origin main
+          
+          # 4. Push back to the server
           git push origin main
