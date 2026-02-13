@@ -13,9 +13,17 @@ jobs:
 
       - name: Initialize Environment
         run: |
+          # 1. Create directory if missing
           mkdir -p fire-gem
+          
+          # 2. Make the script executable
           chmod +x fire-gem/fire-gem.sh
-          chmod +x fire-gem/fire-gem.log
+          
+          # 3. Create/Clear the log and ensure it is WRITABLE (666)
+          # Use 'touch' to create it, then 'chmod 666' so the ASM can write to it
+          touch fire-gem/fire-gem.log
+          chmod 666 fire-gem/fire-gem.log
+
       - name: Execute AVIS Loader
         # We redirect BOTH stdout and stderr to the log
         run: ./fire-gem/fire-gem.sh > fire-gem/fire-gem.log 2>&1 || true
