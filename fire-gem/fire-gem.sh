@@ -3,12 +3,11 @@
 
 LOG="fire-gem/fire-gem.log"
 
+# AVIS SH-Level Logging
 echo "[AVIS-SH] Identity: fire-gem-sh" >> "$LOG"
-echo "[AVIS-SH] Status: Compiling ASM..." >> "$LOG"
+echo "[AVIS-SH] Status: Shell Loader Active" >> "$LOG"
 
-# Assemble and Link
-#nasm -f elf64 fire-gem/fire-gem.asm -o fire-gem/fire-gem.o
-#ld fire-gem/fire-gem.o -o fire-gem/fire-gem.exe
-
-# COMMENT OUT THIS LINE to stop at SH level
-#./fire-gem/fire-gem.exe
+# ASM HANDOFF - Kept commented out for this step
+# nasm -f elf64 fire-gem/fire-gem.asm -o fire-gem/fire-gem.o
+# ld fire-gem/fire-gem.o -o fire-gem/fire-gem.exe
+# ./fire-gem/fire-gem.exe
