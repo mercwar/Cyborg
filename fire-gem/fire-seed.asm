@@ -1,84 +1,44 @@
 section .data
-    ; Specific log path
-    log_path    db "fire-gem/fire-gem.log", 0
-    
-    ; Environment Tree Paths
-    dir1        db "dir-1", 0
-    file_a      db "dir-1/file-a", 0
-    
-    ; Log entries
-    log_init    db "[STATUS] Engine engaged. Target: fire-gem.bin", 0xa
-    log_mkdir   db "[ACTION] mkdir dir-1 initiated", 0xa
-    log_deploy  db "[ACTION] <copy file> file-a success", 0xa
-    log_done    db "[FINISH] Environment tree deployed.", 0xa
+    log_path db "fire-gem/fire-gem.log", 0
+    msg      db "[AVIS] DEPLOYMENT SUCCESS", 0xa
+    msg_len  equ $ - msg
 
 section .text
     global _start
 
 _start:
-    ; --- 1. OPEN THE LOG ---
-    ; sys_open("fire-gem/fire-gem.log", O_CREAT | O_WRONLY | O_APPEND, 0666)
-    mov rax, 2
-    mov rdi, log_path
-    mov rsi, 1089       ; O_CREAT | O_WRONLY | O_APPEND
-    mov rdx, 0666o
-    syscall
-    mov r15, rax        ; Store Log FD in r15 for the duration
-
-    ; Write Init to Log
-    mov rax, 1
-    mov rdi, r15
-    mov rsi, log_init
-    mov rdx, 46
-    syscall
-
-    ; --- 2. EXECUTE KB TREE ---
-    ; mkdir dir-1
-    mov rax, 83         ; sys_mkdir
-    mov rdi, dir1
-    mov rsi, 0755o
+    ; --- 1. OPEN LOG ---
+    mov rax, 2          ; sys_open
+    lea rdi, [rel log_path] ; Use relative addressing for safety
+    mov rsi, 65         ; O_CREAT (64) | O_WRONLY (1)
+    mov rdx, 0666o      ; Permissions
     syscall
     
-    ; Log mkdir action
-    mov rax, 1
-    mov rdi, r15
-    mov rsi, log_mkdir
-    mov rdx, 31
+    ; --- 2. VALIDATE FD ---
+    test rax, rax
+    js .fail            ; If RAX < 0, open failed
+    mov r8, rax         ; Move FD to r8 (callee-saved-ish)
+
+    ; --- 3. WRITE TO LOG ---
+    mov rax, 1          ; sys_write
+    mov rdi, r8         ; rdi = the log's file descriptor
+    lea rsi, [rel msg]  ; rsi = address of the string
+    mov rdx, msg_len    ; rdx = length
     syscall
 
-    ; --- 3. <COPY FILE> file-a ---
-    ; Create file-a
-    mov rax, 2          ; sys_open
-    mov rdi, file_a
-    mov rsi, 65         ; O_CREAT | O_WRONLY
-    mov rdx, 0755o
+    ; --- 4. CLOSE & EXIT ---
+    mov rax, 3          ; sys_close
+    mov rdi, r8
     syscall
-    mov rbx, rax        ; rbx = file_a FD
+    jmp .exit
 
-    ; Log deployment
-    mov rax, 1
-    mov rdi, r15
-    mov rsi, log_deploy
-    mov rdx, 38
-    syscall
+.fail:
+    mov rdi, 1          ; Exit with error code 1
+    jmp .finish
 
-    ; Close file_a
-    mov rax, 3
-    mov rdi, rbx
-    syscall
+.exit:
+    xor rdi, rdi        ; Exit with code 0
 
-    ; --- 4. FINAL LOG & EXIT ---
-    mov rax, 1
-    mov rdi, r15
-    mov rsi, log_done
-    mov rdx, 36
-    syscall
-
-    ; Close log
-    mov rax, 3
-    mov rdi, r15
-    syscall
-
-    mov rax, 60
-    xor rdi, rdi
+.finish:
+    mov rax, 60         ; sys_exit
     syscall
