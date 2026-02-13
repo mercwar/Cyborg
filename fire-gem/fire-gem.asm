@@ -1,76 +1,69 @@
+; fire-gem.asm - Core Loader with Debug Logging
 section .data
-    ; Command 1: nasm -f elf64 fire-seed.asm -o fire-seed.o
-    nasm_path db '/usr/bin/nasm', 0
-    arg1_0    db 'nasm', 0
-    arg1_1    db '-f', 0
-    arg1_2    db 'elf64', 0
-    arg1_3    db 'fire-seed.asm', 0
-    arg1_4    db '-o', 0
-    arg1_5    db 'fire-seed.o', 0
-    args1     dq arg1_0, arg1_1, arg1_2, arg1_3, arg1_4, arg1_5, 0
-
-    ; Command 2: ld fire-seed.o -o fire-seed
-    ld_path   db '/usr/bin/ld', 0
-    arg2_0    db 'ld', 0
-    arg2_1    db 'fire-seed.o', 0
-    arg2_2    db '-o', 0
-    arg2_3    db 'fire-seed', 0
-    args2     dq arg2_0, arg2_1, arg2_2, arg2_3, 0
-
-    ; Command 3: ./fire-seed
-    run_path  db './fire-seed', 0
-    args3     dq run_path, 0
-
-    env       dq 0 ; Empty environment variables
+    ; Paths
+    log_path    db "fire-gem/fire-gem.log", 0
+    sh_loader   db "fire-gem/fire-gem.sh", 0
+    
+    ; Logging Messages
+    msg_init    db "[AVIS] Starting fire-gem.asm...", 0xa
+    msg_err_log db "[CRITICAL] Cannot open fire-gem.log", 0xa
+    msg_sh_exec db "[AVIS] Handing off to fire-gem.sh", 0xa
+    
+    ; Argv for fire-gem.sh
+    arg0        db "fire-gem.sh", 0
+    argv        dq arg0, 0
+    envp        dq 0
 
 section .text
     global _start
 
 _start:
-    ; --- Step 1: Call NASM ---
-    mov rax, 57         ; sys_fork
+    ; --- 1. OPEN LOG (fire-gem/fire-gem.log) ---
+    ; sys_open flags: O_CREAT (0x40) | O_WRONLY (0x1) | O_APPEND (0x400) = 0x441
+    mov rax, 2          ; sys_open
+    mov rdi, log_path
+    mov rsi, 0x441      ; O_CREAT | O_WRONLY | O_APPEND
+    mov rdx, 0666o      ; Permissions
     syscall
-    cmp rax, 0
-    jne wait_1          ; Parent waits
-    mov rax, 59         ; sys_execve
-    mov rdi, nasm_path
-    mov rsi, args1
-    mov rdx, env
-    syscall
-wait_1:
-    mov rax, 61         ; sys_wait4
-    mov rdi, -1
-    xor rsi, rsi
-    xor rdx, rdx
-    xor r10, r10
+    
+    ; Verify file descriptor (negative = error)
+    test rax, rax
+    js .log_error_fallback
+    mov r15, rax        ; Store Log FD in r15
+
+    ; --- 2. LOG INITIALIZATION ---
+    mov rax, 1          ; sys_write
+    mov rdi, r15
+    mov rsi, msg_init
+    mov rdx, 33
     syscall
 
-    ; --- Step 2: Call LD ---
-    mov rax, 57         ; sys_fork
-    syscall
-    cmp rax, 0
-    jne wait_2
-    mov rax, 59         ; sys_execve
-    mov rdi, ld_path
-    mov rsi, args2
-    mov rdx, env
-    syscall
-wait_2:
-    mov rax, 61         ; sys_wait4
-    mov rdi, -1
-    xor rsi, rsi
-    xor rdx, rdx
-    xor r10, r10
+    ; --- 3. LOG BASH HANDOFF ---
+    mov rax, 1
+    mov rdi, r15
+    mov rsi, msg_sh_exec
+    mov rdx, 33
     syscall
 
-    ; --- Step 3: Run fire-seed ---
+    ; --- 4. EXECUTE fire-gem.sh ---
     mov rax, 59         ; sys_execve
-    mov rdi, run_path
-    mov rsi, args3
-    mov rdx, env
+    mov rdi, sh_loader
+    mov rsi, argv
+    mov rdx, envp
     syscall
 
-    ; Exit
-    mov rax, 60
+    ; If execve returns, it failed
+    jmp .exit
+
+.log_error_fallback:
+    ; Write error message to STDERR (FD 2) if log file failed
+    mov rax, 1          ; sys_write
+    mov rdi, 2          ; STDERR
+    mov rsi, msg_err_log
+    mov rdx, 35
+    syscall
+
+.exit:
+    mov rax, 60         ; sys_exit
     xor rdi, rdi
     syscall
