@@ -28,7 +28,15 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           
+          # FIX: Add the log file, not the txt file
           git add fire-gem/fire-gem.log
-          # Only commit if there are changes to avoid workflow errors
-          git diff --quiet && git diff --staged --quiet || git commit -m "AVIS: Persisting fire-gem object"
-          git push
+          
+          # Check if there are changes to avoid exit code 1
+          if ! git diff --staged --quiet; then
+            git commit -m "AVIS: YML + SH Log Sync"
+            # Pull to stay in sync with the server before pushing
+            git pull --rebase origin main
+            git push origin main
+          else
+            echo "No changes detected in fire-gem.log"
+          fi
