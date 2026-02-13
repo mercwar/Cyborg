@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: Force Write AVIS Log
         run: |
-          mkdir -p fire-gem
+          #mkdir -p fire-gem
           
           # Using double quotes is CRITICAL to preserve multi-line variables
           # This writes the AVIS_BLOCK exactly as formatted above
