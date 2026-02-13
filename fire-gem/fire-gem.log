@@ -116,3 +116,23 @@ hello from the macro.ini
 [AVIS-SH] Executing Stage: ./fire-gem/fire-end.exe
 [AVIS-END] Chain Sync Complete. HAHA!
 [AVIS-SH] Sequence Terminated. HAHA!
+[AVIS-YML] Identity: fire-gem-yml
+[AVIS-YML] Status: Path Verified
+[AVIS-SH] Identity: fire-gem-sequential-loader
+[AVIS-SH] Building Artifact: avis-fvs
+[AVIS-SH] Building Artifact: fire-seed
+[AVIS-SH] Building Artifact: fire-spec
+[AVIS-SH] Building Artifact: fire-macro
+[AVIS-SH] Building Artifact: fire-end
+[AVIS-SH] Loading Binaries via INI Sequence...
+[AVIS-SH] Executing Stage: ./fire-gem/avis-fvs.exe
+[AVIS-FVS] Identity Verified: Registers Cleared. HAHA!
+[AVIS-SH] Executing Stage: ./fire-gem/fire-seed.exe
+[AVIS-SEED] Activation Seed Loaded.
+[AVIS-SH] Executing Stage: ./fire-gem/fire-spec.exe
+[AVIS-SPEC] CBORD Vector Bound Successfully.
+[AVIS-SH] Executing Stage: ./fire-gem/fire-macro.exe
+[AVIS-MACRO] Little Bot calling fire-site.sh...
+[AVIS-SH] Executing Stage: ./fire-gem/fire-end.exe
+[AVIS-END] Chain Sync Complete. HAHA!
+[AVIS-SH] Sequence Terminated. HAHA!
