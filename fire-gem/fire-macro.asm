@@ -2,21 +2,21 @@
 ;  AVIS MACRO STUB
 ;  FILE: fire-macro.asm
 ; =============================================================================
+; fire-macro.asm
 section .data
-    hello_msg db "hello from the macro.ini", 0xa
-    hello_len equ $ - hello_msg
+    msg db "hello from the macro.ini", 0xa
+    len equ $ - msg
 
 section .text
     global _start
 _start:
-    ; Hardware-level broadcast of the macro intent
+    ; Hardware-level greeting
     mov rax, 1          ; sys_write
     mov rdi, 1          ; stdout
-    mov rsi, hello_msg
-    mov rdx, hello_len
+    mov rsi, msg
+    mov rdx, len
     syscall
 
-    ; Signal completion to the macro engine
     mov rax, 60
     xor rdi, rdi
     syscall
