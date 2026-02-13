@@ -1,1 +1,6 @@
+fire-gem-config:
+  avis:
+    message: "hello"
+    status: "active"
+    identity: "fire-gem-txt"
 
