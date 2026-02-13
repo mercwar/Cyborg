@@ -1,0 +1,14 @@
+# fire-gem.yml
+fire-gem-config:
+  avis:
+    loader: "fire-gem/fire-gem.sh"
+    path: "./fire-gem/"
+    executable: "fire-gem.exe"
+    message_type: "hello_world"
+  runtime:
+    shell: "/bin/bash"
+    action: "exec"
+
+# Logic for execution:
+# 1. Parse 'loader' from 'avis'
+# 2. Execute via shell action
