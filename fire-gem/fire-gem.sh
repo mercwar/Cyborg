@@ -1,38 +1,38 @@
 #!/bin/bash
 # fire-gem/fire-gem.sh
+# Sequential Binary Loader - AVIS_CORE Governance
 set -e
 
 INI="fire-gem/fire-gem.ini"
 LOG="fire-gem/fire-gem.log"
 
-echo "[AVIS-SH] ENGAGED: Sequential Loader Active" >> "$LOG"
+echo "[AVIS-SH] Identity: fire-gem-sequential-loader" >> "$LOG"
 
-# --- PHASE 1: THE COMPILE SEQUENCE ---
-# Extract filenames from the INI and build the artifacts
-COMPILE_SEQ=$(grep -E "^fire_[a-zA-Z0-9_]+=" "$INI" | cut -d'=' -f2)
+# --- PHASE 1: DYNAMIC COMPILE ---
+# Extracts every active .asm file from the AVIS_CMD blocks
+MAP=$(grep -E "^  FIRE_|^  fire_" "$INI" | grep -v "#" | cut -d'=' -f2 | cut -d':' -f2)
 
-for ASM_FILE in $COMPILE_SEQ; do
-    ASM_FILE=$(echo "$ASM_FILE" | tr -d '\r ')
-    TARGET=$(basename "$ASM_FILE" .asm)
+for ASM in $MAP; do
+    ASM=$(echo "$ASM" | tr -d '\r ')
+    TARGET=$(basename "$ASM" .asm)
     
-    echo "[AVIS-SH] Compiling Stage: $TARGET" >> "$LOG"
-    nasm -f elf64 "fire-gem/$ASM_FILE" -o "fire-gem/$TARGET.o"
+    echo "[AVIS-SH] Building Artifact: $TARGET" >> "$LOG"
+    nasm -f elf64 "fire-gem/$ASM" -o "fire-gem/$TARGET.o"
     ld "fire-gem/$TARGET.o" -o "fire-gem/$TARGET.exe"
 done
 
-# --- PHASE 2: THE LOAD SEQUENCE ---
-# Now we load and run the .exe files EXACTLY as defined in the INI
-echo "[AVIS-SH] Loading Binaries from INI Sequence..." >> "$LOG"
+# --- PHASE 2: SEQUENTIAL LOAD ---
+# Executes the artifacts in the exact order of the Registry
+echo "[AVIS-SH] Loading Binaries via INI Sequence..." >> "$LOG"
 
-for ASM_FILE in $COMPILE_SEQ; do
-    TARGET=$(basename "$ASM_FILE" .asm)
+for ASM in $MAP; do
+    TARGET=$(basename "$ASM" .asm)
     EXE="./fire-gem/$TARGET.exe"
     
     if [ -f "$EXE" ]; then
-        echo "[AVIS-SH] Executing: $EXE" >> "$LOG"
-        # Run the binary and pipe output to the log
+        echo "[AVIS-SH] Executing Stage: $EXE" >> "$LOG"
         "$EXE" >> "$LOG" 2>&1
     fi
 done
 
-echo "[AVIS-SH] Sequence Complete. Server Sync Ready." >> "$LOG"
+echo "[AVIS-SH] Sequence Terminated. HAHA!" >> "$LOG"
