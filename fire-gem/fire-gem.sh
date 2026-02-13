@@ -1,14 +1,14 @@
 #!/bin/bash
-set -e
+# fire-gem/fire-gem.sh
 
-# Compile the core and the terminator
-nasm -f elf64 fire-gem/fire-gem.asm -o fire-gem/fire-gem.o
-nasm -f elf64 fire-gem/fire-end.asm -o fire-gem/fire-end.o
+LOG="fire-gem/fire-gem.log"
 
-# Link them
-ld fire-gem/fire-gem.o -o fire-gem/fire-gem.exe
-ld fire-gem/fire-end.o -o fire-gem/fire-end.exe
+echo "[AVIS-SH] Identity: fire-gem-sh" >> "$LOG"
+echo "[AVIS-SH] Status: Compiling ASM..." >> "$LOG"
 
-# Execute Chain
-./fire-gem/fire-gem.exe
-./fire-gem/fire-end.exe
+# Assemble and Link
+#nasm -f elf64 fire-gem/fire-gem.asm -o fire-gem/fire-gem.o
+#ld fire-gem/fire-gem.o -o fire-gem/fire-gem.exe
+
+# COMMENT OUT THIS LINE to stop at SH level
+#./fire-gem/fire-gem.exe
