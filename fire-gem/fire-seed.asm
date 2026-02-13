@@ -1,76 +1,84 @@
-; Cyborg/fire-gem/fire-seed.asm
-; Author: mercwar
 section .data
-    ; Avis & KB Config
-    bin_name    db "fire-gem.bin", 0
+    ; Specific log path
+    log_path    db "fire-gem/fire-gem.log", 0
     
-    ; Directory Tree (mkdir -p logic)
+    ; Environment Tree Paths
     dir1        db "dir-1", 0
-    dir2        db "dir-2", 0
-    dir2_sub    db "dir-2/sub-dir", 0
-
-    ; <copy file> Targets
     file_a      db "dir-1/file-a", 0
-    file_b      db "dir-1/file-b", 0
-    file_c      db "dir-2/sub-dir/file-c", 0
-    file_d      db "root-file-d", 0
-
-    ; Base64 Packet (Test Payload)
-    ; "hello" encoded as a placeholder for fire-gem.bin data
-    packet      db "aGVsbG8K", 0 
-    packet_len  equ $ - packet
+    
+    ; Log entries
+    log_init    db "[STATUS] Engine engaged. Target: fire-gem.bin", 0xa
+    log_mkdir   db "[ACTION] mkdir dir-1 initiated", 0xa
+    log_deploy  db "[ACTION] <copy file> file-a success", 0xa
+    log_done    db "[FINISH] Environment tree deployed.", 0xa
 
 section .text
     global _start
 
 _start:
-    ; --- 1. BUILD DIRECTORIES ---
-    ; mkdir("dir-1")
+    ; --- 1. OPEN THE LOG ---
+    ; sys_open("fire-gem/fire-gem.log", O_CREAT | O_WRONLY | O_APPEND, 0666)
+    mov rax, 2
+    mov rdi, log_path
+    mov rsi, 1089       ; O_CREAT | O_WRONLY | O_APPEND
+    mov rdx, 0666o
+    syscall
+    mov r15, rax        ; Store Log FD in r15 for the duration
+
+    ; Write Init to Log
+    mov rax, 1
+    mov rdi, r15
+    mov rsi, log_init
+    mov rdx, 46
+    syscall
+
+    ; --- 2. EXECUTE KB TREE ---
+    ; mkdir dir-1
     mov rax, 83         ; sys_mkdir
     mov rdi, dir1
-    mov rsi, 0755o      ; permissions
+    mov rsi, 0755o
+    syscall
+    
+    ; Log mkdir action
+    mov rax, 1
+    mov rdi, r15
+    mov rsi, log_mkdir
+    mov rdx, 31
     syscall
 
-    ; mkdir("dir-2")
-    mov rax, 83
-    mov rdi, dir2
-    syscall
-
-    ; mkdir("dir-2/sub-dir")
-    mov rax, 83
-    mov rdi, dir2_sub
-    syscall
-
-    ; --- 2. DEPLOY FILES (<copy file> logic) ---
-    ; Deploying file-a to dir-1
+    ; --- 3. <COPY FILE> file-a ---
+    ; Create file-a
+    mov rax, 2          ; sys_open
     mov rdi, file_a
-    call create_and_write
+    mov rsi, 65         ; O_CREAT | O_WRONLY
+    mov rdx, 0755o
+    syscall
+    mov rbx, rax        ; rbx = file_a FD
 
-    ; Deploying file-c to dir-2/sub-dir
-    mov rdi, file_c
-    call create_and_write
+    ; Log deployment
+    mov rax, 1
+    mov rdi, r15
+    mov rsi, log_deploy
+    mov rdx, 38
+    syscall
 
-    ; --- 3. EXIT ---
-    mov rax, 60         ; sys_exit
+    ; Close file_a
+    mov rax, 3
+    mov rdi, rbx
+    syscall
+
+    ; --- 4. FINAL LOG & EXIT ---
+    mov rax, 1
+    mov rdi, r15
+    mov rsi, log_done
+    mov rdx, 36
+    syscall
+
+    ; Close log
+    mov rax, 3
+    mov rdi, r15
+    syscall
+
+    mov rax, 60
     xor rdi, rdi
     syscall
-
-create_and_write:
-    ; Open/Create File
-    mov rax, 2          ; sys_open
-    ; rdi is already set to filename
-    mov rsi, 65         ; O_CREAT | O_WRONLY
-    mov rdx, 0755o      ; chmod +x
-    syscall
-    
-    ; Write Packet
-    mov rdi, rax        ; fd
-    mov rax, 1          ; sys_write
-    mov rsi, packet     ; source_data
-    mov rdx, packet_len
-    syscall
-    
-    ; Close
-    mov rax, 3          ; sys_close
-    syscall
-    ret
