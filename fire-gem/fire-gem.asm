@@ -1,26 +1,25 @@
 ; =============================================================
-;  AVIS MASTER ENGINE (Revised for Log Object)
+;  AVIS MASTER ENGINE [REVISED]
 ;  FILE: fire-gem.asm
 ; =============================================================
 
 section .data
-    msg_boot db "[AVIS-CORE] Ignition Sequence Started. HAHA!", 0xa
-    len_boot equ $ - msg_boot
+    msg_ignite db "[AVIS-CORE] Ignition: Log Object Active. HAHA!", 0xa
+    len_ignite equ $ - msg_ignite
 
 section .text
     global _start
-    extern AVIS_LOG_STRIKE  ; Import the new Log Object
+    extern FIRE_LOG_STRIKE  ; The modular entry point
 
 _start:
-    ; --- 1. CALL THE LOG OBJECT ---
-    lea rdi, [msg_boot]     ; Load string address
-    mov rsi, len_boot       ; Load string length
-    call AVIS_LOG_STRIKE    ; Strike the log via the object
+    ; --- CALL MODULAR LOG OBJECT ---
+    lea rdi, [msg_ignite]
+    mov rsi, len_ignite
+    call FIRE_LOG_STRIKE
 
-    ; --- 2. CONTINUE TO SEED/SPEC ---
-    ; (Rest of the macro-logic)
-
+    ; --- PROCEED TO CBORD CHAIN ---
+    ; [SEED -> SPEC -> MACRO]
+    
     mov rax, 60
     xor rdi, rdi
     syscall
-
