@@ -1,45 +1,33 @@
 #!/bin/bash
-# fire-gem/fire-gem.sh
-# Sequential Binary Loader - AVIS_CORE Governance [LOG-OBJECT PATCH]
+# =============================================================================
+#  AVIS_CORE: DUMB BOOTSTRAPPER (v3.0 - POST-MIGRATION)
+#  FILE: fire-gem.sh
+#  PURPOSE: Initialize the AVIS-CORE Smithy and Handoff to ASM-Orchestrator.
+#  GOVERNANCE: AVIS_SECTOR: ASM | STATUS: SHELL_DECOUPLED
+# =============================================================================
 set -e
 
-INI="fire-gem/fire-gem.ini"
-LOG="fire-gem/fire-gem.log"
+# --- PHASE 0: BOOTSTRAP MASTER OBJECTS ---
+# [MIGRATION NOTE]: PHASES 1 & 2 (Dynamic Compile/Load) have been migrated 
+# to fire-compile.asm and fire-gem.asm respectively. 
+# The Shell no longer greps the INI or manages the execution loop.
 
-echo "[AVIS-SH] Identity: fire-gem-sequential-loader" >> "$LOG"
-
-# --- PHASE 0: BOOTSTRAP LOG OBJECT ---
-# This must exist for any other artifact to link against it
-echo "[AVIS-SH] Building Master Log Object..." >> "$LOG"
+# Build the Master Log Object (Mandatory for all downstream links)
 nasm -f elf64 fire-gem/fire-log.asm -o fire-gem/fire-log.o
 
-# --- PHASE 1: DYNAMIC COMPILE & LINK ---
-MAP=$(grep -E "^  FIRE_|^  fire_" "$INI" | grep -v "#" | cut -d'=' -f2 | cut -d':' -f2)
+# Build the Master Engine (The new Orchestrator of the INI sequence)
+nasm -f elf64 fire-gem/fire-gem.asm -o fire-gem/fire-gem.o
 
-for ASM in $MAP; do
-    ASM=$(echo "$ASM" | tr -d '\r ')
-    TARGET=$(basename "$ASM" .asm)
-    
-    echo "[AVIS-SH] Building Artifact: $TARGET" >> "$LOG"
-    nasm -f elf64 "fire-gem/$ASM" -o "fire-gem/$TARGET.o"
-    
-    # LINKER STRIKE: Every EXE now includes the Log Object code
-    ld "fire-gem/$TARGET.o" fire-gem/fire-log.o -o "fire-gem/$TARGET.exe"
-done
+# --- PHASE 1: LINK MASTER ENGINE ---
+# [AVIS-LAW]: Every binary in the chain must link against fire-log.o
+# to ensure the [SYNC] High-Precision Seal remains deterministic.
+ld fire-gem/fire-gem.o fire-gem/fire-log.o -o fire-gem.exe
 
-# --- PHASE 2: SEQUENTIAL LOAD ---
-echo "[AVIS-SH] Loading Binaries via INI Sequence..." >> "$LOG"
+# --- PHASE 2: TOTAL HANDOFF ---
+# [AVIS-CMD]: Handing control to the Hardware Smithy. 
+# fire-gem.exe will now parse fire-gem.ini and fire-compile.ini internally.
+./fire-gem.exe
 
-for ASM in $MAP; do
-    TARGET=$(basename "$ASM" .asm)
-    EXE="./fire-gem/$TARGET.exe"
-    
-    if [ -f "$EXE" ]; then
-        echo "[AVIS-SH] Executing Stage: $EXE" >> "$LOG"
-        # Since we use the Log Object, stdout capture is now a backup
-        "$EXE" >> "$LOG" 2>&1
-    fi
-done
-
-echo "[AVIS-SH] Sequence Terminated. HAHA!" >> "$LOG"
-
+# =============================================================================
+#  END OF SHELL AUTHORITY - [HAHA!]
+# =============================================================================
