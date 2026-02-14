@@ -1,16 +1,14 @@
 ; =============================================================================
-;  AVIS VAULT ARCHITECT
+;  AVIS VAULT ARCHITECT [FIXED NAME ENGINE]
 ;  FILE: fire-end.asm
-;  PURPOSE: Create /fire-log/ and migrate log via sys_mkdir & sys_rename
 ; =============================================================================
 
 section .data
     log_dir  db "fire-gem/fire-log", 0
     old_name db "fire-gem/fire-gem.log", 0
-    ; Final path: fire-gem/fire-log/fire-log-[HEX].avis
     prefix   db "fire-gem/fire-log/fire-log-", 0
     ext      db ".avis", 0
-    msg_sync db "[SYNC] Creating Vault and Migrating Log. HAHA!", 0xa
+    msg_sync db "[SYNC] Vault Sealed & Named. HAHA!", 0xa
 
 section .bss
     new_name resb 128
@@ -19,17 +17,16 @@ section .text
     global _start
 
 _start:
-    ; --- 1. CREATE THE VAULT DIRECTORY ---
-    ; sys_mkdir(log_dir, 0755o)
+    ; --- 1. CREATE VAULT ---
     mov rax, 83         ; sys_mkdir
     mov rdi, log_dir
-    mov rsi, 0755o      ; Standard permissions
-    syscall             ; If it exists, it returns -17 (EEXIST), which we ignore
+    mov rsi, 0755o
+    syscall             ; EEXIST is ignored
 
     ; --- 2. FINAL LOG ENTRY ---
     mov rax, 2          ; sys_open
     mov rdi, old_name
-    mov rsi, 1089       ; O_CREAT|O_WRONLY|O_APPEND
+    mov rsi, 1089       ; O_CREAT|WRONLY|APPEND
     mov rdx, 0644o
     syscall
     mov r15, rax
@@ -37,43 +34,58 @@ _start:
     mov rax, 1          ; sys_write
     mov rdi, r15
     mov rsi, msg_sync
-    mov rdx, 45
+    mov rdx, 36
     syscall
 
     mov rax, 3          ; sys_close
     mov rdi, r15
     syscall
 
-    ; --- 3. GENERATE DYNAMIC PATH ---
+    ; --- 3. GET TIME & CONSTRUCT NAME ---
     mov rax, 201        ; sys_time
     xor rdi, rdi
-    syscall             ; RAX = Timestamp
+    syscall             ; RAX = Unix Epoch
 
     lea rdi, [new_name]
+    
+    ; Copy Prefix
     lea rsi, [prefix]
 .copy_pre:
     lodsb
     test al, al
-    jz .add_hex
+    jz .do_hex
     stosb
     jmp .copy_pre
 
-.add_hex:
-    ; [Hex conversion logic for RAX timestamp into RDI]
-    ; ... (as implemented in previous dynamic version) ...
+.do_hex:
+    ; Convert RAX to Hex ASCII
+    mov rcx, 8          ; 8 bytes
+.hex_loop:
+    rol rax, 4
+    mov rbx, rax
+    and rbx, 0x0F
+    cmp bl, 10
+    jl .is_digit
+    add bl, 7           ; Adjust for 'A'-'F'
+.is_digit:
+    add bl, '0'
+    mov [rdi], bl
+    inc rdi
+    loop .hex_loop
 
+    ; Copy Extension
     lea rsi, [ext]
 .copy_ext:
     lodsb
     test al, al
-    jz .do_rename
+    jz .apply_rename
     stosb
     jmp .copy_ext
 
-.do_rename:
-    mov byte [rdi], 0
+.apply_rename:
+    mov byte [rdi], 0   ; NULL
 
-    ; --- 4. HARDWARE MIGRATION ---
+    ; --- 4. HARDWARE RENAME ---
     mov rax, 82         ; sys_rename
     mov rdi, old_name
     lea rsi, [new_name]
