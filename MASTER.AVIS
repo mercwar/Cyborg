@@ -1,0 +1,1157 @@
+// FILE: MASTER_CONVERT.c
+// AIFVS-REG: INCLUDE | MASTER_CONVERT.c
+// AIFVS-INFO: Implementation and AVIS registration for conversion helpers
+// AIFVS-DEPS: INCLUDE/MASTER_CONVERT.h; INCLUDE/AI_GF.h
+
+#include "INCLUDE/MASTER_CONVERT.h"
+#include "INCLUDE/AI_GF.h"
+#include <string.h>
+#include <stdlib.h>
+#include <wchar.h>
+/* NOTE:
+   Implementations below are placeholders.
+   Replace bodies with your legacy logic as needed.
+*/
+
+/* AIFVS-REG: INCLUDE | convWCT
+   AIFVS-INFO: Convert multibyte string to wide, then pbuff
+   AIFVS-DEPS: INCLUDE/MASTER_CONVERT.h
+*/
+wchar_t *convWCT(HWND hwnd, char *STR, int LSTR)
+{
+    int len = (LSTR >= 0) ? LSTR : (int)strlen(STR);
+    int wlen = MultiByteToWideChar(CP_ACP, 0, STR, len, NULL, 0);
+    wchar_t *buf = (wchar_t *)malloc((wlen + 1) * sizeof(wchar_t));
+    if (!buf) return NULL;
+    MultiByteToWideChar(CP_ACP, 0, STR, len, buf, wlen);
+    buf[wlen] = L'\0';
+    return buf;
+}
+
+/* AIFVS-REG: INCLUDE | pbuff
+   AIFVS-INFO: Simple wide buffer forwarder (placeholder)
+   AIFVS-DEPS: INCLUDE/MASTER_CONVERT.h
+*/
+wchar_t *pbuff(HWND hwnd, char *STR)
+{
+    return convWCT(hwnd, STR, -1);
+}
+
+/* New duplicated converters (stubs) */
+
+char *convACT(HWND hwnd, wchar_t *WSTR, int LSTR)
+{
+    int len = (LSTR >= 0) ? LSTR : (int)wcslen(WSTR);
+    int alen = WideCharToMultiByte(CP_ACP, 0, WSTR, len, NULL, 0, NULL, NULL);
+    char *buf = (char *)malloc(alen + 1);
+    if (!buf) return NULL;
+    WideCharToMultiByte(CP_ACP, 0, WSTR, len, buf, alen, NULL, NULL);
+    buf[alen] = '\0';
+    return buf;
+}
+
+char *convATW(HWND hwnd, char *STR, int LSTR)
+{
+    /* Name suggests A→W but return type is char*; keep semantics minimal */
+    return _strdup(STR);
+}
+
+wchar_t *convWTA(HWND hwnd, wchar_t *WSTR, int LSTR)
+{
+    /* Name suggests W→A but return type is wchar_t*; pass-through */
+    int len = (LSTR >= 0) ? LSTR : (int)wcslen(WSTR);
+    wchar_t *buf = (wchar_t *)malloc((len + 1) * sizeof(wchar_t));
+    if (!buf) return NULL;
+    wcsncpy(buf, WSTR, len);
+    buf[len] = L'\0';
+    return buf;
+}
+
+wchar_t *convWTW(HWND hwnd, wchar_t *WSTR, int LSTR)
+{
+    return convWTA(hwnd, WSTR, LSTR);
+}
+
+/* Pointer-based converters */
+
+char *convCCP(char c)
+{
+    char *buf = (char *)malloc(2);
+    if (!buf) return NULL;
+    buf[0] = c;
+    buf[1] = '\0';
+    return buf;
+}
+
+wchar_t *convWCP(wchar_t wc)
+{
+    wchar_t *buf = (wchar_t *)malloc(2 * sizeof(wchar_t));
+    if (!buf) return NULL;
+    buf[0] = wc;
+    buf[1] = L'\0';
+    return buf;
+}
+
+char *convACP(const char *STR)
+{
+    return _strdup(STR);
+}
+
+wchar_t *convWCPTR(const wchar_t *WSTR)
+{
+    size_t len = wcslen(WSTR);
+    wchar_t *buf = (wchar_t *)malloc((len + 1) * sizeof(wchar_t));
+    if (!buf) return NULL;
+    wcscpy(buf, WSTR);
+    return buf;
+}
+
+/* String-to-string converters */
+
+wchar_t *convSTRtoW(HWND hwnd, const char *STR)
+{
+    return convWCT(hwnd, (char *)STR, -1);
+}
+
+char *convSTRtoA(HWND hwnd, const wchar_t *WSTR)
+{
+    return convACT(hwnd, (wchar_t *)WSTR, -1);
+}
+
+wchar_t *convAtoSTR(HWND hwnd, const char *STR)
+{
+    return convWCT(hwnd, (char *)STR, -1);
+}
+
+char *convWtoSTR(HWND hwnd, const wchar_t *WSTR)
+{
+    return convACT(hwnd, (wchar_t *)WSTR, -1);
+}
+
+/* AIFVS-REG: INCLUDE | MASTER_CONVERT_RegisterWithAVIS
+   AIFVS-INFO: Register conversion helpers with AVIS/AI_GF
+   AIFVS-DEPS: INCLUDE/MASTER_CONVERT.h; INCLUDE/AI_GF.h
+*/
+void MASTER_CONVERT_RegisterWithAVIS(void)
+{
+    AVIS_RegisterLegacy("convWCT",        (void *)convWCT);
+    AVIS_RegisterLegacy("pbuff",          (void *)pbuff);
+    AVIS_RegisterLegacy("convACT",        (void *)convACT);
+    AVIS_RegisterLegacy("convATW",        (void *)convATW);
+    AVIS_RegisterLegacy("convWTA",        (void *)convWTA);
+    AVIS_RegisterLegacy("convWTW",        (void *)convWTW);
+    AVIS_RegisterLegacy("convCCP",        (void *)convCCP);
+    AVIS_RegisterLegacy("convWCP",        (void *)convWCP);
+    AVIS_RegisterLegacy("convACP",        (void *)convACP);
+    AVIS_RegisterLegacy("convWCPTR",      (void *)convWCPTR);
+    AVIS_RegisterLegacy("convSTRtoW",     (void *)convSTRtoW);
+    AVIS_RegisterLegacy("convSTRtoA",     (void *)convSTRtoA);
+    AVIS_RegisterLegacy("convAtoSTR",     (void *)convAtoSTR);
+    AVIS_RegisterLegacy("convWtoSTR",     (void *)convWtoSTR);
+}
+
+#include <stdio.h>
+#include <windows.h>
+#include <windowsx.h>
+#include <winuser.h>
+#include <commctrl.h>
+#include "include/main.h"
+#include "include/cwin.h"
+#include "include/master.h"
+ //  LPCWSTR cls_,
+
+//MDICLIENT
+//WS_CHILD | WS_CLIPCHILDREN | WS_VSCROLL | WS_HSCROLL
+//CLIENTCREATESTRUCT  CCS;
+
+
+HWND CWIN(const char *  CLASS_ , const char *  TITLE_,DWORD STYLES_,  int X,    int Y,    int W,    int H,HWND HWND_,  HMENU HMENU_,   HINSTANCE HINSTANCE_,    LPVOID LPARAM_){
+	HWND hwnd ;
+	hwnd= CreateWindow(WCTP_CCP(CLASS_), WCTP_CCP(TITLE_),STYLES_,X,Y, W, H, HWND_,HMENU_,HINSTANCE_, LPARAM_);
+   return hwnd;
+}
+
+
+
+HWND NEW_WIN(HWND HWND_, HINSTANCE HINSTANCE_,const char * CLASS_,const char * TITLE_,WNDPROC WNDPROC_, DWORD STYLE_,int W,int H,int X,int Y){
+static MDICREATESTRUCT MCSL;
+
+	MCSL= RWIN_WIN( HWND_,HINSTANCE_,CLASS_,TITLE_,WNDPROC_, STYLE_,W,H,X,Y);
+	return (HWND)SendMessageW(MDI_WIN, WM_MDICREATE, 0,(LPARAM)&MCSL);
+}
+
+MDICREATESTRUCT RWIN_WIN(HWND hMDIClient, HINSTANCE HINSTANCE_,const char * CLASS,const char * TITLE,WNDPROC WNDPROC_, DWORD STYLE_,int W,int H,int X,int Y){
+static MDICREATESTRUCT MCSL;
+MCSL.szClass = CWCTP_WCTP(WCTP_CCP(CLASS));
+MCSL.szTitle = CWCTP_WCTP(WCTP_CCP(TITLE));
+MCSL.hOwner  = HINSTANCE_;
+MCSL.x       = W;
+MCSL.y       = H;
+MCSL.cx      = X;
+MCSL.cy      = Y;
+MCSL.style   = STYLE_;
+MCSL.lParam  = 0;
+
+    return  MCSL;
+}   
+
+BOOL NEW_RWIN(HWND HWND_, HINSTANCE HINSTANCE_,const char * CLASS_,const char * TITLE_,WNDPROC WNDPROC_, DWORD STYLE_,int W,int H,int X,int Y){
+				
+	return RWIN( CLASS_, WNDPROC_,STYLE_,  HINSTANCE_);
+}
+BOOL RWIN(const char *  CLASS_ , WNDPROC WNDPROC_,DWORD STYLE_, HINSTANCE HINSTANCE_){
+    WNDCLASS WNDCLASS_;
+    WNDCLASS_.lpszClassName = WCTP_CCP(CLASS_);
+    WNDCLASS_.lpfnWndProc = WNDPROC_;
+    WNDCLASS_.style = STYLE_;
+    WNDCLASS_.hInstance = HINSTANCE_;
+    WNDCLASS_.hIcon = LoadIcon(HINSTANCE_, MAKEINTRESOURCE(IDR_ICO_MAIN));
+    WNDCLASS_.hCursor = LoadCursor(NULL, IDC_ARROW);
+    WNDCLASS_.hbrBackground = (HBRUSH)(COLOR_WINDOW+1);
+    WNDCLASS_.lpszMenuName = MAKEINTRESOURCE(8001);
+    WNDCLASS_.cbClsExtra = 0;
+    WNDCLASS_.cbWndExtra = 0;
+    return (BOOL)RegisterClass(&WNDCLASS_);
+}
+// main.c
+// main.c (top portion) — apply these edits
+
+//#define UNICODE
+#include <windows.h>
+#include <commctrl.h>
+#include <shellapi.h>   // CommandLineToArgvW
+#include <stdio.h>
+#include <wchar.h>
+
+
+#include "include/main.h"   // your project header
+#include "include/clipboard.h"      // <-- ensure this header declares Clip_* symbols
+#include "include/MDI.h"
+
+
+
+
+/* Console helper (portable): use freopen for portability */
+/* Console helper (portable) */
+static void EnsureConsole(void)
+{
+    if (!AttachConsole(ATTACH_PARENT_PROCESS))
+    {
+        AllocConsole();
+    }
+    SetConsoleOutputCP(CP_UTF8);
+
+    /* Use plain freopen for portability */
+    //freopen("CONOUT$", "w", stdout);
+    //freopen("CONOUT$", "w", stderr);
+
+    /* If you want wide I/O on stdout/stderr, you can also set mode:
+       _setmode(_fileno(stdout), _O_U16TEXT);  // requires <io.h> and <fcntl.h> on some toolchains
+       but plain UTF-8 text with wprintf(L"...") and SetConsoleOutputCP(CP_UTF8) is usually fine. */
+}
+/* ProcessCommandLine prototype (ensure visible before use) */
+static BOOL ProcessCommandLine(LPWSTR lpCmdLine);
+struct _MDI_ MDI_ = { 0 };
+
+/* wWinMain */
+int APIENTRY wWinMain(HINSTANCE HINSTANCE_, HINSTANCE hPrevInstance, WCHAR *pszCmdLine, int nCmdShow){
+	MDI_.HINSTANCE_=HINSTANCE_;
+    INITCOMMONCONTROLSEX ICC_;
+    MSG msg;
+
+    if (ProcessCommandLine(pszCmdLine))
+        return 0;
+
+    ZeroMemory(&ICC_, sizeof(ICC_));
+    ICC_.dwSize = sizeof(ICC_);
+    ICC_.dwICC  = ICC_WIN95_CLASSES;
+    InitCommonControlsEx(&ICC_);
+
+	int WIN_IDX=0;
+	MDI_._MDI_WIN[WIN_IDX].W=400;
+	MDI_._MDI_WIN[WIN_IDX].H=400;
+	MDI_._MDI_WIN[WIN_IDX].X=CW_USEDEFAULT;
+	MDI_._MDI_WIN[WIN_IDX].Y=CW_USEDEFAULT;
+	MDI_._MDI_WIN[WIN_IDX].HWND_MDI=0;
+	MDI_._MDI_WIN[WIN_IDX].HWND_FRM=0;
+	MDI_._MDI_WIN[WIN_IDX].LPARAM_=0;
+	MDI_._MDI_WIN[WIN_IDX].CLASS_FRM="CMDIFrameWnd";
+	MDI_._MDI_WIN[WIN_IDX].TITLE_FRM="CYBORG";
+	MDI_._MDI_WIN[WIN_IDX].WS_FRM=WS_OVERLAPPEDWINDOW | WS_VISIBLE;
+	MDI_._MDI_WIN[WIN_IDX].WIN_PROC=MDIFPROC1;
+  	NEW_RWIN( 0,  MDI_.HINSTANCE_, MDI_._MDI_WIN[WIN_IDX].CLASS_FRM, MDI_._MDI_WIN[WIN_IDX].TITLE_FRM, MDI_._MDI_WIN[WIN_IDX].WIN_PROC,  MDI_._MDI_WIN[WIN_IDX].WS_FRM, MDI_._MDI_WIN[WIN_IDX].W,MDI_._MDI_WIN[WIN_IDX].H,MDI_._MDI_WIN[WIN_IDX].X,MDI_._MDI_WIN[WIN_IDX].Y);
+
+	WIN_IDX++;	
+
+	MDI_._MDI_WIN[WIN_IDX].W=400;
+	MDI_._MDI_WIN[WIN_IDX].H=400;
+	MDI_._MDI_WIN[WIN_IDX].X=CW_USEDEFAULT;
+	MDI_._MDI_WIN[WIN_IDX].Y=CW_USEDEFAULT;
+	MDI_._MDI_WIN[WIN_IDX].HWND_MDI=0;
+	MDI_._MDI_WIN[WIN_IDX].HWND_FRM=0;
+	MDI_._MDI_WIN[WIN_IDX].LPARAM_=0;
+	MDI_._MDI_WIN[WIN_IDX].CLASS_FRM=MDI_._MDI_WIN[WIN_IDX-1].CLASS_FRM;
+	MDI_._MDI_WIN[WIN_IDX].TITLE_FRM="BROWSERX";
+	MDI_._MDI_WIN[WIN_IDX].WS_FRM=WS_OVERLAPPEDWINDOW | WS_VISIBLE;
+	MDI_._MDI_WIN[WIN_IDX].WIN_PROC=MDIFPROC1;
+	NEW_RWIN( 0,  MDI_.HINSTANCE_, MDI_._MDI_WIN[WIN_IDX].CLASS_FRM, MDI_._MDI_WIN[WIN_IDX].TITLE_FRM, MDI_._MDI_WIN[WIN_IDX].WIN_PROC,  MDI_._MDI_WIN[WIN_IDX].WS_FRM, MDI_._MDI_WIN[WIN_IDX].W,MDI_._MDI_WIN[WIN_IDX].H,MDI_._MDI_WIN[WIN_IDX].X,MDI_._MDI_WIN[WIN_IDX].Y);
+
+	
+	WIN_IDX++;
+ 	MDI_._MDI_WIN[WIN_IDX].W=400;
+	MDI_._MDI_WIN[WIN_IDX].H=400;
+	MDI_._MDI_WIN[WIN_IDX].X=CW_USEDEFAULT;
+	MDI_._MDI_WIN[WIN_IDX].Y=CW_USEDEFAULT;
+	MDI_._MDI_WIN[WIN_IDX].HWND_MDI=0;
+	MDI_._MDI_WIN[WIN_IDX].HWND_FRM=0;
+	MDI_._MDI_WIN[WIN_IDX].LPARAM_=0;
+	MDI_._MDI_WIN[WIN_IDX].CLASS_FRM=MDI_._MDI_WIN[WIN_IDX].CLASS_FRM;
+	MDI_._MDI_WIN[WIN_IDX].TITLE_FRM="CYBORG BROWSERX";
+	MDI_._MDI_WIN[WIN_IDX].WS_FRM=WS_OVERLAPPEDWINDOW | WS_VISIBLE;
+	MDI_._MDI_WIN[WIN_IDX].WIN_PROC=MDIFPROC1;
+ 
+	MDI_._MDI_WIN[WIN_IDX].HWND_FRM= CWIN(MDI_._MDI_WIN[WIN_IDX].CLASS_FRM , MDI_._MDI_WIN[WIN_IDX].TITLE_FRM,MDI_._MDI_WIN[WIN_IDX].WS_FRM,MDI_._MDI_WIN[WIN_IDX].W,MDI_._MDI_WIN[WIN_IDX].H,MDI_._MDI_WIN[WIN_IDX].X,MDI_._MDI_WIN[WIN_IDX].Y ,0 ,0 ,MDI_.HINSTANCE_ ,MDI_._MDI_WIN[WIN_IDX].LPARAM_ );
+	
+		WIN_IDX++;
+
+		HWND BX_WIN = NEW_WIN(
+		    MDI_.HWND_,            // FIXED: use MDICLIENT, not frame
+		    MDI_.HINSTANCE_,
+		    "CYBORG_BROWSERX",
+		    "BrowsrX",
+		    MDI_WIN_PROC_1,
+		    WS_CHILD | WS_VISIBLE | WS_CLIPCHILDREN | WS_VSCROLL | WS_HSCROLL,
+		    500,500,300,300
+		);
+
+		MDI_.HWND_ = BX_WIN;
+
+	//MDI_WIN =WIN("CMDIFrameWnd",MDI_._MDI_WIN[WIN_IDX].TITLE_,0, 0,WS_OVERLAPPEDWINDOW | WS_VISIBLE,CW_USEDEFAULT,CW_USEDEFAULT,300,300,MDI_.HINSTANCE_,MDIFPROC1, &ccs);
+//	MDI_.HWND_=MDI_WIN;
+
+	//HWND FRM_WIN =WIN("CYBORG_FORM","CYBORG BROWSERX",MDI_WIN,CS_OWNDC | CS_VREDRAW | CS_HREDRAW,WS_EX_MDICHILD,500,500,300,300,MDI_.HINSTANCE_,MDIFPROC1,NULL);
+//	MDI_.HWND_=FRM_WIN;
+//	HWND BX_WIN =NEW_WIN(MDI_.HWND_,MDI_.HINSTANCE_,"CYBORG_BROWSERX","BrowsrX",MDI_WIN_PROC_1 ,  WS_CHILD | WS_CLIPCHILDREN | WS_VSCROLL | WS_HSCROLL | WS_VISIBLE ,500,500,300,300);
+//	MDI_.HWND_=BX_WIN;
+	//WIN_IDX++;
+
+
+//HWND BX_WIN =NEW_WIN(MDI_._MDI_WIN[WIN_IDX].HWND_FRM,
+	//MDI_.HINSTANCE_,"CYBORG_BROWSERX","BrowsrX",MDI_WIN_PROC_1 ,  WS_CHILD | WS_CLIPCHILDREN | WS_VSCROLL | WS_HSCROLL | WS_VISIBLE ,500,500,300,300);
+	//MDI_.HWND_=BX_WIN;
+	
+		//	HWND NEW_WIN(HWND , HINSTANCE ,const char * ,const char * ,WNDPROC , DWORD ,int,int ,int ,int );
+
+//BOOL B_RET = RWIN(CLSS, WNDPROC_L, CS_OWNDC | CS_VREDRAW | CS_HREDRAW, HINSTANCE_);
+	//	if(B_RET){
+	//	HWND_R=CWIN(CLSS,NME,WS_EX_MDICHILD,X,Y,W,H,NULL,NULL,HINSTANCE_,NULL);
+	
+
+ 	//HWND hwnd = CreateWindowA("STATIC", "NotifyWnd",WS_OVERLAPPEDWINDOW, 0,0,200,200,NULL, NULL, ghInstance, NULL);
+    //HICON icon = LoadIcon(NULL, IDI_INFORMATION);
+    //Notify_Init(hwnd, 1, icon, "Cyborg BrowserX");
+    //Notify_Balloon(hwnd, 1, "Master Window", "Notification system online");
+    //Sleep(3000);
+    //Notify_Exit(hwnd, 1);
+
+
+    while (GetMessageW(&msg, NULL, 0, 0) > 0) { TranslateMessage(&msg); DispatchMessageW(&msg); }
+
+    return (int)msg.wParam;
+}
+
+/* Process command line. Returns TRUE if a command was handled and the app should exit. */
+static BOOL ProcessCommandLine(LPWSTR lpCmdLine)
+{
+    int argc = 0;
+    LPWSTR *argv = CommandLineToArgvW(GetCommandLineW(), &argc);
+    if (!argv || argc <= 1) { if (argv) LocalFree(argv); return FALSE; }
+
+    EnsureConsole();
+
+    for (int i = 1; i < argc; ++i)
+    {
+        if (_wcsicmp(argv[i], L"--clip-list") == 0)
+        {
+            wprintf(L"Clipboard history (%d entries):\n", Clip_HistoryCount);
+            for (int j = 0; j < Clip_HistoryCount; ++j)
+            {
+                const wchar_t *s = Clip_GetAt(j);
+                wprintf(L"%3d: %ls\n", j, s ? s : L"(null)");
+            }
+            LocalFree(argv);
+            return TRUE;
+        }
+
+        if (_wcsicmp(argv[i], L"--clip-save") == 0 && i + 1 < argc)
+        {
+            const wchar_t *path = argv[++i];
+            if (Clip_SaveToFile(NULL, path))
+                wprintf(L"Saved clipboard history to: %ls\n", path);
+            else
+                wprintf(L"Failed to save clipboard history to: %ls\n", path);
+            LocalFree(argv);
+            return TRUE;
+        }
+
+        if (_wcsicmp(argv[i], L"--clip-load") == 0 && i + 1 < argc)
+        {
+            const wchar_t *path = argv[++i];
+            if (Clip_LoadFromFile(NULL, path))
+                wprintf(L"Loaded clipboard history from: %ls\n", path);
+            else
+                wprintf(L"Failed to load clipboard history from: %ls\n", path);
+            LocalFree(argv);
+            return TRUE;
+        }
+
+        if (_wcsicmp(argv[i], L"--clip-clear") == 0)
+        {
+            Clip_ClearAll();
+            wprintf(L"Clipboard history cleared.\n");
+            LocalFree(argv);
+            return TRUE;
+        }
+
+        if (_wcsicmp(argv[i], L"--clip-add") == 0 && i + 1 < argc)
+        {
+            const wchar_t *text = argv[++i];
+            Clip_Add(text);
+            wprintf(L"Added entry to clipboard history: %ls\n", text);
+            LocalFree(argv);
+            return TRUE;
+        }
+
+        /* Unknown arg: print usage */
+        wprintf(L"Unknown argument: %ls\n", argv[i]);
+        wprintf(L"Usage:\n  --clip-list\n  --clip-save <file>\n  --clip-load <file>\n  --clip-clear\n  --clip-add \"text\"\n");
+        LocalFree(argv);
+        return TRUE;
+    }
+
+    LocalFree(argv);
+    return FALSE;
+}
+#define __STDC_WANT_LIB_EXT1__ 1
+#if !defined(_TRUNCATE)
+#define _TRUNCATE ((size_t)-1)
+#endif
+#include <wchar.h>
+#include <stdio.h>
+#include <locale.h> // For setlocale
+#include <stdlib.h>
+#include <string.h>
+#include <errno.h>
+//#include <stdlib.h>
+//#include <string.h>
+
+#include "include/master.h"
+
+#define INC_STR(STR_) char * STR;STR=CP_C(STR_)
+#define INC_LSTR(STR) long LSTR = sizeof(STR)
+#define INC_STR_CP(STR_) char * STR;STR=STR_
+//DEF WRAPPERS
+#define INC_STR_LEN INC_STR(STR_);INC_LSTR(STR) 
+#define INC_STR_LEN_CP INC_STR_CP(STR_) ;INC_LSTR(STR)
+#define INC_STR_ERR if(err){return (L"STRING ERROR");}
+//#include "fullcharbuffs.h"
+
+static wchar_t * gwcP;
+static char * gacP;
+#include <string.h>
+// char* ? wchar_t*
+
+
+char     ASTR[256];
+wchar_t  WSTR[256];
+
+// char ? wchar_t*
+wchar_t *WCTP_C(char c)
+{
+    WSTR[0] = (wchar_t)c;
+    WSTR[1] = L'\0';
+    return WSTR;
+}
+const wchar_t *CWCTP_WCTP(wchar_t *src)
+{
+    static wchar_t WBUF[256];
+
+    if (!src) {
+        WBUF[0] = L'\0';
+        return WBUF;
+    }
+
+    size_t i = 0;
+    while (src[i] && i < 255) {
+        WBUF[i] = src[i];
+        i++;
+    }
+    WBUF[i] = L'\0';
+
+    return WBUF;
+}
+wchar_t * P_WCT(char  STR_){ 
+	setlocale(LC_ALL, "en_US.UTF-8"); // Set a suitable locale
+	wchar_t * wcP;
+
+    INC_STR_LEN;
+	
+	wchar_t wcB[LSTR];
+
+	wcP = wcB;
+	size_t convertedChars;
+
+	int err = mbstowcs_s(&convertedChars, wcP, LSTR, STR, LSTR);
+	INC_STR_ERR;
+	int buffer_size;
+	buffer_size = LSTR ;
+	wchar_t my_buffer[buffer_size];
+	wcsncpy(my_buffer, wcP, buffer_size);
+	FREEWT(wcP);
+	wcP = NULL;
+	return (P_BUFF( STR));
+	
+}
+// char* ? wchar_t*
+wchar_t *P_WCPT(char *s)
+{
+    size_t i = 0;
+    while (s[i] && i < 255) {
+        WSTR[i] = (wchar_t)s[i];
+        i++;
+    }
+    WSTR[i] = L'\0';
+    return WSTR;
+}
+
+// char ? const char*
+const char *CCP_C(char c)
+{
+    ASTR[0] = c;
+    ASTR[1] = '\0';
+    return ASTR;
+}
+
+// wchar_t* ? char*
+char *WToA(const wchar_t *ws)
+{
+    size_t i = 0;
+    while (ws[i] && i < 255) {
+        ASTR[i] = (char)ws[i];
+        i++;
+    }
+    ASTR[i] = '\0';
+    return ASTR;
+}
+
+// char ? char*
+char *CP_C(char c)
+{
+    ASTR[0] = c;
+    ASTR[1] = '\0';
+    return ASTR;
+}
+
+// char ? const char*
+const char *CPC_C(char c)
+{
+    ASTR[0] = c;
+    ASTR[1] = '\0';
+    return ASTR;
+}
+
+// const char* ? char*
+char *CP_CCP(const char *s)
+{
+    if (!s) {
+        ASTR[0] = '\0';
+        return ASTR;
+    }
+
+    strncpy(ASTR, s, sizeof(ASTR) - 1);
+    ASTR[sizeof(ASTR) - 1] = '\0';
+    return ASTR;
+}
+
+// char ? const char*
+const char *CCP_CC(char c)
+{
+    ASTR[0] = c;
+    ASTR[1] = '\0';
+    return ASTR;
+}
+
+wchar_t * WCTP_CCP(const char * STR_){ 
+setlocale(LC_ALL, "en_US.UTF-8"); // Set a suitable locale
+	wchar_t * wcP;
+
+
+//#define INC_STR(STR_) 
+	char * STR;
+	STR=CP_CCP(STR_);
+//#define INC_LSTR(STR) 
+	long LSTR = sizeof(STR);
+//#define INC_STR_CP(STR_) 
+	
+	
+
+	//INC_STR_LEN_CP;
+
+
+	wchar_t wcB[LSTR];
+	wcP = wcB;
+	size_t convertedChars;
+
+	int err = mbstowcs_s(&convertedChars, wcP, LSTR, STR, LSTR);
+	INC_STR_ERR;
+	int buffer_size;
+	buffer_size = LSTR ;
+	wchar_t my_buffer[buffer_size];
+	wcsncpy(my_buffer, wcP, buffer_size);
+	FREEWT(wcP);
+	wcP = NULL;
+	return (P_BUFF(STR));
+	
+}
+
+HWND BTN (wchar_t * CLSS,wchar_t * NME,int x,int y,int h,int w,HWND m_hwnd){
+
+HWND hwndButton = CreateWindow(
+    CLSS,                  // Predefined class; Unicode assumed
+    NME,                      // Button text
+    WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_DEFPUSHBUTTON, // Styles
+    x,                         // x position
+    y,                         // y position
+    h,                        // Button width
+    w,                        // Button height
+    m_hwnd,                     // Parent window handle
+    (HMENU)1001,                // Button ID (cast to HMENU)
+    (HINSTANCE)GetWindowLongPtr(m_hwnd, GWLP_HINSTANCE), // Instance handle
+    NULL                        // No additional application data
+);
+	return(hwndButton);
+}
+ int countDigits(int n){
+        if (n == 0) return 1;
+        int count = 0;
+        if (n < 0) n = -n; 
+        while (n > 0) {
+            n /= 10;
+            count++;
+        }
+        return count;
+}
+
+char * NUM2STRB(HWND hwnd, long nint){
+	setlocale(LC_ALL, "en_US.UTF-8"); // Set a suitable locale
+	int dgt;dgt = countDigits(nint)+1;
+	char * nstrp;char nstr[dgt];
+	nstr[dgt ] = L'\0';nstrp = nstr;
+	nstrp = (char *)malloc((dgt ) * sizeof(char));
+	
+	sprintf(nstrp, "%d", nint);
+	char gacPB[dgt];gacPB[dgt ] = L'\0';gacP = gacPB;
+	gacP = (char *)malloc((dgt ) * sizeof(char));
+	gacP = nstrp;//convACT(hwnd, nstrp, dgt);
+
+	return gacP;
+}
+char * NUM2STRA(HWND hwnd, int nint){
+	setlocale(LC_ALL, "en_US.UTF-8"); // Set a suitable locale
+	int dgt;dgt = countDigits(nint)+1;
+	char * nstrp;char nstr[dgt];
+	nstr[dgt ] = L'\0';nstrp = nstr;
+	nstrp = (char *)malloc((dgt ) * sizeof(char));
+	
+	sprintf(nstrp, "%d", nint);
+	char gacPB[dgt];gacPB[dgt ] = L'\0';gacP = gacPB;
+	gacP = (char *)malloc((dgt ) * sizeof(char));
+	gacP = nstrp;//convACT(hwnd, nstrp, dgt);
+
+	return gacP;
+}
+
+wchar_t * NUM2STR(HWND hwnd, int nint){
+	setlocale(LC_ALL, "en_US.UTF-8"); // Set a suitable locale
+	int dgt;	dgt = countDigits(nint);
+	char * nstrp;	char nstr[dgt];
+	nstrp = nstr;	sprintf(nstrp, "%d", nint);
+	gwcP = convWCT(hwnd, nstrp, dgt);
+	return gwcP;
+}
+
+wchar_t * convWCT(HWND hwnd,char * STR,int LSTR){ 
+	setlocale(LC_ALL, "en_US.UTF-8"); // Set a suitable locale
+	wchar_t * wcP;
+	wchar_t wcB[LSTR];
+	wcP = wcB;
+	size_t convertedChars;
+
+	int err = mbstowcs_s(&convertedChars, wcP, LSTR, STR, LSTR);
+
+	if (err == 0) {
+	printf("Successfully converted. Converted %zu wide characters.\n", convertedChars);
+	wprintf(L"Wide string: %ls\n", wcP);
+	//MessageBoxW(hwnd, wcP, L"Converted wcP", 0x00000000L);
+	} else {
+	printf("Error code: %d\n", err);
+	}
+
+	int buffer_size;
+	buffer_size = LSTR ;
+	wchar_t my_buffer[buffer_size];
+	wcsncpy(my_buffer, wcP, buffer_size);
+	FREEWT(wcP);
+	wcP = NULL;
+	return (pbuff( hwnd,STR));
+}
+wchar_t * pbuff(HWND hwnd,char * STR) {
+
+	setlocale(LC_ALL, "en_US.UTF-8"); // Set a suitable locale
+	const char * multiByteString = STR;
+	wchar_t * wideStringBuffer = NULL;
+	size_t requiredSizeInWords = 0;
+	int sz_str;
+	sz_str = strlen(multiByteString) ;
+	errno_t err;
+
+	err = mbstowcs_s(&requiredSizeInWords, NULL, 0, multiByteString, sz_str);
+
+	if (err != 0) {
+	//perror("Failed to determine required buffer size");
+	return L"EXIT_FAILURE 1";
+	}
+
+	printf("Required buffer size (in wchar_t units): %zu\n", requiredSizeInWords);
+
+	wideStringBuffer = (wchar_t *)malloc(requiredSizeInWords + 1 * sizeof(wchar_t));
+
+	if (wideStringBuffer == NULL) {
+	//perror("Failed to allocate memory");
+	return L"EXIT_FAILURE 2";
+	}
+
+	size_t convertedCharsCount = 0;
+	err = mbstowcs_s(&convertedCharsCount, wideStringBuffer, requiredSizeInWords, multiByteString, sz_str);
+
+	if (err != 0) {
+	// perror("Failed to convert multibyte string to wide string");
+	return L"EXIT_FAILURE 3";
+	}
+	//printf("Converted wide string: %ls\n", wideStringBuffer);
+	//printf("Number of characters converted (including null terminator): %zu\n", convertedCharsCount);
+
+	size_t buffer_size;
+	buffer_size = sz_str + 1;
+	wchar_t gwcPb[buffer_size];
+	gwcP = gwcPb;
+	gwcP = (wchar_t *)malloc((requiredSizeInWords + 1) * sizeof(wchar_t));
+	wcsncpy(gwcP, wideStringBuffer, buffer_size);
+	gwcP[buffer_size] = L'\0';
+	//MessageBoxW(hwnd, gwcP, L"Converted gwcP", 0x00000000L);
+	free(wideStringBuffer);
+	wideStringBuffer = NULL; // Good practice to set pointer to NULL after freeing
+
+    return (gwcP);
+}
+void FREEWT(wchar_t * wcP){
+	wcP=NULL;free(wcP);wcP=NULL;
+}
+
+wchar_t * P_BUFF(char * STR) {
+
+	setlocale(LC_ALL, "en_US.UTF-8"); // Set a suitable locale
+	const char * multiByteString = STR;
+	wchar_t * wideStringBuffer = NULL;
+	size_t requiredSizeInWords = 0;
+	int sz_str;
+	sz_str = strlen(multiByteString) ;
+	errno_t err;
+
+	err = mbstowcs_s(&requiredSizeInWords, NULL, 0, multiByteString, sz_str);
+
+	if (err != 0) {
+	//perror("Failed to determine required buffer size");
+	return L"EXIT_FAILURE 1";
+	}
+
+	printf("Required buffer size (in wchar_t units): %zu\n", requiredSizeInWords);
+
+	wideStringBuffer = (wchar_t *)malloc(requiredSizeInWords + 1 * sizeof(wchar_t));
+
+	if (wideStringBuffer == NULL) {
+	//perror("Failed to allocate memory");
+	return L"EXIT_FAILURE 2";
+	}
+
+	size_t convertedCharsCount = 0;
+	err = mbstowcs_s(&convertedCharsCount, wideStringBuffer, requiredSizeInWords, multiByteString, sz_str);
+
+	if (err != 0) {
+	// perror("Failed to convert multibyte string to wide string");
+	return L"EXIT_FAILURE 3";
+	}
+	//printf("Converted wide string: %ls\n", wideStringBuffer);
+	//printf("Number of characters converted (including null terminator): %zu\n", convertedCharsCount);
+
+	size_t buffer_size;
+	buffer_size = sz_str + 1;
+	wchar_t gwcPb[buffer_size];
+	gwcP = gwcPb;
+	gwcP = (wchar_t *)malloc((requiredSizeInWords + 1) * sizeof(wchar_t));
+	wcsncpy(gwcP, wideStringBuffer, buffer_size);
+	gwcP[buffer_size] = L'\0';
+	//MessageBoxW(hwnd, gwcP, L"Converted gwcP", 0x00000000L);
+	free(wideStringBuffer);
+	wideStringBuffer = NULL; // Good practice to set pointer to NULL after freeing
+
+    return (gwcP);
+}
+
+#define WIN32_LEAN_AND_MEAN 
+#include <windows.h>
+#include <windowsx.h>
+#include <commctrl.h>
+#include <wchar.h>
+
+#include "include/MDI.h"
+#include "include/main.h"
+
+HWND hwndMDIFrame = NULL;
+HWND hwndMDIClient = NULL;
+//static HINSTANCE hInst;
+long IDMDIFC;
+
+LRESULT CALLBACK FrameWndProc(HWND, UINT, WPARAM, LPARAM);
+LRESULT CALLBACK ChildWndProc(HWND, UINT, WPARAM, LPARAM);
+
+
+
+HWND WIN(char * CLASS ,char* TITLE,HWND hwnd,DWORD CLASS_SYLE,DWORD WIN_STYLE,  int X,    int Y,    int W,  int H ,HINSTANCE hInstance ,WNDPROC L_WNDPROC,LPVOID H_WNDPROC){
+	HWND HWND_R;HWND_R=NULL;
+	if( RWIN(CLASS, L_WNDPROC, 0, hInstance)){
+		HWND_R=CWIN(CLASS,TITLE,WIN_STYLE,X,Y,W,H,hwnd,NULL,hInstance, H_WNDPROC);
+		ShowWindow(HWND_R, SW_SHOW); UpdateWindow(HWND_R);
+	}else{
+		MessageBox(hwnd,L"No Class",L"Class Error",0x00000000L);
+	}
+	return HWND_R;
+}
+#include "include/PROCWIN.h"
+#include "include/PROCSDSTRY.h"
+#include "include/PROCSCMD.h"
+#include "include/PROCSPAINT.h"
+#include "include/main.h"
+HWND hwndMDIClient;int Cw;
+LRESULT CALLBACK MDIFPROC1(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
+{
+    switch (msg)
+    {
+    case WM_CREATE:
+    {
+		Cw++;
+        CLIENTCREATESTRUCT ccs;
+        ZeroMemory(&ccs, sizeof(ccs));
+        ccs.hWindowMenu  = NULL;
+        ccs.idFirstChild = Cw;
+
+        MessageBox(hwnd,L"CreateWindowW" , L"MDICLIENT", 0);
+
+        hwndMDIClient = CreateWindowW(
+            L"MDICLIENT",
+            L"CreateWindowW",
+            WS_CHILD | WS_CLIPCHILDREN | WS_VSCROLL | WS_HSCROLL | WS_VISIBLE,
+            0, 0, 0, 0,
+            MDI_.HWND_,
+            (HMENU)0,
+            MDI_.HINSTANCE_,
+            &ccs
+        );
+
+        MessageBox(hwnd,L"CreateWindowW" , L"hwndMDIClient", 0);
+
+        return 0;
+    }
+
+    HANDLE_MSG(hwnd, WM_PAINT,   MDIFPROC1_OnPaint);
+    HANDLE_MSG(hwnd, WM_COMMAND, MDIFPROC1_OnCommand);
+    HANDLE_MSG(hwnd, WM_DESTROY, MDIFPROC1_OnDestroy);
+
+    default:
+        return DefWindowProc(hwnd, msg, wParam, lParam);
+    }
+}
+  LRESULT CALLBACK MDIPROC1(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam){
+    switch (msg){
+		HANDLE_MSG(hwnd, WM_PAINT, MDIPROC1_OnPaint);
+		HANDLE_MSG(hwnd, WM_COMMAND, MDIPROC1_OnCommand);
+		HANDLE_MSG(hwnd, WM_DESTROY, MDIPROC1_OnDestroy);
+		
+        default:
+            return DefWindowProc(hwnd, msg, wParam, lParam);
+    }
+}
+
+  LRESULT CALLBACK MDI_WIN_PROC_1(HWND hwnd, UINT msg,  WPARAM wParam, LPARAM lParam){
+	 switch (msg){
+
+	//case WM_CREATE:
+	//ShowWindow(hwnd, SW_HIDE);UpdateWindow(hwnd);
+	//ShowWindow(hwnd, SW_SHOW);UpdateWindow(hwnd);
+	//MessageBox(hwnd,L"LRESULT CALLBACK MDIFPROC1" , L"ShowWindow MDI", 0x00000000L);
+
+
+		HANDLE_MSG(hwnd, WM_PAINT, MDIFPROC1_OnPaint);
+		HANDLE_MSG(hwnd, WM_COMMAND, MDIFPROC1_OnCommand);
+		HANDLE_MSG(hwnd, WM_DESTROY, MDIFPROC1_OnDestroy);
+	default:
+	return DefWindowProc(hwnd, msg, wParam, lParam);
+    }
+}
+
+ LRESULT CALLBACK AboutDlgProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam){
+    switch (uMsg){
+        case WM_INITDIALOG:
+            /*
+             * Nothing special to initialize.
+             */
+            return TRUE;
+
+        case WM_COMMAND:
+            switch (wParam)
+            {
+                case IDOK:
+                case IDCANCEL:
+                    /*
+                     * OK or Cancel was clicked, close the dialog.
+                     */
+                    EndDialog(hDlg, TRUE);
+                    return TRUE;
+            }
+            break;
+    }
+
+    return FALSE;
+}
+#define WIN32_LEAN_AND_MEAN  /* speed up compilations */
+#include <stdio.h>
+#include <windows.h>
+#include <windowsx.h>
+#include "include/PROCSCMD.h"
+#include "include/main.h"
+#include "include/master.h"
+#include "include/PROCWIN.h"
+
+ void MDIPROC1_OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify){
+     switch (id)
+    {
+        case IDM_ABOUT:
+            DialogBox(MDI_.HINSTANCE_, MAKEINTRESOURCE(DLG_ABOUT), MDI_.HWND_, (DLGPROC)AboutDlgProc);
+    	
+	case 1001:
+
+		wchar_t * LgwcP;
+		char * LgacP;
+
+		 
+		LgacP =NUM2STRA(hwnd,1);MessageBoxA(hwnd,LgacP , "Global  A", 0x00000000L);
+		LgacP =NUM2STRA(hwnd,10);MessageBoxA(hwnd,LgacP , "Global  A", 0x00000000L);
+
+		LgwcP   =NUM2STR(hwnd,1);MessageBoxW(hwnd,LgwcP , L"Global  W", 0x00000000L);
+		LgwcP   =NUM2STR(hwnd,10);MessageBoxW(hwnd,LgwcP , L"Global  W", 0x00000000L);
+
+        break;
+    }
+
+}
+ void MDIFPROC1_OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify){
+    switch (id)
+    {
+        case IDM_ABOUT:
+            DialogBox(MDI_.HINSTANCE_, MAKEINTRESOURCE(DLG_ABOUT), MDI_.HWND_, (DLGPROC)AboutDlgProc);
+    	
+	case 1001:
+
+		wchar_t * LgwcP;
+		char * LgacP;
+
+		 
+		LgacP =NUM2STRA(hwnd,1);MessageBoxA(hwnd,LgacP , "Global  A", 0x00000000L);
+		LgacP =NUM2STRA(hwnd,10);MessageBoxA(hwnd,LgacP , "Global  A", 0x00000000L);
+
+		LgwcP   =NUM2STR(hwnd,1);MessageBoxW(hwnd,LgwcP , L"Global  W", 0x00000000L);
+		LgwcP   =NUM2STR(hwnd,10);MessageBoxW(hwnd,LgwcP , L"Global  W", 0x00000000L);
+
+        break;
+    }
+}
+#define WIN32_LEAN_AND_MEAN  /* speed up compilations */
+#include <stdio.h>
+#include <windows.h>
+#include <windowsx.h>
+#include "include/PROCSPAINT.h"
+#include "include/main.h"
+#include "include/master.h"
+#include "include/PROCWIN.h"
+ void MDIPROC1_OnPaint(HWND hwnd){
+    PAINTSTRUCT ps;
+    RECT rc;
+    BeginPaint(hwnd, &ps);
+    GetClientRect(hwnd, &rc);
+    DrawText(ps.hdc, L"MDI WINDOW", -1, &rc, DT_SINGLELINE|DT_CENTER|DT_VCENTER);
+    EndPaint(hwnd, &ps);
+}
+ void MDIFPROC1_OnPaint(HWND hwnd){
+//MessageBox(hwnd,L"LRESULT CALLBACK MDI" , L"switch MDI", 0x00000000L);
+    PAINTSTRUCT ps;
+    RECT rc;
+    BeginPaint(hwnd, &ps);
+    GetClientRect(hwnd, &rc);
+    DrawText(ps.hdc, L" MDI FRAME WINDOW", -1, &rc, DT_SINGLELINE);
+    EndPaint(hwnd, &ps);
+}
+
+#define __STDC_WANT_LIB_EXT1__ 1
+#if !defined(_TRUNCATE)
+#define _TRUNCATE ((size_t)-1)
+#endif
+#include <wchar.h>
+#include <stdio.h>
+#include <locale.h> // For setlocale
+#include <stdlib.h>
+#include <string.h>
+#include <errno.h>
+//#include <stdlib.h>
+//#include <string.h>
+
+#include "include/master.h"
+
+static wchar_t * gwcP;
+static char * gacP;
+
+
+ int countDigits(int n){
+        if (n == 0) return 1;
+        int count = 0;
+        if (n < 0) n = -n; 
+        while (n > 0) {
+            n /= 10;
+            count++;
+        }
+        return count;
+}
+
+char * NUM2STRB(HWND hwnd, long nint){
+	setlocale(LC_ALL, "en_US.UTF-8"); // Set a suitable locale
+	int dgt;dgt = countDigits(nint)+1;
+	char * nstrp;char nstr[dgt];
+	nstr[dgt ] = L'\0';nstrp = nstr;
+	nstrp = (char *)malloc((dgt ) * sizeof(char));
+	
+	sprintf(nstrp, "%d", nint);
+	char gacPB[dgt];gacPB[dgt ] = L'\0';gacP = gacPB;
+	gacP = (char *)malloc((dgt ) * sizeof(char));
+	gacP = nstrp;//convACT(hwnd, nstrp, dgt);
+
+	return gacP;
+}
+char * NUM2STRA(HWND hwnd, int nint){
+	setlocale(LC_ALL, "en_US.UTF-8"); // Set a suitable locale
+	int dgt;dgt = countDigits(nint)+1;
+	char * nstrp;char nstr[dgt];
+	nstr[dgt ] = L'\0';nstrp = nstr;
+	nstrp = (char *)malloc((dgt ) * sizeof(char));
+	
+	sprintf(nstrp, "%d", nint);
+	char gacPB[dgt];gacPB[dgt ] = L'\0';gacP = gacPB;
+	gacP = (char *)malloc((dgt ) * sizeof(char));
+	gacP = nstrp;//convACT(hwnd, nstrp, dgt);
+
+	return gacP;
+}
+
+wchar_t * NUM2STR(HWND hwnd, int nint){
+	setlocale(LC_ALL, "en_US.UTF-8"); // Set a suitable locale
+	int dgt;	dgt = countDigits(nint);
+	char * nstrp;	char nstr[dgt];
+	nstrp = nstr;	sprintf(nstrp, "%d", nint);
+	gwcP = convWCT(hwnd, nstrp, dgt);
+	return gwcP;
+}
+wchar_t * convWCT(HWND hwnd,char * STR,int LSTR){ 
+	setlocale(LC_ALL, "en_US.UTF-8"); // Set a suitable locale
+	wchar_t * wcP;
+	wchar_t wcB[LSTR];
+	wcP = wcB;
+	size_t convertedChars;
+
+	int err = mbstowcs_s(&convertedChars, wcP, LSTR, STR, LSTR);
+
+	if (err == 0) {
+	printf("Successfully converted. Converted %zu wide characters.\n", convertedChars);
+	wprintf(L"Wide string: %ls\n", wcP);
+	//MessageBoxW(hwnd, wcP, L"Converted wcP", 0x00000000L);
+	} else {
+	printf("Error code: %d\n", err);
+	}
+
+	int buffer_size;
+	buffer_size = LSTR ;
+	wchar_t my_buffer[buffer_size];
+	wcsncpy(my_buffer, wcP, buffer_size);
+	FREEWT(wcP);
+	wcP = NULL;
+	return (pbuff( hwnd,STR));
+}
+wchar_t * pbuff(HWND hwnd,char * STR) {
+
+	setlocale(LC_ALL, "en_US.UTF-8"); // Set a suitable locale
+	const char * multiByteString = STR;
+	wchar_t * wideStringBuffer = NULL;
+	size_t requiredSizeInWords = 0;
+	int sz_str;
+	sz_str = strlen(multiByteString) ;
+	errno_t err;
+
+	err = mbstowcs_s(&requiredSizeInWords, NULL, 0, multiByteString, sz_str);
+
+	if (err != 0) {
+	//perror("Failed to determine required buffer size");
+	return L"EXIT_FAILURE 1";
+	}
+
+	printf("Required buffer size (in wchar_t units): %zu\n", requiredSizeInWords);
+
+	wideStringBuffer = (wchar_t *)malloc(requiredSizeInWords + 1 * sizeof(wchar_t));
+
+	if (wideStringBuffer == NULL) {
+	//perror("Failed to allocate memory");
+	return L"EXIT_FAILURE 2";
+	}
+
+	size_t convertedCharsCount = 0;
+	err = mbstowcs_s(&convertedCharsCount, wideStringBuffer, requiredSizeInWords, multiByteString, sz_str);
+
+	if (err != 0) {
+	// perror("Failed to convert multibyte string to wide string");
+	return L"EXIT_FAILURE 3";
+	}
+	//printf("Converted wide string: %ls\n", wideStringBuffer);
+	//printf("Number of characters converted (including null terminator): %zu\n", convertedCharsCount);
+
+	size_t buffer_size;
+	buffer_size = sz_str + 1;
+	wchar_t gwcPb[buffer_size];
+	gwcP = gwcPb;
+	gwcP = (wchar_t *)malloc((requiredSizeInWords + 1) * sizeof(wchar_t));
+	wcsncpy(gwcP, wideStringBuffer, buffer_size);
+	gwcP[buffer_size] = L'\0';
+	//MessageBoxW(hwnd, gwcP, L"Converted gwcP", 0x00000000L);
+	free(wideStringBuffer);
+	wideStringBuffer = NULL; // Good practice to set pointer to NULL after freeing
+
+    return (gwcP);
+}
+void FREEWT(wchar_t * wcP){
+	wcP=NULL;free(wcP);wcP=NULL;
+}
