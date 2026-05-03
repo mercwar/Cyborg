@@ -39,6 +39,10 @@ jobs:
           
           if ! git diff --staged --quiet; then
             git commit -m "AVIS: sitemap.xml updated [recursive map] [skip ci]"
+            
+            # THE FIX: Pull latest changes and rebase your commit on top
+            git pull --rebase origin main
+            
             git push origin main
             echo "wm_macro_ack: XML dispatched to Audit Surface."
           else
