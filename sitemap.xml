@@ -463,6 +463,42 @@
     <loc>https://github.com/mercwar/Cyborg/blob/main/drive_report.csv</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/Fire-Lang/src/main.fire.avis</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/Fire-Lang/src/ignite.fire.avis</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/Fire-Lang/src/interrupt_handlers.fire.avis</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/Fire-Lang/src/thermal_burst.fire.avis</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/Fire-Lang/docs/CVBGOD_DN_SPEC.md</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/Fire-Lang/docs/MSDN_CYBORG_FIRE_REF.md</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/Fire-Lang/fire_core.avsproj</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/Fire-Lang/inc/thermal_vectors.h.avis</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/Fire-Lang/inc/cyborg_types.h.avis</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/Fire-Lang/inc/fire_core.avsproj</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/Fire-Lang/inc/ev1_core.h.avis</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/Fire-Lang/CVBGOD_REGISTRY.map</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/DARKCOM/DARKCOM_SHORTCUT.BAT</loc>
   </url>
   <url>
