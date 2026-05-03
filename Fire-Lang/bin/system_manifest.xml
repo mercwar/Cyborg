@@ -1,0 +1,9 @@
+<CyborgManifest Version="4.0">
+  <ProjectID>MERCWAR_FIRE_CORE</ProjectID>
+  <LogicPoles>
+    <Pole Address="0x0100" Role="SYSTEM_INCLUDES" />
+    <Pole Address="0x0300" Role="FIRE_EXECUTION_DAEMONS" />
+  </Pole>
+  <SealSignature>CVBGOD_DN_SIG_0x7F_LOCKED</SealSignature>
+  <Status>PULSE_SYNCHRONIZED</Status>
+</CyborgManifest>
