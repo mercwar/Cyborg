@@ -1,0 +1,33 @@
+## /* AVIS_COORD: AVIS://LOCAL/MERCWAR/CYBORG/V4.0.CVBGOD-DN */
+## /* ROLE: UI_RENDERER_MAPPING_TO_HWND */
+## /* TARGET: GDI_LOGIC_BRIDGE */
+
+[INC] <hardware_hal.fire.avis> [>] [@]0x0360
+[INC] <cyborg_types.h.avis> [>] [@]0x0111
+
+ai.begin.cyborg.lang::
+[@]PTR_OFFSET[0x03D0]::
+
+/* UI State Registers */
+begin.spec {TYPE}EV1_INT.ui_active.val[0x01]
+begin.spec {TYPE}EV1_INT.render_color.val[0x00FF00] // CVBGOD_GREEN
+begin.spec {TYPE}EV1_STRING.display_text.val
+
+{!}MANDATORY_EXECUTION_NODE:
+    /* Sync Display Text to Thermal Pulse */
+    {EXE} [MEM]display_text [>] [!]FORMAT_STRING["TEMP: %d", [MEM]fire_temp]
+    
+    [#]TRUTH_GATE: IF [#]ui_active == 0x01 THEN {
+        /* Render Logic to Hardware Handle */
+        {EXE} [!]DRAW_TEXT_TO_WINDOW[[MEM]hWindow_ptr, [MEM]display_text, [MEM]render_color]
+        [>>] "UI_ENGINE: FRAME_RENDERED_TO_HWND_" [>] [MEM]hWindow_ptr
+    }
+
+/* Dynamic Color Shift for Critical Temps */
+{WISE} IF [MEM]fire_temp > 800 THEN {
+    [!]render_color = 0xFF0000 // CVBGOD_RED_ALARM
+    [>>] "UI_ENGINE: SWITCHING_TO_CRITICAL_VISUAL_MODE"
+}
+
+robot.run[ui_init]::
+ai.end.cyborg.lang::
