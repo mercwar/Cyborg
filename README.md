@@ -6,6 +6,7 @@ DATE: 2026-01-14
 -->
 
 # 🧬 AVIS — AI Visual Instruction System 
+### 🔗 **[Click Here to View the Documentation](https://mercwar.github.io/Cyborg/ev-2/index.html)**
 # 🛡️ [CVBGOD's Robo-Knight CYBORG Ev.2](https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/)
 
 
@@ -14,6 +15,7 @@ DATE: 2026-01-14
        alt="AVIS Greeting Image"
        style="max-width:85%; border-radius:14px; box-shadow:0 6px 20px rgba(0,0,0,0.45);">
 </div>
+
 
 # 🛡️ [CVBGOD's Robo-Knight CYBORG Ev.1](https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/)
 
