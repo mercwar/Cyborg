@@ -1,0 +1,53 @@
+/* SECTION HEADERS — AVIS DEFINED */
+.nav h2 {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #6fbfff;
+    margin: 14px 0 6px;
+    padding-left: 4px;
+    opacity: 0.85;
+    position: relative;
+}
+
+/* Neon underline */
+.nav h2::after {
+    content: "";
+    position: absolute;
+    left: 4px;
+    bottom: -2px;
+    width: 40%;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        rgba(120, 200, 255, 0.6),
+        rgba(120, 200, 255, 0.0)
+    );
+}
+
+/* Section spacing lines */
+.nav h2::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: -8px;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        rgba(40, 60, 80, 0.4),
+        rgba(40, 60, 80, 0.0)
+    );
+}
+
+/* Header glow on hover of section items */
+.nav a:hover + h2,
+.nav h2:hover {
+    color: #aef;
+    text-shadow: 0 0 6px rgba(120, 200, 255, 0.8);
+}
+
+/* Slight indent for items under headers */
+.nav a {
+    padding-left: 10px;
+}

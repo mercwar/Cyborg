@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Fire-Lang / EV-2 – Cyborg-Lang eV2 Index</title>
+  <style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #050608;
+  color: #e5e5e5;
+  overflow: hidden; /* main page never scrolls */
+}
+
+.layout {
+  display: flex;
+  height: 100vh;
+}
+
+/* LEFT NAV PANEL */
+.nav {
+  width: 280px;
+  background: #0b0d10;
+  border-right: 1px solid #222;
+  overflow-y: auto;
+  padding: 12px 10px 16px;
+}
+
+/* SECTION HEADERS */
+.nav h1 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #7fffd4;
+}
+
+.nav h2 {
+  font-size: 12px;
+  margin: 10px 0 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #888;
+}
+
+/* NAV LINKS */
+.nav a {
+  display: block;
+  padding: 4px 6px;
+  margin: 1px 0;
+  font-size: 12px;
+  color: #ddd;
+  text-decoration: none;
+  border-radius: 3px;
+  transition: 0.18s ease-out;
+}
+
+.nav a:hover {
+  background: #1b222b;
+  color: #fff;
+}
+
+/* RIGHT CONTENT PANEL */
+.content {
+  flex: 1;
+  background: #050608;
+  border-left: 1px solid #000;
+}
+
+iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: #050608;
+  overflow: auto;
+}
+
+/* FOOTER */
+.footer {
+  font-size: 10px;
+  color: #555;
+  margin-top: 10px;
+  padding-top: 6px;
+  border-top: 1px solid #222;
+}
+
+.rk-banner {
+  width: 100%;               /* full width of the menu */
+  height: auto;              /* let height expand naturally */
+  padding: 10px 0;           /* gives breathing room */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;         /* FIX — prevents top clipping */
+  margin-bottom: 12px;
+  background: radial-gradient(circle at center,
+              rgba(255,215,94,0.15),
+              transparent 70%);
+}
+
+.rk-banner img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px rgba(255,215,94,0.35));
+  animation: rkPulse 12s ease-in-out infinite; /* slower, smoother */
+}
+
+/* Larger, softer pulse */
+@keyframes rkPulse {
+  0%   { filter: drop-shadow(0 0 4px rgba(255,215,94,0.20)); }
+  25%  { filter: drop-shadow(0 0 14px rgba(255,215,94,0.45)); }
+  50%  { filter: drop-shadow(0 0 26px rgba(255,215,94,0.70)); }
+  75%  { filter: drop-shadow(0 0 14px rgba(255,215,94,0.45)); }
+  100% { filter: drop-shadow(0 0 4px rgba(255,215,94,0.20)); }
+}
+
+
+
+
+
+  </style>
+  <link rel="stylesheet" href="ev2.css">
+<link rel="stylesheet" href="menu_headers.css">
+<link rel="stylesheet" href="gold_scrollbars.css">
+<link rel="stylesheet" href="rk_header.css">
+
+</head>
+<body>
+
+
+  <div class="layout">
+    <nav class="nav">
+	  <div class="rk-banner">
+    <img src="https://github.com/mercwar/Robo-Knight-Gallery/blob/main/Version%204/Copilot_20260502_235454.png?raw=true">
+  </div>
+
+      <h1>Fire-Lang / EV-2</h1>
+
+      <h2>Core</h2>
+      <a href="md_viewer.html?file=00_EV2_OVERVIEW.md" target="ev2_view">00 – Overview</a>
+      <a href="md_viewer.html?file=01_EV2_SYNTAX_CORE.md" target="ev2_view">01 – Syntax Core</a>
+      <a href="md_viewer.html?file=02_EV2_MEMORY_MODEL.md" target="ev2_view">02 – Memory Model</a>
+      <a href="md_viewer.html?file=03_EV2_HEX_STRING_ENGINE.md" target="ev2_view">03 – Hex String Engine</a>
+      <a href="md_viewer.html?file=04_EV2_SEED_PROTOCOL.md" target="ev2_view">04 – Seed Protocol</a>
+      <a href="md_viewer.html?file=05_EV2_CDATA_PIPE.md" target="ev2_view">05 – CDATA Pipe</a>
+      <a href="md_viewer.html?file=06_EV2_WINAPI_BRIDGE.md" target="ev2_view">06 – WinAPI Bridge</a>
+      <a href="md_viewer.html?file=07_EV2_EVENT_ROUTER.md" target="ev2_view">07 – Event Router</a>
+      <a href="md_viewer.html?file=08_EV2_TENSOR_ROLES.md" target="ev2_view">08 – Tensor Roles</a>
+      <a href="md_viewer.html?file=09_EV2_REGISTRY_MAP.md" target="ev2_view">09 – Registry Map</a>
+
+      <h2>Structs & Opcodes</h2>
+      <a href="md_viewer.html?file=10_EV2_STRUCTS_BASE.md" target="ev2_view">10 – Base Structs</a>
+      <a href="md_viewer.html?file=11_EV2_STRUCTS_WINDOW.md" target="ev2_view">11 – Window Structs</a>
+      <a href="md_viewer.html?file=12_EV2_STRUCTS_SEED.md" target="ev2_view">12 – Seed Structs</a>
+      <a href="md_viewer.html?file=13_EV2_STRUCTS_CDATA.md" target="ev2_view">13 – CDATA Structs</a>
+      <a href="md_viewer.html?file=14_EV2_OPCODE_TABLE.md" target="ev2_view">14 – Opcode Table</a>
+      <a href="md_viewer.html?file=15_EV2_CONTROL_FLOW.md" target="ev2_view">15 – Control Flow</a>
+      <a href="md_viewer.html?file=16_EV2_INTERRUPT_MAP.md" target="ev2_view">16 – Interrupt Map</a>
+      <a href="md_viewer.html?file=17_EV2_SHELL_ENTRY.md" target="ev2_view">17 – Shell Entry</a>
+      <a href="md_viewer.html?file=18_EV2_FIRE_CORE_LINK.md" target="ev2_view">18 – Fire Core Link</a>
+      <a href="md_viewer.html?file=19_EV2_PERSISTENCE_LAYER.md" target="ev2_view">19 – Persistence Layer</a>
+
+      <h2>Runtime & Daemons</h2>
+      <a href="md_viewer.html?file=20_EV2_SENTINEL_SCROLL.md" target="ev2_view">20 – Sentinel Scroll</a>
+      <a href="md_viewer.html?file=21_EV2_DAEMON_MODEL.md" target="ev2_view">21 – Daemon Model</a>
+      <a href="md_viewer.html?file=22_EV2_THREAD_MODEL.md" target="ev2_view">22 – Thread Model</a>
+      <a href="md_viewer.html?file=23_EV2_RUNTIME_PIPELINE.md" target="ev2_view">23 – Runtime Pipeline</a>
+      <a href="md_viewer.html?file=24_EV2_COMPILER_SPEC.md" target="ev2_view">24 – Compiler Spec</a>
+      <a href="md_viewer.html?file=25_EV2_LINKER_SPEC.md" target="ev2_view">25 – Linker Spec</a>
+      <a href="md_viewer.html?file=26_EV2_BOOT_SEQUENCE.md" target="ev2_view">26 – Boot Sequence</a>
+      <a href="md_viewer.html?file=27_EV2_FINALIZER.md" target="ev2_view">27 – Finalizer</a>
+      <a href="md_viewer.html?file=28_EV2_ERROR_CODES.md" target="ev2_view">28 – Error Codes</a>
+      <a href="md_viewer.html?file=29_EV2_SECURITY_MODEL.md" target="ev2_view">29 – Security Model</a>
+
+      <h2>IO & Surface</h2>
+      <a href="md_viewer.html?file=30_EV2_IO_MODEL.md" target="ev2_view">30 – IO Model</a>
+      <a href="md_viewer.html?file=31_EV2_HWND_BINDINGS.md" target="ev2_view">31 – HWND Bindings</a>
+      <a href="md_viewer.html?file=32_EV2_GDI_PRIMITIVES.md" target="ev2_view">32 – GDI Primitives</a>
+      <a href="md_viewer.html?file=33_EV2_COLOR_SPACE.md" target="ev2_view">33 – Color Space</a>
+      <a href="md_viewer.html?file=34_EV2_FILE_SYSTEM_MAP.md" target="ev2_view">34 – File System Map</a>
+
+      <h2>Semantics & Interaction</h2>
+      <a href="md_viewer.html?file=35_EV2_SEMANTIC_ACTIONS.md" target="ev2_view">35 – Semantic Actions</a>
+      <a href="md_viewer.html?file=36_EV2_AI_INTERACTION_MODEL.md" target="ev2_view">36 – AI Interaction Model</a>
+      <a href="md_viewer.html?file=37_EV2_HUMAN_INTERFACE_LAYER.md" target="ev2_view">37 – Human Interface Layer</a>
+      <a href="md_viewer.html?file=38_EV2_LOGIC_TENSOR_MODEL.md" target="ev2_view">38 – Logic Tensor Model</a>
+      <a href="md_viewer.html?file=39_EV2_ADDRESS_LOCKING.md" target="ev2_view">39 – Address Locking</a>
+      <a href="md_viewer.html?file=40_EV2_TRUTH_GATE_MODEL.md" target="ev2_view">40 – Truth Gate Model</a>
+      <a href="md_viewer.html?file=41_EV2_AUDIT_SYSTEM.md" target="ev2_view">41 – Audit System</a>
+      <a href="md_viewer.html?file=42_EV2_MACRO_BLOCKS.md" target="ev2_view">42 – Macro Blocks</a>
+      <a href="md_viewer.html?file=43_EV2_BURST_DAEMON.md" target="ev2_view">43 – Burst Daemon</a>
+      <a href="md_viewer.html?file=44_EV2_THERMAL_MODEL.md" target="ev2_view">44 – Thermal Model</a>
+
+      <h2>Compat & Seal</h2>
+      <a href="md_viewer.html?file=45_EV2_COMPAT_FIRELANG.md" target="ev2_view">45 – Compat Fire-Lang</a>
+      <a href="md_viewer.html?file=46_EV2_COMPAT_EV1.md" target="ev2_view">46 – Compat eV1</a>
+      <a href="md_viewer.html?file=47_EV2_COMPAT_DN.md" target="ev2_view">47 – Compat DN</a>
+      <a href="md_viewer.html?file=48_EV2_VERSIONING.md" target="ev2_view">48 – Versioning</a>
+      <a href="md_viewer.html?file=49_EV2_FINAL_SEAL.md" target="ev2_view">49 – Final Seal</a>
+
+      <div class="footer">
+        Fire-Lang / EV-2<br />
+        Cyborg-Lang eV2 – Navigation Frame
+      </div>
+    </nav>
+
+    <main class="content">
+      <iframe name="ev2_view" src="md_viewer.html?file=00_EV2_OVERVIEW.md"></iframe>
+    </main>
+  </div>
+</body>
+</html>

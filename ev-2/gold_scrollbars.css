@@ -1,0 +1,71 @@
+/* GOLD WEBKIT SCROLLBARS — AVIS ROYAL MODE */
+
+::-webkit-scrollbar {
+    width: 10px;
+    background: #0a0c10;
+}
+
+::-webkit-scrollbar-track {
+    background: #0a0c10;
+    border-left: 1px solid rgba(255, 215, 128, 0.15);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+        to bottom,
+        #f6d878,
+        #d8b44f
+    );
+    border-radius: 6px;
+    border: 1px solid rgba(255, 230, 160, 0.35);
+    box-shadow:
+        0 0 6px rgba(255, 215, 94, 0.45),
+        inset 0 0 4px rgba(0, 0, 0, 0.6);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(
+        to bottom,
+        #ffe58a,
+        #f0c95a
+    );
+    box-shadow:
+        0 0 10px rgba(255, 230, 140, 0.75),
+        inset 0 0 6px rgba(0, 0, 0, 0.7);
+}
+
+::-webkit-scrollbar-corner {
+    background: #0a0c10;
+}
+/* APPLY GOLD SCROLLBARS TO IFRAME CONTENT */
+iframe {
+    overflow: auto !important;
+    scrollbar-width: thin;
+}
+
+/* WebKit inside iframe */
+iframe::-webkit-scrollbar {
+    width: 10px;
+    background: #0a0c10;
+}
+
+iframe::-webkit-scrollbar-track {
+    background: #0a0c10;
+    border-left: 1px solid rgba(255, 215, 128, 0.15);
+}
+
+iframe::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #f6d878, #d8b44f);
+    border-radius: 6px;
+    border: 1px solid rgba(255, 230, 160, 0.35);
+    box-shadow:
+        0 0 6px rgba(255, 215, 94, 0.45),
+        inset 0 0 4px rgba(0, 0, 0, 0.6);
+}
+
+iframe::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #ffe58a, #f0c95a);
+    box-shadow:
+        0 0 10px rgba(255, 230, 140, 0.75),
+        inset 0 0 6px rgba(0, 0, 0, 0.7);
+}
