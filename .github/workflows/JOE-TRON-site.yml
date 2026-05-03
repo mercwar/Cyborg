@@ -30,27 +30,27 @@ jobs:
           chmod +x ./fire-site.sh
           ./fire-site.sh
 
-            - name: "SENTINEL :: Commit XML Artifact"
-          run: |
+      - name: "SENTINEL :: Commit XML Artifact"
+        run: |
           git config --global user.name "Sentinel-Bot"
           git config --global user.email "bot@cvbgod.sentinel"
           
-          # 1. Stage the specific file
+          # Stage the map
           git add sitemap.xml
           
+          # Check for changes
           if ! git diff --staged --quiet; then
             git commit -m "AVIS: sitemap.xml updated [recursive map] [skip ci]"
             
-            # 2. STASH any other noise from fire-site.sh to clean the workspace
-            git stash 
+            # Clean workspace for rebase
+            git stash --include-untracked || true
             
-            # 3. Pull latest with rebase
+            # Synchronize with main
             git pull --rebase origin main
             
-            # 4. Push and notify
+            # Final Dispatch
             git push origin main
             echo "wm_macro_ack: XML dispatched to Audit Surface."
           else
             echo "AVIS: No structural shifts detected. Pulse steady."
           fi
-
