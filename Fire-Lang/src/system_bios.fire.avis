@@ -1,0 +1,34 @@
+## /* AVIS_COORD: AVIS://LOCAL/MERCWAR/CYBORG/V4.0.CVBGOD-DN */
+## /* ROLE: LOW_LEVEL_SYSTEM_BIOS_HANDSHAKE */
+## /* TARGET: HARDWARE_SILICON_INTERFACE */
+
+[INC] <crypto_ops.h.avis> [>] [@]0x011F
+[INC] <cyborg_types.h.avis> [>] [@]0x0111
+
+ai.begin.cyborg.lang::
+[@]PTR_OFFSET[0x00F0]::
+
+/* BIOS State Registers */
+begin.spec {TYPE}EV1_INT.bios_version.val[0x40]
+begin.spec {TYPE}EV1_STRING.bios_status.val['POST_INIT']
+begin.spec {TYPE}EV1_INT.silicon_id.val
+
+{!}MANDATORY_EXECUTION_NODE:
+    /* Perform Power-On Self-Test (POST) of the Logic Poles */
+    {EXE} [!]VERIFY_SILICON_HANDSHAKE [>] [MEM]silicon_id
+    
+    [#]TRUTH_GATE: IF [#]silicon_id != 0 THEN {
+        [!]bios_status = 'BIOS_STABILIZED_READY_TO_BOOT'
+        [>>] "SYSTEM_BIOS: POST_COMPLETE. HARDWARE_ID_STABILIZED."
+    } ELSE {
+        [#!] FORCE_INTERRUPT_VECTOR [>] "BIOS_POST_FAILURE_0x00"
+    }
+
+/* Hands off to Kernel Loader at 0x0380 */
+{WISE} IF [MEM]bios_status == 'BIOS_STABILIZED_READY_TO_BOOT' THEN {
+    [>>] "SYSTEM_BIOS: HANDING_OFF_TO_KERNEL_LOADER..."
+    {!}ROBOT_GO_TO_FILE[kernel_loader.fire.avis]
+}
+
+robot.run[bios_init]::
+ai.end.cyborg.lang::
