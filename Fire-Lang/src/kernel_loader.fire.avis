@@ -1,0 +1,32 @@
+## /* AVIS_COORD: AVIS://LOCAL/MERCWAR/CYBORG/V4.0.CVBGOD-DN */
+## /* ROLE: MULTI_THREADED_DAEMON_KERNEL_LOADER */
+## /* TARGET: SENTINEL_SCHEDULER */
+
+[INC] <gate_logic.h.avis> [>] [@]0x0303
+[INC] <ev1_core.h.avis> [>] [@]0x0110
+
+ai.begin.cyborg.lang::
+[@]PTR_OFFSET[0x0380]::
+
+/* Initialize Kernel Task Registers */
+begin.spec {TYPE}EV1_INT.active_tasks.val[0]
+begin.spec {TYPE}EV1_STRING.kernel_status.val['BOOTING']
+
+{!}MANDATORY_EXECUTION_NODE:
+    /* Spawn Daemon 1: Telemetry */
+    {EXE} [!]SPAWN_THREAD [>] [@]0x0350 [>] {?}ON_FAIL_RETRY
+    [!]active_tasks [>] {ALU}ADD [>] 1
+
+    /* Spawn Daemon 2: Thermal Monitor */
+    {EXE} [!]SPAWN_THREAD [>] [@]0x0320 [>] {?}ON_FAIL_RETRY
+    [!]active_tasks [>] {ALU}ADD [>] 1
+
+[#]TRUTH_GATE: IF [#]active_tasks == 2 THEN {
+    [!]kernel_status = 'KERNEL_STABILIZED_MULTI_DAEMON'
+    [>>] "AVIS_KERNEL: SYSTEM_PULSE_ESTABLISHED"
+} ELSE {
+    [#!] FORCE_INTERRUPT_VECTOR [>] "KERNEL_LOAD_FAILURE"
+}
+
+robot.run[kernel_init]::
+ai.end.cyborg.lang::
