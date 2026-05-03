@@ -4,10 +4,20 @@ TITLE: AVIS – AI Visual Instruction System & Seed Language Specification
 AUTHOR: CGPT / MercWar
 DATE: 2026-01-14
 -->
+
+# 🧬 AVIS — AI Visual Instruction System 
+# 🛡️ [CVBGOD's Robo-Knight CYBORG Ev.2](https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/)
+
+
+<div align="center" style="margin-bottom:25px;">
+  <img src="https://github.com/mercwar/Robo-Knight-Gallery/blob/main/Version%204/Copilot_20260502_232421.png"
+       alt="AVIS Greeting Image"
+       style="max-width:85%; border-radius:14px; box-shadow:0 6px 20px rgba(0,0,0,0.45);">
+</div>
+
 # 🛡️ [CVBGOD's Robo-Knight CYBORG Ev.1](https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/)
 
-
-# 🧠 AVIS — AI Visual Instruction System  
+ 
 ### *The Core Language + Metadata Layer of the Cyborg Engine*
 <div align="center" style="margin-bottom:25px;">
   <img src="https://raw.githubusercontent.com/mercwar/Robo-Knight-Demos/main/Direct%20X%20Standard%20C/Mercwar_Robo-Knight/Copilot_20260114_021941.png"
