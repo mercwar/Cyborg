@@ -1155,3 +1155,437 @@ wchar_t * pbuff(HWND hwnd,char * STR) {
 void FREEWT(wchar_t * wcP){
 	wcP=NULL;free(wcP);wcP=NULL;
 }
+// FILE: master.c
+
+#define WIN32_LEAN_AND_MEAN
+
+#include <windows.h>
+#include <wchar.h>
+#include <stdio.h>
+#include <locale.h>
+#include <stdlib.h>
+#include <string.h>
+
+#include "include/master.h"
+
+HINSTANCE g_hInst = NULL;
+
+wchar_t *gwcP = NULL;
+char    *gacP = NULL;
+
+/* ---------------------------------------------------------
+   BTN helper
+--------------------------------------------------------- */
+
+HWND BTN(wchar_t *CLSS, wchar_t *NME, int x, int y, int h, int w, HWND m_hwnd)
+{
+    HWND hwndButton = CreateWindowW(
+        CLSS,
+        NME,
+        WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_DEFPUSHBUTTON,
+        x, y, h, w,
+        m_hwnd,
+        (HMENU)1001,
+        (HINSTANCE)GetWindowLongPtr(m_hwnd, GWLP_HINSTANCE),
+        NULL
+    );
+    return hwndButton;
+}
+
+/* ---------------------------------------------------------
+   YOUR numeric helpers (exact logic)
+--------------------------------------------------------- */
+
+int countDigits(int n)
+{
+    if (n == 0) return 1;
+    int count = 0;
+    if (n < 0) n = -n;
+    while (n > 0) {
+        n /= 10;
+        count++;
+    }
+    return count;
+}
+
+char *NUM2STRB(HWND hwnd, long nint)
+{
+    setlocale(LC_ALL, "en_US.UTF-8");
+
+    int dgt = countDigits((int)nint) + 1;
+
+    char *nstrp = (char *)malloc(dgt);
+    if (!nstrp) return NULL;
+
+    sprintf(nstrp, "%ld", nint);
+
+    gacP = (char *)malloc(dgt);
+    if (!gacP) return NULL;
+
+    strcpy(gacP, nstrp);
+    return gacP;
+}
+
+char *NUM2STRA(HWND hwnd, int nint)
+{
+    setlocale(LC_ALL, "en_US.UTF-8");
+
+    int dgt = countDigits(nint) + 1;
+
+    char *nstrp = (char *)malloc(dgt);
+    if (!nstrp) return NULL;
+
+    sprintf(nstrp, "%d", nint);
+
+    gacP = (char *)malloc(dgt);
+    if (!gacP) return NULL;
+
+    strcpy(gacP, nstrp);
+    return gacP;
+}
+
+wchar_t *NUM2STR(HWND hwnd, int nint)
+{
+    setlocale(LC_ALL, "en_US.UTF-8");
+
+    int dgt = countDigits(nint) + 1;
+
+    char *nstrp = (char *)malloc(dgt);
+    if (!nstrp) return NULL;
+
+    sprintf(nstrp, "%d", nint);
+
+    gwcP = convWCT(hwnd, nstrp, dgt);
+    return gwcP;
+}
+
+/* AVIS.ARTIFACT
+   NAME: MASTER_CONVERT.h
+   ROLE: Cyborg Conversion Engine Header
+   EXPORTS:
+       MC_* conversion API
+   DEPENDS:
+       windows.h, wchar.h, stdlib.h, string.h
+   NOTES:
+       System‑headers‑only. No CYHY or AVIS includes allowed.
+*/
+
+#ifndef MASTER_CONVERT_H
+#define MASTER_CONVERT_H
+
+/* -------------------------------------------------------------------------
+   SYSTEM HEADERS ONLY (AVIS‑LAW)
+   ------------------------------------------------------------------------- */
+#include <windows.h>
+#include <wchar.h>
+#include <stdlib.h>
+#include <string.h>
+#include <locale.h>
+#include <errno.h>
+
+/* -------------------------------------------------------------------------
+   GLOBAL BUFFERS
+   ------------------------------------------------------------------------- */
+extern wchar_t *MC_WP;
+extern char    *MC_AP;
+
+/* -------------------------------------------------------------------------
+   DECLARATIONS ONLY (NO IMPLEMENTATIONS)
+   ------------------------------------------------------------------------- */
+
+/* SAFE FREE */
+void MC_FWT(wchar_t *p);
+
+/* DIGIT COUNT */
+int MC_CDGT(int n);
+
+/* CHAR → WCHAR */
+wchar_t *MC_PB(HWND hwnd, char *STR);
+wchar_t *MC_WCT(HWND hwnd, char *STR, int LSTR);
+
+/* WCHAR → CHAR */
+char *MC_ACT(HWND hwnd, wchar_t *WSTR, int LSTR);
+
+/* DIRECT COPY HELPERS */
+char    *MC_ATW(HWND hwnd, char *STR, int LSTR);
+wchar_t *MC_WTA(HWND hwnd, wchar_t *WSTR, int LSTR);
+wchar_t *MC_WTW(HWND hwnd, wchar_t *WSTR, int LSTR);
+
+/* SINGLE CHAR HELPERS */
+char    *MC_CCP(char c);
+wchar_t *MC_WCP(wchar_t wc);
+
+/* STRING DUP HELPERS */
+char    *MC_ACP(const char *STR);
+wchar_t *MC_WCPTR(const wchar_t *WSTR);
+
+/* MULTIBYTE <-> WIDE */
+wchar_t *MC_STR2W(HWND hwnd, const char *STR);
+char    *MC_STR2A(HWND hwnd, const wchar_t *WSTR);
+wchar_t *MC_A2STR(HWND hwnd, const char *STR);
+char    *MC_W2STR(HWND hwnd, const wchar_t *WSTR);
+
+/* NUMERIC → STRING HELPERS */
+char    *MC_N2B(HWND hwnd, long nint);
+char    *MC_N2A(HWND hwnd, int nint);
+wchar_t *NUM2STR(HWND hwnd, int nint);
+
+/* AVIS REGISTRATION */
+void MC_REG(void);
+
+#endif /* MASTER_CONVERT_H */
+
+// FILE: MASTER_CONVERT.c
+
+
+#if !defined(_TRUNCATE)
+#define _TRUNCATE ((size_t)-1)
+#endif
+
+#include "../INCLUDE/MASTER_CONVERT.h"
+
+#include <wchar.h>
+#include <stdio.h>
+#include <locale.h>
+#include <stdlib.h>
+#include <string.h>
+#include <errno.h>
+
+/* GLOBAL STORAGE FOR CONVERSIONS */
+wchar_t *gwcP = NULL; 
+
+/* REPAIR: Fixed FREEWT logic */
+void FREEWT(wchar_t *wcP)
+{
+    if (wcP) {
+        // If it's the global buffer, don't free it here; 
+        // pbuff handles its own lifecycle.
+        if (wcP != gwcP) {
+            free(wcP);
+        }
+    }
+}
+
+/* ---------------------------------------------------------
+   YOUR convWCT / pbuff / FREEWT
+--------------------------------------------------------- */
+
+wchar_t *convWCT(HWND hwnd, char *STR, int LSTR)
+{
+    setlocale(LC_ALL, "en_US.UTF-8");
+
+    wchar_t *wcP;
+    wchar_t wcB[(size_t)LSTR];
+    wcP = wcB;
+
+    size_t convertedChars = 0;
+    errno_t err = mbstowcs_s(&convertedChars, wcP, (size_t)LSTR, STR, (size_t)LSTR);
+
+    FREEWT(wcP);
+    wcP = NULL;
+
+    return pbuff(hwnd, STR);
+}
+
+/* AVIS_HEX_FORGE: MASTER_CONVERT_v4.2 */
+
+wchar_t *pbuff(HWND hwnd, char *STR) {
+    setlocale(LC_ALL, "en_US.UTF-8");
+
+    const char *multiByteString = STR;
+    wchar_t *wideStringBuffer = NULL;
+    size_t requiredSizeInWords = 0;
+    int sz_str = (int)strlen(multiByteString);
+    errno_t err;
+
+    // 1. Calculate Size
+    err = mbstowcs_s(&requiredSizeInWords, NULL, 0, multiByteString, (size_t)sz_str);
+    if (err != 0) return (wchar_t*)L"EXIT_FAILURE 1"; 
+    
+    // 2. Allocate Temp Buffer
+    wideStringBuffer = (wchar_t *)malloc((requiredSizeInWords + 1) * sizeof(wchar_t));
+    if (!wideStringBuffer) return (wchar_t*)L"EXIT_FAILURE 2"; 
+
+    // 3. Convert String
+    size_t convertedCharsCount = 0;
+    err = mbstowcs_s(&convertedCharsCount, wideStringBuffer, requiredSizeInWords, multiByteString, (size_t)sz_str);
+    if (err != 0) {
+        free(wideStringBuffer); // Clean up memory before failing
+        return (wchar_t*)L"EXIT_FAILURE 3";
+    }
+
+    // 4. Copy to Global Pointer (gwcP)
+    // AVIS_HEX_FORGE: Re-allocating gwcP to prevent memory leakage or overflow
+    if (gwcP) free(gwcP); 
+    gwcP = (wchar_t *)malloc((requiredSizeInWords + 1) * sizeof(wchar_t));
+    if (!gwcP) {
+        free(wideStringBuffer);
+        return (wchar_t*)L"EXIT_FAILURE 4";
+    }
+
+    wcsncpy(gwcP, wideStringBuffer, requiredSizeInWords);
+    gwcP[requiredSizeInWords] = L'\0';
+
+    free(wideStringBuffer);
+    return gwcP;
+}
+
+
+
+/* ---------------------------------------------------------
+   MISSING CONVERTERS (FULL IMPLEMENTATIONS)
+--------------------------------------------------------- */
+
+char *convACT(HWND hwnd, wchar_t *WSTR, int LSTR)
+{
+    (void)hwnd;
+    if (!WSTR) return NULL;
+
+    int len = (LSTR >= 0) ? LSTR : (int)wcslen(WSTR);
+    int alen = WideCharToMultiByte(CP_ACP, 0, WSTR, len, NULL, 0, NULL, NULL);
+
+    char *buf = (char *)malloc(alen + 1);
+    if (!buf) return NULL;
+
+    WideCharToMultiByte(CP_ACP, 0, WSTR, len, buf, alen, NULL, NULL);
+    buf[alen] = '\0';
+    return buf;
+}
+
+char *convATW(HWND hwnd, char *STR, int LSTR)
+{
+    (void)hwnd;
+    (void)LSTR;
+    return STR ? _strdup(STR) : NULL;
+}
+
+wchar_t *convWTA(HWND hwnd, wchar_t *WSTR, int LSTR)
+{
+    (void)hwnd;
+    if (!WSTR) return NULL;
+
+    int len = (LSTR >= 0) ? LSTR : (int)wcslen(WSTR);
+    wchar_t *buf = (wchar_t *)malloc((len + 1) * sizeof(wchar_t));
+    if (!buf) return NULL;
+
+    wcsncpy(buf, WSTR, len);
+    buf[len] = L'\0';
+    return buf;
+}
+
+wchar_t *convWTW(HWND hwnd, wchar_t *WSTR, int LSTR)
+{
+    return convWTA(hwnd, WSTR, LSTR);
+}
+
+char *convCCP(char c)
+{
+    char *buf = (char *)malloc(2);
+    buf[0] = c;
+    buf[1] = '\0';
+    return buf;
+}
+
+wchar_t *convWCP(wchar_t wc)
+{
+    wchar_t *buf = (wchar_t *)malloc(2 * sizeof(wchar_t));
+    buf[0] = wc;
+    buf[1] = L'\0';
+    return buf;
+}
+
+char *convACP(const char *STR)
+{
+    return STR ? _strdup(STR) : NULL;
+}
+
+wchar_t *convWCPTR(const wchar_t *WSTR)
+{
+    if (!WSTR) return NULL;
+
+    size_t len = wcslen(WSTR);
+    wchar_t *buf = (wchar_t *)malloc((len + 1) * sizeof(wchar_t));
+    wcscpy(buf, WSTR);
+    return buf;
+}
+
+wchar_t *convSTRtoW(HWND hwnd, const char *STR)
+{
+    (void)hwnd;
+    if (!STR) return NULL;
+
+    int len = (int)strlen(STR);
+    wchar_t *buf = (wchar_t *)malloc((len + 1) * sizeof(wchar_t));
+    MultiByteToWideChar(CP_ACP, 0, STR, len, buf, len);
+    buf[len] = L'\0';
+    return buf;
+}
+
+char *convSTRtoA(HWND hwnd, const wchar_t *WSTR)
+{
+    return convACT(hwnd, (wchar_t *)WSTR, -1);
+}
+
+wchar_t *convAtoSTR(HWND hwnd, const char *STR)
+{
+    return convSTRtoW(hwnd, STR);
+}
+
+char *convWtoSTR(HWND hwnd, const wchar_t *WSTR)
+{
+    return convACT(hwnd, (wchar_t *)WSTR, -1);
+}
+
+/* ---------------------------------------------------------
+   AVIS registration
+--------------------------------------------------------- */
+
+/* ---------------------------------------------------------
+   HWND → LONG  (MASTER / AVIS canonical)
+--------------------------------------------------------- */
+LONG convHWNDToLONG(HWND hwnd)
+{
+    return (LONG)(INT_PTR)hwnd;
+}
+
+/* ---------------------------------------------------------
+   LONG → HWND  (MASTER / AVIS canonical)
+--------------------------------------------------------- */
+HWND convLONGToHWND(LONG value)
+{
+    return (HWND)(INT_PTR)value;
+}
+// ------------------------------------------------------------
+// AVIS BATCH CBORD.SEED VERSION 1.00
+// AVIS FILE: BEGIN/MASTER/MASTER_COMBINE.C
+// AVIS ROLE: AMSTER (MASTER) SEED combiner
+// ------------------------------------------------------------
+#include <windows.h>
+#include "MASTER_COMBINE.H"
+#include "MASTER_COMBINE.H"
+
+
+char *MASTER_COMBINE(INT_ENUM INT_SWITCH)
+{
+    switch (INT_SWITCH)
+    {
+        case 0: //&BEGIN.ADDRESS.SEED.:
+        {
+            static char seed_info_buf[128];
+
+            if (BEGIN.SEED)
+                wsprintf(seed_info_buf, "%s %s",
+                         BEGIN.SEED->NAME,
+                         BEGIN.SEED->VERSION);
+            else
+                wsprintf(seed_info_buf, "NO-SEED");
+
+            return seed_info_buf;
+        }
+
+        break;
+    }
+
+    return NULL;
+}
+
