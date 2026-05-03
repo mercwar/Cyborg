@@ -6,8 +6,8 @@ DATE: 2026-01-14
 -->
 
 # 🧬 AVIS — AI Visual Instruction System 
-### 🔗 **[Click Here to View the Documentation](https://mercwar.github.io/Cyborg/ev-2/index.html)**
-# 🛡️ [CVBGOD's Robo-Knight CYBORG Ev.2](https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/)
+### 🔗 **[Click Here to View the Ev.2 Documentation](https://mercwar.github.io/Cyborg/ev-2/index.html)**
+##### 🛡️ [CVBGOD's Robo-Knight CYBORG Ev.2]
 
 
 <div align="center" style="margin-bottom:25px;">
@@ -16,8 +16,9 @@ DATE: 2026-01-14
        style="max-width:85%; border-radius:14px; box-shadow:0 6px 20px rgba(0,0,0,0.45);">
 </div>
 
+##### 🛡️ [CVBGOD's Robo-Knight CYBORG Ev.1]
+### 🔗 **[Click Here to View the Ev.1 Documentation](https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/)**
 
-# 🛡️ [CVBGOD's Robo-Knight CYBORG Ev.1](https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/)
 
  
 ### *The Core Language + Metadata Layer of the Cyborg Engine*
