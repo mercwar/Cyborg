@@ -1,0 +1,16 @@
+## /* AVIS_COORD: AVIS://LOCAL/MERCWAR/CYBORG/V4.0.CVBGOD-DN */
+## /* ROLE: SHELL_IO_OPCODES_FOR_FIRE-LANG */
+
+ai.begin.cyborg.lang::
+[@]PTR_OFFSET[0x0121]::
+
+/* Shell Management Opcodes */
+#define {OP}FETCH_SHELL_INPUT   0x3101
+#define {OP}PRINT_TO_SHELL      0x3102
+#define {OP}DUMP_REGISTRY_STATE 0x3103
+
+/* Privilege Constants */
+#define [AUTH]ROOT_USER         0x0001
+#define [AUTH]GUEST_USER        0x0000
+
+ai.end.cyborg.lang::
