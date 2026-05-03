@@ -108,8 +108,9 @@ And ends with:
 <div align="center" style="margin-bottom:25px;">
   <img src="https://raw.githubusercontent.com/mercwar/Robo-Knight-Demos/main/Direct%20X%20Standard%20C/Mercwar_Robo-Knight/Copilot_20260114_024301.png"
        alt="AVIS Greeting Image"
-       style="max-width:85%; border-radius:14px; box-shadow:0 6px 20px rgba(0,0,0,0.45);">
+       style="width:65%; height:auto; border-radius:14px; box-shadow:0 6px 20px rgba(0,0,0,0.45);">
 </div>
+
 Everything inside is **AI‑parsable** and **compiler‑safe**.
 
 ---
@@ -179,9 +180,9 @@ Both understand the same structure.
 # 🖼️ AVIS Visual Language
 
 <div align="center" style="margin-bottom:20px;">
-
-  <img src="https://raw.githubusercontent.com/mercwar/Robo-Knight-Demos/main/Direct%20X%20Standard%20C/Mercwar_Robo-Knight/mercwar_v012.png"
-       width="100%" style="border-radius:12px;">
+  <img src="https://github.com/mercwar/Robo-Knight-Gallery/blob/main/Version%204/Copilot_20260502_235207.png"
+       alt="AVIS Goodbye Image"
+       style="max-width:85%; border-radius:14px; box-shadow:0 6px 20px rgba(0,0,0,0.45);">
 
   <div style="max-width:900px; margin-top:25px; margin-bottom:50px; text-align:left;">
 
@@ -272,7 +273,7 @@ It is the **metadata language** of the Cyborg Engine.
 
 ---
 
-# 🔗 How Seeds Connect the Cyborg Engine
+### 🔗 How Seeds Connect the Cyborg Engine
 
 Seeds unify:
 
@@ -289,7 +290,15 @@ Seeds are the **protocol** that lets all modules speak the same language.
 
 ---
 
-# 🌐 Seeds + Networking (Future)
+<div align="center" style="margin-top:35px; margin-bottom:25px;">
+  <img src="https://raw.githubusercontent.com/mercwar/Robo-Knight-Demos/main/Direct%20X%20Standard%20C/Mercwar_Robo-Knight/mercwar_v012.png"
+       width="100%" style="border-radius:12px;">
+
+</div>
+
+---
+
+#### 🌐 Seeds + Networking (Future)
 
 Seeds will define:
 
@@ -326,11 +335,7 @@ AVIS + SeedLang work with:
 
 ---
 
-<div align="center" style="margin-top:35px; margin-bottom:25px;">
-  <img src="https://raw.githubusercontent.com/mercwar/Robo-Knight-Demos/main/Direct%20X%20Standard%20C/Mercwar_Robo-Knight/symsys%20knight%200001.png"
-       alt="AVIS Goodbye Image"
-       style="max-width:85%; border-radius:14px; box-shadow:0 6px 20px rgba(0,0,0,0.45);">
-</div>
+
 
 
 # 📜 License
