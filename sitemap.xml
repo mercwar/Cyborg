@@ -466,6 +466,9 @@
     <loc>https://github.com/mercwar/Cyborg/blob/main/Fire-Lang/src/logic_linker.fire.avis</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/Fire-Lang/src/audio_driver.fire.avis</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/Fire-Lang/src/input_manager.fire.avis</loc>
   </url>
   <url>
@@ -542,6 +545,9 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/Fire-Lang/inc/cyborg_types.h.avis</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/Fire-Lang/inc/res_ops.h.avis</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/Fire-Lang/inc/gate_logic.h.avis</loc>
