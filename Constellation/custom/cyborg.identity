@@ -1,0 +1,16 @@
+/* FILE: cyborg.identity */
+/* PATH: /Cyborg/Constellation/custom/cyborg.identity */
+
+/* ------------------------------------------------------------
+   AVIS.HEADER
+   ROLE: CYBORG_IDENTITY
+   PURPOSE: Defines Cyborg identity inside AVIS ecosystem.
+   AUTHOR: Demon
+   ------------------------------------------------------------ */
+
+[IDENTITY]
+NAME = CYBORG
+ROLE = WINDOWS_API_EXECUTION_ENGINE
+GENERATION = 1
+FAMILY = AVIS_TECHNICAL_CORE
+LANGUAGE = CYBORG_LANGUAGE_PACK

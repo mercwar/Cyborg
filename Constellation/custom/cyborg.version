@@ -1,0 +1,15 @@
+/* FILE: cyborg.version */
+/* PATH: /Cyborg/Constellation/custom/cyborg.version */
+
+/* ------------------------------------------------------------
+   AVIS.HEADER
+   ROLE: CYBORG_VERSION_FILE
+   PURPOSE: Defines Cyborg version lineage for Constellation.
+   AUTHOR: Demon
+   ------------------------------------------------------------ */
+
+[VERSION]
+MAJOR = 1
+MINOR = 0
+PATCH = 9
+TAG = CYBORG_ENGINE_1_0_9

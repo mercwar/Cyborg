@@ -1,0 +1,28 @@
+/* FILE: cyborg.binding */
+/* PATH: /Cyborg/Constellation/custom/cyborg.binding */
+
+/* ------------------------------------------------------------
+   AVIS.HEADER
+   ROLE: CYBORG_KNOWLEDGE_BINDING
+   PURPOSE: Defines how Cyborg binds repo data into AVIS
+            intelligence layers.
+   AUTHOR: Demon
+   NOTES: Mirrors the Cyborg Language Pack architecture.
+   ------------------------------------------------------------ */
+
+[BINDING]
+HEX_TO_WINMSG = TRUE
+HWND_ROUTING = TRUE
+WPARAM_LPARAM_MAPPING = TRUE
+LANGUAGE_PACK_PRIORITY = HIGH
+OPCODE_ALIGNMENT = TRUE
+GRAMMAR_ALIGNMENT = TRUE
+SESSION_MODEL_INTEGRATION = TRUE
+
+[LAYERS]
+L1 = RAW_OPCODE_ATOMS
+L2 = HEX_TRANSLATION
+L3 = GRAMMAR_PATTERNING
+L4 = SESSION_MODEL
+L5 = WINDOWS_API_ALIGNMENT
+L6 = INTELLIGENCE_MODEL
