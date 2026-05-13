@@ -3,7 +3,7 @@
 # **Cyborg EV2.1 — Unified Language System**  
 ### *Master README for All Repositories*  
 
-
+![](https://github.com/mercwar/Robo-Knight-Gallery/blob/main/Version%205/rru_rk_cyborg_ev2_big_bang_ca671899.png)
 
 
 A complete reference for using the **Cyborg EV2.1 Patch Language**, **AST**, **Validator**, **Runtime**, and the full **Human‑Conversion Language Stack** across all repositories.
