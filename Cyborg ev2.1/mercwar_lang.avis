@@ -1,0 +1,227 @@
+
+You want a **5‑page summary** that explains **how to use ALL of our languages across ALL repos** — the entire Cyborg EV2.1 Language Stack, from AST → Validator → Runtime → Human‑Conversion Layer → Meta → Grammar → Syntax → Semantics → Phrase Engine.
+
+I’ll give you exactly that:  
+**A structured, 5‑page, human‑readable, repo‑agnostic master summary** that teaches someone how to use every language in the system.
+
+Below is the full 5‑page equivalent, formatted as a single document.
+
+---
+
+# **📘 Cyborg EV2.1 — Unified Language System Summary (5‑Page Edition)**  
+*A complete guide to using every language layer across all repos.*
+
+---
+
+# **PAGE 1 — SYSTEM OVERVIEW**  
+### **1. The Cyborg EV2.1 Language Stack**  
+The Cyborg EV2.1 ecosystem uses a **multi‑layered language architecture**, each layer responsible for a different part of patch creation, validation, execution, and human‑readable transformation.
+
+The stack includes:
+
+- **Patch Language** — The core DSL used to define patches  
+- **AST Language** — Structural representation  
+- **Validator Language** — Rules for correctness  
+- **Runtime Language** — Execution semantics  
+- **Core Language** — Tokenization  
+- **Human Language** — Human‑readable output  
+- **Translation Layer** — Cyborg → Human mapping  
+- **Meta Language** — Token classification  
+- **Dictionary Layer** — Word‑level mapping  
+- **Grammar Layer** — Structural rules  
+- **Syntax Layer** — Syntax tree generation  
+- **Semantics Layer** — Meaning extraction  
+- **Phrase Layer** — Human‑readable phrasing  
+
+Each repo uses some or all of these layers depending on its purpose.
+
+---
+
+# **PAGE 2 — PATCH LANGUAGE → AST → VALIDATOR**  
+### **2. Patch Language (EV2.1 DSL)**  
+The patch language is a structured DSL with sections:
+
+- `MZ-PATCH` header  
+- `TARGET`, `MODE`, `ARCH`, `VERSION` fields  
+- `ASM { … }`  
+- `C { … }`  
+- `LLM-HEX { … }`  
+- `BIND { … }`
+
+This DSL is parsed into an **AST**.
+
+---
+
+### **3. AST Language**  
+The AST is a tree of:
+
+- Header nodes  
+- Block nodes  
+- Field nodes  
+- Instruction nodes  
+- Binding nodes  
+
+Every repo that consumes patches uses the AST as the canonical representation.
+
+---
+
+### **4. Validator Language**  
+The validator checks:
+
+- Required fields  
+- Valid architecture  
+- Safe ASM instructions  
+- ABI correctness in C blocks  
+- LLM metadata correctness  
+- Binding references  
+
+Repos that load patches must run the validator before runtime execution.
+
+---
+
+# **PAGE 3 — RUNTIME → CORE → HUMAN**  
+### **5. Runtime Language**  
+The runtime engine:
+
+- Loads target binaries  
+- Applies AST patches  
+- Executes symbolic ASM  
+- Registers C functions  
+- Loads LLM metadata  
+- Resolves bindings  
+
+Repos that simulate or apply patches use this layer.
+
+---
+
+### **6. Core Language (Tokenizer)**  
+This layer breaks raw text into tokens:
+
+- WORD  
+- NUMBER  
+- SYMBOL  
+- NEWLINE  
+- EOF  
+
+Every higher language layer depends on this tokenizer.
+
+---
+
+### **7. Human Language (Human‑Readable Output)**  
+This layer:
+
+- Builds a dynamic output buffer  
+- Converts token streams into readable text  
+- Normalizes spacing and formatting  
+
+Repos that produce documentation or readable summaries use this layer.
+
+---
+
+# **PAGE 4 — TRANSLATION → META → DICTIONARY → GRAMMAR**  
+### **8. Translation Layer**  
+Maps Cyborg terms to human terms:
+
+- `MZ-PATCH` → “Patch Header”  
+- `LLM-HEX` → “LLM Metadata Block”  
+- `FUNC` → “Function”  
+
+Used when generating readable summaries.
+
+---
+
+### **9. Meta Language**  
+Classifies tokens:
+
+- Keyword  
+- Directive  
+- Identifier  
+- Literal  
+- Operator  
+- Structure  
+
+Repos that analyze or lint patches use this layer.
+
+---
+
+### **10. Dictionary Layer**  
+Word‑level mapping:
+
+- Cyborg → Human  
+- Human → Cyborg (optional)  
+
+Used for translation and phrase generation.
+
+---
+
+### **11. Grammar Layer**  
+Defines structural rules:
+
+- Directives  
+- Fields  
+- Blocks  
+- Statements  
+
+Used by syntax and semantics layers.
+
+---
+
+# **PAGE 5 — SYNTAX → SEMANTICS → PHRASES → FULL PIPELINE**  
+### **12. Syntax Layer**  
+Builds a syntax tree:
+
+- Node types: STATEMENT, FIELD, BLOCK, DIRECTIVE, IDENTIFIER  
+- Children represent structural relationships  
+
+Repos that need structural analysis use this layer.
+
+---
+
+### **13. Semantics Layer**  
+Converts syntax → meaning:
+
+- Header  
+- Field  
+- Block  
+- Statement  
+- Literal  
+- Identifier  
+
+Repos that generate summaries or documentation use this layer.
+
+---
+
+### **14. Phrase Layer**  
+Generates human‑readable sentences:
+
+- “Header: MZ-PATCH”  
+- “Field: TARGET”  
+- “Block: ASM”  
+
+This is the final step before output.
+
+---
+
+# **15. Full Pipeline Summary**  
+Here is the complete flow used across all repos:
+
+1. **Patch DSL**  
+2. → **Tokenizer (Core)**  
+3. → **Syntax Tree**  
+4. → **Semantics Tree**  
+5. → **Phrase Generator**  
+6. → **Human Output**  
+7. → **Translation + Dictionary + Meta**  
+8. → **Validator**  
+9. → **Runtime Execution**
+
+This is the **entire language system**, end‑to‑end.
+
+---
+
+ I can also generate:
+
+- **a 1‑page cheat sheet**  
+- **a 20‑page full manual**  
+- **a combined PDF‑style document**  
+- **a README version for GitHub**  
