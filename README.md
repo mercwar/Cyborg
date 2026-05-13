@@ -40,10 +40,11 @@ that makes Standard C code readable, teachable, and extensible by both humans an
 
 ---
 
-## What AVIS *Is Not*
-AVIS is not a framework.  
-AVIS is not a library.  
-
+#### What AVIS *Is Not*
+###### AVIS is not a framework.  
+###### AVIS is not a library.  
+---
+![](https://github.com/mercwar/Robo-Knight-Gallery/blob/main/Version%205/Gemini_Generated_Image_u4f37hu4f37hu4f3.png)
 ---
 
 ## What AVIS *Is*
