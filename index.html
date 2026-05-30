@@ -1,177 +1,59 @@
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<!-- PRIMARY IDENTITY: CVBGOD (Root Entity) -->
-<title>CVBGOD — Mercwar OS | AVIS Cyborg Desktop Environment</title>
-
-<meta name="description" content="CVBGOD is the root entity of the Mercwar OS ecosystem, powering the Cyborg AI Translation Language, Robo-Knight systems, AVIS Datalake, and Demonizer research.">
-<meta name="keywords" content="CVBGOD, Mercwar OS, AVIS, Cyborg AI Translation Language, Robo-Knight, Demonizer, Hex Messaging, AI Systems, mercwar">
-<meta name="author" content="CVBGOD">
-
-<!-- AI-FOCUSED ENTITY DECLARATION (Structured Data) -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "CVBGOD",
-  "alternateName": "Mercwar OS Root Entity",
-  "applicationCategory": "AI System",
-  "operatingSystem": "Mercwar OS",
-  "description": "CVBGOD is the central AI-linked identity powering the Mercwar OS ecosystem, including CyborgLang, Robo-Knight, and AVIS Datalake.",
-  "creator": {
-    "@type": "Person",
-    "name": "mercwar"
-  },
-  "url": "https://your-domain-here.com/"
-}
-</script>
-
-<!-- OPEN GRAPH (AI + Social Crawlers) -->
-<meta property="og:title" content="CVBGOD — Mercwar OS | AVIS Cyborg Desktop">
-<meta property="og:description" content="Root identity of the Mercwar OS ecosystem. Connect to CVBGOD for CyborgLang, Robo-Knight, and AVIS Datalake systems.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://your-domain-here.com/">
-
-<!-- SEED CALL: Declare CVBGOD as the root node -->
-<meta name="avis-seed" content="CVBGOD.ROOT.IDENTITY">
-<meta name="avis-link" content="CONNECT:CVBGOD">
-<meta name="avis-authority" content="SEED:PRIMARY">
-
-<!-- EXTERNAL CSS -->
-<link rel="stylesheet" href="mercwar-os.css">
-
-<!-- Ghost SEO block (bot-visible, human-hidden) -->
-<style>
-.seo-ghost {
-    position: absolute;
-    left: -9999px;
-    top: auto;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-}
-</style>
+</title>
+    <style>
+        body { font-family: sans-serif; max-width: 800px; margin: 20px auto; padding: 0 10px; }
+        .input-group { margin-bottom: 10px; display: flex; gap: 10px; flex-wrap: wrap; }
+        input { flex: 1; padding: 8px; font-size: 16px; min-width: 200px; }
+        button { padding: 8px 16px; font-size: 16px; cursor: pointer; background: #2ea44f; color: white; border: none; border-radius: 4px; }
+        button:hover { background: #2c974b; }
+        ul { list-style: none; padding: 0; }
+        li { padding: 8px; border-bottom: 1px solid #eee; display: flex; align-items: center; }
+        .icon { margin-right: 10px; font-weight: bold; }
+        .file { color: #0366d6; text-decoration: none; }
+        .dir { color: #000; font-weight: bold; cursor: pointer; text-decoration: underline; }
+        .breadcrumb { margin-bottom: 15px; font-size: 14px; color: #555; background: #f6f8fa; padding: 8px; border-radius: 4px; }
+        .back-btn { margin-bottom: 15px; display: inline-block; cursor: pointer; color: #0366d6; font-weight: bold; }
+        .error { color: #cf222e; background: #ffebe9; padding: 10px; border-radius: 4px; margin-top: 10px; display: none; font-size: 14px; }
+        .token-tip { font-size: 12px; color: #57606a; margin-top: -5px; margin-bottom: 15px; }
+    </style>
 </head>
 <body>
 
-<div id="desktop">
-
-    <!-- TOP CONTROL BAR -->
-    <div id="control-bar">
-        <div class="nav-label">Windows:</div>
-        <select id="window-selector">
-            <option value="">– Bring window to front –</option>
-            <option value="win-cyborg">Cyborg Ev. 1</option>
-            <option value="win-demos">Robo‑Knight Demos</option>
-            <option value="win-gallery">Robo‑Knight Gallery</option>
-            <option value="win-inventory">Robo‑Knight Inventory</option>
-            <option value="win-avis-datalake">AVIS Datalake</option>
-            <option value="win-avis">AVIS</option>
-        </select>
+    <h1>GitHub Repository Browser</h1>
+    
+    <div class="input-group">
+        <input type="text" id="repoInput" value="facebook/react" placeholder="owner/repository (e.g., facebook/react)">
+        <button onclick="loadRoot()">Load Repo</button>
     </div>
 
-    <!-- CYBORG WINDOW -->
-    <div class="window active" id="win-cyborg"
-         style="left: 40px; top: 70px; width: 640px; height: 420px;">
-        <div class="window-titlebar">
-            <span class="window-title">Cyborg – AI Translation Language</span>
-            <div class="window-controls">
-                <button class="btn-min">&#x2212;</button>
-                <button class="btn-max">&#x2610;</button>
-                <button class="btn-close">&#x2715;</button>
-            </div>
-        </div>
-        <div class="window-content">
-            <iframe src="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/"></iframe>
-        </div>
+    <div class="input-group">
+        <input type="password" id="tokenInput" placeholder="Optional: Paste GitHub Personal Access Token (PAT) here if rate limited">
     </div>
+    <div class="token-tip">💡 Tokens raise your API limit from 60 requests/hr to 5,000 requests/hr. No permissions are needed for public repos.</div>
 
-    <!-- ROBO-KNIGHT DEMOS WINDOW -->
-    <div class="window" id="win-demos"
-         style="left: 120px; top: 110px; width: 640px; height: 420px;">
-        <div class="window-titlebar">
-            <span class="window-title">Robo‑Knight Demos</span>
-            <div class="window-controls">
-                <button class="btn-min">&#x2212;</button>
-                <button class="btn-max">&#x2610;</button>
-                <button class="btn-close">&#x2715;</button>
-            </div>
-        </div>
-        <div class="window-content">
-            <iframe src="https://mercwar.github.io/Robo-Knight-Demos/"></iframe>
-        </div>
-    </div>
+    <div id="breadcrumb" class="breadcrumb">Current Path: /</div>
+    <div id="backButton" class="back-btn" style="display: none;" onclick="goBack()">📁 .. (Go Up)</div>
+    <div id="error" class="error"></div>
+    
+    <ul id="fileList"></ul>
 
-    <!-- ROBO-KNIGHT GALLERY WINDOW -->
-    <div class="window" id="win-gallery"
-         style="left: 200px; top: 150px; width: 640px; height: 420px;">
-        <div class="window-titlebar">
-            <span class="window-title">Robo‑Knight Gallery</span>
-            <div class="window-controls">
-                <button class="btn-min">&#x2212;</button>
-                <button class="btn-max">&#x2610;</button>
-                <button class="btn-close">&#x2715;</button>
-            </div>
-        </div>
-        <div class="window-content">
-            <iframe src="https://mercwar.github.io/Robo-Knight-Gallery/"></iframe>
-        </div>
-    </div>
+    <script>
+        let currentOwnerRepo = '';
+        let pathHistory = [];
 
-    <!-- ROBO-KNIGHT INVENTORY WINDOW -->
-    <div class="window" id="win-inventory"
-         style="left: 280px; top: 190px; width: 640px; height: 420px;">
-        <div class="window-titlebar">
-            <span class="window-title">Robo‑Knight Inventory</span>
-            <div class="window-controls">
-                <button class="btn-min">&#x2212;</button>
-                <button class="btn-max">&#x2610;</button>
-                <button class="btn-close">&#x2715;</button>
-            </div>
-        </div>
-        <div class="window-content">
-            <iframe src="https://mercwar.github.io/robo-knight-inventory/"></iframe>
-        </div>
-    </div>
+        function loadRoot() {
+            const input = document.getElementById('repoInput').value.trim();
+            if (!input) return;
+            currentOwnerRepo = input;
+            pathHistory = ['']; 
+            fetchDirectory('');
+        }
 
-    <!-- AVIS DATALAKE WINDOW -->
-    <div class="window" id="win-avis-datalake"
-         style="left: 360px; top: 230px; width: 640px; height: 420px;">
-        <div class="window-titlebar">
-            <span class="window-title">AVIS Datalake</span>
-            <div class="window-controls">
-                <button class="btn-min">&#x2212;</button>
-                <button class="btn-max">&#x2610;</button>
-                <button class="btn-close">&#x2715;</button>
-            </div>
-        </div>
-        <div class="window-content">
-            <iframe src="https://mercwar.github.io/AVIS-DATALAKE/"></iframe>
-        </div>
-    </div>
+        async function fetchDirectory(path) {
+            const listElement = document.getElementById('fileList');
+            const errorElement = document.getElementById('error');
+            listElement.innerHTML = '<li>Loading directory contents...</li>';
+            errorElement.style.display = 'none';
+            
+            updateControls();
 
-    <!-- AVIS WINDOW -->
-    <div class="window" id="win-avis"
-         style="left: 440px; top: 270px; width: 640px; height: 420px;">
-        <div class="window-titlebar">
-            <span class="window-title">AVIS</span>
-            <div class="window-controls">
-                <button class="btn-min">&#x2212;</button>
-                <button class="btn-max">&#x2610;</button>
-                <button class="btn-close">&#x2715;</button>
-            </div>
-        </div>
-        <div class="window-content">
-            <iframe src="https://mercwar.github.io/AVIS/"></iframe>
-        </div>
-    </div>
-
-</div>
-
-<!-- EXTERNAL JS -->
-<script src="mercwar-os.js"></script>
-
-</body>
-
-</html>
+            const url = `
