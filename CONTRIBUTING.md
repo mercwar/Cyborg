@@ -1,3 +1,4 @@
+![mercwar_ai](https://raw.githubusercontent.com/mercwar/Robo-Knight-Gallery/main/Version%206/Copilot_20260525_000459.png)
 
 # Cyborg & Constellation: Master Repository Guide
 
