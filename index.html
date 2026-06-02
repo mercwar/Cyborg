@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cyborg  Constellation Gateway</title>
+    <title>Cyborg Constellation Gateway</title>
     <style>
         :root {
             --bg-main: #0a0f14;
@@ -33,7 +33,7 @@
         .hero-banner {
             width: 100%;
             height: 380px;
-            background: linear-gradient(rgba(10, 15, 20, 0.4), rgba(10, 15, 20, 0.9)), 
+            background: linear-gradient(rgba(10, 15, 20, 0.4), rgba(10, 15, 20, 0.9)),
                         url('https://github.com') center/cover no-repeat;
             display: flex;
             flex-direction: column;
@@ -218,74 +218,318 @@
 
         .pill-law { background: rgba(255, 106, 0, 0.1); color: var(--accent-orange); border: 1px solid var(--accent-orange); }
         .pill-av { background: rgba(0, 243, 255, 0.1); color: var(--accent-cyan); border: 1px solid var(--accent-cyan); }
+
+        /* RK Glow labels */
+        .rkGlow {
+            color: #ffd700;
+            text-shadow: 0 0 6px #ffea00, 0 0 12px #ffea00;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* RK select styling */
+        #github-username {
+            background: #000000 !important;
+            color: #ffd700 !important;
+            border: 1px solid #ffd700;
+            font-size: 14px;
+            font-weight: 700;
+            padding: 4px 10px;
+            height: 30px;
+            border-radius: 6px;
+            cursor: pointer;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+            text-shadow: none !important;
+            max-height: calc(3 * 28px); /* ~3 visible rows when open */
+            overflow-y: auto;
+        }
+
+        #github-username option {
+            background: #000000 !important;
+            color: #ffd700 !important;
+            font-size: 14px;
+            padding: 6px;
+        }
+
+        /* Scrollbar for select */
+        #github-username::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        #github-username::-webkit-scrollbar-track {
+            background: #000;
+        }
+
+        #github-username::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #ffcc33, #b8860b);
+            border-radius: 4px;
+            box-shadow: 0 0 6px #ffcc33;
+        }
+
+        #github-username::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #ffd966, #c9971a);
+        }
+
+        /* Top control row */
+        .control-row {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            margin-bottom: 20px;
+        }
+
+        .control-row label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+        }
+
+        .sidebar-mode .screen {
+            /* placeholder if you later want visual change */
+        }
     </style>
 </head>
 <body>
+
 <a target="_self" title="CLICK HERE to ENTER the GATEWAY FREE!" href="https://mercwar.github.io/Constellation/index.html">
-<img 
-    src="https://raw.githubusercontent.com/mercwar/Robo-Knight-Gallery/refs/heads/main/Version%207/image_d2a07390.png" 
-    alt="Mercwar Constellation" 
-    style="width:100%; height:auto;"
-/>
+    <img
+        src="https://raw.githubusercontent.com/mercwar/Robo-Knight-Gallery/refs/heads/main/Version%207/image_d2a07390.png"
+        alt="Mercwar Constellation"
+        style="width:100%; height:auto;"
+    />
 </a>
 
+<!-- Hero Banner -->
+<div class="hero-banner">
+    <h1>MERCWAR</h1>
+    <p>Constellation Gateway</p>
+    <div class="law-badge">Cyborg Law: Every message must be readable by both machine and mind.</div>
+</div>
 
-    <!-- Hero Banner (Configured with Project Graphics assets) -->
-    <div class="hero-banner">
-        <h1>MERCWAR</h1>
-        <p>Constellation Gateway</p>
-        <div class="law-badge">Cyborg Law: Every message must be readable by both machine and mind.</div>
-    </div>
+<div class="container">
+    <div class="grid">
+        <!-- Left Main Column -->
+        <main>
+            <section id="overview">
+                <h2>Protocol Layer &amp; Gateway</h2>
+                <p>Cyborg is a deterministic AI translation language designed for Windows message communication through reversible hex-string semantics. It provides a structured protocol layer that allows messages to be seamlessly parsed by downstream software layers and AI tooling natively.</p>
+                <p>To initialize the local framework node map, target the operational gateway directly:</p>
+                <div class="code-block">
+                    git clone https://github.com<br>
+                    cd Constellation
+                </div>
+            </section>
 
-    <div class="container">
-        <div class="grid">
-            
-            <!-- Left Main Column -->
-            <main>
-                <section id="overview">
-                    <h2>Protocol Layer & Gateway</h2>
-                    <p>Cyborg is a deterministic AI translation language designed for Windows message communication through reversible hex-string semantics. It provides a structured protocol layer that allows messages to be seamlessly parsed by downstream software layers and AI tooling natively.</p>
-                    <p>To initialize the local framework node map, target the operational gateway directly:</p>
-                    <div class="code-block">
-                        git clone https://github.com<br>
-                        cd Constellation
+            <section id="pipeline">
+                <h2>The Constellation Intelligence Pipeline</h2>
+                <p>Data orchestration executes deterministically through six isolated framework processing stages:</p>
+                <div class="pipeline-list">
+                    <div class="pipeline-step">
+                        <div class="step-num">1</div>
+                        <div>
+                            <span class="step-title">Scanner</span> — <code style="color: var(--accent-orange);">constellation.c</code> scans local runtimes, parsing file maps and manifest definitions.
+                        </div>
                     </div>
-                </section>
+                    <div class="pipeline-step">
+                        <div class="step-num">2</div>
+                        <div>
+                            <span class="step-title">Reducer</span> — <code style="color: var(--accent-orange);">constellation_reduce.c</code> standardizes payload structures and truncates unstable data lines.
+                        </div>
+                    </div>
+                    <div class="pipeline-step">
+                        <div class="step-num">3</div>
+                        <div>
+                            <span class="step-title">Autobuild</span> — <code style="color: var(--accent-orange);">constellation_autobuild.c</code> translates valid runtime profiles directly into stable hex binaries.
+                        </div>
+                    </div>
+                    <div class="pipeline-step">
+                        <div class="step-num">4</div>
+                        <div>
+                            <span class="step-title">Linker</span> — <code style="color: var(--accent-orange);">constellation_linker.c</code> packages compilation units into an immutable <code>intelligence.model</code>.
+                        </div>
+                    </div>
+                    <div class="pipeline-step">
+                        <div class="step-num">5</div>
+                        <div>
+                            <span class="step-title">Validator</span> — <code style="color: var(--accent-orange);">constellation_validator.c</code> executes schema checks to verify rigorous AVIS structural compliance rules.
+                        </div>
+                    </div>
+                    <div class="pipeline-step">
+                        <div class="step-num">6</div>
+                        <div>
+                            <span class="step-title">Emitter</span> — <code style="color: var(--accent-orange);">constellation_emitter.c</code> finalizes the intelligence stream and exposes a stable gateway surface for downstream tools.
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-                <section id="pipeline">
-                    <h2>The Constellation Intelligence Pipeline</h2>
-                    <p>Data orchestration executes deterministically through six isolated framework processing stages:</p>
-                    <div class="pipeline-list">
-                        <div class="pipeline-step">
-                            <div class="step-num">1</div>
-                            <div>
-                                <span class="step-title">Scanner</span> — <code style="color: var(--accent-orange);">constellation.c</code> scans local runtimes, parsing file maps and manifest definitions.
-                            </div>
-                        </div>
-                        <div class="pipeline-step">
-                            <div class="step-num">2</div>
-                            <div>
-                                <span class="step-title">Reducer</span> — <code style="color: var(--accent-orange);">constellation_reduce.c</code> standardizes payload structures and truncates unstable data lines.
-                            </div>
-                        </div>
-                        <div class="pipeline-step">
-                            <div class="step-num">3</div>
-                            <div>
-                                <span class="step-title">Autobuild</span> — <code style="color: var(--accent-orange);">constellation_autobuild.c</code> translates valid runtime profiles directly into stable hex binaries.
-                            </div>
-                        </div>
-                        <div class="pipeline-step">
-                            <div class="step-num">4</div>
-                            <div>
-                                <span class="step-title">Linker</span> — <code style="color: var(--accent-orange);">constellation_linker.c</code> packages compilation units into an immutable <code>intelligence.model</code>.
-                            </div>
-                        </div>
-                        <div class="pipeline-step">
-                            <div class="step-num">5</div>
-                            <div>
-                                <span class="step-title">Validator</span> — <code style="color: var(--accent-orange);">constellation_validator.c</code> executes schema checks to verify rigorous AVIS structural compliance rules.
-                            </div>
-                        </div>
-                        <div class="pipeline-step">
-                            <div class="step-num">6</div>
-                            <div>
+            <section id="architecture">
+                <h2>Directory &amp; Runtime Map</h2>
+                <p>The gateway organizes its operational footprint into clearly defined directories to keep AVIS-compliant intelligence models reproducible and auditable.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th>Path</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Scanner</td>
+                            <td class="dir-path">/src/constellation.c</td>
+                            <td>Runtime discovery and manifest parsing.</td>
+                            <td><span class="pill pill-av">AVIS Ready</span></td>
+                        </tr>
+                        <tr>
+                            <td>Reducer</td>
+                            <td class="dir-path">/src/constellation_reduce.c</td>
+                            <td>Payload normalization and truncation of unstable lines.</td>
+                            <td><span class="pill pill-av">Stable</span></td>
+                        </tr>
+                        <tr>
+                            <td>Autobuild</td>
+                            <td class="dir-path">/src/constellation_autobuild.c</td>
+                            <td>Hex binary generation from runtime profiles.</td>
+                            <td><span class="pill pill-av">Online</span></td>
+                        </tr>
+                        <tr>
+                            <td>Linker</td>
+                            <td class="dir-path">/src/constellation_linker.c</td>
+                            <td>Model packaging into <code>intelligence.model</code>.</td>
+                            <td><span class="pill pill-law">Immutable</span></td>
+                        </tr>
+                        <tr>
+                            <td>Validator</td>
+                            <td class="dir-path">/src/constellation_validator.c</td>
+                            <td>AVIS schema enforcement and structural checks.</td>
+                            <td><span class="pill pill-law">Law-Guarded</span></td>
+                        </tr>
+                        <tr>
+                            <td>Emitter</td>
+                            <td class="dir-path">/src/constellation_emitter.c</td>
+                            <td>Gateway surface for downstream AI tooling.</td>
+                            <td><span class="pill pill-av">Live</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+
+        <!-- Right Column / Controls -->
+        <aside>
+            <section>
+                <h2>Gateway Controls</h2>
+
+                <div class="control-row">
+                    <label class="rkGlow">
+                        <input type="checkbox" id="keepInFrame">
+                        Up-link Window
+                    </label>
+
+                    <label class="rkGlow">
+                        <input type="checkbox" id="pinSidebarChk" onchange="handleSidebarPinChange(this.checked)">
+                        Pin Sidebar
+                    </label>
+                </div>
+
+                <div class="dropdown">
+                    <label class="rkGlow" for="github-username" style="margin-bottom:8px; display:block;">
+                        Runtime Profile
+                    </label>
+                    <select id="github-username">
+                        <option value="custom" style="color:red">** Show me the Box **</option>
+                        <option value="stable">Stable Node Map</option>
+                        <option value="dev">Development Channel</option>
+                        <option value="lab">Lab / Experimental</option>
+                        <option value="offline">Offline Snapshot</option>
+                    </select>
+                </div>
+
+                <div style="margin-top:20px;">
+                    <p>Use the <span class="pill pill-av">Pin Sidebar</span> control to keep the Constellation gateway locked in frame while external tools are launched in a companion window.</p>
+                </div>
+            </section>
+
+            <section>
+                <h2>AVIS Compliance</h2>
+                <p>Every compiled <code>intelligence.model</code> is validated against AVIS structural rules before emission. This ensures that “every message must be readable by both machine and mind” and that no unstable payloads leak into the operational graph.</p>
+                <p><span class="pill pill-law">Cyborg Law</span> enforces deterministic behavior across the entire pipeline.</p>
+            </section>
+        </aside>
+    </div>
+</div>
+
+<script>
+    let sidebarPinned = false;
+
+    function enableSidebarMode() {
+        const portalScreen = document.querySelector('.screen') || document.body;
+        portalScreen.classList.add('sidebar-mode');
+    }
+
+    function closeSidebar() {
+        if (sidebarPinned) return;
+        const portalScreen = document.querySelector('.screen') || document.body;
+        portalScreen.classList.remove('sidebar-mode');
+    }
+
+    function handleSidebarPinChange(isChecked) {
+        if (isChecked) {
+            sidebarPinned = true;
+            enableSidebarMode();   // open sidebar when checked
+        } else {
+            sidebarPinned = false; // just clear flag, do NOT close sidebar
+        }
+    }
+
+    // Example tool window wiring (optional)
+    let exitWin = false;
+    let toolWin = null;
+    let lastToolURL = null;
+
+    function openToolWindow(url) {
+        const portalScreen = document.querySelector('.screen') || document.body;
+
+        if (toolWin && !toolWin.closed) {
+            if (lastToolURL !== url && url !== 'http://www.bing.com/') {
+                toolWin.location.href = url;
+                lastToolURL = url;
+            }
+            toolWin.focus();
+            enableSidebarMode();
+            return;
+        }
+
+        enableSidebarMode();
+
+        const sidebarWidth = 365;
+        const toolWidth = screen.availWidth - sidebarWidth;
+        const toolHeight = screen.availHeight - 40;
+
+        toolWin = window.open(
+            url,
+            "toolBrowser",
+            `width=${toolWidth},height=${toolHeight},left=${sidebarWidth},top=40,` +
+            "menubar=no,toolbar=no,location=no,status=no,resizable=yes"
+        );
+
+        lastToolURL = url;
+
+        const watcher = setInterval(() => {
+            if (!toolWin || toolWin.closed || exitWin) {
+                portalScreen.classList.remove('sidebar-mode');
+                clearInterval(watcher);
+                toolWin = null;
+                lastToolURL = null;
+                exitWin = false;
+            }
+        }, 2024);
+    }
+</script>
+
+</body>
+</html>
