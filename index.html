@@ -1,535 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cyborg Constellation Gateway</title>
-    <style>
-        :root {
-            --bg-main: #0a0f14;
-            --bg-card: #101720;
-            --accent-cyan: #00f3ff;
-            --accent-orange: #ff6a00;
-            --text-primary: #e2e8f0;
-            --text-secondary: #94a3b8;
-            --border-color: #1e293b;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            background-color: var(--bg-main);
-            color: var(--text-primary);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            padding-bottom: 60px;
-        }
-
-        /* Hero Banner Layer */
-        .hero-banner {
-            width: 100%;
-            height: 380px;
-            background: linear-gradient(rgba(10, 15, 20, 0.4), rgba(10, 15, 20, 0.9)),
-                        url('https://github.com') center/cover no-repeat;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            border-bottom: 2px solid var(--border-color);
-            position: relative;
-            text-align: center;
-            box-shadow: inset 0 -50px 100px var(--bg-main);
-        }
-
-        .hero-banner h1 {
-            font-size: 3rem;
-            letter-spacing: 4px;
-            color: #ffffff;
-            text-shadow: 0 0 20px rgba(0, 243, 255, 0.6);
-            text-transform: uppercase;
-            font-weight: 800;
-        }
-
-        .hero-banner p {
-            color: var(--accent-cyan);
-            font-size: 1.1rem;
-            letter-spacing: 2px;
-            margin-top: 10px;
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-
-        .law-badge {
-            position: absolute;
-            bottom: 20px;
-            background: rgba(0, 243, 255, 0.05);
-            border: 1px dashed var(--accent-cyan);
-            padding: 8px 20px;
-            font-size: 0.9rem;
-            color: var(--accent-cyan);
-            border-radius: 4px;
-            font-style: italic;
-        }
-
-        /* Container Layout */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        @media (max-width: 900px) {
-            .grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Component Styling */
-        section {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 25px;
-            margin-bottom: 30px;
-        }
-
-        h2 {
-            font-size: 1.4rem;
-            color: #ffffff;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        h2::before {
-            content: '';
-            display: inline-block;
-            width: 4px;
-            height: 18px;
-            background-color: var(--accent-cyan);
-        }
-
-        p {
-            color: var(--text-secondary);
-            margin-bottom: 15px;
-        }
-
-        /* Code/Clone Blocks */
-        .code-block {
-            background-color: #070a0e;
-            border: 1px solid #1a2430;
-            padding: 15px;
-            border-radius: 6px;
-            font-family: 'Courier New', Courier, monospace;
-            color: #5ef1ff;
-            position: relative;
-            margin: 15px 0;
-            overflow-x: auto;
-        }
-
-        /* Pipeline Steps */
-        .pipeline-list {
-            list-style: none;
-        }
-
-        .pipeline-step {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-            margin-bottom: 15px;
-            padding: 10px;
-            border-radius: 4px;
-            background: rgba(255,255,255,0.01);
-        }
-
-        .step-num {
-            background-color: var(--border-color);
-            color: var(--accent-cyan);
-            font-weight: bold;
-            width: 28px;
-            height: 28px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            flex-shrink: 0;
-            border: 1px solid var(--accent-cyan);
-        }
-
-        .step-title {
-            font-weight: bold;
-            color: #ffffff;
-        }
-
-        /* Table Architecture */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-        }
-
-        th, td {
-            text-align: left;
-            padding: 12px;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        th {
-            color: #ffffff;
-            font-weight: 600;
-            background-color: rgba(255,255,255,0.02);
-        }
-
-        td {
-            color: var(--text-secondary);
-        }
-
-        .dir-path {
-            font-family: monospace;
-            color: var(--accent-cyan);
-        }
-
-        /* Status Pills */
-        .pill {
-            display: inline-block;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            background-color: var(--border-color);
-            color: var(--text-primary);
-        }
-
-        .pill-law { background: rgba(255, 106, 0, 0.1); color: var(--accent-orange); border: 1px solid var(--accent-orange); }
-        .pill-av { background: rgba(0, 243, 255, 0.1); color: var(--accent-cyan); border: 1px solid var(--accent-cyan); }
-
-        /* RK Glow labels */
-        .rkGlow {
-            color: #ffd700;
-            text-shadow: 0 0 6px #ffea00, 0 0 12px #ffea00;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        /* RK select styling */
-        #github-username {
-            background: #000000 !important;
-            color: #ffd700 !important;
-            border: 1px solid #ffd700;
-            font-size: 14px;
-            font-weight: 700;
-            padding: 4px 10px;
-            height: 30px;
-            border-radius: 6px;
-            cursor: pointer;
-            backdrop-filter: none !important;
-            -webkit-backdrop-filter: none !important;
-            text-shadow: none !important;
-            max-height: calc(3 * 28px); /* ~3 visible rows when open */
-            overflow-y: auto;
-        }
-
-        #github-username option {
-            background: #000000 !important;
-            color: #ffd700 !important;
-            font-size: 14px;
-            padding: 6px;
-        }
-
-        /* Scrollbar for select */
-        #github-username::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        #github-username::-webkit-scrollbar-track {
-            background: #000;
-        }
-
-        #github-username::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, #ffcc33, #b8860b);
-            border-radius: 4px;
-            box-shadow: 0 0 6px #ffcc33;
-        }
-
-        #github-username::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(180deg, #ffd966, #c9971a);
-        }
-
-        /* Top control row */
-        .control-row {
-            display: flex;
-            align-items: center;
-            gap: 22px;
-            margin-bottom: 20px;
-        }
-
-        .control-row label {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 14px;
-        }
-
-        .sidebar-mode .screen {
-            /* placeholder if you later want visual change */
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <title>Mercwar Cyborg Repo Browser</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="Live/index.css">
 </head>
 <body>
 
-<a target="_self" title="CLICK HERE to ENTER the GATEWAY FREE!" href="https://mercwar.github.io/Constellation/index.html">
-    <img
-        src="https://raw.githubusercontent.com/mercwar/Robo-Knight-Gallery/refs/heads/main/Version%207/image_d2a07390.png"
-        alt="Mercwar Constellation"
-        style="width:100%; height:auto;"
-    />
-</a>
+  <!-- TOP BANNER -->
+  <div class="top-banner">
+    <img src="Live/banner.png" alt="Banner" class="top-banner-img">
+  </div>
 
-<!-- Hero Banner -->
-<div class="hero-banner">
-    <h1>MERCWAR</h1>
-    <p>Constellation Gateway</p>
-    <div class="law-badge">Cyborg Law: Every message must be readable by both machine and mind.</div>
-</div>
-
-<div class="container">
-    <div class="grid">
-        <!-- Left Main Column -->
-        <main>
-            <section id="overview">
-                <h2>Protocol Layer &amp; Gateway</h2>
-                <p>Cyborg is a deterministic AI translation language designed for Windows message communication through reversible hex-string semantics. It provides a structured protocol layer that allows messages to be seamlessly parsed by downstream software layers and AI tooling natively.</p>
-                <p>To initialize the local framework node map, target the operational gateway directly:</p>
-                <div class="code-block">
-                    git clone https://github.com<br>
-                    cd Constellation
-                </div>
-            </section>
-
-            <section id="pipeline">
-                <h2>The Constellation Intelligence Pipeline</h2>
-                <p>Data orchestration executes deterministically through six isolated framework processing stages:</p>
-                <div class="pipeline-list">
-                    <div class="pipeline-step">
-                        <div class="step-num">1</div>
-                        <div>
-                            <span class="step-title">Scanner</span> — <code style="color: var(--accent-orange);">constellation.c</code> scans local runtimes, parsing file maps and manifest definitions.
-                        </div>
-                    </div>
-                    <div class="pipeline-step">
-                        <div class="step-num">2</div>
-                        <div>
-                            <span class="step-title">Reducer</span> — <code style="color: var(--accent-orange);">constellation_reduce.c</code> standardizes payload structures and truncates unstable data lines.
-                        </div>
-                    </div>
-                    <div class="pipeline-step">
-                        <div class="step-num">3</div>
-                        <div>
-                            <span class="step-title">Autobuild</span> — <code style="color: var(--accent-orange);">constellation_autobuild.c</code> translates valid runtime profiles directly into stable hex binaries.
-                        </div>
-                    </div>
-                    <div class="pipeline-step">
-                        <div class="step-num">4</div>
-                        <div>
-                            <span class="step-title">Linker</span> — <code style="color: var(--accent-orange);">constellation_linker.c</code> packages compilation units into an immutable <code>intelligence.model</code>.
-                        </div>
-                    </div>
-                    <div class="pipeline-step">
-                        <div class="step-num">5</div>
-                        <div>
-                            <span class="step-title">Validator</span> — <code style="color: var(--accent-orange);">constellation_validator.c</code> executes schema checks to verify rigorous AVIS structural compliance rules.
-                        </div>
-                    </div>
-                    <div class="pipeline-step">
-                        <div class="step-num">6</div>
-                        <div>
-                            <span class="step-title">Emitter</span> — <code style="color: var(--accent-orange);">constellation_emitter.c</code> finalizes the intelligence stream and exposes a stable gateway surface for downstream tools.
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="architecture">
-                <h2>Directory &amp; Runtime Map</h2>
-                <p>The gateway organizes its operational footprint into clearly defined directories to keep AVIS-compliant intelligence models reproducible and auditable.</p>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Component</th>
-                            <th>Path</th>
-                            <th>Role</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Scanner</td>
-                            <td class="dir-path">/src/constellation.c</td>
-                            <td>Runtime discovery and manifest parsing.</td>
-                            <td><span class="pill pill-av">AVIS Ready</span></td>
-                        </tr>
-                        <tr>
-                            <td>Reducer</td>
-                            <td class="dir-path">/src/constellation_reduce.c</td>
-                            <td>Payload normalization and truncation of unstable lines.</td>
-                            <td><span class="pill pill-av">Stable</span></td>
-                        </tr>
-                        <tr>
-                            <td>Autobuild</td>
-                            <td class="dir-path">/src/constellation_autobuild.c</td>
-                            <td>Hex binary generation from runtime profiles.</td>
-                            <td><span class="pill pill-av">Online</span></td>
-                        </tr>
-                        <tr>
-                            <td>Linker</td>
-                            <td class="dir-path">/src/constellation_linker.c</td>
-                            <td>Model packaging into <code>intelligence.model</code>.</td>
-                            <td><span class="pill pill-law">Immutable</span></td>
-                        </tr>
-                        <tr>
-                            <td>Validator</td>
-                            <td class="dir-path">/src/constellation_validator.c</td>
-                            <td>AVIS schema enforcement and structural checks.</td>
-                            <td><span class="pill pill-law">Law-Guarded</span></td>
-                        </tr>
-                        <tr>
-                            <td>Emitter</td>
-                            <td class="dir-path">/src/constellation_emitter.c</td>
-                            <td>Gateway surface for downstream AI tooling.</td>
-                            <td><span class="pill pill-av">Live</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
-        </main>
-
-        <!-- Right Column / Controls -->
-        <aside>
-            <section>
-                <h2>Gateway Controls</h2>
-
-                <div class="control-row">
-                    <label class="rkGlow">
-                        <input type="checkbox" id="keepInFrame">
-                        Up-link Window
-                    </label>
-
-                    <label class="rkGlow">
-                        <input type="checkbox" id="pinSidebarChk" onchange="handleSidebarPinChange(this.checked)">
-                        Pin Sidebar
-                    </label>
-                </div>
-
-                <div class="dropdown">
-                    <label class="rkGlow" for="github-username" style="margin-bottom:8px; display:block;">
-                        Runtime Profile
-                    </label>
-                    <select id="github-username">
-                        <option value="custom" style="color:red">** Show me the Box **</option>
-                        <option value="stable">Stable Node Map</option>
-                        <option value="dev">Development Channel</option>
-                        <option value="lab">Lab / Experimental</option>
-                        <option value="offline">Offline Snapshot</option>
-                    </select>
-                </div>
-
-                <div style="margin-top:20px;">
-                    <p>Use the <span class="pill pill-av">Pin Sidebar</span> control to keep the Constellation gateway locked in frame while external tools are launched in a companion window.</p>
-                </div>
-            </section>
-
-            <section>
-                <h2>AVIS Compliance</h2>
-                <p>Every compiled <code>intelligence.model</code> is validated against AVIS structural rules before emission. This ensures that “every message must be readable by both machine and mind” and that no unstable payloads leak into the operational graph.</p>
-                <p><span class="pill pill-law">Cyborg Law</span> enforces deterministic behavior across the entire pipeline.</p>
-            </section>
-        </aside>
+  <!-- HEADER -->
+  <header class="rru-header">
+    <div class="brand">
+      <div class="brand-badge">NX</div>
+      <span><strong>Nexus</strong> REPO INDEX</span>
     </div>
-</div>
 
-<script>
-    let sidebarPinned = false;
+    <div class="repo-meta rru-panel rru-flex rru-gap">
+      <div class="pill rru-pill">
+        <div class="pill-dot rru-pill-dot"></div>
+        <div class="pill-label rru-pill-label">Repo</div>
+        <div class="pill-value rru-pill-value" id="repoName">loading...</div>
+      </div>
 
-    function enableSidebarMode() {
-        const portalScreen = document.querySelector('.screen') || document.body;
-        portalScreen.classList.add('sidebar-mode');
-    }
+      <div class="pill rru-pill">
+        <div class="pill-label rru-pill-label">Branch</div>
+        <div class="pill-value rru-pill-value" id="repoBranch">main</div>
+      </div>
+    </div>
+  </header>
 
-    function closeSidebar() {
-        if (sidebarPinned) return;
-        const portalScreen = document.querySelector('.screen') || document.body;
-        portalScreen.classList.remove('sidebar-mode');
-    }
+  <!-- MAIN LAYOUT -->
+  <div class="layout">
 
-    function handleSidebarPinChange(isChecked) {
-        if (isChecked) {
-            sidebarPinned = true;
-            enableSidebarMode();   // open sidebar when checked
-        } else {
-            sidebarPinned = false; // just clear flag, do NOT close sidebar
-        }
-    }
+    <!-- SIDEBAR -->
+    <aside class="sidebar rru-panel">
 
-    // Example tool window wiring (optional)
-    let exitWin = false;
-    let toolWin = null;
-    let lastToolURL = null;
+      <!-- GATEWAY IMAGE -->
+      <div class="gateway-container">
+        <a target="_self"
+           href="https://mercwar.github.io/Constellation/index.html"
+           class="gateway-link">
+          <img
+            src="https://raw.githubusercontent.com/mercwar/Robo-Knight-Gallery/refs/heads/main/Version%207/image_d2a07390.png"
+            alt="Mercwar Constellation"
+            class="gateway-banner"
+          />
+        </a>
+      </div>
 
-    function openToolWindow(url) {
-        const portalScreen = document.querySelector('.screen') || document.body;
+      <div class="sidebar-header">
+        <span>Repository <strong>Files</strong></span>
+      </div>
 
-        if (toolWin && !toolWin.closed) {
-            if (lastToolURL !== url && url !== 'http://www.bing.com/') {
-                toolWin.location.href = url;
-                lastToolURL = url;
-            }
-            toolWin.focus();
-            enableSidebarMode();
-            return;
-        }
+      <div class="sidebar-search">
+        <input id="searchInput" type="text" placeholder="Filter files (Ctrl+K)">
+      </div>
 
-        enableSidebarMode();
+      <!-- SCROLLING FILE TREE -->
+      <div class="file-tree" id="fileTree"></div>
 
-        const sidebarWidth = 365;
-        const toolWidth = screen.availWidth - sidebarWidth;
-        const toolHeight = screen.availHeight - 40;
+    </aside>
 
-        toolWin = window.open(
-            url,
-            "toolBrowser",
-            `width=${toolWidth},height=${toolHeight},left=${sidebarWidth},top=40,` +
-            "menubar=no,toolbar=no,location=no,status=no,resizable=yes"
-        );
+    <!-- MAIN PANEL -->
+    <main class="main">
 
-        lastToolURL = url;
+      <div class="main-header rru-panel">
+        <div class="main-path">
+          <span>Path:</span>
+          <strong id="currentPath">/</strong>
+        </div>
 
-        const watcher = setInterval(() => {
-            if (!toolWin || toolWin.closed || exitWin) {
-                portalScreen.classList.remove('sidebar-mode');
-                clearInterval(watcher);
-                toolWin = null;
-                lastToolURL = null;
-                exitWin = false;
-            }
-        }, 2024);
-    }
-</script>
+        <div class="main-actions">
+          <button class="btn rk-btn" id="openRawBtn">RAW</button>
+          <button class="btn rk-btn-primary" id="openGithubBtn">OPEN IN GITHUB</button>
+        </div>
+      </div>
 
+      <section class="viewer rru-panel">
+
+        <div class="viewer-meta rru-panel">
+          <div class="viewer-meta-left">
+            <div class="badge badge-primary" id="fileTypeBadge">No file selected</div>
+            <div id="fileMeta"></div>
+          </div>
+
+          <div class="badge" id="repoInfoBadge">GitHub API</div>
+        </div>
+
+        <div class="viewer-body">
+          <pre class="viewer-pre" id="fileContent" style="display:none;"></pre>
+
+          <div class="viewer-empty" id="emptyState">
+            <div>
+              <div style="margin-bottom:6px;">Select a file from the left to inspect its contents.</div>
+              <div style="font-size:11px;color:#7b8190;">Nexus index wired as a <span>repo file browser</span>.</div>
+            </div>
+          </div>
+
+          <div class="status-bar rru-panel" id="statusBar">
+            <div class="status-dot" id="statusDot"></div>
+            <div class="status-label" id="statusLabel">READY</div>
+            <div class="status-text" id="statusText"></div>
+          </div>
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- LEGAL SECTION AT BOTTOM -->
+  <div class="legal-section rru-panel legal-bottom">
+    <div class="legal-title">MERCWAR • NEXUS LEGAL GATEWAY</div>
+
+    <div class="legal-body">
+      This interface, its code structures, rendered assets, and operational logic constitute
+      a protected system under the Mercwar Sovereign Framework. Unauthorized duplication,
+      extraction, modification, or redistribution of any component of this gateway — including
+      but not limited to source files, compiled assets, AVIS documents, CBORD structures,
+      or Nexus‑linked metadata — is strictly prohibited.
+
+      By accessing this system, you acknowledge and accept the operational terms governing
+      the Nexus Repo Browser, including automated logging, integrity verification, and
+      AVIS‑compliant audit trails.
+
+      All rights reserved.  
+      © Mercwar Systems — RRU / AVIS Protocol Division.
+    </div>
+
+    <div class="legal-footer">[ GATEWAY READY ]</div>
+  </div>
+
+  <script src="Live/index.js"></script>
 </body>
 </html>
