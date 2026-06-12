@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Constellation Client Loader</title>
-<link rel="stylesheet" href="../constellation.css">
+<link rel="stylesheet" href="https://mercwar.github.io/Constellation/LIVE/HOST/constellation.css">
 </head>
 
 <body>
@@ -34,54 +34,72 @@
     </footer>
 
 </div>
-
 <script>
-
-// AIFVS-ARTIFACT
-// AVIS: client-loader.js
 // AIFVS-ARTIFACT
 // AVIS: client-loader.js
 
 document.addEventListener("DOMContentLoaded", () => {
 
     const params = new URLSearchParams(window.location.search);
-    const repo = params.get("index") || "Cyborg";
-
-    // Correct GitHub Pages HOST URL
-    const hostURL = `https://mercwar.github.io/Constellation/LIVE/HOST/index.html?index=${repo}`;
+    let repo = params.get("index") || "mercwar";
 
     const status = document.getElementById("status");
     const hostContent = document.getElementById("host-content");
     const hostSidebar = document.getElementById("host-sidebar");
 
-    status.textContent = `Loading HOST for repo: ${repo}…`;
+    function buildURL(r) {
+        return `https://mercwar.github.io/Constellation/LIVE/HOST/index.html?index=${r}`;
+    }
 
-    fetch(hostURL)
-        .then(res => res.text())
-        .then(html => {
+    function loadHost(r) {
+        const url = buildURL(r);
 
-            hostContent.innerHTML = html;
-            status.textContent = "HOST loaded.";
+        status.textContent = `Checking HOST for repo: ${r}…`;
 
-            const temp = document.createElement("div");
-            temp.innerHTML = html;
+        return fetch(url, { method: "HEAD" })
+            .then(res => {
+                if (!res.ok) throw new Error("HEAD " + res.status);
+                status.textContent = `HOST found for ${r}. Loading…`;
+                return fetch(url);
+            })
+            .then(res => res.text())
+            .then(html => {
 
-            const sidebar = temp.querySelector("#sidebar");
-            if (sidebar) {
-                hostSidebar.innerHTML = "";
-                hostSidebar.appendChild(sidebar);
-            } else {
-                hostSidebar.innerHTML = "<div>No sidebar found in HOST.</div>";
-            }
-        })
-        .catch(err => {
-            status.textContent = "Load failed: " + err;
+                const temp = document.createElement("div");
+                temp.innerHTML = html;
+
+                // Extract sidebar
+                const sidebar = temp.querySelector("#sidebar");
+                if (sidebar) {
+                    hostSidebar.innerHTML = "";
+                    hostSidebar.appendChild(sidebar);
+                } else {
+                    hostSidebar.innerHTML = "<div>No sidebar found in HOST.</div>";
+                }
+
+                // Extract HOST content (inject + viewer)
+                const inject = temp.querySelector("#inject");
+                const viewer = temp.querySelector("#viewer");
+
+                hostContent.innerHTML = "";
+                if (inject) hostContent.appendChild(inject);
+                if (viewer) hostContent.appendChild(viewer);
+
+                status.textContent = `HOST loaded for ${r}.`;
+            });
+    }
+
+    // Try requested repo → fallback to mercwar
+    loadHost(repo).catch(() => {
+        status.textContent = `Repo '${repo}' not found. Loading mercwar…`;
+        loadHost("mercwar").catch(err => {
+            status.textContent = "Final load failed: " + err;
         });
+    });
 
 });
-
-
 </script>
+
 
 </body>
 </html>
