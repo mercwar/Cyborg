@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Constellation Client Loader</title>
+<link rel="stylesheet" href="../constellation.css">
+</head>
+
+<body>
+
+<div id="app">
+
+    <header id="top-bar">
+        <div id="title">SITE SURFER</div>
+        <div id="sub">Client Loader</div>
+    </header>
+
+    <main id="main">
+        <div id="glass-panel">
+
+            <div id="status">Waiting…</div>
+
+            <!-- HOST SIDEBAR -->
+            <div id="host-sidebar"></div>
+
+            <!-- HOST MAIN CONTENT -->
+            <div id="host-content"></div>
+
+        </div>
+    </main>
+
+    <footer id="bottom-bar">
+        <span id="footer-text">Constellation Client Loader</span>
+    </footer>
+
+</div>
+
+<script>
+
+// AIFVS-ARTIFACT
+// AVIS: client-loader.js
+// AIFVS-ARTIFACT
+// AVIS: client-loader.js
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const params = new URLSearchParams(window.location.search);
+    const repo = params.get("index") || "Cyborg";
+
+    // Correct GitHub Pages HOST URL
+    const hostURL = `https://mercwar.github.io/Constellation/LIVE/HOST/index.html?index=${repo}`;
+
+    const status = document.getElementById("status");
+    const hostContent = document.getElementById("host-content");
+    const hostSidebar = document.getElementById("host-sidebar");
+
+    status.textContent = `Loading HOST for repo: ${repo}…`;
+
+    fetch(hostURL)
+        .then(res => res.text())
+        .then(html => {
+
+            hostContent.innerHTML = html;
+            status.textContent = "HOST loaded.";
+
+            const temp = document.createElement("div");
+            temp.innerHTML = html;
+
+            const sidebar = temp.querySelector("#sidebar");
+            if (sidebar) {
+                hostSidebar.innerHTML = "";
+                hostSidebar.appendChild(sidebar);
+            } else {
+                hostSidebar.innerHTML = "<div>No sidebar found in HOST.</div>";
+            }
+        })
+        .catch(err => {
+            status.textContent = "Load failed: " + err;
+        });
+
+});
+
+
+</script>
+
+</body>
+</html>
