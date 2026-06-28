@@ -385,6 +385,9 @@
     <loc>https://github.com/mercwar/Cyborg/blob/main/Live/banner.png</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/continuum.json</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/Fire-Lang/docs/CVBGOD_DN_SPEC.md</loc>
   </url>
   <url>
@@ -1493,9 +1496,6 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/index.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/Cyborg%20ev2.1/cyborg_patch_ast.h</loc>
