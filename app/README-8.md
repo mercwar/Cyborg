@@ -15,8 +15,9 @@ Go [🔄 HOME](../CONTRIBUTING.md) or [<<↩️ BACK](README-7.md)  or [FORWARD 
 ###### - [README 4](README-4.md) 💥 [README 7](README-7.md) 💥 [README 10](README-10.md) 💥 [README 13](README-13.md) 
 
 
-# ⭐ **README 8 — FULL ECOSYSTEM INDEX**  
-### *The Complete, Deterministic, Constellation‑Navigable Index of the Mercwar Ecosystem*
+# ⭐ README 8 
+- FULL ECOSYSTEM INDEX**  
+- The Complete, Deterministic, Constellation‑Navigable Index of the Mercwar Ecosystem
 
 ---
 
