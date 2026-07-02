@@ -10,7 +10,7 @@
 ## 🌌 What the Mercwar Ecosystem Actually Is  
 The Mercwar Ecosystem is a **real, technical, deterministic protocol environment** built around three components:
 
-Go to the [Tutorial](README-2.md) OR you can ...
+Go to the [Tutorial](app/README-2.md) OR you can ...
 
 <a target="_self" title="CLICK HERE to ENTER the GATEWAY FREE!" href="https://mercwar.github.io/Constellation/index.html">
 <img 
