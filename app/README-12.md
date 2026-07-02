@@ -15,8 +15,9 @@ Go [🔄 HOME](../CONTRIBUTING.md) or [<<↩️ BACK](README-11.md)  or [FORWARD
 
 
 
-# ⭐ **README 12 — FULL OPERATOR HANDBOOK**  
-### *The Complete Operational Manual for Cyborg • Constellation • AVIS*
+# ⭐ README 12 
+- FULL OPERATOR HANDBOOK
+- The Complete Operational Manual for Cyborg • Constellation • AVIS
 
 ---
 
