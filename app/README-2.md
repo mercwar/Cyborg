@@ -15,10 +15,11 @@ Go [🔄 HOME](../CONTRIBUTING.md)  or [FORWARD ➡️>>](README-11.md)
 
 ---
 
-# ⭐ **README 2 — How to Ingest & Use Mercwar Repositories**  
-### *The complete user workflow for AI ingestion, navigation, and operation*
+# ⭐  README 2 
+- How to Ingest & Use Mercwar Repositories**  
+- The complete user workflow for AI learning, navigation, and operation*
 
-## 🧠 Step 1 — Tell Your AI to Ingest the Repository  
+## 🌟 Step 1 — Tell Your AI to Ingest the Repository  
 This is the core of the system.
 
 Example:
