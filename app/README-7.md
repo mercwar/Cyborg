@@ -15,8 +15,9 @@ Go [🔄 HOME](../CONTRIBUTING.md) or [<<↩️ BACK](README-6.md)  or [FORWARD 
 ###### - [README 4](README-4.md) 💥 [README 7](README-7.md) 💥 [README 10](README-10.md) 💥 [README 13](README-13.md) 
 
 
-# ⭐ **README 7 — AI INGESTION TRAINING SCRIPT**  
-### *Give this entire section directly to your AI to train it to operate the Mercwar Ecosystem*
+# ⭐ README 7 
+- AI INGESTION TRAINING SCRIPT**  
+-  Give this entire section directly to your AI to train it to operate the Mercwar Ecosystem
 
 ---
 
