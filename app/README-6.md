@@ -14,8 +14,9 @@ Go [🔄 HOME](../CONTRIBUTING.md) or [<<↩️ BACK](README-5.md)  or [FORWARD 
 ###### - [README 3](README-3.md) 💥 [README 6](README-6.md) 💥 [README 9](README-9.md) 💥 [README 12](README-12.md) 
 ###### - [README 4](README-4.md) 💥 [README 7](README-7.md) 💥 [README 10](README-10.md) 💥 [README 13](README-13.md) 
 
-# ⭐ **README 6 — Constellation Operator Manual**  
-### *Ingestion Engine • Navigation Engine • Validation Engine • Intelligence Model Engine*
+# ⭐ README 6 
+- Constellation Operator Manual**
+- Ingestion Engine • Navigation Engine • Validation Engine • Intelligence Model Engine
 
 ---
 
