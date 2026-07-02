@@ -2,7 +2,9 @@
 
 ---
 
-# ⭐ **README 1 — Mercwar Ecosystem Overview & Purpose**  
+# ⭐ README 1 
+- Mercwar Ecosystem Overview & Purpose**
+  
 ### *What the system is, why it exists, and how users interact with it*
 
 ## 🌌 What the Mercwar Ecosystem Actually Is  
