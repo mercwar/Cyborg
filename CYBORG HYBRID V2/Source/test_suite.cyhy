@@ -1,0 +1,13 @@
+// [AVIS-AI-SCAN] FILE: test_suite.cyhy | CLASS: TEST_SCRIPT | TARGET: LOCAL_LLM_SANDBOX
+BEGIN_AVIS_AI
+[VERSION: V2.0_HYBRID]
+[TARGET: LOCAL_LLM_SANDBOX]
+
+MAP_HUMAN_INTENT {
+  "focus terminal window"     => WM_SYS_0x0007[wKey:0x00, lParam:0x00]
+}
+
+EXECUTE_STREAM {
+  WM_SYS_0x0007[wKey:0x00, lParam:0x00] -> ASSERT_VISIBILITY("Fire-Gem-Console")
+}
+END_AVIS_AI

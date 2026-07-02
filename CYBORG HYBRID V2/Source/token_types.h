@@ -1,0 +1,15 @@
+// [AVIS-AI-SCAN] FILE: token_types.h | CLASS: LEXER_MACROS | TARGET: LLM_PARSE
+#ifndef TOKEN_TYPES_H
+#define TOKEN_TYPES_H
+
+#define TOKEN_BEGIN_AVIS       1001
+#define TOKEN_END_AVIS         1002
+#define TOKEN_VERSION_ID       1003
+#define TOKEN_TARGET_ARCH      1004
+#define TOKEN_MAP_BLOCK        1005
+#define TOKEN_MAP_RULE         1006
+#define TOKEN_EXECUTE_STREAM   1007
+#define TOKEN_COMMAND_VECTOR   1008
+#define TOKEN_STATE_ASSERT     1009
+
+#endif // TOKEN_TYPES_H

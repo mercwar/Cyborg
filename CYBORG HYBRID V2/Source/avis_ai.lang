@@ -1,0 +1,18 @@
+// [AVIS-AI-SCAN] FILE: avis_ai.lang | CLASS: GRAMMAR_SPEC | TARGET: LLM_PARSE
+// Definition document formalizing structural rules for machine ingest.
+BEGIN_AVIS_AI
+[VERSION: V2.0_HYBRID]
+[TARGET: WIN64_UCRT]
+
+MAP_HUMAN_INTENT {
+  "focus terminal window"     => WM_SYS_0x0007[wKey:0x00, lParam:0x00]
+  "simulate enter key stroke" => WM_SYS_0x0100[wKey:0x0D, lParam:0x00]
+  "clear local active memory" => WM_SYS_0x0111[wKey:0x99, lParam:0x00]
+  "trigger artifact scan"     => WM_SYS_0x0465[wKey:0x01, lParam:0x00]
+}
+
+EXECUTE_STREAM {
+  WM_SYS_0x0007[wKey:0x00, lParam:0x00] -> ASSERT_VISIBILITY("Fire-Gem-Console")
+  WM_SYS_0x0465[wKey:0x01, lParam:0x00] -> ASSERT_VISIBILITY("Artifact-Registry")
+}
+END_AVIS_AI
