@@ -103,7 +103,7 @@ function openStartMenu(){
     content.innerHTML = "Loading…";
 
     // Kept as "" to read the main repository root directory
-    ghList().then(items=>{
+    ghList(app_dir).then(items=>{
         const versions = items
             .filter(i => i.type==="dir" && isVersionDir(i.name))
             .sort((a,b)=>{
