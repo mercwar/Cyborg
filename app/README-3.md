@@ -15,8 +15,9 @@ Go [🔄 HOME](../CONTRIBUTING.md) or [<<↩️ BACK](README-2.md)  or [FORWARD 
 
 ---
 
-# ⭐ **README 3 — Technical Architecture & File System Reference**  
-### *The deep technical explanation of Cyborg, Constellation, and AVIS*
+# ⭐ README 3 
+- Technical Architecture & File System Reference**  
+- The deep technical explanation of Cyborg, Constellation, and AVIS*
 
 ## 🧩 Cyborg Architecture  
 Cyborg is a deterministic, reversible encoding system.
