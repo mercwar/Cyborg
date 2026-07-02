@@ -333,6 +333,12 @@ Go [🔄 HOME](../CONTRIBUTING.md) or [<<↩️ BACK](README-4.md)  or [FORWARD 
 />
 </a>
 
+##### TOC: JUMP @ 🌀 
+###### - [README 2](README-2.md) 💥 [README 5](README-5.md) 💥 [README 8](README-8.md) 💥 [README 11](README-11.md) 
+###### - [README 3](README-3.md) 💥 [README 6](README-6.md) 💥 [README 9](README-9.md) 💥 [README 12](README-12.md) 
+###### - [README 4](README-4.md) 💥 [README 7](README-7.md) 💥 [README 10](README-10.md) 💥 [README 13](README-13.md) 
+
+
 <!-- START LEGAL CONTRIBUTING SECTION -->
 <div class="markdown-body" style="box-sizing: border-box; margin: 24px 0px; padding: 24px; color: #e6edf3; background-color: #161b22; border: 1px solid #30363d; border-radius: 6px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;">
     <h2 style="box-sizing: border-box; margin-top: 0px; margin-bottom: 16px; font-size: 1.5em; font-weight: 600; line-height: 1.25; padding-bottom: 0.3em; border-bottom: 1px solid #21262d; color: #f0f6fc;">
