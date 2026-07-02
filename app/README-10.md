@@ -15,8 +15,10 @@ Go [🔄 HOME](../CONTRIBUTING.md) or [<<↩️ BACK](README-9.md)  or [FORWARD 
 
 ---
 
-# ⭐ **MERCWAR ECOSYSTEM — MASTER README**  
-### *Cyborg • Constellation • AVIS — The Complete Operational System*
+# ⭐ MERCWAR ECOSYSTEM 
+- MASTER README**
+- Cyborg • Constellation • AVIS
+- The Complete Operational System
 
 
 ---
