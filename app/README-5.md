@@ -14,8 +14,9 @@ Go [🔄 HOME](../CONTRIBUTING.md) or [<<↩️ BACK](README-4.md)  or [FORWARD 
 ###### - [README 4](README-4.md) 💥 [README 7](README-7.md) 💥 [README 10](README-10.md) 💥 [README 13](README-13.md) 
 
 ---
-# ⭐ **README 5 — AVIS LAWBOOK**  
-### *Artifact Visibility System — Full Specification & Enforcement Rules*
+# ⭐ README 5 
+- AVIS LAWBOOK**  
+- Artifact Visibility System — Full Specification & Enforcement Rules
 
 ---
 
