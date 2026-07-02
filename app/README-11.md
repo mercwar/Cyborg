@@ -14,8 +14,9 @@ Go [🔄 HOME](../CONTRIBUTING.md) or [<<↩️ BACK](README-10.md)  or [FORWARD
 ###### - [README 4](README-4.md) 💥 [README 7](README-7.md) 💥 [README 10](README-10.md) 💥 [README 13](README-13.md) 
 
 
-# ⭐ **README 11 — ECOSYSTEM BOOTSTRAPPING GUIDE**  
-### *How to Bring Your AI Online as a Fully Compliant Mercwar Operator*
+# ⭐ README 11 
+- ECOSYSTEM BOOTSTRAPPING GUIDE
+- How to Bring Your AI Online as a Fully Compliant Mercwar Operator
 
 ---
 
