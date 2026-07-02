@@ -1,5 +1,5 @@
 const owner       = "mercwar";
-const repo        = "Robo-Knight-Gallery";
+const repo        = "Cyborg";
 const maxVersions = 12;
 const imageExts   = ["jpg","jpeg","png","gif","webp","bmp"];
 
@@ -17,7 +17,7 @@ function isImageFile(name){
 }
 
 function isVersionDir(name){
-    const m = /^Version\s+(\d+)$/i.exec(name);
+    const m = /^Images\s+(\d+)$/i.exec(name);
     if(!m) return false;
     const n = parseInt(m[1],10);
     return n >= 1 && n <= maxVersions;

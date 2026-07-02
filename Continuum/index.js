@@ -19,7 +19,7 @@ function isImageFile(name){
 }
 
 function isVersionDir(name){
-    const m = /^Version\s+(\d+)$/i.exec(name);
+    const m = /^Images\s+(\d+)$/i.exec(name);
     if(!m) return false;
     const n = parseInt(m[1], 10);
     return n >= 1 && n <= maxVersions;
