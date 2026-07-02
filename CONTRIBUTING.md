@@ -8,9 +8,42 @@
 ## 🌌 What the Mercwar Ecosystem Actually Is  
 The Mercwar Ecosystem is a **real, technical, deterministic protocol environment** built around three components:
 
-- **Cyborg** — a reversible Windows‑message translation language  
-- **Constellation** — the ingestion, validation, and navigation engine  
-- **AVIS** — the artifact visibility system that teaches AIs how to classify and reason about files  
+<!-- START MERCWAR ECOSYSTEM REPOSITORIES SECTION -->
+<div class="markdown-body" style="box-sizing: border-box; margin: 24px 0px; padding: 24px; color: #e6edf3; background-color: #161b22; border: 1px solid #30363d; border-radius: 6px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;">
+    <h2 style="box-sizing: border-box; margin-top: 0px; margin-bottom: 16px; font-size: 1.5em; font-weight: 600; line-height: 1.25; padding-bottom: 0.3em; border-bottom: 1px solid #21262d; color: #f0f6fc;">
+        🪐 Mercwar Ecosystem Public Repositories
+    </h2>
+    <p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 16px; font-size: 14px; color: #8b949e;">
+        Active framework matrix managed by <strong style="color: #c9d1d9;">@mercwar</strong>. Click any node title to browse the live repository code tree.
+    </p>
+    <ul style="box-sizing: border-box; margin-top: 0px; margin-bottom: 0px; padding-left: 20px; list-style-type: square; font-size: 14px; line-height: 1.6;">
+        <li style="margin-bottom: 8px;"><a href="https://github.com/AVIS-DROP" style="color: #58a6ff; font-weight: 600; text-decoration: none;">AVIS-DROP</a> — System file dropper for web uploads.</li>
+        <li style="margin-bottom: 8px;"><a href="https://github.com/AVIS" style="color: #58a6ff; font-weight: 600; text-decoration: none;">AVIS</a> — Structured, machine-readable repository standard for AI systems.</li>
+        <li style="margin-bottom: 8px;"><a href="https://github.com/GGML-LLAMA-MSVC-INSTALLER" style="color: #58a6ff; font-weight: 600; text-decoration: none;">GGML-LLAMA-MSVC-INSTALLER</a> — Minimal FireGem-ready llama.cpp engine export.</li>
+        <li style="margin-bottom: 8px;"><a href="https://github.com/mercwar" style="color: #58a6ff; font-weight: 600; text-decoration: none;">mercwar</a> — Identity core and ceremonial command universe of the ecosystem.</li>
+        <li style="margin-bottom: 8px;"><a href="https://github.com/CYBORG-LIVE-GIT-BROWSER" style="color: #58a6ff; font-weight: 600; text-decoration: none;">CYBORG-LIVE-GIT-BROWSER</a> — Official Cyborg live github browser for Mercwar.</li>
+        <li style="margin-bottom: 8px;"><a href="https://github.com/Constellation" style="color: #58a6ff; font-weight: 600; text-decoration: none;">Constellation</a> — DHTML gateway for git up-links.</li>
+        <li style="margin-bottom: 8px;"><a href="https://github.com/Cyborg" style="color: #58a6ff; font-weight: 600; text-decoration: none;">Cyborg</a> — Pure-C Win64 execution engine for EVL-driven commands.</li>
+        <li style="margin-bottom: 8px;"><a href="https://github.com/Navigator" style="color: #58a6ff; font-weight: 600; text-decoration: none;">Navigator</a> — Central onboarding hub for the Cyborg-Live ecosystem.</li>
+        <li style="margin-bottom: 8px;"><a href="https://github.com/Robo-Knight-Gallery" style="color: #58a6ff; font-weight: 600; text-decoration: none;">Robo-Knight-Gallery</a> — Visual repository for the Robo-Knight universe.</li>
+        <li style="margin-bottom: 8px;"><a href="https://github.com/robo-knight-inventory" style="color: #58a6ff; font-weight: 600; text-decoration: none;">robo-knight-inventory</a> — Storage for Robo-Knight assets and poses.</li>
+        <li style="margin-bottom: 8px;"><a href="https://github.com/AVIS-DATALAKE/" style="color: #58a6ff; font-weight: 600; text-decoration: none;">AVIS-DATALAKE</a> — Schema-driven, AI-indexable datalake for AVIS.</li>
+        <li style="margin-bottom: 8px;"><a href="https://github.com/Robo-Knight-Player" style="color: #58a6ff; font-weight: 600; text-decoration: none;">Robo-Knight-Player</a> — Viewer/execution shell for Robo-Knight assets.</li>
+        <li style="margin-bottom: 8px;"><a href="https://github.com/CVBGODLY-CONSOLE" style="color: #58a6ff; font-weight: 600; text-decoration: none;">CVBGODLY-CONSOLE</a> — Custom Terminal with CMD.EXE support.</li>
+        <li style="margin-bottom: 8px;"><a href="https://github.com/Fire-Gem" style="color: #58a6ff; font-weight: 600; text-decoration: none;">Fire-Gem</a> — High-speed GGUF LLM shell for Windows.</li>
+        <li style="margin-bottom: 8px;"><a href="https://github.com/Robo-Knight-Demos" style="color: #58a6ff; font-weight: 600; text-decoration: none;">Robo-Knight-Demos</a> — C/DirectX graphics demos.</li>
+        <li style="margin-bottom: 8px;"><a href="https://github.com/Dark-Com" style="color: #58a6ff; font-weight: 600; text-decoration: none;">Dark-Com</a> — JavaFX WebView browser for the system.</li>
+        <li style="margin-bottom: 8px;"><a href="https://github.com/Sentinel" style="color: #58a6ff; font-weight: 600; text-decoration: none;">Sentinel</a> — Enforcement kernel for the AVIS ecosystem.</li>
+        <li style="margin-bottom: 8px;"><a href="https://github.com/NEXUS" style="color: #58a6ff; font-weight: 600; text-decoration: none;">NEXUS</a> — SDK for compilation, execution, and AI interpretation.</li>
+        <li style="margin-bottom: 8px;"><a href="https://github.com/JMC-ANDROID-APP-DEMO" style="color: #58a6ff; font-weight: 600; text-decoration: none;">JMC-ANDROID-APP-DEMO</a> — C/GCC/Bash HELLO app for Android (UCRT64).</li>
+        <li style="margin-bottom: 8px;"><a href="https://github.com/>CYHY-CMT" style="color: #58a6ff; font-weight: 600; text-decoration: none;">CYHY-CMT</a> — Comment-driven C template engine.</li>
+        <li style="margin-bottom: 8px;"><a href="https://github.com/CYBORG-PROJECT-EXPLORER" style="color: #58a6ff; font-weight: 600; text-decoration: none;">CYBORG-PROJECT-EXPLORER</a> — CPJ runtime core for AVIS-aware artifacts.</li>
+        <li style="margin-bottom: 8px;"><a href="https://github.com/AVIS-ALERT-FVS/" style="color: #58a6ff; font-weight: 600; text-decoration: none;">AVIS-ALERT-FVS</a> — JS UI for AVIS-style alerts.</li>
+        <li style="margin-bottom: 0px;"><a href="https://github.com/AVIS-AI-INI-DIR-MK-SCAN" style="color: #58a6ff; font-weight: 600; text-decoration: none;">AVIS-AI-INI-DIR-MK-SCAN</a> — Recursive AVIS artifact scanner.</li>
+    </ul>
+</div>
+<!-- END MERCWAR ECOSYSTEM REPOSITORIES SECTION -->
+
 
 These components form a **single operational model** that any AI can ingest and use.
 
