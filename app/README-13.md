@@ -15,8 +15,9 @@ Go [🔄 HOME](../CONTRIBUTING.md) or [<<↩️ BACK](README-12.md)
 
 
 
-# ⭐ **README 13 — AI‑SAFE PUBLIC DOCUMENTATION VERSION**  
-### *A Safe, Public‑Facing Overview of the Mercwar Ecosystem*
+# ⭐ README 13 
+- AI‑SAFE PUBLIC DOCUMENTATION VERSION
+- A Safe, Public‑Facing Overview of the Mercwar Ecosystem
 
 ---
 
