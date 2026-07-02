@@ -2,6 +2,7 @@ const owner       = "mercwar";
 const repo        = "Cyborg";
 const maxVersions = 12;
 const imageExts   = ["jpg","jpeg","png","gif","webp","bmp"];
+const app_dir = "Continuum";
 
 let currentVersion = null;
 let files = [];
@@ -32,7 +33,7 @@ function buildVersionBar(){
 
     // CHANGE: If your "Images X" folders are inside the "fire-star" folder on GitHub, 
     // change ghList("") below to ghList("fire-star")
-    ghList("fire-star").then(items=>{
+    ghList(app_dir).then(items=>{
         if (!Array.isArray(items)) {
             bar.textContent = "Failed to parse repository structure.";
             return;

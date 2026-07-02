@@ -3,6 +3,7 @@ const owner       = "mercwar";
 const repo        = "Cyborg";
 const maxVersions = 12;
 const imageExts   = ["jpg","jpeg","png","gif","webp","bmp"];
+const app_dir = "Continuum";
 
 let zIndexTop = 10;
 let offset    = 40;
@@ -102,7 +103,7 @@ function openStartMenu(){
     content.innerHTML = "Loading…";
 
     // Kept as "" to read the main repository root directory
-    ghList("fire-star").then(items=>{
+    ghList().then(items=>{
         const versions = items
             .filter(i => i.type==="dir" && isVersionDir(i.name))
             .sort((a,b)=>{
