@@ -21,9 +21,9 @@ Go to the [Tutorial](README-2.md) OR you can ...
 </a>
 
 ##### TOC: JUMP @ 🌀 
-###### - [README 2](README-2.md) 💥 [README 5](README-5.md) 💥 [README 8](README-8.md) 💥 [README 11](README-11.md) 
-###### - [README 3](README-3.md) 💥 [README 6](README-6.md) 💥 [README 9](README-9.md) 💥 [README 12](README-12.md) 
-###### - [README 4](README-4.md) 💥 [README 7](README-7.md) 💥 [README 10](README-10.md) 💥 [README 13](README-13.md) 
+###### - [README 2](app/README-2.md) 💥 [README 5](app/README-5.md) 💥 [README 8](app/README-8.md) 💥 [README 11](app/README-11.md) 
+###### - [README 3](app/README-3.md) 💥 [README 6](app/README-6.md) 💥 [README 9](app/README-9.md) 💥 [README 12](app/README-12.md) 
+###### - [README 4](app/README-4.md) 💥 [README 7](app/README-7.md) 💥 [README 10](app/README-10.md) 💥 [README 13](app/README-13.md) 
 
 
 <!-- START MERCWAR ECOSYSTEM REPOSITORIES SECTION -->
