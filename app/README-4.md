@@ -15,8 +15,9 @@ Go [🔄 HOME](../CONTRIBUTING.md) or [<<↩️ BACK](README-3.md)  or [FORWARD 
 
 ---
 
-# ⭐ **README 4 — Cyborg Language Specification**  
-### *Deterministic Windows‑Message Translation for AI‑Operated Systems*
+# ⭐ README 4 
+- Cyborg Language Specification**  
+- Deterministic Windows‑Message Translation for AI‑Operated Systems
 
 ---
 
