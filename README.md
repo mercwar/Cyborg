@@ -4,6 +4,8 @@ TITLE: AVIS – AI Visual Instruction System & Seed Language Specification
 AUTHOR: CGPT / MercWar
 DATE: 2026-01-14
 -->
+
+## 🧬 AVIS
 <a target="_self" title="CLICK HERE to ENTER the GATEWAY FREE!" href="https://mercwar.github.io/Constellation/index.html">
 <img 
     src="https://raw.githubusercontent.com/mercwar/Robo-Knight-Gallery/refs/heads/main/Version%207/image_d2a07390.png" 
@@ -13,11 +15,11 @@ DATE: 2026-01-14
 </a>
 
 ---
-# 🧬 AVIS — AI Visual Instruction System 
 
-### 🔗 [Click Here to View the Ev.2 Documentation](https://mercwar.github.io/Cyborg/ev-2/index.html)
-
-### 🔗 [Click Here to View the Ev.2.1 Documentation](https://github.com/mercwar/Cyborg/tree/main/Cyborg%20ev2.1)
+### 
+- AI Visual Instruction System  
+- 🔗 [Click Here](https://mercwar.github.io/Cyborg/ev-2/index.html) to View the Ev.2 Documentation  
+- 🔗 [Click Here](https://github.com/mercwar/Cyborg/tree/main/Cyborg%20ev2.1) to View the Ev.2.1 Documentation  
 
 ##### 🛡️ [CVBGOD's Robo-Knight CYBORG Ev.2]
 
@@ -28,8 +30,8 @@ DATE: 2026-01-14
        style="max-width:85%; border-radius:14px; box-shadow:0 6px 20px rgba(0,0,0,0.45);">
 </div>
 
-##### 🛡️ [CVBGOD's Robo-Knight CYBORG Ev.1]
-### 🔗 **[Click Here to View the Ev.1 Documentation](https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/)**
+##### 🛡️ [CVBGOD's Robo-Knight CYBORG Ev.1]  
+- 🔗 [Click Here](https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/)  to View the Ev.1 Documentation  
 
 
  
