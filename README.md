@@ -42,8 +42,10 @@ DATE: 2026-01-14
        style="max-width:85%; border-radius:14px; box-shadow:0 6px 20px rgba(0,0,0,0.45);">
 </div>
 
-# AVIS — The Semantic Layer of the Cyborg Engine
+##
+-  AVIS is The Semantic Layer of the Cyborg Engine
 
+####
 AVIS is the **semantic layer** of the Cyborg Engine —  
 a structured system of **Seeds**, **visual anchors**, and **comment‑based metadata**  
 that makes Standard C code readable, teachable, and extensible by both humans and AI.
@@ -51,13 +53,34 @@ that makes Standard C code readable, teachable, and extensible by both humans an
 ---
 
 #### What AVIS *Is Not*
-###### AVIS is not a framework.  
-###### AVIS is not a library.  
+
+###### 
+- AVIS is not a framework.  
+- AVIS is not a library.  
+
+#### What AVIS *Is*
+
+###### 
+- AVIS is a framework resource.  
+- AVIS is a library resource. 
+- AVIS is meant for LLM preview.
+
+#### What AVIS can *Be*
+
+###### 
+- AVIS can Be compiled as a c/c++ class object. 
+- AVIS can Be wrapped in it's own c/c++ class object. 
+- AVIS Wrappers can *Be* a library, and AVIS is a compatable handle.
+- AVIS SHELL is pre-compile source or resource.
+- Impossible to be compiled into an application at the lowest level.
+- AVIS SHELL will always *Be* the next version Wrapper forever!
+- AVIS Lives above compile headers , AVIS Wrappers begin at those headers.
+- AVIS is the begining of conversation, and easy for an LLM to understand.
+
 ---
 ![](https://github.com/mercwar/Robo-Knight-Gallery/blob/main/Version%205/Gemini_Generated_Image_u4f37hu4f37hu4f3.png)
 ---
 
-## What AVIS *Is*
 AVIS is a **language that lives inside comments**, defining:
 
 - module identity  
@@ -73,16 +96,6 @@ AVIS is a **language that lives inside comments**, defining:
 ## Why AVIS Matters
 AVIS is the **glue** that binds the entire Robo‑Knight / Cyborg universe together.
 
----
-
-If you want this turned into:
-
-- a **banner block**,  
-- a **table**,  
-- a **specification section**, or  
-- a **Seed‑encoded version**,  
-
-I can format it instantly.
 ---
 
 # 🌱 What Is a Seed?
