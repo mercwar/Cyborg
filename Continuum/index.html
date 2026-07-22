@@ -4,15 +4,9 @@
   <meta charset="UTF-8">
   <title>Mercwar Cyborg Continuum</title>
 
-<script>
-  // Generates "YYYY-MM-DD"
-  const d = new Date();
-  const v = d.toISOString().split('T')[0]; 
-
-  document.write(`<link rel="stylesheet" href="index.css?v=${v}">`);
-  document.write(`<link rel="stylesheet" href="ui.css?v=${v}">`);
-  document.write(`<link rel="stylesheet" href="fire-gem-orb.css?v=${v}">`);
-</script>
+<link rel="stylesheet" href="index.css?v=124">
+<link rel="stylesheet" href="ui.css?v=123">
+<link rel="stylesheet" href="fire-gem-orb.css?123">
 
   <!-- ===== AVIS / CONSTELLATION META CORE ===== -->
   <meta name="meta" content="AVIS-CONSTELLATION">
@@ -133,51 +127,45 @@ function openPortal() {
   <div id="bottomDivider"></div>
 
   <script src="index.js?v=12"></script>
+
+
 <script>
 window.addEventListener("load", () => {
-    const container = document.getElementById("topDivider");
-    if (!container) return;
+    const anchor = document.getElementById("jump_scroll");
+    if (!anchor) return;
 
-    // 1. Initiate primary scroll into view
-    container.scrollIntoView({
+    // First scroll into view
+    anchor.scrollIntoView({
         behavior: "smooth",
         block: "start"
     });
 
-    let animationFrameId;
+    let lastPos = -1;
     let stableCount = 0;
-    let lastPosition = window.scrollY;
 
-    // 2. Loop and wait for the initial scroll to complete stably
-    function verifyAndOffsetScroll() {
-        const currentPosition = window.scrollY;
+    function validateScroll() {
+        const currentPos = window.scrollY;
 
-        // If the scroll position hasn't changed from the last frame, it is settling
-        if (currentPosition === lastPosition) {
+        if (currentPos === lastPos) {
             stableCount++;
-            
-            // Once verified stable for 5 continuous frames, apply the final offset
-            if (stableCount >= 5) {
+            // Require stability for ~20 frames (~300ms at 60fps)
+            if (stableCount >= 20) {
+                // Apply final offset once validated
                 window.scrollBy({
-                    top: 170,
+                    top: 136,
                     behavior: "smooth"
                 });
-                
-                // CRITICAL FIX: Kill the loop completely so it never recurs or loops infinitely
-                cancelAnimationFrame(animationFrameId);
-                return;
+                return; // stop loop after final scroll
             }
         } else {
-            // Reset counter if still actively moving to the initial anchor
-            stableCount = 0;
+            stableCount = 0; // reset if movement detected
         }
 
-        lastPosition = currentPosition;
-        animationFrameId = requestAnimationFrame(verifyAndOffsetScroll);
+        lastPos = currentPos;
+        requestAnimationFrame(validateScroll);
     }
 
-    // Begin monitoring frame states
-    animationFrameId = requestAnimationFrame(verifyAndOffsetScroll);
+    requestAnimationFrame(validateScroll);
 });
 </script>
 
