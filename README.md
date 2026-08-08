@@ -19,7 +19,7 @@ DATE: 2026-01-14
 ### 
 - AI Visual Instruction System  
 - 🔗 [Click Here](https://mercwar.github.io/Cyborg/ev-2/index.html) to View the Ev.2 Documentation  
-- 🔗 [Click Here](https://github.com/mercwar/Cyborg/tree/main/Cyborg%20ev2.1) to View the Ev.2.1 Documentation  
+- 🔗 [Click Here](https://github.com/mercwar/Cyborg/tree/main/Cyborg%20ev2.1/readme.md) to View the Ev.2.1 Documentation  
 
 ##### 🛡️ [CVBGOD's Robo-Knight CYBORG Ev.2]
 
