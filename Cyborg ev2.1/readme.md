@@ -3,13 +3,16 @@
 # **Cyborg EV2.1 — Unified Language System**  
 ### *Master README for All Repositories*  
 
-# Table of Contents
+# 📖 Table of Contents
 
-- **[Page 1](ev2-1_01.md)**
-- **[Page 2](ca://s?q=Open_Page_2)**
-- **[Page 3](ca://s?q=Open_Page_3)**
-- **[Page 4](ca://s?q=Open_Page_4)**
-- **[Back](readme.md)**
+✨ **Navigation**
+- 🔙 **[Back](../readme.md)** — Return to Overview
+- 📝 **[Page 1](ev2-1_01.md)** — Introduction & Setup
+- 📂 **[Page 2](ev2-1_02.md)** — Configuration Details
+- ⚙️ **[Page 3](ev2-1_03.md)** — Engine Workflow
+- 🖥️ **[Page 4](ev2-1_04.md)** — Output & Rendering
+
+
 
 
 ![](https://github.com/mercwar/Robo-Knight-Gallery/blob/main/Version%205/rru_rk_cyborg_ev2_big_bang_ca671899.png)
