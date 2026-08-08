@@ -6,7 +6,7 @@
 # 📖 Table of Contents
 
 ✨ **Navigation**
-- 🔙 **[Back](../readme.md)** — Return to Overview
+- 🔙 **[Back](../README.md)** — Return to Overview
 - 📝 **[Page 1](ev2-1_01.md)** — Introduction & Setup
 - 📂 **[Page 2](ev2-1_02.md)** — Configuration Details
 - ⚙️ **[Page 3](ev2-1_03.md)** — Engine Workflow
