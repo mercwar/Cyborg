@@ -1,7 +1,7 @@
 
 
 # **Cyborg EV2.1 — Unified Language System**  
-### *Master README for All Repositories*  
+### *Master README for Cyborg*  
 
 # 📖 Table of Contents
 
