@@ -1,0 +1,27 @@
+## /* FILE: 35_EV2_SEMANTIC_ACTIONS.md */
+## /* AVIS_COORD: AVIS://LOCAL/MERCWAR/CYBORG/EV2/35 */
+## /* ROLE: EV2_SEMANTIC_ACTIONS */
+## /* STATUS: ACTIVE */
+
+# eV2 SEMANTIC ACTIONS
+
+Semantic Actions are the bridge between human-readable commands and EV2 logic.
+
+## ACTION TYPES
+ACTION.EXECUTE  
+ACTION.SEED  
+ACTION.CDATA  
+ACTION.WINDOW  
+ACTION.FIRELINK  
+
+## ACTION FORMAT
+ACTION <type> {
+    PAYLOAD
+    TARGET
+}
+
+## EXAMPLE
+ACTION EXECUTE {
+    VECTOR = 0xA1B2
+    TARGET = FIRE_CORE
+}
