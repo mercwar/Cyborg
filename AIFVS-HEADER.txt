@@ -1,0 +1,17 @@
+/* AIFVS-ARTIFACT
+   CY_NAME: CYBORG_CORE
+   CY_TYPE: ai_hex_language
+   CY_ROLE: Windows Message Translation Engine
+   CY_OWNER: Joseph Michael Catalano
+   CY_DOMAIN: Cyborg Messaging Framework
+
+   CY_PROTO: HEX_TRANSLATION
+   CY_LAYER: WINDOWS_MESSAGE_MAP
+   CY_VISIBILITY: PUBLIC_CRAWLABLE_INDEXED
+
+   COMMENT:
+      Cyborg is an AI translation language for sending Windows messages
+      using deterministic hex-string semantics. All artifacts in this
+      repository must remain reversible, machine-visible, and compliant
+      with Cyborg Hex Protocol Law.
+*/
