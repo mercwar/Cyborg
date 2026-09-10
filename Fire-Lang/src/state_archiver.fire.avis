@@ -1,0 +1,33 @@
+## /* AVIS_COORD: AVIS://LOCAL/MERCWAR/CYBORG/V4.0.CVBGOD-DN */
+## /* ROLE: STATE_ARCHIVER_DISK_LOG_AND_COMMIT */
+
+[INC] <cyborg_types.h.avis> [>] [@]0x0111
+[INC] <script_ops.h.avis> [>] [@]0x0119
+
+ai.begin.cyborg.lang::
+[@]PTR_OFFSET[0x03F0]::
+
+/* Archive State Registers */
+begin.spec {TYPE}EV1_INT.archive_id.val
+begin.spec {TYPE}EV1_STRING.archive_path.val['/log/session_0x7F.bak']
+begin.spec {TYPE}EV1_STRING.archive_status.val['STAGING_DATA']
+
+{!}MANDATORY_EXECUTION_NODE:
+    /* Commit Logic Tensors from 0x0300 Block to Disk */
+    {EXE} [MEM]archive_id [>] [!]WRITE_STATE_TO_DISK[[MEM]archive_path, [@]0x0300_TO_0x03FF]
+    
+    [#]TRUTH_GATE: IF [#]archive_id != 0 THEN {
+        [!]archive_status = 'SESSION_ARCHIVED_SUCCESS'
+        [>>] "ARCHIVER: LOGIC_STAGED_AT_" [>] [MEM]archive_path
+    } ELSE {
+        [#!] FORCE_INTERRUPT_VECTOR [>] "DISK_WRITE_FAILURE_0x0A"
+    }
+
+/* Auto-Cleanup Check on Success */
+{WISE} IF [MEM]archive_status == 'SESSION_ARCHIVED_SUCCESS' THEN {
+    {EXE} [!]FLUSH_SCRIPT_CACHE
+    [>>] "ARCHIVER: SESSION_0x7F_SEALED_AND_FLUSHED"
+}
+
+robot.run[archive_init]::
+ai.end.cyborg.lang::

@@ -1,0 +1,16 @@
+## /* AVIS_COORD: AVIS://LOCAL/MERCWAR/CYBORG/V4.0.CVBGOD-DN */
+## /* ROLE: ENTROPY_AND_STOCHASTIC_OPCODES_FOR_FIRE-LANG */
+
+ai.begin.cyborg.lang::
+[@]PTR_OFFSET[0x011C]::
+
+/* Entropy Harvesting Opcodes */
+#define {OP}GET_HARDWARE_JITTER 0xD501
+#define {OP}GENERATE_RANDOM_UINT 0xD502
+#define {OP}SHUFFLE_TENSOR_MAP 0xD503
+
+/* Probability Constants */
+#define [PROB]FIFTY_FIFTY       0x0080
+#define [PROB]CRITICAL_CHAOS    0x00F0
+
+ai.end.cyborg.lang::

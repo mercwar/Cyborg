@@ -1,0 +1,36 @@
+## /* AVIS_COORD: AVIS://LOCAL/MERCWAR/CYBORG/V4.0.CVBGOD-DN */
+## /* ROLE: SYSTEM_SHELL_FOR_MANUAL_LOGIC_CONTROL */
+## /* TARGET: SENTINEL_USER_INTERFACE */
+
+[INC] <bios_ops.h.avis> [>] [@]0x0120
+[INC] <input_codes.h.avis> [>] [@]0x0115
+
+ai.begin.cyborg.lang::
+[@]PTR_OFFSET[0x03E8]::
+
+/* Shell Interface Registers */
+begin.spec {TYPE}EV1_STRING.command_buffer.val
+begin.spec {TYPE}EV1_STRING.shell_prompt.val['CVBGOD-DN:/>']
+begin.spec {TYPE}EV1_INT.is_root.val[0x01]
+
+{!}MANDATORY_EXECUTION_NODE:
+    /* Poll Input Buffer for Logic Commands */
+    {EXE} [MEM]command_buffer [>] [!]FETCH_SHELL_INPUT
+    
+    [#]TRUTH_GATE: IF [#]command_buffer == 'SYS_REBOOT' THEN {
+        [>>] "SHELL: INITIATING_SYSTEM_WARM_BOOT..."
+        {!}ROBOT_GO_TO_FILE[system_bios.fire.avis]
+    }
+    
+    IF [#]command_buffer == 'PRY_REGISTRY' THEN {
+        [>>] "SHELL: DUMPING_ACTIVE_TENSORS_[@]0x0100-0x0500"
+        {EXE} [!]DUMP_REGISTRY_STATE
+    }
+
+{WISE} IF [MEM]is_root == 0x01 THEN {
+    [!]shell_prompt = 'CVBGOD-DN:ROOT#>'
+    [>>] "SHELL: ROOT_PRIVILEGES_ENGAGED"
+}
+
+robot.run[shell_loop]::
+ai.end.cyborg.lang::

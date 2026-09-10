@@ -1,0 +1,16 @@
+## /* AVIS_COORD: AVIS://LOCAL/MERCWAR/CYBORG/V4.0.CVBGOD-DN */
+## /* ROLE: ACOUSTIC_PRIMITIVE_OPCODES_FOR_FIRE-LANG */
+
+ai.begin.cyborg.lang::
+[@]PTR_OFFSET[0x0118]::
+
+/* Audio Hardware Opcodes */
+#define {OP}EMIT_PULSE_TONE     0x9101
+#define {OP}SET_MASTER_VOLUME   0x9102
+#define {OP}STOP_ALL_AUDIO      0x9103
+
+/* Acoustic Constants */
+#define [PULSE]LOW_THUMPER      0x003C
+#define [PULSE]HIGH_SQUEAL      0x07D0
+
+ai.end.cyborg.lang::

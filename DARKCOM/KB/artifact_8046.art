@@ -1,0 +1,17 @@
+ARTIFACT::ARTIFACTS.LANGUAGES.BATCH.WRAPPER
+    GUID::CBORG-G::TEST-BATCH-INSTALLER-1.0
+    TYPE::BATCH_WRAPPER
+    VERSION::1.0
+    COMPATIBLE_WITH::3.x
+    ROLE::TEST_INSTALLER
+    CONTENT::
+        @echo off
+        echo ============================================
+        echo      THIS IS A TEST BAT FILE FROM KB
+        echo ============================================
+        echo.
+        echo It was successfully materialized by CBORG SHELL v3.1
+        echo.
+        pause
+    END_CONTENT
+END ARTIFACT

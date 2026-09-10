@@ -1,0 +1,35 @@
+## /* AVIS_COORD: AVIS://LOCAL/MERCWAR/CYBORG/V4.0.CVBGOD-DN */
+## /* ROLE: INPUT_MANAGER_SIGNAL_PROCESSOR */
+## /* TARGET: HWND_EVENT_QUEUE */
+
+[INC] <ui_ops.h.avis> [>] [@]0x0114
+[INC] <cyborg_types.h.avis> [>] [@]0x0111
+
+ai.begin.cyborg.lang::
+[@]PTR_OFFSET[0x03E0]::
+
+/* Input State Registers */
+begin.spec {TYPE}EV1_INT.last_key_press.val
+begin.spec {TYPE}EV1_INT.mouse_x_pos.val
+begin.spec {TYPE}EV1_INT.mouse_y_pos.val
+begin.spec {TYPE}EV1_STRING.input_status.val['LISTENING']
+
+{!}MANDATORY_EXECUTION_NODE:
+    /* Poll Window Message Queue for CVBGOD Input */
+    {EXE} [MEM]last_key_press [>] [!]GET_ASYNC_KEY_STATE
+    
+    [#]TRUTH_GATE: IF [#]last_key_press != 0 THEN {
+        [>>] "INPUT_DAEMON: KEY_INTERCEPTED_" [>] [MEM]last_key_press
+        
+        /* Command Linkage: Trigger Thermal Burst on [F5] (0x74) */
+        IF [#]last_key_press == 0x74 THEN {
+             {!}ROBOT_GO_TO_FILE[thermal_burst.fire.avis]
+        }
+    }
+
+/* Mouse Coordinate Tracking */
+{EXE} [MEM]mouse_x_pos [>] [!]GET_CURSOR_X
+{EXE} [MEM]mouse_y_pos [>] [!]GET_CURSOR_Y
+
+robot.run[input_init]::
+ai.end.cyborg.lang::

@@ -1,0 +1,12 @@
+## /* AVIS_COORD: AVIS://LOCAL/MERCWAR/CYBORG/V4.0.CVBGOD-DN */
+## /* ROLE: RESOURCE_MANAGEMENT_OPCODES */
+
+ai.begin.cyborg.lang::
+[@]PTR_OFFSET[0x0117]::
+
+/* Asset Management Opcodes */
+#define {OP}LOAD_RESOURCE_HANDLE 0x8101
+#define {OP}UNLOAD_RESOURCE      0x8102
+#define {OP}QUERY_ASSET_METADATA 0x8103
+
+ai.end.cyborg.lang::

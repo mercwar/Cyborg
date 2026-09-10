@@ -1,0 +1,28 @@
+## /* AVIS_COORD: AVIS://LOCAL/MERCWAR/CYBORG/V4.0.CVBGOD-DN */
+## /* ROLE: SECURITY_GATE_AND_ADDRESS_LOCK_VERIFIER */
+
+[INC] <gate_logic.h.avis> [>] [@]0x0303
+[INC] <cyborg_types.h.avis> [>] [@]0x0111
+
+ai.begin.cyborg.lang::
+[@]PTR_OFFSET[0x03B0]::
+
+/* Security Credential Registers */
+begin.spec {TYPE}EV1_INT.access_level.val[0x07]
+begin.spec {TYPE}EV1_STRING.gate_status.val['LOCKED']
+begin.spec {TYPE}EV1_STRING.auth_token.val['CVBGOD_SENTINEL_ROOT']
+
+{!}MANDATORY_EXECUTION_NODE:
+    /* Verify Current Logic Address against Master Project Lock */
+    {EXE} [!]VERIFY_PTR_INTEGRITY [>] [@]0x0300_TO_0x03FF
+    
+    [#]TRUTH_GATE: IF [#]access_level == 0x07 THEN {
+        [!]gate_status = 'GATE_OPEN_AUTHENTICATED'
+        [>>] "SECURITY_GATE: ACCESS_GRANTED_TO_SENTINEL_CLUSTER"
+    } ELSE {
+        [!]gate_status = 'ACCESS_DENIED_HALTING'
+        [#!] FORCE_INTERRUPT_VECTOR [>] "SECURITY_BREACH_0x0D"
+    }
+
+robot.run[security_init]::
+ai.end.cyborg.lang::

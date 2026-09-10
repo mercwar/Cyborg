@@ -1,0 +1,17 @@
+## /* AVIS_COORD: AVIS://LOCAL/MERCWAR/CYBORG/V4.0.CVBGOD-DN */
+## /* ROLE: INPUT_PRIMITIVE_OPCODES_FOR_FIRE-LANG */
+
+ai.begin.cyborg.lang::
+[@]PTR_OFFSET[0x0115]::
+
+/* Input Polling Opcodes */
+#define {OP}GET_ASYNC_KEY_STATE 0x1001
+#define {OP}GET_CURSOR_X        0x1002
+#define {OP}GET_CURSOR_Y        0x1003
+
+/* Common Virtual Key Aliases */
+#define [KEY]F5_REFRESH        0x74
+#define [KEY]ESC_EXIT          0x1B
+#define [KEY]SPACE_TRIGGER     0x20
+
+ai.end.cyborg.lang::

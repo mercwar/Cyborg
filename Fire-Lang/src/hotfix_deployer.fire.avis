@@ -1,0 +1,34 @@
+## /* AVIS_COORD: AVIS://LOCAL/MERCWAR/CYBORG/V4.0.CVBGOD-DN */
+## /* ROLE: LIVE_PATCH_AND_LOGIC_INJECTION_DAEMON */
+
+[INC] <archive_ops.h.avis> [>] [@]0x011A
+[INC] <gate_logic.h.avis> [>] [@]0x0303
+
+ai.begin.cyborg.lang::
+[@]PTR_OFFSET[0x03B5]::
+
+/* Hot-Fix Control Registers */
+begin.spec {TYPE}EV1_INT.patch_id.val
+begin.spec {TYPE}EV1_STRING.patch_source.val['/res/hotfix/delta_01.patch']
+begin.spec {TYPE}EV1_STRING.patch_status.val['LISTENING_FOR_SIGNAL']
+
+{!}MANDATORY_EXECUTION_NODE:
+    /* Scan for Incoming Patch Signal */
+    IF [#!]HOTFIX_SIGNAL == TRUE THEN {
+        [>>] "HOTFIX: SIGNAL_DETECTED. INITIATING_LIVE_PATCH..."
+        
+        /* Apply Memory Diff to Target Address without Kernel Halt */
+        {EXE} [MEM]patch_id [>] [!]APPLY_LOGIC_DIFF[[MEM]patch_source, [@]0x0300]
+        
+        [#]TRUTH_GATE: IF [#]patch_id != 0 THEN {
+            [!]patch_status = 'PATCH_COMMITTED_IN_REAL_TIME'
+            [>>] "HOTFIX: MODULE_[@]0x0300_SUCCESSFULLY_PATCHED_AT_RUNTIME"
+        }
+    }
+
+{WISE} IF [MEM]patch_status == 'PATCH_COMMITTED_IN_REAL_TIME' THEN {
+    [>] [!]EV1_EVENT_PACKET { ID:0x77, PULSE:0x01, {STR}EV_SENDER:'HOTFIX_DAEMON' }
+}
+
+robot.run[hotfix_init]::
+ai.end.cyborg.lang::

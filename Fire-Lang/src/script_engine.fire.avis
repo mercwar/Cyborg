@@ -1,0 +1,32 @@
+## /* AVIS_COORD: AVIS://LOCAL/MERCWAR/CYBORG/V4.0.CVBGOD-DN */
+## /* ROLE: SCRIPT_ENGINE_FOR_DYNAMIC_LOGIC_MACROS */
+
+[INC] <res_ops.h.avis> [>] [@]0x0117
+[INC] <gate_logic.h.avis> [>] [@]0x0303
+
+ai.begin.cyborg.lang::
+[@]PTR_OFFSET[0x0385]::
+
+/* Script Engine Registers */
+begin.spec {TYPE}EV1_INT.script_ptr.val
+begin.spec {TYPE}EV1_STRING.script_path.val['/res/macros/boost.fire']
+begin.spec {TYPE}EV1_STRING.engine_state.val['READY']
+
+{!}MANDATORY_EXECUTION_NODE:
+    /* Load Macro from VFS */
+    {EXE} [MEM]script_ptr [>] [!]LOAD_SCRIPT_SOURCE[[MEM]script_path]
+    
+    [#]TRUTH_GATE: IF [#]script_ptr != 0 THEN {
+        [!]engine_state = 'PARSING_EXTERNAL_VECTOR'
+        [>>] "SCRIPT_ENGINE: EXECUTING_MACRO_" [>] [MEM]script_path
+        {EXE} [!]EXECUTE_BY_POINTER[[MEM]script_ptr]
+    } ELSE {
+        [>>] "SCRIPT_ENGINE: NO_EXTERNAL_MACRO_DETECTED"
+    }
+
+{WISE} IF [MEM]engine_state == 'FATAL_SYNTAX_ERR' THEN {
+    [#!] FORCE_INTERRUPT_VECTOR [>] "MACRO_INGEST_FAILURE"
+}
+
+robot.run[script_init]::
+ai.end.cyborg.lang::

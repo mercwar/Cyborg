@@ -1,0 +1,14 @@
+{
+  "root": "CYBORG eV1.0",
+  "type": "directory",
+  "entries": [
+    { "name": "docs", "type": "folder" },
+    { "name": "spec", "type": "folder" },
+    { "name": "src", "type": "folder" },
+    { "name": "examples", "type": "folder" },
+
+    { "name": "README.md", "type": "file" },
+    { "name": "cyborg.language.json", "type": "file" },
+    { "name": "cyborg.protocol.md", "type": "file" }
+  ]
+}

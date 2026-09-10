@@ -1,0 +1,52 @@
+name: Fire-Gem AVIS Engine
+on: [push, workflow_dispatch]
+
+jobs:
+  avis-chain-verify:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Assembly Tools
+        run: sudo apt-get update && sudo apt-get install -y nasm binutils
+
+      - name: YML Level Logging
+        run: |
+          mkdir -p fire-gem
+          echo "[AVIS-YML] Identity: fire-gem-yml" >> fire-gem/fire-gem.log
+          echo "[AVIS-YML] Status: Path Verified" >> fire-gem/fire-gem.log
+
+      - name: Execute AVIS Smithy
+        run: |
+          # 1. Build the Modular Log Object (The Voice)
+          nasm -f elf64 fire-gem/fire-log.asm -o fire-gem/fire-log.o
+          
+          # 2. Build the Master Engine (The Brain)
+          nasm -f elf64 fire-gem/fire-gem.asm -o fire-gem/fire-gem.o
+          
+          # 3. THE LINKER STRIKE: Fuse Brain and Voice
+          # Resolves 'extern FIRE_LOG_STRIKE' inside fire-gem.asm
+          ld fire-gem/fire-gem.o fire-gem/fire-log.o -o fire-gem.exe
+          
+          # 4. Handoff to the Orchestrator
+          chmod +x fire-gem/fire-gem.sh
+          ./fire-gem/fire-gem.sh
+
+      - name: Commit and Push to Repository
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .
+          if ! git diff --staged --quiet; then
+            git commit -m "AVIS: Canonical State Vector Sync [v1] HAHA!"
+            git pull --rebase -X ours origin main
+            git push origin main
+          else
+            echo "No changes detected in the AVIS workspace."
+          fi
+

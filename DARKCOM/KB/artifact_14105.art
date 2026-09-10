@@ -1,0 +1,46 @@
+ARTIFACT::DARKCOM.SHORTCUT.LAUNCHER.V1
+GUID::CBORG-G::DARKCOM-SHORTCUT-1.0
+TYPE::BATCH_WRAPPER
+VERSION::1.0
+CONTENT::
+@echo off
+setlocal EnableDelayedExpansion
+
+echo ============================================
+echo        DARKCOM SHORTCUT + LAUNCHER
+echo ============================================
+echo.
+
+set "INDEX=G:\Darkcom\KB\index.txt"
+set "TARGET=CBORG-G::DARKCOM-LAUNCHER-1.0"
+set "FOUND="
+
+echo Creating DARKCOM shortcut...
+echo @echo off> "G:\Darkcom\DARKCOM_SHORTCUT.BAT"
+echo call G:\Darkcom\KB\mat_launcher.bat>> "G:\Darkcom\DARKCOM_SHORTCUT.BAT"
+echo Shortcut created at G:\Darkcom\DARKCOM_SHORTCUT.BAT
+echo.
+
+echo Searching for DARKCOM LAUNCHER in KB...
+for /f "usebackq tokens=1-6 delims=|" %%A in ("%INDEX%") do (
+    set "GUID=%%A"
+    set "MATFILE=%%C"
+
+    rem Trim leading spaces
+    set "G=!GUID!"
+    for /l %%i in (1,1,50) do if "!G:~0,1!"==" " set "G=!G:~1!"
+
+    if /i "!G!"=="!TARGET!" (
+        set "FOUND=1"
+        echo Running DARKCOM LAUNCHER...
+        call "!MATFILE!"
+    )
+)
+
+if not defined FOUND (
+    echo [ERROR] DARKCOM LAUNCHER not found in KB.
+    pause
+)
+
+END_CONTENT
+END ARTIFACT

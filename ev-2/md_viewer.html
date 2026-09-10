@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Markdown Viewer</title>
+
+<style>
+  body {
+    background: #050608;
+    color: #e5e5e5;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    padding: 20px;
+    line-height: 1.55;
+  }
+
+  /* Compact AVIS header block */
+  .avis-header {
+    display: inline-block;
+    background: #0d0f12;
+    border: 1px solid #222;
+    padding: 2px 6px;
+    margin-bottom: 10px;
+    font-size: 10px;
+    color: #7fffd4;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+
+  h1, h2, h3, h4 {
+    color: #7fffd4;
+    margin-top: 20px;
+  }
+  pre {
+    background: #111;
+    padding: 12px;
+    border-radius: 6px;
+    overflow-x: auto;
+    margin: 12px 0;
+  }
+  code {
+    background: #111;
+    padding: 2px 4px;
+    border-radius: 3px;
+  }
+  blockquote {
+    border-left: 4px solid #444;
+    padding-left: 10px;
+    color: #aaa;
+    margin: 10px 0;
+  }
+  
+  
+  /* GOLD WEBKIT SCROLLBARS — INSIDE IFRAME */
+body::-webkit-scrollbar {
+    width: 10px;
+    background: #0a0c10;
+}
+
+body::-webkit-scrollbar-track {
+    background: #0a0c10;
+    border-left: 1px solid rgba(255, 215, 128, 0.15);
+}
+
+body::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #f6d878, #d8b44f);
+    border-radius: 6px;
+    border: 1px solid rgba(255, 230, 160, 0.35);
+    box-shadow:
+        0 0 6px rgba(255, 215, 94, 0.45),
+        inset 0 0 4px rgba(0, 0, 0, 0.6);
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #ffe58a, #f0c95a);
+    box-shadow:
+        0 0 10px rgba(255, 230, 140, 0.75),
+        inset 0 0 6px rgba(0, 0, 0, 0.7);
+}
+
+body::-webkit-scrollbar-corner {
+    background: #0a0c10;
+}
+/* VIEW HEADER — EV‑2 FRAME */
+.view-header {
+  width: 100%;
+  background: linear-gradient(to right, #0b0d10 0%, #1a1f26 100%);
+  border-bottom: 1px solid rgba(255,215,94,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 14px;
+  box-shadow: 0 0 10px rgba(255,215,94,0.25);
+}
+
+.view-header img {
+  height: auto;
+  width: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 8px rgba(255,215,94,0.45));
+}
+
+.view-title {
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: #f6d878;
+  text-shadow: 0 0 6px rgba(255,215,94,0.45);
+  font-weight: 600;
+}
+
+</style>
+
+<script>
+// --- Markdown Renderer with AVIS Header Detection ---
+function renderMarkdown(md) {
+    // Escape HTML
+    md = md.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+
+    // Detect AVIS header lines and compress them
+    md = md.replace(
+        /^## \/\* FILE:(.*?)\*\/[\s\S]*?^## \/\* STATUS:(.*?)\*\/$/gm,
+        function(block) {
+            const single = block
+                .replace(/\n/g, " ")
+                .replace(/## /g, "")
+                .trim();
+            return `<div class="avis-header">${single}</div><br>`;
+        }
+    );
+
+    // Code blocks
+    md = md.replace(/```([\s\S]*?)```/g, (_, code) =>
+        "<pre><code>" + code + "</code></pre>"
+    );
+
+    // Headings
+    md = md.replace(/^#### (.*)$/gm, "<h4>$1</h4>");
+    md = md.replace(/^### (.*)$/gm, "<h3>$1</h3>");
+    md = md.replace(/^## (.*)$/gm, "<h2>$1</h2>");
+    md = md.replace(/^# (.*)$/gm, "<h1>$1</h1>");
+
+    // Bold / italic
+    md = md.replace(/\*\*\*(.*?)\*\*\*/g, "<b><i>$1</i></b>");
+    md = md.replace(/\*\*(.*?)\*\*/g, "<b>$1</b>");
+    md = md.replace(/\*(.*?)\*/g, "<i>$1</i>");
+
+    // Inline code
+    md = md.replace(/`([^`]+)`/g, "<code>$1</code>");
+
+    // Blockquotes
+    md = md.replace(/^\> (.*)$/gm, "<blockquote>$1</blockquote>");
+
+    // Lists
+    md = md.replace(/^\s*-\s+(.*)$/gm, "<ul><li>$1</li></ul>");
+    md = md.replace(/^\s*\*\s+(.*)$/gm, "<ul><li>$1</li></ul>");
+    md = md.replace(/^\s*\d+\.\s+(.*)$/gm, "<ol><li>$1</li></ol>");
+
+    // Line breaks
+    md = md.replace(/\n/g, "<br>");
+
+    return md;
+}
+
+async function loadMD() {
+    const params = new URLSearchParams(window.location.search);
+    const file = params.get("file");
+
+    if (!file) {
+        document.getElementById("content").innerHTML = "<h2>No file specified.</h2>";
+        return;
+    }
+
+    try {
+        const res = await fetch(file);
+        const text = await res.text();
+        document.getElementById("content").innerHTML = renderMarkdown(text);
+    } catch (e) {
+        document.getElementById("content").innerHTML = "<h2>Failed to load file.</h2>";
+    }
+}
+
+window.onload = loadMD;
+</script>
+</head>
+
+<body>
+
+<div class="view-header">
+  <img src="https://github.com/mercwar/Robo-Knight-Gallery/blob/main/Version%204/ev2.png?raw=true" alt="EV‑2 View Header">
+
+</div>
+<br>
+  <div class="view-title">Welcome to the system..</div>
+<br>
+<div id="content">Loading…</div>
+</body>
+</html>
