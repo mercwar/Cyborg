@@ -1,0 +1,29 @@
+; =============================================================================
+;  AVIS PE/MZ CONTINUOUS SCAN
+; =============================================================================
+
+SECTION .header
+    ; --- DOS HEADER (Fixed 64 bytes) ---
+    db 'MZ'                 ; e_magic
+    dw 0x0090               ; e_cblp
+    dw 0x0003               ; e_cp
+    dw 0x0000               ; e_crlc
+    dw 0x0004               ; e_cparhdr
+    dw 0x0000               ; e_minalloc
+    dw 0xFFFF               ; e_maxalloc
+    dw 0x0000               ; e_ss
+    dw 0x00B8               ; e_sp
+    dw 0x0000               ; e_csum
+    dw 0x0000               ; e_ip
+    dw 0x0000               ; e_cs
+    dw 0x0040               ; e_lfarlc (Start of relocation table)
+    dw 0x0000               ; e_ovno
+    times 4 dw 0            ; e_res
+    dw 0x0000               ; e_oemid
+    dw 0x0000               ; e_oeminfo
+    times 10 dw 0           ; e_res2
+    dd 0x00000080           ; e_lfanew (Point to PE at 128 bytes)
+
+    ; --- DOS STUB ---
+    db 'This program cannot be run in DOS mode.', 0x0D, 0x0D, 0x0A, '$', 0, 0
+    times 22 db 0           ; Aligning to the 0x80 mark
