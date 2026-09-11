@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>📘 PAGE 4.8 — IR ERROR DIAGNOSTICS (MACHINE‑LEVEL SPECIFICATION) | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="📘 PAGE 4.8 — IR ERROR DIAGNOSTICS (MACHINE‑LEVEL SPECIFICATION)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/28_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/28_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="📘 PAGE 4.8 — IR ERROR DIAGNOSTICS (MACHINE‑LEVEL SPECIFICATION)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"📘 PAGE 4.8 — IR ERROR DIAGNOSTICS (MACHINE‑LEVEL SPECIFICATION)","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/28_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      
+<h1 id="-page-48--ir-error-diagnostics-machinelevel-specification"><strong>📘 PAGE 4.8 — IR ERROR DIAGNOSTICS (MACHINE‑LEVEL SPECIFICATION)</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="48-overview"><strong>4.8 Overview</strong></h2>
+
+<p>This section defines the <strong>machine‑level diagnostic system</strong> used when IR validation fails.<br />
+Diagnostics are:</p>
+
+<ul>
+  <li>strict</li>
+  <li>non‑interpretive</li>
+  <li>non‑negotiable</li>
+  <li>immediate</li>
+  <li>fatal</li>
+</ul>
+
+<p>The diagnostic engine MUST NOT attempt:</p>
+
+<ul>
+  <li>correction</li>
+  <li>inference</li>
+  <li>recovery</li>
+  <li>fallback behavior</li>
+</ul>
+
+<p>It MUST only <strong>detect</strong>, <strong>classify</strong>, and <strong>report</strong>.</p>
+
+<p>This section is <strong>normative</strong>.</p>
+
+<hr />
+
+<h1 id="481-diagnostic-philosophy"><strong>4.8.1 Diagnostic Philosophy</strong></h1>
+
+<p>Diagnostics follow three principles:</p>
+
+<h3 id="principle-1--precision"><strong>Principle 1 — Precision</strong></h3>
+<p>Errors MUST be reported with exact category and location.</p>
+
+<h3 id="principle-2--finality"><strong>Principle 2 — Finality</strong></h3>
+<p>Errors MUST halt execution immediately.</p>
+
+<h3 id="principle-3--noninference"><strong>Principle 3 — Non‑Inference</strong></h3>
+<p>Diagnostics MUST NOT guess what the user “meant.”</p>
+
+<hr />
+
+<h1 id="482-diagnostic-categories"><strong>4.8.2 Diagnostic Categories</strong></h1>
+
+<p>Every IR error MUST fall into one of the following categories:</p>
+
+<ol>
+  <li><strong>TARGET_ERROR</strong></li>
+  <li><strong>STRUCTURE_ERROR</strong></li>
+  <li><strong>MARKER_ERROR</strong></li>
+  <li><strong>EXECUTION_ERROR</strong></li>
+  <li><strong>ORDER_ERROR</strong></li>
+  <li><strong>BOUNDARY_ERROR</strong></li>
+  <li><strong>OPCODE_ERROR</strong></li>
+</ol>
+
+<p>Each category is defined below.</p>
+
+<hr />
+
+<h1 id="483-target_error"><strong>4.8.3 TARGET_ERROR</strong></h1>
+
+<p>Triggered when:</p>
+
+<ul>
+  <li>no target is present</li>
+  <li>multiple targets exist</li>
+  <li>target appears after payload open</li>
+  <li>target appears inside payload</li>
+</ul>
+
+<h3 id="diagnostic-format"><strong>Diagnostic Format</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ERROR: TARGET_ERROR — &lt;description&gt;
+Line &lt;n&gt;: "&lt;content&gt;"
+Execution halted.
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="484-structure_error"><strong>4.8.4 STRUCTURE_ERROR</strong></h1>
+
+<p>Triggered when:</p>
+
+<ul>
+  <li>declarations appear inside payload</li>
+  <li>comments break markers</li>
+  <li>whitespace fragments keywords</li>
+  <li>unknown constructs appear</li>
+</ul>
+
+<h3 id="diagnostic-format-1"><strong>Diagnostic Format</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ERROR: STRUCTURE_ERROR — &lt;description&gt;
+Line &lt;n&gt;: "&lt;content&gt;"
+Execution halted.
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="485-marker_error"><strong>4.8.5 MARKER_ERROR</strong></h1>
+
+<p>Triggered when:</p>
+
+<ul>
+  <li>missing begin</li>
+  <li>missing seal</li>
+  <li>nested payloads</li>
+  <li>multiple opens</li>
+  <li>multiple seals</li>
+  <li>trailing content after seal</li>
+  <li>marker fragmentation</li>
+  <li>marker decoration</li>
+</ul>
+
+<h3 id="diagnostic-format-2"><strong>Diagnostic Format</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ERROR: MARKER_ERROR — &lt;description&gt;
+Line &lt;n&gt;: "&lt;content&gt;"
+Execution halted.
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="486-execution_error"><strong>4.8.6 EXECUTION_ERROR</strong></h1>
+
+<p>Triggered when:</p>
+
+<ul>
+  <li>verb appears outside payload</li>
+  <li>verb appears after seal</li>
+  <li>verb contains arguments</li>
+  <li>verb is unknown</li>
+  <li>verb is combined with another verb</li>
+</ul>
+
+<h3 id="diagnostic-format-3"><strong>Diagnostic Format</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ERROR: EXECUTION_ERROR — &lt;description&gt;
+Line &lt;n&gt;: "&lt;content&gt;"
+Execution halted.
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="487-order_error"><strong>4.8.7 ORDER_ERROR</strong></h1>
+
+<p>Triggered when:</p>
+
+<ul>
+  <li>EXEC_* appears before OPEN_PAYLOAD</li>
+  <li>SEAL appears before EXEC_*</li>
+  <li>TARGET appears after OPEN_PAYLOAD</li>
+  <li>END_TRANSMISSION appears inside payload</li>
+</ul>
+
+<h3 id="diagnostic-format-4"><strong>Diagnostic Format</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ERROR: ORDER_ERROR — &lt;description&gt;
+Line &lt;n&gt;: "&lt;content&gt;"
+Execution halted.
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="488-boundary_error"><strong>4.8.8 BOUNDARY_ERROR</strong></h1>
+
+<p>Triggered when:</p>
+
+<ul>
+  <li>payload boundaries overlap</li>
+  <li>payload boundaries are nested</li>
+  <li>payload boundaries are missing</li>
+  <li>content appears after seal</li>
+</ul>
+
+<h3 id="diagnostic-format-5"><strong>Diagnostic Format</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ERROR: BOUNDARY_ERROR — &lt;description&gt;
+Line &lt;n&gt;: "&lt;content&gt;"
+Execution halted.
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="489-opcode_error"><strong>4.8.9 OPCODE_ERROR</strong></h1>
+
+<p>Triggered when:</p>
+
+<ul>
+  <li>IR contains unknown opcodes</li>
+  <li>IR contains malformed opcodes</li>
+  <li>IR contains illegal opcode sequences</li>
+</ul>
+
+<h3 id="diagnostic-format-6"><strong>Diagnostic Format</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ERROR: OPCODE_ERROR — &lt;description&gt;
+Opcode: &lt;opcode&gt;
+Execution halted.
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="4810-diagnostic-severity"><strong>4.8.10 Diagnostic Severity</strong></h1>
+
+<p>All IR errors are <strong>fatal</strong>.</p>
+
+<p>There are:</p>
+
+<ul>
+  <li>no warnings</li>
+  <li>no recoverable states</li>
+  <li>no partial validity</li>
+  <li>no fallback modes</li>
+</ul>
+
+<p>If IR is invalid, <strong>C generation MUST NOT occur</strong>.</p>
+
+<hr />
+
+<h1 id="4811-diagnostic-examples"><strong>4.8.11 Diagnostic Examples</strong></h1>
+
+<h3 id="example-1--trailing-content"><strong>Example 1 — Trailing Content</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ERROR: MARKER_ERROR — trailing content after seal.
+Line 7: "extra"
+Execution halted.
+</code></pre></div></div>
+
+<h3 id="example-2--unknown-verb"><strong>Example 2 — Unknown Verb</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ERROR: EXECUTION_ERROR — unknown verb "optimize".
+Line 4: "optimize"
+Execution halted.
+</code></pre></div></div>
+
+<h3 id="example-3--missing-target"><strong>Example 3 — Missing Target</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ERROR: TARGET_ERROR — no target declared.
+Execution halted.
+</code></pre></div></div>
+
+<h3 id="example-4--nested-payload"><strong>Example 4 — Nested Payload</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ERROR: BOUNDARY_ERROR — nested payload detected.
+Line 5: "begin"
+Execution halted.
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="4812-summary"><strong>4.8.12 Summary</strong></h1>
+
+<p>Page 4.8 defines the <strong>machine‑level diagnostic system</strong>:</p>
+
+<ul>
+  <li>strict error categories</li>
+  <li>precise reporting</li>
+  <li>immediate halting</li>
+  <li>no inference</li>
+  <li>no correction</li>
+  <li>no recovery</li>
+</ul>
+
+<p>Diagnostics enforce the <strong>ceremonial purity</strong> of the Cyborg Language.</p>
+
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.1/28_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

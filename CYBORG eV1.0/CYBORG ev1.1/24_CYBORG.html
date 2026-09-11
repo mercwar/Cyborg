@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>📘 PAGE 4.4 — IR → C MAPPING RULES (DEEP SPECIFICATION) | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="📘 PAGE 4.4 — IR → C MAPPING RULES (DEEP SPECIFICATION)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/24_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/24_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="📘 PAGE 4.4 — IR → C MAPPING RULES (DEEP SPECIFICATION)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"📘 PAGE 4.4 — IR → C MAPPING RULES (DEEP SPECIFICATION)","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/24_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      
+<h1 id="-page-44--ir--c-mapping-rules-deep-specification"><strong>📘 PAGE 4.4 — IR → C MAPPING RULES (DEEP SPECIFICATION)</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="44-overview"><strong>4.4 Overview</strong></h2>
+
+<p>This section defines the <strong>formal, deterministic, and complete rules</strong> for converting Cyborg IR into C source code.<br />
+The mapping is:</p>
+
+<ul>
+  <li><strong>1:1</strong></li>
+  <li><strong>order‑preserving</strong></li>
+  <li><strong>non‑inferential</strong></li>
+  <li><strong>non‑optimizing</strong></li>
+  <li><strong>structurally rigid</strong></li>
+</ul>
+
+<p>Every IR opcode maps to a <strong>specific C construct</strong>, and no opcode may be skipped, altered, or reinterpreted.</p>
+
+<p>This section is <strong>normative</strong>.</p>
+
+<hr />
+
+<h1 id="441-mapping-philosophy"><strong>4.4.1 Mapping Philosophy</strong></h1>
+
+<p>The Cyborg Language enforces three principles in IR → C translation:</p>
+
+<h3 id="principle-1--determinism"><strong>Principle 1 — Determinism</strong></h3>
+<p>Every IR opcode maps to exactly one C construct.</p>
+
+<h3 id="principle-2--transparency"><strong>Principle 2 — Transparency</strong></h3>
+<p>The mapping must be readable, predictable, and stable.</p>
+
+<h3 id="principle-3--noninference"><strong>Principle 3 — Non‑Inference</strong></h3>
+<p>The C generator MUST NOT:</p>
+
+<ul>
+  <li>add missing logic</li>
+  <li>reorder logic</li>
+  <li>optimize logic</li>
+  <li>infer intent</li>
+</ul>
+
+<p>The C output is a <strong>literal transcription</strong> of the IR.</p>
+
+<hr />
+
+<h1 id="442-c-output-skeleton"><strong>4.4.2 C Output Skeleton</strong></h1>
+
+<p>All generated C code follows this canonical structure:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="o">&lt;</span><span class="n">TARGET_TYPE</span><span class="o">&gt;*</span> <span class="n">ctx</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">&lt;</span><span class="n">BODY</span><span class="o">&gt;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Where:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">&lt;TARGET_TYPE&gt;</code> is determined by the target</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;BODY&gt;</code> is a linear sequence of verb calls</li>
+  <li>return value is the OR‑aggregation of all verb results</li>
+</ul>
+
+<hr />
+
+<h1 id="443-target--c-parameter-mapping"><strong>4.4.3 Target → C Parameter Mapping</strong></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>IR Target</th>
+      <th>C Parameter Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AI</code></td>
+      <td><code class="language-plaintext highlighter-rouge">CyborgContext* ctx</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">FILE</code></td>
+      <td><code class="language-plaintext highlighter-rouge">CyborgFile* file</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">LAYER</code></td>
+      <td><code class="language-plaintext highlighter-rouge">CyborgLayer* layer</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="example"><strong>Example</strong></h3>
+<pre><code class="language-cyborg">TARGET = AI
+</code></pre>
+
+<p>→</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="444-open_payload--c-function-body-start"><strong>4.4.4 OPEN_PAYLOAD → C Function Body Start</strong></h1>
+
+<h3 id="ir"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">OPEN_PAYLOAD
+</code></pre>
+
+<h3 id="c-output"><strong>C Output</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+</code></pre></div></div>
+
+<p>This begins the function body.</p>
+
+<hr />
+
+<h1 id="445-exec_-opcodes--c-function-calls"><strong>4.4.5 EXEC_* Opcodes → C Function Calls</strong></h1>
+
+<p>Each execution opcode maps to a <strong>single C function call</strong>.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>IR Opcode</th>
+      <th>C Function</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">EXEC_VALIDATE</code></td>
+      <td><code class="language-plaintext highlighter-rouge">validate_context(ctx)</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">EXEC_SCAN</code></td>
+      <td><code class="language-plaintext highlighter-rouge">scan_context(ctx)</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">EXEC_BUILD</code></td>
+      <td><code class="language-plaintext highlighter-rouge">build_context(ctx)</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">EXEC_GIVE</code></td>
+      <td><code class="language-plaintext highlighter-rouge">give_context(ctx)</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">EXEC_EXPLAIN</code></td>
+      <td><code class="language-plaintext highlighter-rouge">explain_context(ctx)</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="mapping-rule"><strong>Mapping Rule</strong></h3>
+<p>Each call MUST:</p>
+
+<ul>
+  <li>be assigned to a temporary variable</li>
+  <li>be OR‑aggregated into the return value</li>
+  <li>preserve order</li>
+</ul>
+
+<h3 id="example-1"><strong>Example</strong></h3>
+<pre><code class="language-cyborg">EXEC_SCAN
+EXEC_VALIDATE
+</code></pre>
+
+<p>→</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">scan_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+<span class="kt">int</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">validate_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+<span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span><span class="p">);</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="446-seal--c-function-body-close"><strong>4.4.6 SEAL → C Function Body Close</strong></h1>
+
+<h3 id="ir-1"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">SEAL
+</code></pre>
+
+<h3 id="c-output-1"><strong>C Output</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">}</span>
+</code></pre></div></div>
+
+<p>This closes the function body.</p>
+
+<hr />
+
+<h1 id="447-end_transmission--no-c-output"><strong>4.4.7 END_TRANSMISSION → No C Output</strong></h1>
+
+<p>The termination opcode is <strong>semantic</strong>, not syntactic.</p>
+
+<h3 id="ir-2"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">END_TRANSMISSION
+</code></pre>
+
+<h3 id="c-output-2"><strong>C Output</strong></h3>
+<p><em>(no output)</em></p>
+
+<p>It exists only for validation.</p>
+
+<hr />
+
+<h1 id="448-full-mapping-example"><strong>4.4.8 Full Mapping Example</strong></h1>
+
+<h3 id="vbstyle"><strong>VB‑Style</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">set</span> <span class="n">to</span> <span class="n">you</span>
+<span class="n">begin</span>
+<span class="n">scan</span>
+<span class="n">validate</span>
+<span class="n">give</span>
+<span class="p">#!#</span>
+<span class="n">end</span>
+</code></pre></div></div>
+
+<h3 id="ir-3"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = AI
+OPEN_PAYLOAD
+EXEC_SCAN
+EXEC_VALIDATE
+EXEC_GIVE
+SEAL
+END_TRANSMISSION
+</code></pre>
+
+<h3 id="c-output-3"><strong>C Output</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">scan_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">validate_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r3</span> <span class="o">=</span> <span class="n">give_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span> <span class="o">||</span> <span class="n">r3</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This is the <strong>canonical, deterministic mapping</strong>.</p>
+
+<hr />
+
+<h1 id="449-forbidden-c-transformations"><strong>4.4.9 Forbidden C Transformations</strong></h1>
+
+<p>The C generator MUST NOT:</p>
+
+<h3 id="-reorder-calls">❌ Reorder calls</h3>
+<h3 id="-inline-calls">❌ Inline calls</h3>
+<h3 id="-remove-calls">❌ Remove calls</h3>
+<h3 id="-add-calls">❌ Add calls</h3>
+<h3 id="-combine-calls">❌ Combine calls</h3>
+<h3 id="-parallelize-calls">❌ Parallelize calls</h3>
+<h3 id="-add-conditions">❌ Add conditions</h3>
+<h3 id="-add-loops">❌ Add loops</h3>
+<h3 id="-add-error-handling">❌ Add error handling</h3>
+<h3 id="-add-comments">❌ Add comments</h3>
+<h3 id="-add-optimizations">❌ Add optimizations</h3>
+
+<p>The C output MUST be a <strong>pure transcription</strong> of the IR.</p>
+
+<hr />
+
+<h1 id="4410-summary"><strong>4.4.10 Summary</strong></h1>
+
+<p>Page 4.4 defines the <strong>deep mapping rules</strong> from IR to C:</p>
+
+<ul>
+  <li>strict 1:1 opcode mapping</li>
+  <li>deterministic function signatures</li>
+  <li>linear execution</li>
+  <li>OR‑aggregated return value</li>
+  <li>no inference</li>
+  <li>no optimization</li>
+  <li>no deviation</li>
+</ul>
+
+<p>The IR becomes C with <strong>absolute fidelity</strong>.</p>
+
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.1/24_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

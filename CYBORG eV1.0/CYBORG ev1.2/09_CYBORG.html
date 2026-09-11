@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Cyborg | A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Cyborg" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/09_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/09_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Cyborg" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"Cyborg","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/09_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      <p>Understood, Demon. The Codex advances.</p>
+
+<hr />
+
+<h1 id="-page-57--c-layer-error-handling-rules-formal"><strong>📘 PAGE 5.7 — C LAYER ERROR HANDLING RULES (FORMAL)</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="57-overview"><strong>5.7 Overview</strong></h2>
+
+<p>Page 5.7 defines the <strong>formal rules</strong> governing error handling in the C Layer.<br />
+These rules are absolute and exist to preserve:</p>
+
+<ul>
+  <li>determinism</li>
+  <li>purity</li>
+  <li>isolation</li>
+  <li>reproducibility</li>
+  <li>semantic clarity</li>
+</ul>
+
+<p>The C Layer is <strong>not</strong> an error‑handling engine.<br />
+It is a <strong>pure executor</strong> of IR semantics.</p>
+
+<p>This section is <strong>normative</strong>.</p>
+
+<hr />
+
+<h1 id="571-error-handling-principle-1--the-c-layer-does-not-handle-errors"><strong>5.7.1 Error Handling Principle 1 — The C Layer Does Not Handle Errors</strong></h1>
+
+<p>The C Layer MUST NOT:</p>
+
+<ul>
+  <li>catch errors</li>
+  <li>throw errors</li>
+  <li>propagate exceptions</li>
+  <li>interpret error codes</li>
+  <li>branch on error conditions</li>
+  <li>retry operations</li>
+  <li>perform fallback logic</li>
+</ul>
+
+<h3 id="meaning"><strong>Meaning</strong></h3>
+<p>The C Layer is <strong>not responsible</strong> for error management.<br />
+It simply executes verb functions and aggregates their results.</p>
+
+<hr />
+
+<h1 id="572-error-handling-principle-2--verb-functions-return-status-codes"><strong>5.7.2 Error Handling Principle 2 — Verb Functions Return Status Codes</strong></h1>
+
+<p>All error semantics originate <strong>inside verb functions</strong>, not in the C Layer.</p>
+
+<p>Verb functions MUST:</p>
+
+<ul>
+  <li>return an integer</li>
+  <li>encode success/failure internally</li>
+  <li>never throw exceptions</li>
+  <li>never abort execution</li>
+  <li>never return non‑deterministic values</li>
+</ul>
+
+<h3 id="meaning-1"><strong>Meaning</strong></h3>
+<p>The C Layer treats verb results as <strong>opaque integers</strong>.</p>
+
+<hr />
+
+<h1 id="573-error-handling-principle-3--oraggregation-is-the-only-error-path"><strong>5.7.3 Error Handling Principle 3 — OR‑Aggregation Is the Only Error Path</strong></h1>
+
+<p>The C Layer’s only error‑related behavior is:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span> <span class="o">||</span> <span class="n">r3</span> <span class="p">...);</span>
+</code></pre></div></div>
+
+<h3 id="meaning-2"><strong>Meaning</strong></h3>
+<ul>
+  <li>If any verb reports a non‑zero status, the payload reports non‑zero.</li>
+  <li>If all verbs report zero, the payload reports zero.</li>
+</ul>
+
+<p>This is the <strong>entire error model</strong>.</p>
+
+<hr />
+
+<h1 id="574-error-handling-principle-4--no-conditional-logic"><strong>5.7.4 Error Handling Principle 4 — No Conditional Logic</strong></h1>
+
+<p>The C Layer MUST NOT contain:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">if</code></li>
+  <li><code class="language-plaintext highlighter-rouge">else</code></li>
+  <li><code class="language-plaintext highlighter-rouge">switch</code></li>
+  <li><code class="language-plaintext highlighter-rouge">case</code></li>
+  <li><code class="language-plaintext highlighter-rouge">goto</code></li>
+  <li>ternary operators</li>
+</ul>
+
+<h3 id="forbidden-example"><strong>Forbidden Example</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="n">r1</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="n">r1</span><span class="p">;</span>     <span class="c1">// ❌ branching</span>
+</code></pre></div></div>
+
+<h3 id="required"><strong>Required</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span><span class="p">);</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="575-error-handling-principle-5--no-early-returns"><strong>5.7.5 Error Handling Principle 5 — No Early Returns</strong></h1>
+
+<p>The C Layer MUST NOT:</p>
+
+<ul>
+  <li>return early</li>
+  <li>short‑circuit execution</li>
+  <li>skip verb calls</li>
+</ul>
+
+<h3 id="forbidden"><strong>Forbidden</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="n">r1</span><span class="p">)</span> <span class="k">return</span> <span class="n">r1</span><span class="p">;</span>          <span class="c1">// ❌ early return</span>
+</code></pre></div></div>
+
+<h3 id="required-1"><strong>Required</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span> <span class="o">||</span> <span class="n">r3</span><span class="p">);</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="576-error-handling-principle-6--no-exception-semantics"><strong>5.7.6 Error Handling Principle 6 — No Exception Semantics</strong></h1>
+
+<p>The C Layer MUST NOT:</p>
+
+<ul>
+  <li>use <code class="language-plaintext highlighter-rouge">try</code></li>
+  <li>use <code class="language-plaintext highlighter-rouge">catch</code></li>
+  <li>use <code class="language-plaintext highlighter-rouge">throw</code></li>
+  <li>use <code class="language-plaintext highlighter-rouge">longjmp</code></li>
+  <li>use <code class="language-plaintext highlighter-rouge">setjmp</code></li>
+</ul>
+
+<h3 id="meaning-3"><strong>Meaning</strong></h3>
+<p>All exception‑like behavior is <strong>forbidden</strong>.</p>
+
+<hr />
+
+<h1 id="577-error-handling-principle-7--no-logging-or-reporting"><strong>5.7.7 Error Handling Principle 7 — No Logging or Reporting</strong></h1>
+
+<p>The C Layer MUST NOT:</p>
+
+<ul>
+  <li>print error messages</li>
+  <li>log error messages</li>
+  <li>write to stderr</li>
+  <li>write to stdout</li>
+  <li>write to files</li>
+  <li>write to network</li>
+</ul>
+
+<h3 id="forbidden-1"><strong>Forbidden</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">printf</span><span class="p">(</span><span class="s">"Error</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>          <span class="c1">// ❌</span>
+<span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">"fail"</span><span class="p">);</span>    <span class="c1">// ❌</span>
+</code></pre></div></div>
+
+<p>The C Layer is <strong>silent</strong>.</p>
+
+<hr />
+
+<h1 id="578-error-handling-principle-8--no-error-recovery"><strong>5.7.8 Error Handling Principle 8 — No Error Recovery</strong></h1>
+
+<p>The C Layer MUST NOT:</p>
+
+<ul>
+  <li>retry operations</li>
+  <li>repair state</li>
+  <li>reset context</li>
+  <li>roll back changes</li>
+  <li>perform cleanup</li>
+</ul>
+
+<h3 id="meaning-4"><strong>Meaning</strong></h3>
+<p>Error recovery is the responsibility of <strong>verb functions</strong>, not the C Layer.</p>
+
+<hr />
+
+<h1 id="579-error-handling-principle-9--deterministic-failure-behavior"><strong>5.7.9 Error Handling Principle 9 — Deterministic Failure Behavior</strong></h1>
+
+<p>The C Layer MUST behave identically:</p>
+
+<ul>
+  <li>on every platform</li>
+  <li>in every environment</li>
+  <li>with every compiler</li>
+  <li>with every optimization level</li>
+</ul>
+
+<h3 id="meaning-5"><strong>Meaning</strong></h3>
+<p>Error semantics MUST be <strong>platform‑invariant</strong>.</p>
+
+<hr />
+
+<h1 id="5710-full-canonical-example"><strong>5.7.10 Full Canonical Example</strong></h1>
+
+<h3 id="ir"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = AI
+OPEN_PAYLOAD
+EXEC_VALIDATE
+EXEC_SCAN
+EXEC_BUILD
+SEAL
+</code></pre>
+
+<h3 id="c-output"><strong>C Output</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">validate_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">scan_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r3</span> <span class="o">=</span> <span class="n">build_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span> <span class="o">||</span> <span class="n">r3</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="error-handling-interpretation"><strong>Error Handling Interpretation</strong></h3>
+<ul>
+  <li>No branching</li>
+  <li>No early returns</li>
+  <li>No exception handling</li>
+  <li>No logging</li>
+  <li>No retries</li>
+  <li>Pure OR‑aggregation</li>
+</ul>
+
+<p>This is the <strong>entire error model</strong>.</p>
+
+<hr />
+
+<h1 id="5711-summary"><strong>5.7.11 Summary</strong></h1>
+
+<p>Page 5.7 defines the <strong>error handling rules</strong> of the C Layer:</p>
+
+<ul>
+  <li>no exceptions</li>
+  <li>no branching</li>
+  <li>no logging</li>
+  <li>no retries</li>
+  <li>no recovery</li>
+  <li>no inference</li>
+  <li>no optimization</li>
+  <li>OR‑aggregation only</li>
+</ul>
+
+<p>The C Layer is a <strong>pure, silent, deterministic executor</strong> of verb semantics.</p>
+
+<hr />
+
+<p>Demon — the next scroll is ready.</p>
+
+<p>Say:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>continue
+</code></pre></div></div>
+
+<p>and <strong>Page 5.8 — C Layer Purity Rules (Deep Specification)</strong> will manifest.</p>
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.2/09_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

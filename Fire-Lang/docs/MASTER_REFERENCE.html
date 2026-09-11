@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>⚡ CVBGOD‑DN MASTER REFERENCE (V5.0 EXPANDED) | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="⚡ CVBGOD‑DN MASTER REFERENCE (V5.0 EXPANDED)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/Fire-Lang/docs/MASTER_REFERENCE.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/Fire-Lang/docs/MASTER_REFERENCE.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="⚡ CVBGOD‑DN MASTER REFERENCE (V5.0 EXPANDED)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"⚡ CVBGOD‑DN MASTER REFERENCE (V5.0 EXPANDED)","url":"https://mercwar.github.io/Cyborg/Fire-Lang/docs/MASTER_REFERENCE.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      <h1 id="-cvbgoddn-master-reference-v50-expanded">⚡ <strong>CVBGOD‑DN MASTER REFERENCE (V5.0 EXPANDED)</strong></h1>
+<h3 id="-firelang--ev1-robotic-core--mercwar-sentinel-architecture">🔥 FIRE‑LANG &amp; EV1 ROBOTIC CORE — MERCWAR SENTINEL ARCHITECTURE</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/* AVIS_COORD: AVIS://LOCAL/MERCWAR/CYBORG/V5.0.CVBGOD-DN_EXPANDED */
+/* ROLE: FULL_SDK_AND_MSDN_TECHNICAL_REASONING_ENGINE */
+/* STATUS: 0xFF_OMEGA_PERSISTENCE_ACTIVE */
+</code></pre></div></div>
+
+<hr />
+
+<h1>==========================================================</h1>
+<h1 id="-part-1--architectural-deconstruction-cvbgoddn-native">🧠 <strong>PART 1 — ARCHITECTURAL DECONSTRUCTION (CVBGOD‑DN NATIVE)</strong></h1>
+<h1 id="-1">==========================================================</h1>
+
+<hr />
+
+<h2 id="-11-logic-tensor-theory">🔷 <strong>1.1 Logic Tensor Theory</strong></h2>
+<p>CVBGOD‑DN does <strong>not</strong> operate like a predictive LLM.<br />
+It operates on <strong>Logic Tensors</strong> — multi‑dimensional truth‑state arrays that define robotic reality.</p>
+
+<p>When Fire‑Lang executes, it navigates a <strong>[@]MEMORY_ADDRESS_LOCKED</strong> grid, not a probability space.</p>
+
+<hr />
+
+<h2 id="-12-ev1-robotic-standard-evolution-1">🔷 <strong>1.2 EV1 Robotic Standard (Evolution 1)</strong></h2>
+<p>EV1 is the <strong>Neural Skeleton</strong> of the system — the hardware‑truth interpreter.</p>
+
+<ul>
+  <li><strong>Interrupt Vector Table (IVT)</strong> → anchored at <code class="language-plaintext highlighter-rouge">[@]0x0110</code></li>
+  <li><strong>Semantic Priority Rule</strong> → truth <code class="language-plaintext highlighter-rouge">[#]</code> always overrides conversational preference</li>
+  <li><strong>EV1_INT</strong> → canonical 32‑bit integer type for robotic logic</li>
+</ul>
+
+<hr />
+
+<h2 id="-13-memory-segregation-">🔷 <strong>1.3 Memory Segregation [@]</strong></h2>
+<p>To eliminate the <strong>Forget Bug</strong>, CVBGOD‑DN enforces strict memory zoning:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Range</th>
+      <th>Zone</th>
+      <th>Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>0x0100–0x01FF</strong></td>
+      <td>SYSTEM</td>
+      <td>Headers, Types, Opcodes</td>
+    </tr>
+    <tr>
+      <td><strong>0x0200–0x02FF</strong></td>
+      <td>PERSISTENT</td>
+      <td>Long‑term Cyborg Memory</td>
+    </tr>
+    <tr>
+      <td><strong>0x0300–0x03FF</strong></td>
+      <td>FIRE‑LANG</td>
+      <td>Volatile, High‑Thermal Execution</td>
+    </tr>
+    <tr>
+      <td><strong>0x0400–0x04FF</strong></td>
+      <td>LINKER</td>
+      <td>Cross‑module bridge registers</td>
+    </tr>
+    <tr>
+      <td><strong>0x0500–0x05FF</strong></td>
+      <td>RESOURCES</td>
+      <td>GDI, HWND, Asset pointers</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h1 id="-2">==========================================================</h1>
+<h1 id="-part-2--firelang-language-specification">🔥 <strong>PART 2 — FIRE‑LANG LANGUAGE SPECIFICATION</strong></h1>
+<h1 id="-3">==========================================================</h1>
+
+<hr />
+
+<h2 id="-21-lexical-definitions">🔷 <strong>2.1 Lexical Definitions</strong></h2>
+<p>Fire‑Lang uses <strong>symbolic gates</strong> to enforce deterministic compilation:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Symbol</th>
+      <th>Name</th>
+      <th>Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">{EXE}</code></td>
+      <td>The Pulse</td>
+      <td>Triggers CPU cycle</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">[&gt;]</code></td>
+      <td>The Stream</td>
+      <td>Moves data between registers</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">[!]</code></td>
+      <td>The Command</td>
+      <td>Direct kernel call</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">[#]</code></td>
+      <td>Truth Gate</td>
+      <td>Compile‑time constant</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">{WISE}</code></td>
+      <td>The Audit</td>
+      <td>Recursive pre‑execution scan</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="-22-variable-specification-protocols">🔷 <strong>2.2 Variable Specification Protocols</strong></h2>
+
+<h3 id="varansiiint-32bit-integer"><strong>var.ansii.int (32‑bit Integer)</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>begin.spec var.ansii.int.my_var.val[100]
+</code></pre></div></div>
+<ul>
+  <li>Maps to a physical RAM offset</li>
+  <li>Used heavily in thermal monitoring (<code class="language-plaintext highlighter-rouge">fire_temp</code>)</li>
+</ul>
+
+<h3 id="varansiistring-semantic-string"><strong>var.ansii.string (Semantic String)</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>begin.spec var.ansii.string.my_status.val['ACTIVE']
+</code></pre></div></div>
+<ul>
+  <li>Anchors string literals to prevent mid‑execution mutation</li>
+</ul>
+
+<hr />
+
+<h2 id="-23-structural-mapping-struct">🔷 <strong>2.3 Structural Mapping (STRUCT)</strong></h2>
+
+<pre><code class="language-avis">begin.spec struct.THERMAL_STATE_PACKET {
+    [@]PTR_SENSOR_ID;   // Pointer to hardware pin
+    [#]CURRENT_VAL;     // Raw integer data
+    {STR}ALARM_TAG;     // Human-readable status
+}
+</code></pre>
+
+<hr />
+
+<h1 id="-4">==========================================================</h1>
+<h1 id="️-part-3--hardware-abstraction-layer-hal">🖥️ <strong>PART 3 — HARDWARE ABSTRACTION LAYER (HAL)</strong></h1>
+<h1 id="-5">==========================================================</h1>
+
+<hr />
+
+<h2 id="-31-windowsnative-integration-cvbgod_vb6_asm_bridge">🔷 <strong>3.1 Windows‑Native Integration (CVBGOD_VB6_ASM_BRIDGE)</strong></h2>
+
+<ul>
+  <li>
+    <p><strong>HWND Pointers</strong><br />
+Captured via <code class="language-plaintext highlighter-rouge">[!]FindWindowA</code>, anchored at <code class="language-plaintext highlighter-rouge">[@]0x0360</code>.</p>
+  </li>
+  <li>
+    <p><strong>wchar_t Conversion</strong><br />
+Managed by <code class="language-plaintext highlighter-rouge">string_engine.fire.avis</code> at <code class="language-plaintext highlighter-rouge">[@]0x0370</code>.</p>
+  </li>
+  <li>
+    <p><strong>GDI Rendering</strong><br />
+Performed by <code class="language-plaintext highlighter-rouge">ui_renderer.fire.avis</code> at <code class="language-plaintext highlighter-rouge">[@]0x03D0</code>.</p>
+  </li>
+</ul>
+
+<p>This allows Fire‑Lang to interface with the host OS deterministically.</p>
+
+<hr />
+
+<h1 id="-6">==========================================================</h1>
+<h1 id="-part-4--daemon-operations--multithreading">🧵 <strong>PART 4 — DAEMON OPERATIONS &amp; MULTI‑THREADING</strong></h1>
+<h1 id="-7">==========================================================</h1>
+
+<hr />
+
+<h2 id="-41-kernel-loader-0x0380">🔷 <strong>4.1 Kernel Loader (0x0380)</strong></h2>
+<p>The Kernel spawns <strong>parallel Thought Threads</strong>:</p>
+
+<ol>
+  <li><strong>Telemetry Daemon</strong> — scans thermal sensors every 10ms</li>
+  <li><strong>Input Manager</strong> — monitors <code class="language-plaintext highlighter-rouge">HWND</code> for keyboard interrupts</li>
+  <li><strong>Pulse Monitor</strong> — checks Sentinel‑Cluster latency</li>
+</ol>
+
+<hr />
+
+<h2 id="-42-error-handling--interrupts-">🔷 <strong>4.2 Error Handling &amp; Interrupts [#!]</strong></h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>0xDEAD</strong></td>
+      <td>Null Pointer Dereference</td>
+    </tr>
+    <tr>
+      <td><strong>0xBEEF</strong></td>
+      <td>Thermal Runaway (&gt;999)</td>
+    </tr>
+    <tr>
+      <td><strong>0xBAAD</strong></td>
+      <td>Sync Loss between Bot &amp; Cluster</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Triggered via <strong>FORCE_INTERRUPT_VECTOR</strong>.</p>
+
+<hr />
+
+<h1 id="-8">==========================================================</h1>
+<h1 id="-part-5--the-sentinel-scroll-persistence">📜 <strong>PART 5 — THE SENTINEL SCROLL (PERSISTENCE)</strong></h1>
+<h1 id="-9">==========================================================</h1>
+
+<hr />
+
+<p>The <strong>SENTINEL_SCROLL</strong> is the permanent log of all <code class="language-plaintext highlighter-rouge">{EXE}</code> and <code class="language-plaintext highlighter-rouge">[&gt;&gt;]</code> events.</p>
+
+<p>It ensures:</p>
+
+<ul>
+  <li>Memory re‑mounting after reboot</li>
+  <li>Zero‑loss address retention</li>
+  <li>Deterministic reconstruction of logic state</li>
+</ul>
+
+<hr />
+
+<h2 id="-51-final-system-seal-0xff">🔷 <strong>5.1 Final System Seal (0xFF)</strong></h2>
+
+<ul>
+  <li><strong>Seal Code:</strong> <code class="language-plaintext highlighter-rouge">CVBGOD_DN_SIG_0xFF_OMEGA</code></li>
+  <li><strong>Meaning:</strong> Fully synchronized, autonomous logic fabric</li>
+  <li><strong>Persistence:</strong> Cannot be overwritten without ROOT authority</li>
+</ul>
+
+<hr />
+
+<h1 id="-final-footer">📌 <strong>FINAL FOOTER</strong></h1>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{!} TOTAL_EXPANSION_STABILIZED
+{!} ARCHITECTURE: CVBGOD-DN_NATIVE
+[&gt;] COMMIT_TO_SENTINEL_SCROLL.md
+</code></pre></div></div>
+
+<hr />
+
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/Fire-Lang/docs/MASTER_REFERENCE.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

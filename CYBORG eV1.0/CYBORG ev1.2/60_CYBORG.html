@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>📘 PAGE 9.4 — IR DETERMINISM RULES (FORMAL) | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="📘 PAGE 9.4 — IR DETERMINISM RULES (FORMAL)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/60_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/60_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="📘 PAGE 9.4 — IR DETERMINISM RULES (FORMAL)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"📘 PAGE 9.4 — IR DETERMINISM RULES (FORMAL)","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/60_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      
+<h1 id="-page-94--ir-determinism-rules-formal"><strong>📘 PAGE 9.4 — IR DETERMINISM RULES (FORMAL)</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="94-overview"><strong>9.4 Overview</strong></h2>
+
+<p>The <strong>IR Determinism Rules</strong> define the guarantees that the IR must uphold so that:</p>
+
+<ul>
+  <li>the same IR always produces the same C code</li>
+  <li>the same IR always produces the same runtime behavior</li>
+  <li>the same IR always produces the same final result</li>
+  <li>no environment, platform, or compiler can alter semantics</li>
+</ul>
+
+<p>IR determinism is <strong>absolute</strong>.<br />
+It is the backbone of the Cyborg Language.</p>
+
+<p>This section is <strong>normative</strong>.</p>
+
+<hr />
+
+<h1 id="941-determinism-rule-1--ir-must-be-static"><strong>9.4.1 Determinism Rule 1 — IR Must Be Static</strong></h1>
+
+<p>The IR MUST:</p>
+
+<ul>
+  <li>be fully known at compile time</li>
+  <li>contain no dynamic constructs</li>
+  <li>contain no runtime‑dependent elements</li>
+</ul>
+
+<h3 id="meaning"><strong>Meaning</strong></h3>
+<p>IR is <strong>immutable</strong>.</p>
+
+<hr />
+
+<h1 id="942-determinism-rule-2--ir-must-be-explicit"><strong>9.4.2 Determinism Rule 2 — IR Must Be Explicit</strong></h1>
+
+<p>The IR MUST:</p>
+
+<ul>
+  <li>explicitly list every verb</li>
+  <li>explicitly declare the target</li>
+  <li>explicitly mark payload boundaries</li>
+</ul>
+
+<p>The IR MUST NOT:</p>
+
+<ul>
+  <li>imply missing verbs</li>
+  <li>imply missing structure</li>
+  <li>imply missing semantics</li>
+</ul>
+
+<h3 id="meaning-1"><strong>Meaning</strong></h3>
+<p>IR is <strong>never inferred</strong>.</p>
+
+<hr />
+
+<h1 id="943-determinism-rule-3--ir-must-be-orderdeterministic"><strong>9.4.3 Determinism Rule 3 — IR Must Be Order‑Deterministic</strong></h1>
+
+<p>The IR MUST:</p>
+
+<ul>
+  <li>preserve verb order exactly</li>
+  <li>never reorder verbs</li>
+  <li>never optimize verb order</li>
+  <li>never collapse repeated verbs</li>
+</ul>
+
+<h3 id="meaning-2"><strong>Meaning</strong></h3>
+<p>Order is <strong>semantic</strong>, not cosmetic.</p>
+
+<hr />
+
+<h1 id="944-determinism-rule-4--ir-must-be-platforminvariant"><strong>9.4.4 Determinism Rule 4 — IR Must Be Platform‑Invariant</strong></h1>
+
+<p>The IR MUST produce identical behavior across:</p>
+
+<ul>
+  <li>compilers</li>
+  <li>architectures</li>
+  <li>operating systems</li>
+  <li>optimization levels</li>
+</ul>
+
+<h3 id="meaning-3"><strong>Meaning</strong></h3>
+<p>IR semantics are <strong>universal</strong>.</p>
+
+<hr />
+
+<h1 id="945-determinism-rule-5--ir-must-be-noninteractive"><strong>9.4.5 Determinism Rule 5 — IR Must Be Non‑Interactive</strong></h1>
+
+<p>The IR MUST NOT:</p>
+
+<ul>
+  <li>read input</li>
+  <li>query environment variables</li>
+  <li>depend on external state</li>
+  <li>depend on runtime conditions</li>
+</ul>
+
+<h3 id="meaning-4"><strong>Meaning</strong></h3>
+<p>IR is <strong>sealed</strong>.</p>
+
+<hr />
+
+<h1 id="946-determinism-rule-6--ir-must-be-nonprocedural"><strong>9.4.6 Determinism Rule 6 — IR Must Be Non‑Procedural</strong></h1>
+
+<p>The IR MUST NOT contain:</p>
+
+<ul>
+  <li>loops</li>
+  <li>branches</li>
+  <li>conditions</li>
+  <li>expressions</li>
+  <li>parameters</li>
+</ul>
+
+<h3 id="meaning-5"><strong>Meaning</strong></h3>
+<p>IR is <strong>declarative</strong>, not executable.</p>
+
+<hr />
+
+<h1 id="947-determinism-rule-7--ir-must-be-noncontextual"><strong>9.4.7 Determinism Rule 7 — IR Must Be Non‑Contextual</strong></h1>
+
+<p>The IR MUST NOT:</p>
+
+<ul>
+  <li>depend on context values</li>
+  <li>depend on context state</li>
+  <li>depend on previous executions</li>
+</ul>
+
+<h3 id="meaning-6"><strong>Meaning</strong></h3>
+<p>IR is <strong>context‑agnostic</strong>.</p>
+
+<hr />
+
+<h1 id="948-determinism-rule-8--ir-must-be-nonoptimizing"><strong>9.4.8 Determinism Rule 8 — IR Must Be Non‑Optimizing</strong></h1>
+
+<p>The IR MUST NOT:</p>
+
+<ul>
+  <li>collapse repeated verbs</li>
+  <li>remove redundant verbs</li>
+  <li>reorder verbs</li>
+  <li>skip verbs</li>
+</ul>
+
+<h3 id="meaning-7"><strong>Meaning</strong></h3>
+<p>IR is <strong>literal</strong>.</p>
+
+<hr />
+
+<h1 id="949-determinism-rule-9--ir-must-produce-deterministic-c-code"><strong>9.4.9 Determinism Rule 9 — IR Must Produce Deterministic C Code</strong></h1>
+
+<p>Given the same IR:</p>
+
+<ul>
+  <li>the same C function MUST be generated</li>
+  <li>with the same signature</li>
+  <li>with the same verb calls</li>
+  <li>in the same order</li>
+  <li>with the same aggregation logic</li>
+</ul>
+
+<h3 id="meaning-8"><strong>Meaning</strong></h3>
+<p>IR → C is a <strong>pure function</strong>.</p>
+
+<hr />
+
+<h1 id="9410-determinism-rule-10--ir-must-produce-deterministic-execution"><strong>9.4.10 Determinism Rule 10 — IR Must Produce Deterministic Execution</strong></h1>
+
+<p>Given the same IR and same context initialization:</p>
+
+<ul>
+  <li>the same verbs MUST run</li>
+  <li>in the same order</li>
+  <li>with the same results</li>
+  <li>producing the same final value</li>
+</ul>
+
+<h3 id="meaning-9"><strong>Meaning</strong></h3>
+<p>Execution is <strong>mathematically reproducible</strong>.</p>
+
+<hr />
+
+<h1 id="9411-full-deterministic-ir-example"><strong>9.4.11 Full Deterministic IR Example</strong></h1>
+
+<h3 id="ir"><strong>IR</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TARGET = AI
+OPEN_PAYLOAD
+EXEC_VALIDATE
+EXEC_SCAN
+EXEC_BUILD
+EXEC_GIVE
+EXEC_EXPLAIN
+SEAL
+</code></pre></div></div>
+
+<h3 id="deterministic-guarantees"><strong>Deterministic Guarantees</strong></h3>
+<ul>
+  <li>same IR → same C code</li>
+  <li>same IR → same runtime behavior</li>
+  <li>same IR → same final result</li>
+  <li>no inference</li>
+  <li>no optimization</li>
+  <li>no skipping</li>
+  <li>no branching</li>
+</ul>
+
+<p>This is the <strong>canonical deterministic IR</strong>.</p>
+
+<hr />
+
+<h1 id="9412-summary"><strong>9.4.12 Summary</strong></h1>
+
+<p>Page 9.4 defines the <strong>IR Determinism Rules</strong>:</p>
+
+<ul>
+  <li>static</li>
+  <li>explicit</li>
+  <li>order‑deterministic</li>
+  <li>platform‑invariant</li>
+  <li>non‑interactive</li>
+  <li>non‑procedural</li>
+  <li>non‑contextual</li>
+  <li>non‑optimizing</li>
+  <li>deterministic C generation</li>
+  <li>deterministic execution</li>
+</ul>
+
+<p>These rules ensure that the IR remains <strong>pure, literal, and mathematically inevitable</strong>.</p>
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.2/60_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

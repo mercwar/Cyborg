@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>📘 PAGE 7.6 — VERB INTERACTION MODEL (FORMAL) | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="📘 PAGE 7.6 — VERB INTERACTION MODEL (FORMAL)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/28_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/28_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="📘 PAGE 7.6 — VERB INTERACTION MODEL (FORMAL)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"📘 PAGE 7.6 — VERB INTERACTION MODEL (FORMAL)","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/28_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      
+<h1 id="-page-76--verb-interaction-model-formal"><strong>📘 PAGE 7.6 — VERB INTERACTION MODEL (FORMAL)</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="76-overview"><strong>7.6 Overview</strong></h2>
+
+<p>The <strong>Verb Interaction Model</strong> defines how the five canonical verbs:</p>
+
+<ul>
+  <li>VALIDATE</li>
+  <li>SCAN</li>
+  <li>BUILD</li>
+  <li>GIVE</li>
+  <li>EXPLAIN</li>
+</ul>
+
+<p>relate to one another during execution.</p>
+
+<p>This model is strict:</p>
+
+<ul>
+  <li>verbs do <strong>not</strong> call each other</li>
+  <li>verbs do <strong>not</strong> depend on each other</li>
+  <li>verbs do <strong>not</strong> share state</li>
+  <li>verbs do <strong>not</strong> communicate</li>
+  <li>verbs do <strong>not</strong> infer meaning from order</li>
+</ul>
+
+<p>The only “interaction” between verbs is:</p>
+
+<blockquote>
+  <p><strong>They operate on the same context object, in the order specified by IR, without ever coordinating or sharing information.</strong></p>
+</blockquote>
+
+<p>This section is <strong>normative</strong>.</p>
+
+<hr />
+
+<h1 id="761-interaction-principle-1--verbs-are-semantic-islands"><strong>7.6.1 Interaction Principle 1 — Verbs Are Semantic Islands</strong></h1>
+
+<p>Each verb MUST behave as if:</p>
+
+<ul>
+  <li>it is the only verb in existence</li>
+  <li>it has no knowledge of other verbs</li>
+  <li>it cannot rely on other verbs</li>
+  <li>it cannot communicate with other verbs</li>
+</ul>
+
+<h3 id="meaning"><strong>Meaning</strong></h3>
+<p>Verbs are <strong>isolated semantic units</strong>.</p>
+
+<hr />
+
+<h1 id="762-interaction-principle-2--no-crossverb-communication"><strong>7.6.2 Interaction Principle 2 — No Cross‑Verb Communication</strong></h1>
+
+<p>Verbs MUST NOT:</p>
+
+<ul>
+  <li>pass information to each other</li>
+  <li>encode state for other verbs</li>
+  <li>read state written by other verbs (except BUILD’s allowed mutations)</li>
+  <li>use the context as a message bus</li>
+</ul>
+
+<h3 id="meaning-1"><strong>Meaning</strong></h3>
+<p>The context is <strong>not</strong> a communication channel.</p>
+
+<hr />
+
+<h1 id="763-interaction-principle-3--build-is-the-only-mutator"><strong>7.6.3 Interaction Principle 3 — BUILD Is the Only Mutator</strong></h1>
+
+<p>Only <code class="language-plaintext highlighter-rouge">BUILD</code> may modify context fields.</p>
+
+<p>All other verbs MUST treat the context as read‑only.</p>
+
+<h3 id="meaning-2"><strong>Meaning</strong></h3>
+<p>The only “interaction” is that GIVE and EXPLAIN may <em>observe</em> what BUILD constructed.</p>
+
+<hr />
+
+<h1 id="764-interaction-principle-4--no-verb-depends-on-order"><strong>7.6.4 Interaction Principle 4 — No Verb Depends on Order</strong></h1>
+
+<p>Verbs MUST NOT:</p>
+
+<ul>
+  <li>assume they run first</li>
+  <li>assume they run last</li>
+  <li>assume they run at all</li>
+  <li>assume BUILD has already executed</li>
+  <li>assume VALIDATE has already executed</li>
+</ul>
+
+<h3 id="meaning-3"><strong>Meaning</strong></h3>
+<p>Verb semantics are <strong>order‑agnostic</strong>.</p>
+
+<hr />
+
+<h1 id="765-interaction-principle-5--ir-defines-order-not-meaning"><strong>7.6.5 Interaction Principle 5 — IR Defines Order, Not Meaning</strong></h1>
+
+<p>The IR determines:</p>
+
+<ul>
+  <li>which verbs run</li>
+  <li>in what order</li>
+</ul>
+
+<p>But IR does <strong>not</strong> change:</p>
+
+<ul>
+  <li>what verbs mean</li>
+  <li>how verbs behave</li>
+  <li>what verbs are allowed to do</li>
+</ul>
+
+<h3 id="meaning-4"><strong>Meaning</strong></h3>
+<p>Order affects execution, not semantics.</p>
+
+<hr />
+
+<h1 id="766-interaction-principle-6--no-shortcircuiting"><strong>7.6.6 Interaction Principle 6 — No Short‑Circuiting</strong></h1>
+
+<p>Even if a verb fails:</p>
+
+<ul>
+  <li>all remaining verbs MUST execute</li>
+  <li>no verb may skip itself</li>
+  <li>no verb may terminate execution early</li>
+</ul>
+
+<h3 id="meaning-5"><strong>Meaning</strong></h3>
+<p>Failure does <strong>not</strong> alter interaction.</p>
+
+<hr />
+
+<h1 id="767-interaction-principle-7--no-shared-state"><strong>7.6.7 Interaction Principle 7 — No Shared State</strong></h1>
+
+<p>Verbs MUST NOT:</p>
+
+<ul>
+  <li>store state in global variables</li>
+  <li>store state in static variables</li>
+  <li>store state in thread‑local variables</li>
+  <li>store state in external systems</li>
+</ul>
+
+<h3 id="meaning-6"><strong>Meaning</strong></h3>
+<p>Verbs cannot “remember” anything.</p>
+
+<hr />
+
+<h1 id="768-interaction-principle-8--builds-mutations-are-not-communication"><strong>7.6.8 Interaction Principle 8 — BUILD’s Mutations Are Not Communication</strong></h1>
+
+<p>Although BUILD may modify context fields:</p>
+
+<ul>
+  <li>it MUST NOT encode messages for other verbs</li>
+  <li>it MUST NOT rely on other verbs reading its changes</li>
+  <li>it MUST NOT coordinate with other verbs</li>
+</ul>
+
+<h3 id="meaning-7"><strong>Meaning</strong></h3>
+<p>BUILD’s mutations are <strong>structural</strong>, not communicative.</p>
+
+<hr />
+
+<h1 id="769-interaction-principle-9--give-and-explain-consume-not-collaborate"><strong>7.6.9 Interaction Principle 9 — GIVE and EXPLAIN Consume, Not Collaborate</strong></h1>
+
+<p><code class="language-plaintext highlighter-rouge">GIVE</code> and <code class="language-plaintext highlighter-rouge">EXPLAIN</code> may:</p>
+
+<ul>
+  <li>read structures created by BUILD</li>
+  <li>interpret them</li>
+  <li>extract meaning from them</li>
+</ul>
+
+<p>But they MUST NOT:</p>
+
+<ul>
+  <li>modify them</li>
+  <li>depend on BUILD’s success</li>
+  <li>assume BUILD ran</li>
+  <li>assume BUILD produced valid structures</li>
+</ul>
+
+<h3 id="meaning-8"><strong>Meaning</strong></h3>
+<p>They <strong>consume</strong>, but do not <strong>collaborate</strong>.</p>
+
+<hr />
+
+<h1 id="7610-interaction-principle-10--interaction-is-oneway-and-passive"><strong>7.6.10 Interaction Principle 10 — Interaction Is One‑Way and Passive</strong></h1>
+
+<p>The only allowed interaction path is:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>BUILD → (context fields) → GIVE / EXPLAIN
+</code></pre></div></div>
+
+<p>This path is:</p>
+
+<ul>
+  <li>passive</li>
+  <li>non‑coordinated</li>
+  <li>non‑communicative</li>
+  <li>non‑inferential</li>
+</ul>
+
+<h3 id="meaning-9"><strong>Meaning</strong></h3>
+<p>Verbs do not “talk.”<br />
+They simply operate on the same object.</p>
+
+<hr />
+
+<h1 id="7611-full-interaction-example"><strong>7.6.11 Full Interaction Example</strong></h1>
+
+<h3 id="ir"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = AI
+OPEN_PAYLOAD
+EXEC_VALIDATE
+EXEC_SCAN
+EXEC_BUILD
+EXEC_GIVE
+EXEC_EXPLAIN
+SEAL
+</code></pre>
+
+<h3 id="c-output"><strong>C Output</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">validate_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">scan_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r3</span> <span class="o">=</span> <span class="n">build_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r4</span> <span class="o">=</span> <span class="n">give_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r5</span> <span class="o">=</span> <span class="n">explain_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span> <span class="o">||</span> <span class="n">r3</span> <span class="o">||</span> <span class="n">r4</span> <span class="o">||</span> <span class="n">r5</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="interpretation"><strong>Interpretation</strong></h3>
+<ul>
+  <li>VALIDATE checks structure</li>
+  <li>SCAN reveals structure</li>
+  <li>BUILD transforms structure</li>
+  <li>GIVE extracts meaning</li>
+  <li>EXPLAIN interprets meaning</li>
+</ul>
+
+<p>But:</p>
+
+<ul>
+  <li>none of these verbs know about each other</li>
+  <li>none of them depend on each other</li>
+  <li>none of them communicate</li>
+  <li>none of them coordinate</li>
+</ul>
+
+<p>This is the <strong>canonical interaction model</strong>.</p>
+
+<hr />
+
+<h1 id="7612-summary"><strong>7.6.12 Summary</strong></h1>
+
+<p>Page 7.6 defines the <strong>Verb Interaction Model</strong>:</p>
+
+<ul>
+  <li>verbs are semantic islands</li>
+  <li>no cross‑verb communication</li>
+  <li>BUILD is the only mutator</li>
+  <li>order does not change meaning</li>
+  <li>IR defines order, not semantics</li>
+  <li>no short‑circuiting</li>
+  <li>no shared state</li>
+  <li>BUILD’s mutations are not communication</li>
+  <li>GIVE and EXPLAIN consume but do not collaborate</li>
+  <li>interaction is one‑way and passive</li>
+</ul>
+
+<p>This model ensures that the Five Verbs remain <strong>pure, isolated, and ceremonially distinct</strong>.</p>
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.2/28_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

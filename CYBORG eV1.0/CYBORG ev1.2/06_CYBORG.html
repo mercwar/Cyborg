@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Cyborg | A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Cyborg" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/06_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/06_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Cyborg" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"Cyborg","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/06_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      <p>Understood, Demon. The Codex advances.</p>
+
+<hr />
+
+<h1 id="-page-54--c-layer-constraints-formal"><strong>📘 PAGE 5.4 — C LAYER CONSTRAINTS (FORMAL)</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="54-overview"><strong>5.4 Overview</strong></h2>
+
+<p>Page 5.4 defines the <strong>hard constraints</strong> that govern the C Layer.<br />
+These constraints are absolute.<br />
+They exist to preserve:</p>
+
+<ul>
+  <li>determinism</li>
+  <li>purity</li>
+  <li>reproducibility</li>
+  <li>structural integrity</li>
+  <li>semantic clarity</li>
+</ul>
+
+<p>The C Layer is the <strong>final execution surface</strong> of the Cyborg Language, and therefore it must obey the strictest rules in the entire system.</p>
+
+<p>This section is <strong>normative</strong>.</p>
+
+<hr />
+
+<h1 id="541-constraint-classifications"><strong>5.4.1 Constraint Classifications</strong></h1>
+
+<p>C Layer constraints fall into six categories:</p>
+
+<ol>
+  <li><strong>Structural Constraints</strong></li>
+  <li><strong>Semantic Constraints</strong></li>
+  <li><strong>Purity Constraints</strong></li>
+  <li><strong>Execution Constraints</strong></li>
+  <li><strong>Context Constraints</strong></li>
+  <li><strong>Prohibition Constraints</strong></li>
+</ol>
+
+<p>Each category is defined below.</p>
+
+<hr />
+
+<h1 id="542-structural-constraints"><strong>5.4.2 Structural Constraints</strong></h1>
+
+<h3 id="constraint-s1--one-function-only"><strong>Constraint S1 — One Function Only</strong></h3>
+<p>A module MUST produce exactly one C function.</p>
+
+<h3 id="constraint-s2--fixed-signature"><strong>Constraint S2 — Fixed Signature</strong></h3>
+<p>The function MUST be named <code class="language-plaintext highlighter-rouge">cyborg_payload</code> and MUST return <code class="language-plaintext highlighter-rouge">int</code>.</p>
+
+<h3 id="constraint-s3--single-parameter"><strong>Constraint S3 — Single Parameter</strong></h3>
+<p>The function MUST take exactly one parameter of the target‑bound type.</p>
+
+<h3 id="constraint-s4--linear-body"><strong>Constraint S4 — Linear Body</strong></h3>
+<p>The function body MUST contain only:</p>
+
+<ul>
+  <li>temporary variables</li>
+  <li>verb function calls</li>
+  <li>a final return statement</li>
+</ul>
+
+<h3 id="constraint-s5--no-additional-constructs"><strong>Constraint S5 — No Additional Constructs</strong></h3>
+<p>The function MUST NOT contain:</p>
+
+<ul>
+  <li>loops</li>
+  <li>conditionals</li>
+  <li>macros</li>
+  <li>comments</li>
+  <li>additional functions</li>
+  <li>additional variables</li>
+</ul>
+
+<hr />
+
+<h1 id="543-semantic-constraints"><strong>5.4.3 Semantic Constraints</strong></h1>
+
+<h3 id="constraint-m1--deterministic-execution"><strong>Constraint M1 — Deterministic Execution</strong></h3>
+<p>Execution MUST be strictly top‑to‑bottom.</p>
+
+<h3 id="constraint-m2--no-inference"><strong>Constraint M2 — No Inference</strong></h3>
+<p>The C Layer MUST NOT infer:</p>
+
+<ul>
+  <li>missing verbs</li>
+  <li>missing logic</li>
+  <li>missing markers</li>
+  <li>missing metadata</li>
+</ul>
+
+<h3 id="constraint-m3--no-optimization"><strong>Constraint M3 — No Optimization</strong></h3>
+<p>The C Layer MUST NOT:</p>
+
+<ul>
+  <li>reorder calls</li>
+  <li>inline calls</li>
+  <li>eliminate calls</li>
+  <li>collapse expressions</li>
+</ul>
+
+<h3 id="constraint-m4--oraggregation-only"><strong>Constraint M4 — OR‑Aggregation Only</strong></h3>
+<p>The return value MUST be:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span> <span class="o">||</span> <span class="n">r3</span> <span class="p">...)</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="544-purity-constraints"><strong>5.4.4 Purity Constraints</strong></h1>
+
+<h3 id="constraint-p1--no-side-effects"><strong>Constraint P1 — No Side Effects</strong></h3>
+<p>The C Layer MUST NOT:</p>
+
+<ul>
+  <li>allocate memory</li>
+  <li>free memory</li>
+  <li>open files</li>
+  <li>write files</li>
+  <li>perform I/O</li>
+  <li>log</li>
+  <li>print</li>
+  <li>modify global state</li>
+</ul>
+
+<h3 id="constraint-p2--no-exceptions"><strong>Constraint P2 — No Exceptions</strong></h3>
+<p>The C Layer MUST NOT throw or propagate exceptions.</p>
+
+<h3 id="constraint-p3--no-crossverb-logic"><strong>Constraint P3 — No Cross‑Verb Logic</strong></h3>
+<p>The C Layer MUST NOT interpret or modify verb results.</p>
+
+<hr />
+
+<h1 id="545-execution-constraints"><strong>5.4.5 Execution Constraints</strong></h1>
+
+<h3 id="constraint-e1--all-verb-calls-must-execute"><strong>Constraint E1 — All Verb Calls Must Execute</strong></h3>
+<p>No verb call may be skipped.</p>
+
+<h3 id="constraint-e2--no-shortcircuiting"><strong>Constraint E2 — No Short‑Circuiting</strong></h3>
+<p>Even though <code class="language-plaintext highlighter-rouge">||</code> is used, the C Layer MUST NOT rely on short‑circuit semantics.</p>
+
+<h3 id="constraint-e3--no-parallel-execution"><strong>Constraint E3 — No Parallel Execution</strong></h3>
+<p>Verb calls MUST NOT run concurrently.</p>
+
+<h3 id="constraint-e4--no-recursion"><strong>Constraint E4 — No Recursion</strong></h3>
+<p>The payload function MUST NOT call itself.</p>
+
+<hr />
+
+<h1 id="546-context-constraints"><strong>5.4.6 Context Constraints</strong></h1>
+
+<h3 id="constraint-c1--targetbound-context"><strong>Constraint C1 — Target‑Bound Context</strong></h3>
+<p>The parameter type MUST match the IR target.</p>
+
+<h3 id="constraint-c2--no-context-mutation-except-build"><strong>Constraint C2 — No Context Mutation (Except <code class="language-plaintext highlighter-rouge">build</code>)</strong></h3>
+<p>Only <code class="language-plaintext highlighter-rouge">build</code> MAY modify the context.</p>
+
+<h3 id="constraint-c3--no-context-inference"><strong>Constraint C3 — No Context Inference</strong></h3>
+<p>The C Layer MUST NOT infer missing context fields.</p>
+
+<hr />
+
+<h1 id="547-prohibition-constraints"><strong>5.4.7 Prohibition Constraints</strong></h1>
+
+<p>The following are strictly forbidden in the C Layer:</p>
+
+<h3 id="forbidden-constructs"><strong>Forbidden Constructs</strong></h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">if</code></li>
+  <li><code class="language-plaintext highlighter-rouge">for</code></li>
+  <li><code class="language-plaintext highlighter-rouge">while</code></li>
+  <li><code class="language-plaintext highlighter-rouge">switch</code></li>
+  <li><code class="language-plaintext highlighter-rouge">goto</code></li>
+  <li><code class="language-plaintext highlighter-rouge">malloc</code></li>
+  <li><code class="language-plaintext highlighter-rouge">free</code></li>
+  <li><code class="language-plaintext highlighter-rouge">printf</code></li>
+  <li><code class="language-plaintext highlighter-rouge">fprintf</code></li>
+  <li><code class="language-plaintext highlighter-rouge">fopen</code></li>
+  <li><code class="language-plaintext highlighter-rouge">fclose</code></li>
+  <li><code class="language-plaintext highlighter-rouge">log</code></li>
+  <li><code class="language-plaintext highlighter-rouge">throw</code></li>
+  <li><code class="language-plaintext highlighter-rouge">try</code></li>
+  <li><code class="language-plaintext highlighter-rouge">catch</code></li>
+  <li><code class="language-plaintext highlighter-rouge">inline</code></li>
+  <li><code class="language-plaintext highlighter-rouge">static</code></li>
+  <li><code class="language-plaintext highlighter-rouge">register</code></li>
+  <li><code class="language-plaintext highlighter-rouge">volatile</code></li>
+  <li><code class="language-plaintext highlighter-rouge">restrict</code></li>
+  <li><code class="language-plaintext highlighter-rouge">__attribute__</code></li>
+</ul>
+
+<h3 id="forbidden-behaviors"><strong>Forbidden Behaviors</strong></h3>
+<ul>
+  <li>modifying global variables</li>
+  <li>performing I/O</li>
+  <li>allocating memory</li>
+  <li>freeing memory</li>
+  <li>calling non‑verb functions</li>
+  <li>calling verb functions out of order</li>
+  <li>skipping verb calls</li>
+  <li>combining verb calls</li>
+  <li>reusing temporary variables</li>
+</ul>
+
+<p>Any violation MUST invalidate the module.</p>
+
+<hr />
+
+<h1 id="548-full-constraintcompliant-example"><strong>5.4.8 Full Constraint‑Compliant Example</strong></h1>
+
+<h3 id="ir"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = AI
+OPEN_PAYLOAD
+EXEC_VALIDATE
+EXEC_SCAN
+EXEC_BUILD
+EXEC_GIVE
+SEAL
+</code></pre>
+
+<h3 id="c-output"><strong>C Output</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">validate_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">scan_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r3</span> <span class="o">=</span> <span class="n">build_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r4</span> <span class="o">=</span> <span class="n">give_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span> <span class="o">||</span> <span class="n">r3</span> <span class="o">||</span> <span class="n">r4</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This output satisfies <strong>all constraints</strong>.</p>
+
+<hr />
+
+<h1 id="549-summary"><strong>5.4.9 Summary</strong></h1>
+
+<p>Page 5.4 defines the <strong>hard constraints</strong> of the C Layer:</p>
+
+<ul>
+  <li>one function</li>
+  <li>fixed signature</li>
+  <li>linear execution</li>
+  <li>deterministic semantics</li>
+  <li>strict purity</li>
+  <li>no inference</li>
+  <li>no optimization</li>
+  <li>no side effects</li>
+  <li>no additional constructs</li>
+</ul>
+
+<p>These constraints ensure the C Layer remains the <strong>pure, deterministic execution surface</strong> of the Cyborg Language.</p>
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.2/06_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

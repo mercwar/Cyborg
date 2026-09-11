@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>📘 PAGE 9.2 — IR SEMANTICS (FORMAL SPECIFICATION) | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="📘 PAGE 9.2 — IR SEMANTICS (FORMAL SPECIFICATION)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/39_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/39_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="📘 PAGE 9.2 — IR SEMANTICS (FORMAL SPECIFICATION)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"📘 PAGE 9.2 — IR SEMANTICS (FORMAL SPECIFICATION)","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/39_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      
+<h1 id="-page-92--ir-semantics-formal-specification"><strong>📘 PAGE 9.2 — IR SEMANTICS (FORMAL SPECIFICATION)</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="92-overview"><strong>9.2 Overview</strong></h2>
+
+<p>While Page 9.1 defined the <strong>syntax</strong> of the IR,<br />
+Page 9.2 defines its <strong>semantics</strong> — the rules that govern what each IR construct <em>means</em> and how it shapes the execution of a Cyborg Module.</p>
+
+<p>IR semantics are:</p>
+
+<ul>
+  <li>deterministic</li>
+  <li>declarative</li>
+  <li>non‑inferential</li>
+  <li>non‑procedural</li>
+  <li>non‑interactive</li>
+  <li>non‑contextual</li>
+</ul>
+
+<p>The IR does not “run.”<br />
+The IR <strong>declares</strong>.</p>
+
+<p>The Runtime Layer <strong>executes</strong>.</p>
+
+<p>This section is <strong>normative</strong>.</p>
+
+<hr />
+
+<h1 id="921-semantic-rule-1--target-defines-domain"><strong>9.2.1 Semantic Rule 1 — TARGET Defines Domain</strong></h1>
+
+<p>The <code class="language-plaintext highlighter-rouge">TARGET</code> declaration determines:</p>
+
+<ul>
+  <li>which context type is allocated</li>
+  <li>which verb signatures are bound</li>
+  <li>which semantic domain the module operates in</li>
+</ul>
+
+<h3 id="meaning"><strong>Meaning</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TARGET = AI
+</code></pre></div></div>
+<p>binds the module to <strong>CyborgContext</strong>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TARGET = FILE
+</code></pre></div></div>
+<p>binds the module to <strong>CyborgFile</strong>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TARGET = LAYER
+</code></pre></div></div>
+<p>binds the module to <strong>CyborgLayer</strong>.</p>
+
+<p>The target is the <strong>semantic universe</strong> of the module.</p>
+
+<hr />
+
+<h1 id="922-semantic-rule-2--open_payload-begins-execution-body"><strong>9.2.2 Semantic Rule 2 — OPEN_PAYLOAD Begins Execution Body</strong></h1>
+
+<p><code class="language-plaintext highlighter-rouge">OPEN_PAYLOAD</code> marks the beginning of the verb sequence.</p>
+
+<p>It does <strong>not</strong>:</p>
+
+<ul>
+  <li>allocate memory</li>
+  <li>initialize context</li>
+  <li>perform any action</li>
+</ul>
+
+<p>It simply declares:</p>
+
+<blockquote>
+  <p>“Everything after this line is executable semantic intent.”</p>
+</blockquote>
+
+<hr />
+
+<h1 id="923-semantic-rule-3--seal-ends-execution-body"><strong>9.2.3 Semantic Rule 3 — SEAL Ends Execution Body</strong></h1>
+
+<p><code class="language-plaintext highlighter-rouge">SEAL</code> marks the end of the verb sequence.</p>
+
+<p>It does <strong>not</strong>:</p>
+
+<ul>
+  <li>finalize context</li>
+  <li>free memory</li>
+  <li>perform cleanup</li>
+</ul>
+
+<p>It simply declares:</p>
+
+<blockquote>
+  <p>“No further verbs exist.”</p>
+</blockquote>
+
+<hr />
+
+<h1 id="924-semantic-rule-4--verb-lines-declare-execution-steps"><strong>9.2.4 Semantic Rule 4 — Verb Lines Declare Execution Steps</strong></h1>
+
+<p>Each line of the form:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>EXEC_&lt;VERB&gt;
+</code></pre></div></div>
+
+<p>declares:</p>
+
+<ul>
+  <li>that the verb MUST be executed</li>
+  <li>in the order written</li>
+  <li>with the context bound by TARGET</li>
+  <li>with deterministic semantics</li>
+  <li>with no inference</li>
+</ul>
+
+<h3 id="meaning-1"><strong>Meaning</strong></h3>
+<p>The IR is a <strong>strict execution schedule</strong>.</p>
+
+<hr />
+
+<h1 id="925-semantic-rule-5--ir-does-not-contain-logic"><strong>9.2.5 Semantic Rule 5 — IR Does Not Contain Logic</strong></h1>
+
+<p>The IR MUST NOT contain:</p>
+
+<ul>
+  <li>conditions</li>
+  <li>loops</li>
+  <li>branches</li>
+  <li>expressions</li>
+  <li>parameters</li>
+  <li>dynamic constructs</li>
+</ul>
+
+<h3 id="meaning-2"><strong>Meaning</strong></h3>
+<p>IR is <strong>not a programming language</strong>.<br />
+It is a <strong>semantic declaration language</strong>.</p>
+
+<hr />
+
+<h1 id="926-semantic-rule-6--ir-does-not-modify-semantics-of-verbs"><strong>9.2.6 Semantic Rule 6 — IR Does Not Modify Semantics of Verbs</strong></h1>
+
+<p>The IR determines:</p>
+
+<ul>
+  <li><em>which</em> verbs run</li>
+  <li><em>in what order</em></li>
+</ul>
+
+<p>The IR does <strong>not</strong> determine:</p>
+
+<ul>
+  <li><em>how</em> verbs behave</li>
+  <li><em>what</em> verbs mean</li>
+  <li><em>what</em> verbs are allowed to do</li>
+</ul>
+
+<h3 id="meaning-3"><strong>Meaning</strong></h3>
+<p>Verb semantics are <strong>fixed and immutable</strong>.</p>
+
+<hr />
+
+<h1 id="927-semantic-rule-7--ir-does-not-modify-context"><strong>9.2.7 Semantic Rule 7 — IR Does Not Modify Context</strong></h1>
+
+<p>The IR does <strong>not</strong>:</p>
+
+<ul>
+  <li>allocate context</li>
+  <li>initialize context</li>
+  <li>mutate context</li>
+  <li>destroy context</li>
+</ul>
+
+<h3 id="meaning-4"><strong>Meaning</strong></h3>
+<p>Context lifecycle is governed by the <strong>Runtime Layer</strong>, not IR.</p>
+
+<hr />
+
+<h1 id="928-semantic-rule-8--ir-is-deterministic"><strong>9.2.8 Semantic Rule 8 — IR Is Deterministic</strong></h1>
+
+<p>Given the same IR:</p>
+
+<ul>
+  <li>the same C code MUST be generated</li>
+  <li>the same verbs MUST be invoked</li>
+  <li>in the same order</li>
+  <li>with the same aggregation semantics</li>
+</ul>
+
+<h3 id="meaning-5"><strong>Meaning</strong></h3>
+<p>IR is <strong>mathematically reproducible</strong>.</p>
+
+<hr />
+
+<h1 id="929-semantic-rule-9--ir-is-noninferential"><strong>9.2.9 Semantic Rule 9 — IR Is Non‑Inferential</strong></h1>
+
+<p>The IR MUST NOT:</p>
+
+<ul>
+  <li>imply missing verbs</li>
+  <li>imply missing structure</li>
+  <li>imply missing semantics</li>
+  <li>imply missing behavior</li>
+</ul>
+
+<h3 id="forbidden"><strong>Forbidden</strong></h3>
+<p>If the IR omits VALIDATE, the runtime MUST NOT infer it.</p>
+
+<p>If the IR omits BUILD, the runtime MUST NOT infer it.</p>
+
+<h3 id="meaning-6"><strong>Meaning</strong></h3>
+<p>IR is <strong>explicit</strong>, never implicit.</p>
+
+<hr />
+
+<h1 id="9210-semantic-rule-10--ir-is-closed"><strong>9.2.10 Semantic Rule 10 — IR Is Closed</strong></h1>
+
+<p>The IR MUST NOT:</p>
+
+<ul>
+  <li>define new verbs</li>
+  <li>define new targets</li>
+  <li>define new constructs</li>
+  <li>extend the language</li>
+</ul>
+
+<h3 id="meaning-7"><strong>Meaning</strong></h3>
+<p>The IR is a <strong>closed semantic system</strong>.</p>
+
+<hr />
+
+<h1 id="9211-full-semantic-example"><strong>9.2.11 Full Semantic Example</strong></h1>
+
+<h3 id="ir"><strong>IR</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TARGET = AI
+OPEN_PAYLOAD
+EXEC_VALIDATE
+EXEC_SCAN
+EXEC_BUILD
+EXEC_GIVE
+EXEC_EXPLAIN
+SEAL
+</code></pre></div></div>
+
+<h3 id="semantic-interpretation"><strong>Semantic Interpretation</strong></h3>
+<ul>
+  <li>the module operates in the AI domain</li>
+  <li>a CyborgContext is allocated</li>
+  <li>verbs run in the order written</li>
+  <li>no inference occurs</li>
+  <li>no optimization occurs</li>
+  <li>no skipping occurs</li>
+  <li>no branching occurs</li>
+  <li>no dynamic behavior occurs</li>
+</ul>
+
+<p>This is the <strong>canonical IR semantic flow</strong>.</p>
+
+<hr />
+
+<h1 id="9212-summary"><strong>9.2.12 Summary</strong></h1>
+
+<p>Page 9.2 defines the <strong>IR Semantics</strong>:</p>
+
+<ul>
+  <li>TARGET defines domain</li>
+  <li>OPEN_PAYLOAD begins execution body</li>
+  <li>SEAL ends execution body</li>
+  <li>EXEC lines declare deterministic verb execution</li>
+  <li>IR contains no logic</li>
+  <li>IR does not modify verb semantics</li>
+  <li>IR does not modify context</li>
+  <li>IR is deterministic</li>
+  <li>IR is non‑inferential</li>
+  <li>IR is closed</li>
+</ul>
+
+<p>The IR is the <strong>semantic contract</strong> of the Cyborg Module.</p>
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.2/39_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

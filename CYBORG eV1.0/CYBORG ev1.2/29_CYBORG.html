@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>📘 PAGE 7.7 — VERB DETERMINISM RULES (FORMAL) | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="📘 PAGE 7.7 — VERB DETERMINISM RULES (FORMAL)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/29_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/29_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="📘 PAGE 7.7 — VERB DETERMINISM RULES (FORMAL)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"📘 PAGE 7.7 — VERB DETERMINISM RULES (FORMAL)","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/29_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      
+<h1 id="-page-77--verb-determinism-rules-formal"><strong>📘 PAGE 7.7 — VERB DETERMINISM RULES (FORMAL)</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="77-overview"><strong>7.7 Overview</strong></h2>
+
+<p>The <strong>Verb Determinism Rules</strong> define the guarantees that each of the five canonical verbs must uphold:</p>
+
+<ul>
+  <li>VALIDATE</li>
+  <li>SCAN</li>
+  <li>BUILD</li>
+  <li>GIVE</li>
+  <li>EXPLAIN</li>
+</ul>
+
+<p>These rules ensure that every verb:</p>
+
+<ul>
+  <li>produces the same output for the same input</li>
+  <li>behaves identically across all systems</li>
+  <li>never depends on external state</li>
+  <li>never introduces nondeterminism</li>
+  <li>never varies due to timing or environment</li>
+</ul>
+
+<p>This section is <strong>normative</strong>.</p>
+
+<hr />
+
+<h1 id="771-determinism-principle-1--identical-input--identical-output"><strong>7.7.1 Determinism Principle 1 — Identical Input → Identical Output</strong></h1>
+
+<p>Each verb MUST:</p>
+
+<ul>
+  <li>return the same integer</li>
+  <li>perform the same operations</li>
+  <li>read the same fields</li>
+  <li>produce the same mutations (BUILD only)</li>
+</ul>
+
+<p>given the same context.</p>
+
+<h3 id="meaning"><strong>Meaning</strong></h3>
+<p>Verb behavior is <strong>mathematically reproducible</strong>.</p>
+
+<hr />
+
+<h1 id="772-determinism-principle-2--no-timing-influence"><strong>7.7.2 Determinism Principle 2 — No Timing Influence</strong></h1>
+
+<p>Verbs MUST NOT depend on:</p>
+
+<ul>
+  <li>system time</li>
+  <li>timers</li>
+  <li>delays</li>
+  <li>interrupts</li>
+  <li>scheduling</li>
+  <li>CPU load</li>
+</ul>
+
+<h3 id="meaning-1"><strong>Meaning</strong></h3>
+<p>Time is irrelevant to verb semantics.</p>
+
+<hr />
+
+<h1 id="773-determinism-principle-3--no-randomness"><strong>7.7.3 Determinism Principle 3 — No Randomness</strong></h1>
+
+<p>Verbs MUST NOT use:</p>
+
+<ul>
+  <li>random number generators</li>
+  <li>entropy sources</li>
+  <li>nondeterministic APIs</li>
+  <li>hardware randomness</li>
+</ul>
+
+<h3 id="meaning-2"><strong>Meaning</strong></h3>
+<p>Verbs cannot introduce entropy.</p>
+
+<hr />
+
+<h1 id="774-determinism-principle-4--no-external-state"><strong>7.7.4 Determinism Principle 4 — No External State</strong></h1>
+
+<p>Verbs MUST NOT depend on:</p>
+
+<ul>
+  <li>environment variables</li>
+  <li>global variables</li>
+  <li>static variables</li>
+  <li>thread‑local variables</li>
+  <li>system configuration</li>
+  <li>file system state</li>
+  <li>network state</li>
+</ul>
+
+<h3 id="meaning-3"><strong>Meaning</strong></h3>
+<p>Verbs operate in a <strong>sealed semantic chamber</strong>.</p>
+
+<hr />
+
+<h1 id="775-determinism-principle-5--no-undefined-behavior"><strong>7.7.5 Determinism Principle 5 — No Undefined Behavior</strong></h1>
+
+<p>Verbs MUST NOT rely on:</p>
+
+<ul>
+  <li>undefined behavior</li>
+  <li>unspecified behavior</li>
+  <li>implementation‑defined behavior</li>
+</ul>
+
+<h3 id="meaning-4"><strong>Meaning</strong></h3>
+<p>Verb semantics must be <strong>fully defined and invariant</strong>.</p>
+
+<hr />
+
+<h1 id="776-determinism-principle-6--no-optimization-variability"><strong>7.7.6 Determinism Principle 6 — No Optimization Variability</strong></h1>
+
+<p>Verb behavior MUST NOT change due to:</p>
+
+<ul>
+  <li>compiler optimizations</li>
+  <li>link‑time optimizations</li>
+  <li>JIT optimizations</li>
+  <li>architecture differences</li>
+</ul>
+
+<h3 id="meaning-5"><strong>Meaning</strong></h3>
+<p>Verb semantics are <strong>optimization‑proof</strong>.</p>
+
+<hr />
+
+<h1 id="777-determinism-principle-7--no-external-calls"><strong>7.7.7 Determinism Principle 7 — No External Calls</strong></h1>
+
+<p>Verbs MUST NOT:</p>
+
+<ul>
+  <li>call system APIs</li>
+  <li>call OS functions</li>
+  <li>call external libraries</li>
+  <li>perform I/O</li>
+  <li>allocate memory</li>
+  <li>free memory</li>
+</ul>
+
+<h3 id="meaning-6"><strong>Meaning</strong></h3>
+<p>Verbs are <strong>self‑contained</strong>.</p>
+
+<hr />
+
+<h1 id="778-determinism-principle-8--no-concurrency"><strong>7.7.8 Determinism Principle 8 — No Concurrency</strong></h1>
+
+<p>Verbs MUST NOT:</p>
+
+<ul>
+  <li>spawn threads</li>
+  <li>join threads</li>
+  <li>run async tasks</li>
+  <li>use parallelism</li>
+  <li>rely on thread‑local state</li>
+</ul>
+
+<h3 id="meaning-7"><strong>Meaning</strong></h3>
+<p>Verb execution is <strong>single‑threaded</strong>.</p>
+
+<hr />
+
+<h1 id="779-determinism-principle-9--builds-mutations-must-be-deterministic"><strong>7.7.9 Determinism Principle 9 — BUILD’s Mutations Must Be Deterministic</strong></h1>
+
+<p><code class="language-plaintext highlighter-rouge">BUILD</code> is the only verb allowed to mutate context, but:</p>
+
+<ul>
+  <li>mutations MUST be deterministic</li>
+  <li>mutations MUST be internal</li>
+  <li>mutations MUST be reproducible</li>
+  <li>mutations MUST NOT depend on external state</li>
+</ul>
+
+<h3 id="meaning-8"><strong>Meaning</strong></h3>
+<p>BUILD is deterministic construction, not dynamic behavior.</p>
+
+<hr />
+
+<h1 id="7710-determinism-principle-10--platforminvariant-behavior"><strong>7.7.10 Determinism Principle 10 — Platform‑Invariant Behavior</strong></h1>
+
+<p>All verbs MUST behave identically across:</p>
+
+<ul>
+  <li>compilers</li>
+  <li>architectures</li>
+  <li>operating systems</li>
+  <li>optimization levels</li>
+</ul>
+
+<h3 id="meaning-9"><strong>Meaning</strong></h3>
+<p>Verb semantics are <strong>universal</strong>.</p>
+
+<hr />
+
+<h1 id="7711-full-deterministic-verb-example"><strong>7.7.11 Full Deterministic Verb Example</strong></h1>
+
+<h3 id="ir"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = FILE
+OPEN_PAYLOAD
+EXEC_VALIDATE
+EXEC_SCAN
+EXEC_BUILD
+EXEC_GIVE
+EXEC_EXPLAIN
+SEAL
+</code></pre>
+
+<h3 id="c-output"><strong>C Output</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="n">CyborgFile</span><span class="o">*</span> <span class="n">file</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">validate_context</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">scan_context</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r3</span> <span class="o">=</span> <span class="n">build_context</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r4</span> <span class="o">=</span> <span class="n">give_context</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r5</span> <span class="o">=</span> <span class="n">explain_context</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span> <span class="o">||</span> <span class="n">r3</span> <span class="o">||</span> <span class="n">r4</span> <span class="o">||</span> <span class="n">r5</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="deterministic-guarantees"><strong>Deterministic Guarantees</strong></h3>
+<ul>
+  <li>each verb produces the same result for the same context</li>
+  <li>BUILD produces the same mutations</li>
+  <li>GIVE and EXPLAIN interpret the same structures</li>
+  <li>no timing influence</li>
+  <li>no randomness</li>
+  <li>no external state</li>
+  <li>no optimization variability</li>
+</ul>
+
+<p>This is the <strong>canonical deterministic verb chain</strong>.</p>
+
+<hr />
+
+<h1 id="7712-summary"><strong>7.7.12 Summary</strong></h1>
+
+<p>Page 7.7 defines the <strong>Verb Determinism Rules</strong>:</p>
+
+<ul>
+  <li>identical input → identical output</li>
+  <li>no timing influence</li>
+  <li>no randomness</li>
+  <li>no external state</li>
+  <li>no undefined behavior</li>
+  <li>no optimization variability</li>
+  <li>no external calls</li>
+  <li>no concurrency</li>
+  <li>deterministic BUILD mutations</li>
+  <li>platform‑invariant behavior</li>
+</ul>
+
+<p>These rules ensure that each verb remains <strong>pure, predictable, and invariant across all systems</strong>.</p>
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.2/29_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

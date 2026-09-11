@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>📘 PAGE 10.6 — C LAYER MEMORY RULES (FORMAL) | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="📘 PAGE 10.6 — C LAYER MEMORY RULES (FORMAL)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/51_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/51_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="📘 PAGE 10.6 — C LAYER MEMORY RULES (FORMAL)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"📘 PAGE 10.6 — C LAYER MEMORY RULES (FORMAL)","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/51_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      
+<h1 id="-page-106--c-layer-memory-rules-formal"><strong>📘 PAGE 10.6 — C LAYER MEMORY RULES (FORMAL)</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="106-overview"><strong>10.6 Overview</strong></h2>
+
+<p>The <strong>Memory Rules</strong> define what the generated C function may and may not do with memory.<br />
+These rules ensure:</p>
+
+<ul>
+  <li>no allocation</li>
+  <li>no deallocation</li>
+  <li>no dynamic buffers</li>
+  <li>no heap usage</li>
+  <li>no stack manipulation beyond locals</li>
+  <li>no pointer arithmetic</li>
+  <li>no memory ownership</li>
+  <li>no memory side effects</li>
+</ul>
+
+<p>The C Layer is a <strong>pure dispatcher</strong>, not a memory manager.</p>
+
+<p>This section is <strong>normative</strong>.</p>
+
+<hr />
+
+<h1 id="1061-memory-rule-1--no-dynamic-allocation"><strong>10.6.1 Memory Rule 1 — No Dynamic Allocation</strong></h1>
+
+<p>The C Layer MUST NOT call:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">malloc</code></li>
+  <li><code class="language-plaintext highlighter-rouge">calloc</code></li>
+  <li><code class="language-plaintext highlighter-rouge">realloc</code></li>
+  <li><code class="language-plaintext highlighter-rouge">free</code></li>
+  <li>custom allocators</li>
+  <li>OS allocators</li>
+</ul>
+
+<h3 id="meaning"><strong>Meaning</strong></h3>
+<p>The payload function is <strong>heap‑free</strong>.</p>
+
+<hr />
+
+<h1 id="1062-memory-rule-2--no-static-or-global-memory"><strong>10.6.2 Memory Rule 2 — No Static or Global Memory</strong></h1>
+
+<p>The C Layer MUST NOT declare:</p>
+
+<ul>
+  <li>global variables</li>
+  <li>static variables</li>
+  <li>static buffers</li>
+  <li>static flags</li>
+  <li>static counters</li>
+</ul>
+
+<h3 id="meaning-1"><strong>Meaning</strong></h3>
+<p>The payload function is <strong>stateless</strong>.</p>
+
+<hr />
+
+<h1 id="1063-memory-rule-3--only-stacklocal-variables-allowed"><strong>10.6.3 Memory Rule 3 — Only Stack‑Local Variables Allowed</strong></h1>
+
+<p>The only memory the C Layer may use is:</p>
+
+<ul>
+  <li>the function’s stack frame</li>
+  <li>the local variables <code class="language-plaintext highlighter-rouge">r1</code>, <code class="language-plaintext highlighter-rouge">r2</code>, …, <code class="language-plaintext highlighter-rouge">rn</code></li>
+</ul>
+
+<h3 id="meaning-2"><strong>Meaning</strong></h3>
+<p>Memory usage is <strong>bounded and deterministic</strong>.</p>
+
+<hr />
+
+<h1 id="1064-memory-rule-4--no-variablelength-arrays"><strong>10.6.4 Memory Rule 4 — No Variable‑Length Arrays</strong></h1>
+
+<p>The C Layer MUST NOT declare:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>int r[n];
+</code></pre></div></div>
+
+<p>or any array whose size depends on runtime values.</p>
+
+<h3 id="meaning-3"><strong>Meaning</strong></h3>
+<p>Stack layout is <strong>fixed</strong>.</p>
+
+<hr />
+
+<h1 id="1065-memory-rule-5--no-pointer-arithmetic"><strong>10.6.5 Memory Rule 5 — No Pointer Arithmetic</strong></h1>
+
+<p>The C Layer MUST NOT:</p>
+
+<ul>
+  <li>increment pointers</li>
+  <li>decrement pointers</li>
+  <li>compute offsets</li>
+  <li>cast pointers to integers</li>
+  <li>cast integers to pointers</li>
+</ul>
+
+<h3 id="meaning-4"><strong>Meaning</strong></h3>
+<p>The context pointer is <strong>opaque and untouchable</strong>.</p>
+
+<hr />
+
+<h1 id="1066-memory-rule-6--no-buffer-manipulation"><strong>10.6.6 Memory Rule 6 — No Buffer Manipulation</strong></h1>
+
+<p>The C Layer MUST NOT:</p>
+
+<ul>
+  <li>copy memory</li>
+  <li>compare memory</li>
+  <li>zero memory</li>
+  <li>fill memory</li>
+  <li>move memory</li>
+</ul>
+
+<h3 id="meaning-5"><strong>Meaning</strong></h3>
+<p>Memory operations belong to <strong>verbs</strong>, not the C Layer.</p>
+
+<hr />
+
+<h1 id="1067-memory-rule-7--no-temporary-buffers"><strong>10.6.7 Memory Rule 7 — No Temporary Buffers</strong></h1>
+
+<p>The C Layer MUST NOT allocate:</p>
+
+<ul>
+  <li>char buffers</li>
+  <li>int buffers</li>
+  <li>scratch arrays</li>
+  <li>workspaces</li>
+  <li>staging areas</li>
+</ul>
+
+<h3 id="meaning-6"><strong>Meaning</strong></h3>
+<p>The payload function is <strong>bufferless</strong>.</p>
+
+<hr />
+
+<h1 id="1068-memory-rule-8--no-context-allocation-or-destruction"><strong>10.6.8 Memory Rule 8 — No Context Allocation or Destruction</strong></h1>
+
+<p>The C Layer MUST NOT:</p>
+
+<ul>
+  <li>allocate the context</li>
+  <li>free the context</li>
+  <li>clone the context</li>
+  <li>resize the context</li>
+</ul>
+
+<h3 id="meaning-7"><strong>Meaning</strong></h3>
+<p>Context lifecycle is <strong>external</strong>.</p>
+
+<hr />
+
+<h1 id="1069-memory-rule-9--no-memorybased-logic"><strong>10.6.9 Memory Rule 9 — No Memory‑Based Logic</strong></h1>
+
+<p>The C Layer MUST NOT:</p>
+
+<ul>
+  <li>branch based on memory contents</li>
+  <li>inspect memory</li>
+  <li>compute sizes</li>
+  <li>check alignment</li>
+  <li>check null pointers</li>
+</ul>
+
+<h3 id="meaning-8"><strong>Meaning</strong></h3>
+<p>Memory is <strong>not a source of logic</strong>.</p>
+
+<hr />
+
+<h1 id="10610-memory-rule-10--memory-usage-must-be-deterministic"><strong>10.6.10 Memory Rule 10 — Memory Usage Must Be Deterministic</strong></h1>
+
+<p>Given the same IR:</p>
+
+<ul>
+  <li>the same number of locals MUST be generated</li>
+  <li>the same stack layout MUST result</li>
+  <li>the same memory footprint MUST occur</li>
+</ul>
+
+<h3 id="meaning-9"><strong>Meaning</strong></h3>
+<p>Memory behavior is <strong>mathematically reproducible</strong>.</p>
+
+<hr />
+
+<h1 id="10611-canonical-example--full-chain"><strong>10.6.11 Canonical Example — Full Chain</strong></h1>
+
+<h3 id="ir"><strong>IR</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TARGET = AI
+OPEN_PAYLOAD
+EXEC_VALIDATE
+EXEC_SCAN
+EXEC_BUILD
+SEAL
+</code></pre></div></div>
+
+<h3 id="generated-c"><strong>Generated C</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">validate_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">scan_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r3</span> <span class="o">=</span> <span class="n">build_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span> <span class="o">||</span> <span class="n">r3</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="memory-interpretation"><strong>Memory Interpretation</strong></h3>
+<ul>
+  <li>only three locals</li>
+  <li>no heap</li>
+  <li>no globals</li>
+  <li>no static memory</li>
+  <li>no pointer arithmetic</li>
+  <li>no buffers</li>
+</ul>
+
+<p>This is the <strong>canonical memory‑pure payload</strong>.</p>
+
+<hr />
+
+<h1 id="10612-summary"><strong>10.6.12 Summary</strong></h1>
+
+<p>Page 10.6 defines the <strong>C Layer Memory Rules</strong>:</p>
+
+<ul>
+  <li>no dynamic allocation</li>
+  <li>no static or global memory</li>
+  <li>only stack‑local variables</li>
+  <li>no VLAs</li>
+  <li>no pointer arithmetic</li>
+  <li>no buffer manipulation</li>
+  <li>no temporary buffers</li>
+  <li>no context allocation or destruction</li>
+  <li>no memory‑based logic</li>
+  <li>deterministic memory footprint</li>
+</ul>
+
+<p>The C Layer is <strong>memory‑pure</strong>, <strong>bounded</strong>, and <strong>mechanically deterministic</strong>.</p>
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.2/51_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

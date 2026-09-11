@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>📘 PAGE 10.9 — C LAYER PURITY RULES (FORMAL) | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="📘 PAGE 10.9 — C LAYER PURITY RULES (FORMAL)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/54_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/54_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="📘 PAGE 10.9 — C LAYER PURITY RULES (FORMAL)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"📘 PAGE 10.9 — C LAYER PURITY RULES (FORMAL)","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/54_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      
+<h1 id="-page-109--c-layer-purity-rules-formal"><strong>📘 PAGE 10.9 — C LAYER PURITY RULES (FORMAL)</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="109-overview"><strong>10.9 Overview</strong></h2>
+
+<p>The <strong>Purity Rules</strong> define the absolute constraints on what the generated C payload may and may not do.<br />
+These rules ensure:</p>
+
+<ul>
+  <li>no side effects</li>
+  <li>no external interaction</li>
+  <li>no nondeterminism</li>
+  <li>no impurity</li>
+  <li>no environment dependence</li>
+  <li>no hidden behavior</li>
+</ul>
+
+<p>The C Layer is a <strong>pure function</strong> in the mathematical sense.</p>
+
+<p>This section is <strong>normative</strong>.</p>
+
+<hr />
+
+<h1 id="1091-purity-rule-1--no-io-of-any-kind"><strong>10.9.1 Purity Rule 1 — No I/O of Any Kind</strong></h1>
+
+<p>The C Layer MUST NOT perform:</p>
+
+<ul>
+  <li>file I/O</li>
+  <li>console I/O</li>
+  <li>network I/O</li>
+  <li>device I/O</li>
+  <li>logging</li>
+  <li>printing</li>
+</ul>
+
+<h3 id="meaning"><strong>Meaning</strong></h3>
+<p>The payload is <strong>silent</strong>.</p>
+
+<hr />
+
+<h1 id="1092-purity-rule-2--no-global-state-access"><strong>10.9.2 Purity Rule 2 — No Global State Access</strong></h1>
+
+<p>The C Layer MUST NOT:</p>
+
+<ul>
+  <li>read global variables</li>
+  <li>write global variables</li>
+  <li>reference global constants</li>
+  <li>reference static state</li>
+</ul>
+
+<h3 id="meaning-1"><strong>Meaning</strong></h3>
+<p>The payload is <strong>state‑free</strong>.</p>
+
+<hr />
+
+<h1 id="1093-purity-rule-3--no-static-or-threadlocal-state"><strong>10.9.3 Purity Rule 3 — No Static or Thread‑Local State</strong></h1>
+
+<p>The C Layer MUST NOT declare:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">static</code> variables</li>
+  <li><code class="language-plaintext highlighter-rouge">thread_local</code> variables</li>
+  <li>persistent buffers</li>
+  <li>cached values</li>
+</ul>
+
+<h3 id="meaning-2"><strong>Meaning</strong></h3>
+<p>The payload is <strong>ephemeral</strong>.</p>
+
+<hr />
+
+<h1 id="1094-purity-rule-4--no-environment-access"><strong>10.9.4 Purity Rule 4 — No Environment Access</strong></h1>
+
+<p>The C Layer MUST NOT call:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">getenv</code></li>
+  <li><code class="language-plaintext highlighter-rouge">time</code></li>
+  <li><code class="language-plaintext highlighter-rouge">rand</code></li>
+  <li><code class="language-plaintext highlighter-rouge">clock</code></li>
+  <li>OS APIs</li>
+  <li>system calls</li>
+</ul>
+
+<h3 id="meaning-3"><strong>Meaning</strong></h3>
+<p>The payload is <strong>environment‑agnostic</strong>.</p>
+
+<hr />
+
+<h1 id="1095-purity-rule-5--no-sideeffectful-operations"><strong>10.9.5 Purity Rule 5 — No Side‑Effectful Operations</strong></h1>
+
+<p>The C Layer MUST NOT:</p>
+
+<ul>
+  <li>modify external memory</li>
+  <li>modify global structures</li>
+  <li>write to hardware</li>
+  <li>trigger callbacks</li>
+  <li>invoke external systems</li>
+</ul>
+
+<h3 id="meaning-4"><strong>Meaning</strong></h3>
+<p>The payload is <strong>side‑effect‑free</strong>.</p>
+
+<hr />
+
+<h1 id="1096-purity-rule-6--no-undefined-or-implementationdefined-behavior"><strong>10.9.6 Purity Rule 6 — No Undefined or Implementation‑Defined Behavior</strong></h1>
+
+<p>The C Layer MUST NOT rely on:</p>
+
+<ul>
+  <li>pointer aliasing</li>
+  <li>uninitialized memory</li>
+  <li>unspecified evaluation order</li>
+  <li>compiler extensions</li>
+  <li>UB or implementation‑defined semantics</li>
+</ul>
+
+<h3 id="meaning-5"><strong>Meaning</strong></h3>
+<p>The payload is <strong>portable across all compilers</strong>.</p>
+
+<hr />
+
+<h1 id="1097-purity-rule-7--no-concurrency-or-parallelism"><strong>10.9.7 Purity Rule 7 — No Concurrency or Parallelism</strong></h1>
+
+<p>The C Layer MUST NOT:</p>
+
+<ul>
+  <li>spawn threads</li>
+  <li>lock mutexes</li>
+  <li>use atomics</li>
+  <li>synchronize</li>
+  <li>yield</li>
+  <li>sleep</li>
+</ul>
+
+<h3 id="meaning-6"><strong>Meaning</strong></h3>
+<p>The payload is <strong>single‑threaded and atomic</strong>.</p>
+
+<hr />
+
+<h1 id="1098-purity-rule-8--no-external-dependencies"><strong>10.9.8 Purity Rule 8 — No External Dependencies</strong></h1>
+
+<p>The C Layer MUST NOT:</p>
+
+<ul>
+  <li>include external libraries</li>
+  <li>call external APIs</li>
+  <li>depend on platform features</li>
+  <li>depend on compiler extensions</li>
+</ul>
+
+<h3 id="meaning-7"><strong>Meaning</strong></h3>
+<p>The payload is <strong>self‑contained</strong>.</p>
+
+<hr />
+
+<h1 id="1099-purity-rule-9--no-hidden-behavior"><strong>10.9.9 Purity Rule 9 — No Hidden Behavior</strong></h1>
+
+<p>The C Layer MUST NOT:</p>
+
+<ul>
+  <li>hide logic in macros</li>
+  <li>hide logic in inline functions</li>
+  <li>hide logic in attributes</li>
+  <li>hide logic in pragmas</li>
+</ul>
+
+<h3 id="meaning-8"><strong>Meaning</strong></h3>
+<p>The payload is <strong>transparent</strong>.</p>
+
+<hr />
+
+<h1 id="10910-purity-rule-10--purity-must-be-deterministic"><strong>10.9.10 Purity Rule 10 — Purity Must Be Deterministic</strong></h1>
+
+<p>Given the same IR:</p>
+
+<ul>
+  <li>the same pure C MUST be generated</li>
+  <li>with the same purity guarantees</li>
+  <li>on all platforms</li>
+  <li>with all compilers</li>
+</ul>
+
+<h3 id="meaning-9"><strong>Meaning</strong></h3>
+<p>Purity is <strong>mathematically reproducible</strong>.</p>
+
+<hr />
+
+<h1 id="10911-canonical-pure-payload-example"><strong>10.9.11 Canonical Pure Payload Example</strong></h1>
+
+<h3 id="ir"><strong>IR</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TARGET = AI
+OPEN_PAYLOAD
+EXEC_VALIDATE
+EXEC_SCAN
+SEAL
+</code></pre></div></div>
+
+<h3 id="generated-c"><strong>Generated C</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">validate_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">scan_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="purity-interpretation"><strong>Purity Interpretation</strong></h3>
+<ul>
+  <li>no I/O</li>
+  <li>no globals</li>
+  <li>no static state</li>
+  <li>no environment access</li>
+  <li>no side effects</li>
+  <li>no hidden behavior</li>
+</ul>
+
+<p>This is the <strong>canonical purity‑compliant payload</strong>.</p>
+
+<hr />
+
+<h1 id="10912-summary"><strong>10.9.12 Summary</strong></h1>
+
+<p>Page 10.9 defines the <strong>C Layer Purity Rules</strong>:</p>
+
+<ul>
+  <li>no I/O</li>
+  <li>no global state</li>
+  <li>no static state</li>
+  <li>no environment access</li>
+  <li>no side effects</li>
+  <li>no undefined behavior</li>
+  <li>no concurrency</li>
+  <li>no external dependencies</li>
+  <li>no hidden behavior</li>
+  <li>deterministic purity</li>
+</ul>
+
+<p>The C Layer is <strong>chemically pure</strong>, <strong>mathematically clean</strong>, and <strong>universally reproducible</strong>.</p>
+
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.2/54_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

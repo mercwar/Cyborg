@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>📘 PAGE 3.6 — VERB ORDERING RULES | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="📘 PAGE 3.6 — VERB ORDERING RULES" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/17_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/17_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="📘 PAGE 3.6 — VERB ORDERING RULES" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"📘 PAGE 3.6 — VERB ORDERING RULES","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/17_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      <h1 id="-page-36--verb-ordering-rules"><strong>📘 PAGE 3.6 — VERB ORDERING RULES</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="36-overview"><strong>3.6 Overview</strong></h2>
+
+<p>Verb ordering is one of the <strong>strictest and most unforgiving</strong> components of the Cyborg Language.<br />
+Because verbs map directly to deterministic IR opcodes and C function calls, <strong>their order defines the execution order</strong>, and therefore:</p>
+
+<ul>
+  <li>MUST NOT change</li>
+  <li>MUST NOT be inferred</li>
+  <li>MUST NOT be optimized</li>
+  <li>MUST NOT be rearranged</li>
+  <li>MUST NOT be grouped automatically</li>
+</ul>
+
+<p>The order written by the user is the <strong>only valid order</strong>.</p>
+
+<p>This section is <strong>normative</strong>.</p>
+
+<hr />
+
+<h1 id="361-ordering-is-absolute"><strong>3.6.1 Ordering Is Absolute</strong></h1>
+
+<p>The Cyborg Language enforces <strong>strict sequential execution</strong>.</p>
+
+<h3 id="vbstyle"><strong>VB‑Style</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">scan</span>
+<span class="n">validate</span>
+<span class="n">build</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<h3 id="ir"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">EXEC_SCAN
+EXEC_VALIDATE
+EXEC_BUILD
+</code></pre>
+
+<h3 id="c-output"><strong>C Output</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">scan_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+<span class="n">validate_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+<span class="n">build_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>The order MUST be preserved exactly.</p>
+
+<hr />
+
+<h1 id="362-no-reordering-allowed"><strong>3.6.2 No Reordering Allowed</strong></h1>
+
+<p>The engine MUST NOT:</p>
+
+<ul>
+  <li>reorder verbs</li>
+  <li>group verbs</li>
+  <li>optimize verb order</li>
+  <li>parallelize verbs</li>
+  <li>infer missing verbs</li>
+  <li>collapse similar verbs</li>
+</ul>
+
+<h3 id="forbidden-example"><strong>Forbidden Example</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">validate</span>
+<span class="n">scan</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<p>The engine MUST NOT reorder this to:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scan → validate
+</code></pre></div></div>
+
+<p>Even if it seems “logical,” “efficient,” or “cleaner,”<br />
+<strong>the written order is law</strong>.</p>
+
+<hr />
+
+<h1 id="363-no-implicit-ordering"><strong>3.6.3 No Implicit Ordering</strong></h1>
+
+<p>The engine MUST NOT:</p>
+
+<ul>
+  <li>assume a default order</li>
+  <li>assume a recommended order</li>
+  <li>assume a semantic order</li>
+</ul>
+
+<h3 id="forbidden"><strong>Forbidden</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<p>The engine MUST NOT assume:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scan → validate
+</code></pre></div></div>
+
+<p>Only the user defines order.</p>
+
+<hr />
+
+<h1 id="364-no-parallel-execution"><strong>3.6.4 No Parallel Execution</strong></h1>
+
+<p>Even if two verbs are independent, they MUST NOT be executed in parallel.</p>
+
+<h3 id="forbidden-1"><strong>Forbidden</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">scan</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<p>The engine MUST NOT treat this as:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scan || validate
+</code></pre></div></div>
+
+<p>Execution is always <strong>serial</strong>.</p>
+
+<hr />
+
+<h1 id="365-no-conditional-ordering"><strong>3.6.5 No Conditional Ordering</strong></h1>
+
+<p>The Cyborg Language does not support:</p>
+
+<ul>
+  <li>conditional verbs</li>
+  <li>branching</li>
+  <li>loops</li>
+  <li>optional execution paths</li>
+</ul>
+
+<h3 id="forbidden-2"><strong>Forbidden</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">if</span> <span class="n">ready</span> <span class="n">then</span> <span class="n">validate</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<p>No conditional constructs exist.</p>
+
+<hr />
+
+<h1 id="366-no-grouped-verbs"><strong>3.6.6 No Grouped Verbs</strong></h1>
+
+<p>Verbs MUST appear one per line.</p>
+
+<h3 id="forbidden-3"><strong>Forbidden</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">scan</span> <span class="n">validate</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<h3 id="forbidden-4"><strong>Forbidden</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">scan</span><span class="p">,</span> <span class="n">validate</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<h3 id="forbidden-5"><strong>Forbidden</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">scan</span> <span class="o">+</span> <span class="n">validate</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<p>Each verb MUST stand alone.</p>
+
+<hr />
+
+<h1 id="367-comments-must-not-break-ordering"><strong>3.6.7 Comments Must Not Break Ordering</strong></h1>
+
+<p>Comments MAY appear, but MUST NOT:</p>
+
+<ul>
+  <li>appear between marker fragments</li>
+  <li>appear after the seal</li>
+  <li>alter execution order</li>
+  <li>imply grouping</li>
+</ul>
+
+<h3 id="valid"><strong>Valid</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">scan</span>      <span class="c1">' first pass</span>
+<span class="n">validate</span>  <span class="c1">' second pass</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<h3 id="invalid"><strong>Invalid</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="c1">' comment that implies grouping ❌</span>
+<span class="n">scan</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="368-ordering-violations-normative"><strong>3.6.8 Ordering Violations (Normative)</strong></h1>
+
+<p>The following MUST be rejected:</p>
+
+<h3 id="-reordered-verbs">❌ Reordered Verbs</h3>
+<h3 id="-grouped-verbs">❌ Grouped Verbs</h3>
+<h3 id="-combined-verbs">❌ Combined Verbs</h3>
+<h3 id="-inferred-verbs">❌ Inferred Verbs</h3>
+<h3 id="-missing-verbs">❌ Missing Verbs</h3>
+<h3 id="-conditional-verbs">❌ Conditional Verbs</h3>
+<h3 id="-parallel-verbs">❌ Parallel Verbs</h3>
+<h3 id="-verbs-outside-payload">❌ Verbs Outside Payload</h3>
+<h3 id="-verbs-after-seal">❌ Verbs After Seal</h3>
+
+<p>All violate deterministic execution.</p>
+
+<hr />
+
+<h1 id="369-full-valid-example"><strong>3.6.9 Full Valid Example</strong></h1>
+
+<h3 id="vbstyle-cyborg"><strong>VB‑Style Cyborg</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">set</span> <span class="n">to</span> <span class="n">you</span>
+<span class="n">begin</span>
+<span class="n">scan</span>
+<span class="n">validate</span>
+<span class="n">give</span>
+<span class="p">#!#</span>
+<span class="n">end</span>
+</code></pre></div></div>
+
+<h3 id="ir-1"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = AI
+OPEN_PAYLOAD
+EXEC_SCAN
+EXEC_VALIDATE
+EXEC_GIVE
+SEAL
+END_TRANSMISSION
+</code></pre>
+
+<h3 id="c-output-1"><strong>C Output</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">scan_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">validate_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r3</span> <span class="o">=</span> <span class="n">give_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span> <span class="o">||</span> <span class="n">r3</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Order preserved.<br />
+Order enforced.<br />
+Order is law.</p>
+
+<hr />
+
+<h1 id="3610-summary"><strong>3.6.10 Summary</strong></h1>
+
+<p>Page 3.6 establishes the <strong>strict ordering rules</strong> for verbs:</p>
+
+<ul>
+  <li>order MUST be preserved</li>
+  <li>no reordering</li>
+  <li>no grouping</li>
+  <li>no inference</li>
+  <li>no parallelism</li>
+  <li>no conditional execution</li>
+  <li>one verb per line</li>
+  <li>comments must not break structure</li>
+</ul>
+
+<p>Verb order is the <strong>execution spine</strong> of the Cyborg Language.</p>
+
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.1/17_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

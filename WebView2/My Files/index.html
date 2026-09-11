@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>WebView2 – Project Integration Files | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="WebView2 – Project Integration Files" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/WebView2/My%20Files/" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/WebView2/My%20Files/" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="WebView2 – Project Integration Files" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"WebView2 – Project Integration Files","url":"https://mercwar.github.io/Cyborg/WebView2/My%20Files/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      <h1 id="webview2--project-integration-files">WebView2 – Project Integration Files</h1>
+
+<blockquote>
+  <p><strong>Location:</strong><br />
+<code class="language-plaintext highlighter-rouge">Github.com/mercwar/Cyborg/WebView2/MY FILES/</code></p>
+</blockquote>
+
+<hr />
+
+<h2 id="purpose">Purpose</h2>
+
+<p>This directory contains <strong>project-specific WebView2 integration code</strong> used by the Cyborg system.</p>
+
+<p>Unlike the <code class="language-plaintext highlighter-rouge">SDK FILES</code> directory, files here are allowed to:</p>
+<ul>
+  <li>Contain helpers</li>
+  <li>Contain handlers</li>
+  <li>Contain glue logic</li>
+  <li>Contain tooling support</li>
+</ul>
+
+<p>These files sit <strong>on top of</strong> the pinned WebView2 SDK.</p>
+
+<hr />
+
+<h2 id="what-lives-here">What Lives Here</h2>
+
+<p>Typical files include:</p>
+
+<ul>
+  <li>COM base helpers (<code class="language-plaintext highlighter-rouge">AddRef</code>, <code class="language-plaintext highlighter-rouge">Release</code>)</li>
+  <li>Callback handler implementations</li>
+  <li>Controller and script handlers</li>
+  <li>Resource manifests</li>
+  <li>Logging and diagnostics helpers</li>
+</ul>
+
+<p>All code here:</p>
+<ul>
+  <li>Is still <strong>pure ANSI C</strong></li>
+  <li>Uses <strong>classic COM</strong></li>
+  <li>Avoids C++ and WinRT</li>
+  <li>Is tailored to Cyborg’s architecture</li>
+</ul>
+
+<hr />
+
+<h2 id="design-rules">Design Rules</h2>
+
+<ul>
+  <li>SDK headers are <strong>never modified here</strong></li>
+  <li>ABI assumptions must match <code class="language-plaintext highlighter-rouge">SDK FILES</code></li>
+  <li>Convenience is allowed, magic is not</li>
+  <li>Explicit code beats clever code</li>
+</ul>
+
+<hr />
+
+<h2 id="relationship-to-sdk-files">Relationship to SDK FILES</h2>
+
+<p>Think of it like this:</p>
+
+<ul>
+  <li><strong>SDK FILES</strong> → “What WebView2 is”</li>
+  <li><strong>MY FILES</strong> → “How Cyborg uses it”</li>
+</ul>
+
+<p>Separation is mandatory.</p>
+
+<hr />
+
+<h2 id="tooling-awareness">Tooling Awareness</h2>
+
+<p>Files in this directory are structured so that:</p>
+<ul>
+  <li>Copilot can parse them</li>
+  <li>Resource manifests can log them</li>
+  <li>Build systems can include them deterministically</li>
+</ul>
+
+<p>Nothing here is accidental.</p>
+
+<hr />
+
+<h2 id="who-should-touch-this-directory">Who Should Touch This Directory</h2>
+
+<p>This directory is for:</p>
+<ul>
+  <li>Cyborg developers</li>
+  <li>System integrators</li>
+  <li>Tooling authors</li>
+</ul>
+
+<p>If you need to add behavior, it belongs here — not in the SDK.</p>
+
+<hr />
+
+<h2 id="final-note">Final Note</h2>
+
+<p>This directory is where WebView2 stops being a specification<br />
+and starts being a system component.</p>
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/WebView2/My%20Files/Readme.md">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

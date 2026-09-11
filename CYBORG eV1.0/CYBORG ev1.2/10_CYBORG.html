@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Cyborg | A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Cyborg" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/10_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/10_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Cyborg" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"Cyborg","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/10_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      <p>Absolutely, Demon. The Codex advances into one of the strictest and most unforgiving chambers of the C Layer doctrine.</p>
+
+<hr />
+
+<h1 id="-page-58--c-layer-purity-rules-deep-specification"><strong>📘 PAGE 5.8 — C LAYER PURITY RULES (DEEP SPECIFICATION)</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="58-overview"><strong>5.8 Overview</strong></h2>
+
+<p>Page 5.8 defines the <strong>Purity Rules</strong> — the absolute prohibitions and behavioral constraints that guarantee the C Layer remains:</p>
+
+<ul>
+  <li>deterministic</li>
+  <li>side‑effect‑free</li>
+  <li>non‑inferential</li>
+  <li>non‑optimizing</li>
+  <li>reproducible</li>
+  <li>isolated</li>
+  <li>semantically pure</li>
+</ul>
+
+<p>These rules are the <strong>hardest constraints</strong> in the entire Cyborg Language.<br />
+They are not guidelines.<br />
+They are <strong>law</strong>.</p>
+
+<p>This section is <strong>normative</strong>.</p>
+
+<hr />
+
+<h1 id="581-purity-principle-1--no-side-effects"><strong>5.8.1 Purity Principle 1 — No Side Effects</strong></h1>
+
+<p>The C Layer MUST NOT perform <strong>any</strong> side effects.</p>
+
+<h3 id="forbidden-side-effects"><strong>Forbidden Side Effects</strong></h3>
+<ul>
+  <li>file I/O</li>
+  <li>network I/O</li>
+  <li>console I/O</li>
+  <li>logging</li>
+  <li>printing</li>
+  <li>memory allocation</li>
+  <li>memory deallocation</li>
+  <li>modifying global variables</li>
+  <li>modifying static variables</li>
+  <li>modifying thread‑local variables</li>
+  <li>modifying environment variables</li>
+  <li>modifying system state</li>
+</ul>
+
+<h3 id="meaning"><strong>Meaning</strong></h3>
+<p>The C Layer is a <strong>pure function</strong> from context → integer.</p>
+
+<hr />
+
+<h1 id="582-purity-principle-2--no-state-mutation"><strong>5.8.2 Purity Principle 2 — No State Mutation</strong></h1>
+
+<p>The C Layer MUST NOT modify:</p>
+
+<ul>
+  <li>the context</li>
+  <li>global state</li>
+  <li>static state</li>
+  <li>external state</li>
+  <li>internal state</li>
+</ul>
+
+<h3 id="exception"><strong>Exception</strong></h3>
+<p>Only the verb <code class="language-plaintext highlighter-rouge">build</code> may modify the context — and <strong>only inside its own function</strong>, not in the C Layer.</p>
+
+<hr />
+
+<h1 id="583-purity-principle-3--no-memory-operations"><strong>5.8.3 Purity Principle 3 — No Memory Operations</strong></h1>
+
+<p>The C Layer MUST NOT:</p>
+
+<ul>
+  <li>allocate memory (<code class="language-plaintext highlighter-rouge">malloc</code>, <code class="language-plaintext highlighter-rouge">calloc</code>, <code class="language-plaintext highlighter-rouge">realloc</code>)</li>
+  <li>free memory (<code class="language-plaintext highlighter-rouge">free</code>)</li>
+  <li>use stack allocation macros</li>
+  <li>use custom allocators</li>
+  <li>use placement new</li>
+  <li>use memory pools</li>
+</ul>
+
+<h3 id="meaning-1"><strong>Meaning</strong></h3>
+<p>Memory behavior MUST be entirely controlled by verb functions.</p>
+
+<hr />
+
+<h1 id="584-purity-principle-4--no-io-of-any-kind"><strong>5.8.4 Purity Principle 4 — No I/O of Any Kind</strong></h1>
+
+<p>The C Layer MUST NOT:</p>
+
+<ul>
+  <li>print</li>
+  <li>log</li>
+  <li>write files</li>
+  <li>read files</li>
+  <li>open sockets</li>
+  <li>send packets</li>
+  <li>flush buffers</li>
+  <li>write to stdout</li>
+  <li>write to stderr</li>
+</ul>
+
+<h3 id="forbidden-examples"><strong>Forbidden Examples</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">printf</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">);</span>        <span class="c1">// ❌</span>
+<span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">"X"</span><span class="p">);</span>   <span class="c1">// ❌</span>
+<span class="n">fopen</span><span class="p">(</span><span class="s">"x"</span><span class="p">,</span> <span class="s">"r"</span><span class="p">);</span>        <span class="c1">// ❌</span>
+<span class="n">send</span><span class="p">(</span><span class="n">sock</span><span class="p">,</span> <span class="p">...);</span>        <span class="c1">// ❌</span>
+</code></pre></div></div>
+
+<p>The C Layer is <strong>silent</strong>.</p>
+
+<hr />
+
+<h1 id="585-purity-principle-5--no-control-flow"><strong>5.8.5 Purity Principle 5 — No Control Flow</strong></h1>
+
+<p>The C Layer MUST NOT contain:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">if</code></li>
+  <li><code class="language-plaintext highlighter-rouge">else</code></li>
+  <li><code class="language-plaintext highlighter-rouge">switch</code></li>
+  <li><code class="language-plaintext highlighter-rouge">case</code></li>
+  <li><code class="language-plaintext highlighter-rouge">for</code></li>
+  <li><code class="language-plaintext highlighter-rouge">while</code></li>
+  <li><code class="language-plaintext highlighter-rouge">do</code></li>
+  <li><code class="language-plaintext highlighter-rouge">goto</code></li>
+  <li><code class="language-plaintext highlighter-rouge">break</code></li>
+  <li><code class="language-plaintext highlighter-rouge">continue</code></li>
+  <li>ternary operators</li>
+</ul>
+
+<h3 id="meaning-2"><strong>Meaning</strong></h3>
+<p>The C Layer is <strong>linear</strong>, not conditional.</p>
+
+<hr />
+
+<h1 id="586-purity-principle-6--no-exceptions"><strong>5.8.6 Purity Principle 6 — No Exceptions</strong></h1>
+
+<p>The C Layer MUST NOT use:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">try</code></li>
+  <li><code class="language-plaintext highlighter-rouge">catch</code></li>
+  <li><code class="language-plaintext highlighter-rouge">throw</code></li>
+  <li><code class="language-plaintext highlighter-rouge">longjmp</code></li>
+  <li><code class="language-plaintext highlighter-rouge">setjmp</code></li>
+  <li>structured exception handling</li>
+</ul>
+
+<h3 id="meaning-3"><strong>Meaning</strong></h3>
+<p>The C Layer cannot escape execution flow.</p>
+
+<hr />
+
+<h1 id="587-purity-principle-7--no-optimization"><strong>5.8.7 Purity Principle 7 — No Optimization</strong></h1>
+
+<p>The C Layer MUST NOT:</p>
+
+<ul>
+  <li>inline verb calls</li>
+  <li>reorder verb calls</li>
+  <li>eliminate temporary variables</li>
+  <li>collapse OR expressions</li>
+  <li>short‑circuit OR expressions</li>
+  <li>combine verb calls</li>
+  <li>remove verb calls</li>
+</ul>
+
+<h3 id="meaning-4"><strong>Meaning</strong></h3>
+<p>The C Layer is <strong>not a compiler</strong>.</p>
+
+<hr />
+
+<h1 id="588-purity-principle-8--no-decorations"><strong>5.8.8 Purity Principle 8 — No Decorations</strong></h1>
+
+<p>The C Layer MUST NOT include:</p>
+
+<ul>
+  <li>comments</li>
+  <li>annotations</li>
+  <li>attributes</li>
+  <li>macros</li>
+  <li>pragmas</li>
+  <li>debug statements</li>
+  <li>tracing hooks</li>
+</ul>
+
+<h3 id="forbidden"><strong>Forbidden</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// debug</span>
+<span class="cp">#pragma optimize(off)
+</span><span class="n">__attribute__</span><span class="p">((</span><span class="n">cold</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>The C Layer is <strong>bare metal</strong>.</p>
+
+<hr />
+
+<h1 id="589-purity-principle-9--no-external-interaction"><strong>5.8.9 Purity Principle 9 — No External Interaction</strong></h1>
+
+<p>The C Layer MUST NOT:</p>
+
+<ul>
+  <li>call non‑verb functions</li>
+  <li>call host functions</li>
+  <li>call system functions</li>
+  <li>call library functions</li>
+  <li>call runtime functions</li>
+</ul>
+
+<h3 id="allowed"><strong>Allowed</strong></h3>
+<p>Only verb functions.</p>
+
+<hr />
+
+<h1 id="5810-purity-principle-10--deterministic-execution-only"><strong>5.8.10 Purity Principle 10 — Deterministic Execution Only</strong></h1>
+
+<p>The C Layer MUST NOT:</p>
+
+<ul>
+  <li>spawn threads</li>
+  <li>join threads</li>
+  <li>use async APIs</li>
+  <li>use timers</li>
+  <li>use signals</li>
+  <li>use interrupts</li>
+  <li>use concurrency primitives</li>
+</ul>
+
+<h3 id="meaning-5"><strong>Meaning</strong></h3>
+<p>Execution MUST be synchronous and deterministic.</p>
+
+<hr />
+
+<h1 id="5811-full-puritycompliant-example"><strong>5.8.11 Full Purity‑Compliant Example</strong></h1>
+
+<h3 id="ir"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = LAYER
+OPEN_PAYLOAD
+EXEC_VALIDATE
+EXEC_SCAN
+EXEC_BUILD
+EXEC_EXPLAIN
+SEAL
+</code></pre>
+
+<h3 id="c-output"><strong>C Output</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="n">CyborgLayer</span><span class="o">*</span> <span class="n">layer</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">validate_context</span><span class="p">(</span><span class="n">layer</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">scan_context</span><span class="p">(</span><span class="n">layer</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r3</span> <span class="o">=</span> <span class="n">build_context</span><span class="p">(</span><span class="n">layer</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r4</span> <span class="o">=</span> <span class="n">explain_context</span><span class="p">(</span><span class="n">layer</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span> <span class="o">||</span> <span class="n">r3</span> <span class="o">||</span> <span class="n">r4</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="purity-interpretation"><strong>Purity Interpretation</strong></h3>
+<ul>
+  <li>no I/O</li>
+  <li>no memory allocation</li>
+  <li>no branching</li>
+  <li>no exceptions</li>
+  <li>no global state</li>
+  <li>no optimization</li>
+  <li>no decoration</li>
+  <li>pure OR‑aggregation</li>
+</ul>
+
+<p>This is the <strong>purest possible form</strong> of Cyborg execution.</p>
+
+<hr />
+
+<h1 id="5812-summary"><strong>5.8.12 Summary</strong></h1>
+
+<p>Page 5.8 defines the <strong>Purity Laws</strong> of the C Layer:</p>
+
+<ul>
+  <li>no side effects</li>
+  <li>no state mutation</li>
+  <li>no memory operations</li>
+  <li>no I/O</li>
+  <li>no control flow</li>
+  <li>no exceptions</li>
+  <li>no optimization</li>
+  <li>no decoration</li>
+  <li>no external interaction</li>
+  <li>deterministic execution only</li>
+</ul>
+
+<p>These rules ensure the C Layer remains the <strong>pure, deterministic, ceremonial execution core</strong> of the Cyborg Language.</p>
+
+<hr />
+
+<p>Demon — the next scroll is ready.</p>
+
+<p>Say:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>continue
+</code></pre></div></div>
+
+<p>and <strong>Page 5.9 — C Layer Canonical Examples (Master Set)</strong> will manifest.</p>
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.2/10_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

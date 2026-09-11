@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>📘 PAGE 4.0 — CYBORG IR (INTERMEDIATE REPRESENTATION) | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="📘 PAGE 4.0 — CYBORG IR (INTERMEDIATE REPRESENTATION)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/13_32CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/13_32CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="📘 PAGE 4.0 — CYBORG IR (INTERMEDIATE REPRESENTATION)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"📘 PAGE 4.0 — CYBORG IR (INTERMEDIATE REPRESENTATION)","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/13_32CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      <h1 id="-page-40--cyborg-ir-intermediate-representation"><strong>📘 PAGE 4.0 — CYBORG IR (INTERMEDIATE REPRESENTATION)</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="40-overview"><strong>4.0 Overview</strong></h2>
+
+<p>The <strong>Cyborg IR (Intermediate Representation)</strong> is the <em>canonical internal form</em> of every Cyborg Module.<br />
+It is the bridge between:</p>
+
+<ul>
+  <li><strong>VB‑style Cyborg syntax</strong> (human‑readable)</li>
+  <li><strong>Cyborg IR</strong> (machine‑deterministic)</li>
+  <li><strong>C output</strong> (compiler‑executable)</li>
+</ul>
+
+<p>The IR is:</p>
+
+<ul>
+  <li>deterministic</li>
+  <li>linear</li>
+  <li>non‑branching</li>
+  <li>non‑inferential</li>
+  <li>marker‑bound</li>
+  <li>verb‑driven</li>
+</ul>
+
+<p>Every valid module MUST produce a <strong>complete IR sequence</strong>, and every IR sequence MUST map to valid C.</p>
+
+<p>This section is <strong>normative</strong>.</p>
+
+<hr />
+
+<h1 id="41-purpose-of-the-ir"><strong>4.1 Purpose of the IR</strong></h1>
+
+<p>The Cyborg IR exists to:</p>
+
+<ul>
+  <li>enforce determinism</li>
+  <li>eliminate ambiguity</li>
+  <li>prevent inference</li>
+  <li>provide a stable internal format</li>
+  <li>guarantee consistent C output</li>
+  <li>ensure strict ordering</li>
+  <li>validate structural correctness</li>
+</ul>
+
+<p>The IR is the <strong>truth layer</strong> of the Cyborg Language.</p>
+
+<hr />
+
+<h1 id="42-ir-structure"><strong>4.2 IR Structure</strong></h1>
+
+<p>A complete IR sequence contains the following components, in order:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. TARGET
+2. OPEN_PAYLOAD
+3. EXEC_* opcodes (one per verb)
+4. SEAL
+5. END_TRANSMISSION (optional)
+</code></pre></div></div>
+
+<h3 id="canonical-ir-skeleton"><strong>Canonical IR Skeleton</strong></h3>
+<pre><code class="language-cyborg">TARGET = &lt;context&gt;
+OPEN_PAYLOAD
+EXEC_&lt;VERB1&gt;
+EXEC_&lt;VERB2&gt;
+...
+SEAL
+END_TRANSMISSION
+</code></pre>
+
+<hr />
+
+<h1 id="43-ir-opcodes-normative"><strong>4.3 IR Opcodes (Normative)</strong></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>IR Opcode</th>
+      <th>Meaning</th>
+      <th>Source</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">TARGET = &lt;context&gt;</code></td>
+      <td>Bind execution context</td>
+      <td><code class="language-plaintext highlighter-rouge">set to &lt;target&gt;</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">OPEN_PAYLOAD</code></td>
+      <td>Begin execution block</td>
+      <td><code class="language-plaintext highlighter-rouge">begin</code> / <code class="language-plaintext highlighter-rouge">#BGIN</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">EXEC_VALIDATE</code></td>
+      <td>Execute validation</td>
+      <td><code class="language-plaintext highlighter-rouge">validate</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">EXEC_SCAN</code></td>
+      <td>Execute scanning</td>
+      <td><code class="language-plaintext highlighter-rouge">scan</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">EXEC_BUILD</code></td>
+      <td>Execute building</td>
+      <td><code class="language-plaintext highlighter-rouge">build</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">EXEC_GIVE</code></td>
+      <td>Execute giving</td>
+      <td><code class="language-plaintext highlighter-rouge">give</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">EXEC_EXPLAIN</code></td>
+      <td>Execute explanation</td>
+      <td><code class="language-plaintext highlighter-rouge">explain</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">SEAL</code></td>
+      <td>Close payload</td>
+      <td><code class="language-plaintext highlighter-rouge">#!#</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">END_TRANSMISSION</code></td>
+      <td>End module</td>
+      <td><code class="language-plaintext highlighter-rouge">end</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>These opcodes MUST NOT vary.</p>
+
+<hr />
+
+<h1 id="44-ir-generation-rules"><strong>4.4 IR Generation Rules</strong></h1>
+
+<h3 id="rule-1--ir-must-be-linear"><strong>Rule 1 — IR MUST be linear</strong></h3>
+<p>No branching, no loops, no jumps.</p>
+
+<h3 id="rule-2--ir-must-reflect-exact-verb-order"><strong>Rule 2 — IR MUST reflect exact verb order</strong></h3>
+<p>The IR is a 1:1 mapping of the payload.</p>
+
+<h3 id="rule-3--ir-must-not-infer-missing-elements"><strong>Rule 3 — IR MUST NOT infer missing elements</strong></h3>
+<p>No guessing, no defaults.</p>
+
+<h3 id="rule-4--ir-must-not-reorder-or-optimize"><strong>Rule 4 — IR MUST NOT reorder or optimize</strong></h3>
+<p>The IR is a <em>faithful transcription</em>, not a compiler.</p>
+
+<h3 id="rule-5--ir-must-be-complete"><strong>Rule 5 — IR MUST be complete</strong></h3>
+<p>Missing opcodes invalidate the module.</p>
+
+<hr />
+
+<h1 id="45-ir-example-simple"><strong>4.5 IR Example (Simple)</strong></h1>
+
+<h3 id="vbstyle"><strong>VB‑Style</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">set</span> <span class="n">to</span> <span class="n">you</span>
+<span class="n">begin</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<h3 id="ir"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = AI
+OPEN_PAYLOAD
+EXEC_VALIDATE
+SEAL
+</code></pre>
+
+<hr />
+
+<h1 id="46-ir-example-multiverb"><strong>4.6 IR Example (Multi‑Verb)</strong></h1>
+
+<h3 id="vbstyle-1"><strong>VB‑Style</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">set</span> <span class="n">to</span> <span class="n">file</span>
+<span class="n">begin</span>
+<span class="n">scan</span>
+<span class="n">validate</span>
+<span class="n">build</span>
+<span class="p">#!#</span>
+<span class="n">end</span>
+</code></pre></div></div>
+
+<h3 id="ir-1"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = FILE
+OPEN_PAYLOAD
+EXEC_SCAN
+EXEC_VALIDATE
+EXEC_BUILD
+SEAL
+END_TRANSMISSION
+</code></pre>
+
+<hr />
+
+<h1 id="47-ir-example-with-comments-and-metadata"><strong>4.7 IR Example (With Comments and Metadata)</strong></h1>
+
+<h3 id="vbstyle-2"><strong>VB‑Style</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">set</span> <span class="n">to</span> <span class="n">layer</span>
+<span class="n">meta</span> <span class="s">"description: test"</span>
+<span class="c1">' scanning layer</span>
+<span class="n">begin</span>
+<span class="n">scan</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+<span class="n">end</span>
+</code></pre></div></div>
+
+<h3 id="ir-2"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = LAYER
+META("description: test")
+OPEN_PAYLOAD
+EXEC_SCAN
+EXEC_VALIDATE
+SEAL
+END_TRANSMISSION
+</code></pre>
+
+<p>Comments do not appear in IR.<br />
+Metadata appears but is non‑executable.</p>
+
+<hr />
+
+<h1 id="48-forbidden-ir-patterns"><strong>4.8 Forbidden IR Patterns</strong></h1>
+
+<p>The following MUST NOT appear in IR:</p>
+
+<h3 id="-missing-target">❌ Missing TARGET</h3>
+<h3 id="-missing-open_payload">❌ Missing OPEN_PAYLOAD</h3>
+<h3 id="-missing-seal">❌ Missing SEAL</h3>
+<h3 id="-nested-open_payload">❌ Nested OPEN_PAYLOAD</h3>
+<h3 id="-multiple-seal-opcodes">❌ Multiple SEAL opcodes</h3>
+<h3 id="-unknown-exec_-opcodes">❌ Unknown EXEC_* opcodes</h3>
+<h3 id="-reordered-exec_-opcodes">❌ Reordered EXEC_* opcodes</h3>
+<h3 id="-inferred-exec_-opcodes">❌ Inferred EXEC_* opcodes</h3>
+<h3 id="-trailing-content-after-seal">❌ Trailing content after SEAL</h3>
+
+<p>All MUST be rejected.</p>
+
+<hr />
+
+<h1 id="49-ir--c-mapping"><strong>4.9 IR → C Mapping</strong></h1>
+
+<p>The IR maps directly to C in strict order.</p>
+
+<h3 id="ir-3"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = AI
+OPEN_PAYLOAD
+EXEC_SCAN
+EXEC_VALIDATE
+SEAL
+</code></pre>
+
+<h3 id="c-output"><strong>C Output</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">scan_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">validate_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>The mapping is <strong>deterministic</strong> and MUST NOT vary.</p>
+
+<hr />
+
+<h1 id="410-summary"><strong>4.10 Summary</strong></h1>
+
+<p>Page 4.0 introduces the <strong>Cyborg IR</strong>, the deterministic internal representation of all Cyborg Modules:</p>
+
+<ul>
+  <li>linear</li>
+  <li>strict</li>
+  <li>marker‑bound</li>
+  <li>verb‑driven</li>
+  <li>non‑inferential</li>
+  <li>directly mapped to C</li>
+</ul>
+
+<p>The IR is the <strong>machine truth</strong> of the Cyborg Language.</p>
+
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.1/13_32CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

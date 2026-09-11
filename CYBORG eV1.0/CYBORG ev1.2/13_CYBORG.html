@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Cyborg | A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Cyborg" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/13_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/13_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Cyborg" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"Cyborg","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/13_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      <p>Advancing, Demon. The Codex enters a new domain — the Runtime Layer.</p>
+
+<hr />
+
+<h1 id="-page-60--cyborg-runtime-layer-overview"><strong>📘 PAGE 6.0 — CYBORG RUNTIME LAYER (OVERVIEW)</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="60-overview"><strong>6.0 Overview</strong></h2>
+
+<p>The <strong>Runtime Layer</strong> is the environment in which the C Layer executes.<br />
+It is not part of the Cyborg Language itself — it is the <strong>host substrate</strong> that:</p>
+
+<ul>
+  <li>provides the context object</li>
+  <li>invokes the payload function</li>
+  <li>links verb functions</li>
+  <li>ensures deterministic execution</li>
+  <li>enforces purity boundaries</li>
+  <li>isolates modules</li>
+  <li>prevents interference</li>
+</ul>
+
+<p>The Runtime Layer is <strong>minimal</strong>, <strong>predictable</strong>, and <strong>non‑interpretive</strong>.<br />
+It does not modify, optimize, or reinterpret the C Layer.</p>
+
+<p>This section introduces the Runtime Layer and prepares for the deeper specifications that follow.</p>
+
+<hr />
+
+<h1 id="601-purpose-of-the-runtime-layer"><strong>6.0.1 Purpose of the Runtime Layer</strong></h1>
+
+<p>The Runtime Layer exists to:</p>
+
+<ul>
+  <li>provide a stable execution environment</li>
+  <li>guarantee deterministic behavior</li>
+  <li>isolate modules from each other</li>
+  <li>bind verb functions to their implementations</li>
+  <li>supply the correct context type</li>
+  <li>ensure synchronous execution</li>
+  <li>prevent side effects outside verb functions</li>
+</ul>
+
+<p>The Runtime Layer is the <strong>execution cradle</strong> of the Cyborg Language.</p>
+
+<hr />
+
+<h1 id="602-runtime-layer-responsibilities"><strong>6.0.2 Runtime Layer Responsibilities</strong></h1>
+
+<p>The Runtime Layer MUST:</p>
+
+<ul>
+  <li>allocate and initialize the context object</li>
+  <li>pass the context to <code class="language-plaintext highlighter-rouge">cyborg_payload</code></li>
+  <li>link verb functions</li>
+  <li>ensure deterministic execution order</li>
+  <li>enforce purity boundaries</li>
+  <li>prevent concurrency</li>
+  <li>prevent external interference</li>
+</ul>
+
+<p>The Runtime Layer MUST NOT:</p>
+
+<ul>
+  <li>modify the C Layer</li>
+  <li>optimize the C Layer</li>
+  <li>reorder execution</li>
+  <li>inject logic</li>
+  <li>intercept verb calls</li>
+  <li>override verb functions</li>
+</ul>
+
+<hr />
+
+<h1 id="603-runtime-layer-nonresponsibilities"><strong>6.0.3 Runtime Layer Non‑Responsibilities</strong></h1>
+
+<p>The Runtime Layer MUST NOT:</p>
+
+<ul>
+  <li>interpret IR</li>
+  <li>validate IR</li>
+  <li>generate C</li>
+  <li>transform C</li>
+  <li>analyze C</li>
+  <li>optimize C</li>
+  <li>handle errors</li>
+  <li>perform logging</li>
+  <li>perform I/O</li>
+  <li>manage memory for verbs</li>
+</ul>
+
+<p>These responsibilities belong to other layers.</p>
+
+<hr />
+
+<h1 id="604-runtime-layer-components"><strong>6.0.4 Runtime Layer Components</strong></h1>
+
+<p>The Runtime Layer consists of:</p>
+
+<ol>
+  <li><strong>Context Allocator</strong>
+    <ul>
+      <li>creates the target‑specific context object</li>
+    </ul>
+  </li>
+  <li><strong>Verb Function Binder</strong>
+    <ul>
+      <li>links verb functions to their implementations</li>
+    </ul>
+  </li>
+  <li><strong>Payload Invoker</strong>
+    <ul>
+      <li>calls <code class="language-plaintext highlighter-rouge">cyborg_payload(context)</code></li>
+    </ul>
+  </li>
+  <li><strong>Result Collector</strong>
+    <ul>
+      <li>receives the integer result</li>
+    </ul>
+  </li>
+  <li><strong>Execution Guard</strong>
+    <ul>
+      <li>ensures purity and determinism</li>
+    </ul>
+  </li>
+</ol>
+
+<p>These components form the <strong>runtime skeleton</strong>.</p>
+
+<hr />
+
+<h1 id="605-runtime-layer-execution-flow"><strong>6.0.5 Runtime Layer Execution Flow</strong></h1>
+
+<p>The execution flow is:</p>
+
+<ol>
+  <li>Allocate context</li>
+  <li>Initialize context</li>
+  <li>Bind verb functions</li>
+  <li>Call <code class="language-plaintext highlighter-rouge">cyborg_payload(context)</code></li>
+  <li>Receive OR‑aggregated result</li>
+  <li>Destroy context (if required)</li>
+  <li>Return result to host</li>
+</ol>
+
+<p>This flow MUST be:</p>
+
+<ul>
+  <li>synchronous</li>
+  <li>deterministic</li>
+  <li>non‑interruptible</li>
+  <li>non‑parallel</li>
+</ul>
+
+<hr />
+
+<h1 id="606-runtime-layer-determinism-rules"><strong>6.0.6 Runtime Layer Determinism Rules</strong></h1>
+
+<p>The Runtime Layer MUST guarantee:</p>
+
+<ul>
+  <li>no thread switching</li>
+  <li>no concurrency</li>
+  <li>no async behavior</li>
+  <li>no race conditions</li>
+  <li>no nondeterministic scheduling</li>
+  <li>no external interference</li>
+</ul>
+
+<p>The Runtime Layer MUST behave identically across:</p>
+
+<ul>
+  <li>platforms</li>
+  <li>compilers</li>
+  <li>architectures</li>
+  <li>optimization levels</li>
+</ul>
+
+<hr />
+
+<h1 id="607-runtime-layer-isolation-rules"><strong>6.0.7 Runtime Layer Isolation Rules</strong></h1>
+
+<p>The Runtime Layer MUST isolate:</p>
+
+<ul>
+  <li>modules from each other</li>
+  <li>verb functions from each other</li>
+  <li>context objects from each other</li>
+  <li>global state from mutation</li>
+  <li>external systems from access</li>
+</ul>
+
+<p>Isolation is mandatory.</p>
+
+<hr />
+
+<h1 id="608-runtime-layer-purity-enforcement"><strong>6.0.8 Runtime Layer Purity Enforcement</strong></h1>
+
+<p>The Runtime Layer MUST enforce:</p>
+
+<ul>
+  <li>no I/O</li>
+  <li>no memory allocation (except context)</li>
+  <li>no global state mutation</li>
+  <li>no exceptions</li>
+  <li>no logging</li>
+  <li>no external calls</li>
+</ul>
+
+<p>If a violation occurs inside a verb function, the Runtime Layer MUST NOT:</p>
+
+<ul>
+  <li>catch it</li>
+  <li>repair it</li>
+  <li>recover from it</li>
+</ul>
+
+<p>The module simply fails.</p>
+
+<hr />
+
+<h1 id="609-full-runtime-example-conceptual"><strong>6.0.9 Full Runtime Example (Conceptual)</strong></h1>
+
+<h3 id="host-code"><strong>Host Code</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">CyborgFile</span> <span class="n">file</span><span class="p">;</span>
+    <span class="n">init_file</span><span class="p">(</span><span class="o">&amp;</span><span class="n">file</span><span class="p">);</span>
+
+    <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">cyborg_payload</span><span class="p">(</span><span class="o">&amp;</span><span class="n">file</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="interpretation"><strong>Interpretation</strong></h3>
+<ul>
+  <li>host allocates context</li>
+  <li>host initializes context</li>
+  <li>host calls payload</li>
+  <li>payload executes deterministically</li>
+  <li>host receives OR‑aggregated result</li>
+</ul>
+
+<p>This is the <strong>canonical runtime model</strong>.</p>
+
+<hr />
+
+<h1 id="6010-summary"><strong>6.0.10 Summary</strong></h1>
+
+<p>Page 6.0 defines the <strong>Runtime Layer Overview</strong>:</p>
+
+<ul>
+  <li>provides context</li>
+  <li>invokes payload</li>
+  <li>links verbs</li>
+  <li>enforces purity</li>
+  <li>ensures determinism</li>
+  <li>isolates modules</li>
+  <li>performs no interpretation</li>
+  <li>performs no optimization</li>
+  <li>performs no inference</li>
+</ul>
+
+<p>The Runtime Layer is the <strong>silent executor</strong> beneath the C Layer.</p>
+
+<hr />
+
+<p>Demon — the next scroll is ready.</p>
+
+<p>Say:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>continue
+</code></pre></div></div>
+
+<p>and <strong>Page 6.1 — Runtime Context Model (Formal Specification)</strong> will manifest.</p>
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.2/13_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

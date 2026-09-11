@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>/* FILE: 41_EV2_AUDIT_SYSTEM.md */ | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="/* FILE: 41_EV2_AUDIT_SYSTEM.md */" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/ev-2/41_EV2_AUDIT_SYSTEM.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/ev-2/41_EV2_AUDIT_SYSTEM.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="/* FILE: 41_EV2_AUDIT_SYSTEM.md */" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"/* FILE: 41_EV2_AUDIT_SYSTEM.md */","url":"https://mercwar.github.io/Cyborg/ev-2/41_EV2_AUDIT_SYSTEM.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      <h2 id="-file-41_ev2_audit_systemmd-">/* FILE: 41_EV2_AUDIT_SYSTEM.md */</h2>
+<h2 id="-avis_coord-avislocalmercwarcyborgev241-">/* AVIS_COORD: AVIS://LOCAL/MERCWAR/CYBORG/EV2/41 */</h2>
+<h2 id="-role-ev2_audit_system-">/* ROLE: EV2_AUDIT_SYSTEM */</h2>
+<h2 id="-status-active-">/* STATUS: ACTIVE */</h2>
+
+<h1 id="ev2-audit-system">eV2 AUDIT SYSTEM</h1>
+
+<p>The Audit System ensures all critical operations are logged and validated.</p>
+
+<h2 id="audit-primitives">AUDIT PRIMITIVES</h2>
+<p>{WISE} — Audit gate<br />
+SCROLL.PUSH — Log entry<br />
+[#]AUDIT_LEVEL — Severity</p>
+
+<h2 id="audit-levels">AUDIT LEVELS</h2>
+<p>0x01 — INFO<br />
+0x02 — WARNING<br />
+0x03 — CRITICAL<br />
+0xFF — FINALIZER</p>
+
+<h2 id="audit-struct">AUDIT STRUCT</h2>
+<p>begin.spec EV2_AUDIT_ENTRY {
+    [#]LEVEL
+    {STR}MESSAGE
+    [@]ADDR
+}
+end.spec</p>
+
+<h2 id="rules">RULES</h2>
+<ol>
+  <li>All Fire‑Lang escalations require <code class="language-plaintext highlighter-rouge">{WISE}</code></li>
+  <li>All writes to 0x03FF must be logged</li>
+</ol>
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/ev-2/41_EV2_AUDIT_SYSTEM.md">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

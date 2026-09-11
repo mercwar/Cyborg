@@ -1,0 +1,25 @@
+/* FILE: cyborg.rules */
+/* PATH: /Cyborg/Constellation/custom/cyborg.rules */
+
+/* ------------------------------------------------------------
+   AVIS.HEADER
+   ROLE: CYBORG_RULESET
+   PURPOSE: Cyborg-specific Constellation override rules.
+   AUTHOR: Demon
+   NOTES: Cyborg is a pure‑C Win64 execution engine; rules reflect
+          deterministic, low‑level, message‑driven behavior.
+   ------------------------------------------------------------ */
+
+[RULES]
+ENFORCE_DETERMINISM = TRUE
+ENFORCE_PURE_C = TRUE
+ALLOW_FUTURE_OPCODE_EXPANSION = TRUE
+SCAN_MODE = ULTRA_DEEP
+REDUCE_MODE = MINIMAL
+VALIDATION_LEVEL = STRICT
+
+[BEHAVIOR]
+PRIORITIZE_OPCODE_MAPS = TRUE
+PRIORITIZE_HWND_ROUTING = TRUE
+PRIORITIZE_HEX_TRANSLATION = TRUE
+PRIORITIZE_LANGUAGE_PACK = TRUE

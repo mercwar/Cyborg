@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>📘 THE CYBORG CODEX — FINAL ONE‑PAGE EDITION | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="📘 THE CYBORG CODEX — FINAL ONE‑PAGE EDITION" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/56_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/56_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="📘 THE CYBORG CODEX — FINAL ONE‑PAGE EDITION" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"📘 THE CYBORG CODEX — FINAL ONE‑PAGE EDITION","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/56_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      
+<h1 id="-the-cyborg-codex--final-onepage-edition"><strong>📘 THE CYBORG CODEX — FINAL ONE‑PAGE EDITION</strong></h1>
+<h3 id="avis-cyborg-language-system--unified-ceremonial-specification-books-110"><em>AVIS Cyborg Language System — Unified Ceremonial Specification (Books 1–10)</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="i-purpose-of-the-codex"><strong>I. PURPOSE OF THE CODEX</strong></h2>
+
+<p>The Cyborg Codex defines a <strong>deterministic, pure, declarative execution system</strong> built on three layers:</p>
+
+<ol>
+  <li><strong>IR Layer</strong> — declares semantic intent</li>
+  <li><strong>C Layer</strong> — generates deterministic C89/C90 code</li>
+  <li><strong>Runtime Layer</strong> — executes verbs in strict order</li>
+</ol>
+
+<p>The Codex enforces <strong>purity</strong>, <strong>linearity</strong>, <strong>non‑optimization</strong>, and <strong>mathematical reproducibility</strong> across all modules.</p>
+
+<hr />
+
+<h2 id="ii-ir-layer--the-declarative-core"><strong>II. IR LAYER — THE DECLARATIVE CORE</strong></h2>
+
+<h3 id="ir-structure"><strong>IR Structure</strong></h3>
+<p>Every IR module contains exactly:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TARGET = &lt;TYPE&gt;
+OPEN_PAYLOAD
+EXEC_&lt;VERB&gt;
+EXEC_&lt;VERB&gt;
+...
+SEAL
+</code></pre></div></div>
+
+<h3 id="ir-properties"><strong>IR Properties</strong></h3>
+<ul>
+  <li><strong>Static</strong> — no dynamic constructs</li>
+  <li><strong>Explicit</strong> — no inference, no parameters</li>
+  <li><strong>Order‑deterministic</strong> — verb order is semantic</li>
+  <li><strong>Pure</strong> — no computation, no metadata, no state</li>
+  <li><strong>Closed language</strong> — only TARGET, OPEN_PAYLOAD, EXEC, SEAL</li>
+  <li><strong>Semantically inert</strong> — IR declares intent, not behavior</li>
+</ul>
+
+<h3 id="ir-determinism"><strong>IR Determinism</strong></h3>
+<p>Same IR → same C → same execution → same result.</p>
+
+<hr />
+
+<h2 id="iii-verbs--the-semantic-atoms"><strong>III. VERBS — THE SEMANTIC ATOMS</strong></h2>
+
+<p>Canonical verbs:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">VALIDATE</code></li>
+  <li><code class="language-plaintext highlighter-rouge">SCAN</code></li>
+  <li><code class="language-plaintext highlighter-rouge">BUILD</code></li>
+  <li><code class="language-plaintext highlighter-rouge">GIVE</code></li>
+  <li><code class="language-plaintext highlighter-rouge">EXPLAIN</code></li>
+</ul>
+
+<p>Each verb:</p>
+
+<ul>
+  <li>takes exactly one argument: <code class="language-plaintext highlighter-rouge">ctx</code></li>
+  <li>returns <code class="language-plaintext highlighter-rouge">int</code> (0 = success, non‑zero = failure)</li>
+  <li>is invoked exactly once per EXEC line</li>
+  <li>is never optimized, merged, or skipped</li>
+</ul>
+
+<hr />
+
+<h2 id="iv-c-layer--the-mechanical-translation"><strong>IV. C LAYER — THE MECHANICAL TRANSLATION</strong></h2>
+
+<h3 id="function-signature"><strong>Function Signature</strong></h3>
+<p>Every IR module becomes:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="o">&lt;</span><span class="n">CONTEXT_TYPE</span><span class="o">&gt;*</span> <span class="n">ctx</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Where <code class="language-plaintext highlighter-rouge">&lt;CONTEXT_TYPE&gt;</code> is determined by TARGET:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">AI</code> → <code class="language-plaintext highlighter-rouge">CyborgContext*</code></li>
+  <li><code class="language-plaintext highlighter-rouge">FILE</code> → <code class="language-plaintext highlighter-rouge">CyborgFile*</code></li>
+  <li><code class="language-plaintext highlighter-rouge">LAYER</code> → <code class="language-plaintext highlighter-rouge">CyborgLayer*</code></li>
+</ul>
+
+<h3 id="local-variables"><strong>Local Variables</strong></h3>
+<ul>
+  <li>One variable per verb: <code class="language-plaintext highlighter-rouge">r1</code>, <code class="language-plaintext highlighter-rouge">r2</code>, <code class="language-plaintext highlighter-rouge">r3</code>, …</li>
+  <li>Sequential numbering</li>
+  <li>Declared and initialized atomically</li>
+  <li>Never reused, mutated, or optimized away</li>
+</ul>
+
+<h3 id="verb-invocation"><strong>Verb Invocation</strong></h3>
+<p>Each EXEC line becomes:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">rN</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">verb</span><span class="o">&gt;</span><span class="n">_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Order is preserved exactly.</p>
+
+<h3 id="aggregation"><strong>Aggregation</strong></h3>
+<p>Final return value:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span> <span class="o">||</span> <span class="n">r3</span> <span class="o">||</span> <span class="p">...</span> <span class="o">||</span> <span class="n">rn</span><span class="p">);</span>
+</code></pre></div></div>
+
+<ul>
+  <li>No short‑circuiting</li>
+  <li>No early returns</li>
+  <li>No branching</li>
+  <li>No loops</li>
+</ul>
+
+<hr />
+
+<h2 id="v-context-handling"><strong>V. CONTEXT HANDLING</strong></h2>
+
+<p>The context:</p>
+
+<ul>
+  <li>is provided by the caller</li>
+  <li>is passed by pointer</li>
+  <li>is never allocated, freed, copied, or inspected by the C Layer</li>
+  <li>is treated as opaque</li>
+  <li>is passed unchanged to every verb</li>
+</ul>
+
+<p>Only verbs may interpret or mutate context.</p>
+
+<hr />
+
+<h2 id="vi-memory-rules"><strong>VI. MEMORY RULES</strong></h2>
+
+<p>The C Layer:</p>
+
+<ul>
+  <li>uses only stack‑local variables</li>
+  <li>performs no dynamic allocation</li>
+  <li>declares no globals or statics</li>
+  <li>performs no pointer arithmetic</li>
+  <li>allocates no buffers</li>
+  <li>performs no memory operations (copy, compare, zero, etc.)</li>
+</ul>
+
+<p>Memory footprint is fixed and deterministic.</p>
+
+<hr />
+
+<h2 id="vii-controlflow-rules"><strong>VII. CONTROL‑FLOW RULES</strong></h2>
+
+<p>The C Layer:</p>
+
+<ul>
+  <li>contains <strong>no branching</strong></li>
+  <li>contains <strong>no loops</strong></li>
+  <li>contains <strong>no jumps</strong></li>
+  <li>contains <strong>no exceptions</strong></li>
+  <li>contains <strong>no conditional compilation</strong></li>
+  <li>ends with a <strong>single return statement</strong></li>
+</ul>
+
+<p>Execution is strictly linear.</p>
+
+<hr />
+
+<h2 id="viii-errorhandling-rules"><strong>VIII. ERROR‑HANDLING RULES</strong></h2>
+
+<p>The C Layer:</p>
+
+<ul>
+  <li>does not handle errors</li>
+  <li>does not recover</li>
+  <li>does not log</li>
+  <li>does not transform error codes</li>
+  <li>does not branch on failures</li>
+</ul>
+
+<p>It only <strong>collects</strong> verb results and OR‑aggregates them.</p>
+
+<hr />
+
+<h2 id="ix-purity-rules"><strong>IX. PURITY RULES</strong></h2>
+
+<p>The C Layer performs:</p>
+
+<ul>
+  <li>no I/O</li>
+  <li>no environment access</li>
+  <li>no global state access</li>
+  <li>no concurrency</li>
+  <li>no external calls</li>
+  <li>no hidden behavior</li>
+  <li>no undefined behavior</li>
+</ul>
+
+<p>The payload is <strong>chemically pure</strong>.</p>
+
+<hr />
+
+<h2 id="x-platforminvariance-rules"><strong>X. PLATFORM‑INVARIANCE RULES</strong></h2>
+
+<p>The C Layer:</p>
+
+<ul>
+  <li>is strictly C89/C90</li>
+  <li>uses no extensions</li>
+  <li>depends on no OS</li>
+  <li>depends on no architecture</li>
+  <li>depends on no compiler behavior</li>
+  <li>uses only <code class="language-plaintext highlighter-rouge">int</code></li>
+  <li>produces identical behavior everywhere</li>
+</ul>
+
+<p>Platform invariance is absolute.</p>
+
+<hr />
+
+<h2 id="xi-canonical-payload-full-example"><strong>XI. CANONICAL PAYLOAD (FULL EXAMPLE)</strong></h2>
+
+<h3 id="ir"><strong>IR</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TARGET = AI
+OPEN_PAYLOAD
+EXEC_VALIDATE
+EXEC_SCAN
+EXEC_BUILD
+EXEC_GIVE
+EXEC_EXPLAIN
+SEAL
+</code></pre></div></div>
+
+<h3 id="generated-c"><strong>Generated C</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">validate_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">scan_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r3</span> <span class="o">=</span> <span class="n">build_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r4</span> <span class="o">=</span> <span class="n">give_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r5</span> <span class="o">=</span> <span class="n">explain_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span> <span class="o">||</span> <span class="n">r3</span> <span class="o">||</span> <span class="n">r4</span> <span class="o">||</span> <span class="n">r5</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This is the <strong>canonical, deterministic, pure, platform‑invariant Cyborg Module</strong>.</p>
+
+<hr />
+
+<h2 id="xii-the-final-principle"><strong>XII. THE FINAL PRINCIPLE</strong></h2>
+
+<blockquote>
+  <p><strong>IR declares intent.<br />
+C binds intent to execution.<br />
+Runtime executes intent without deviation.</strong></p>
+</blockquote>
+
+<p>The Cyborg Codex is a system of <strong>absolute determinism</strong>, <strong>absolute purity</strong>, and <strong>absolute linearity</strong>.</p>
+
+<p>This completes the <strong>Final One‑Page Publication Edition</strong> of the Cyborg Codex, Books 1–10.</p>
+
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.2/56_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

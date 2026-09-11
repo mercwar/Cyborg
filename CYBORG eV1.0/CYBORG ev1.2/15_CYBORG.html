@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Cyborg | A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Cyborg" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/15_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/15_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Cyborg" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"Cyborg","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/15_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      <p>Advancing, Demon. The Runtime Codex obeys.</p>
+
+<hr />
+
+<h1 id="-page-62--verb-binding-model-formal-specification"><strong>📘 PAGE 6.2 — VERB BINDING MODEL (FORMAL SPECIFICATION)</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="62-overview"><strong>6.2 Overview</strong></h2>
+
+<p>The <strong>Verb Binding Model</strong> defines how the Runtime Layer connects:</p>
+
+<ul>
+  <li>the C Layer’s verb function calls</li>
+  <li>to the actual verb implementations</li>
+  <li>in a deterministic, non‑dynamic, non‑overridable way</li>
+</ul>
+
+<p>This binding is <strong>static</strong>, <strong>final</strong>, and <strong>non‑negotiable</strong>.<br />
+It ensures that every Cyborg Module executes the exact verb semantics defined in Pages 5.3 and 5.8.</p>
+
+<p>This section is <strong>normative</strong>.</p>
+
+<hr />
+
+<h1 id="621-binding-principle-1--static-linking-only"><strong>6.2.1 Binding Principle 1 — Static Linking Only</strong></h1>
+
+<p>Verb functions MUST be bound using <strong>static linking</strong>.</p>
+
+<h3 id="meaning"><strong>Meaning</strong></h3>
+<ul>
+  <li>no dynamic dispatch</li>
+  <li>no runtime lookup</li>
+  <li>no function pointers</li>
+  <li>no virtual tables</li>
+  <li>no plugin systems</li>
+  <li>no dependency injection</li>
+</ul>
+
+<p>The binding MUST be resolved at <strong>compile time</strong>.</p>
+
+<hr />
+
+<h1 id="622-binding-principle-2--one-implementation-per-verb"><strong>6.2.2 Binding Principle 2 — One Implementation Per Verb</strong></h1>
+
+<p>Each verb has exactly <strong>one</strong> implementation per target type.</p>
+
+<h3 id="meaning-1"><strong>Meaning</strong></h3>
+<p>For a given target:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">validate_context</code> has one implementation</li>
+  <li><code class="language-plaintext highlighter-rouge">scan_context</code> has one implementation</li>
+  <li><code class="language-plaintext highlighter-rouge">build_context</code> has one implementation</li>
+  <li><code class="language-plaintext highlighter-rouge">give_context</code> has one implementation</li>
+  <li><code class="language-plaintext highlighter-rouge">explain_context</code> has one implementation</li>
+</ul>
+
+<h3 id="forbidden"><strong>Forbidden</strong></h3>
+<ul>
+  <li>overloading</li>
+  <li>overriding</li>
+  <li>shadowing</li>
+  <li>aliasing</li>
+</ul>
+
+<hr />
+
+<h1 id="623-binding-principle-3--no-substitution"><strong>6.2.3 Binding Principle 3 — No Substitution</strong></h1>
+
+<p>The Runtime Layer MUST NOT substitute:</p>
+
+<ul>
+  <li>alternative implementations</li>
+  <li>mock implementations</li>
+  <li>test implementations</li>
+  <li>optimized implementations</li>
+  <li>host‑provided implementations</li>
+</ul>
+
+<h3 id="meaning-2"><strong>Meaning</strong></h3>
+<p>Verb semantics are <strong>immutable</strong>.</p>
+
+<hr />
+
+<h1 id="624-binding-principle-4--no-indirection"><strong>6.2.4 Binding Principle 4 — No Indirection</strong></h1>
+
+<p>Verb calls MUST NOT be routed through:</p>
+
+<ul>
+  <li>function pointers</li>
+  <li>dispatch tables</li>
+  <li>lookup arrays</li>
+  <li>callback registries</li>
+  <li>dynamic loaders</li>
+</ul>
+
+<h3 id="forbidden-example"><strong>Forbidden Example</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">fn</span><span class="p">)(</span><span class="n">CyborgContext</span><span class="o">*</span><span class="p">)</span> <span class="o">=</span> <span class="n">validate_context</span><span class="p">;</span>
+<span class="n">fn</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>    <span class="c1">// ❌ illegal indirection</span>
+</code></pre></div></div>
+
+<h3 id="required"><strong>Required</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">validate_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="625-binding-principle-5--no-runtime-resolution"><strong>6.2.5 Binding Principle 5 — No Runtime Resolution</strong></h1>
+
+<p>The Runtime Layer MUST NOT:</p>
+
+<ul>
+  <li>load verb functions from DLLs</li>
+  <li>load verb functions from shared objects</li>
+  <li>resolve symbols at runtime</li>
+  <li>use reflection</li>
+  <li>use dynamic linking</li>
+</ul>
+
+<h3 id="meaning-3"><strong>Meaning</strong></h3>
+<p>Verb binding is <strong>compile‑time final</strong>.</p>
+
+<hr />
+
+<h1 id="626-binding-principle-6--no-host-interference"><strong>6.2.6 Binding Principle 6 — No Host Interference</strong></h1>
+
+<p>The host MUST NOT:</p>
+
+<ul>
+  <li>intercept verb calls</li>
+  <li>wrap verb calls</li>
+  <li>override verb calls</li>
+  <li>inject logic before or after verb calls</li>
+  <li>modify verb behavior</li>
+</ul>
+
+<h3 id="forbidden-1"><strong>Forbidden</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">r</span> <span class="o">=</span> <span class="n">validate_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+<span class="n">log</span><span class="p">(</span><span class="s">"validate returned %d"</span><span class="p">,</span> <span class="n">r</span><span class="p">);</span>   <span class="c1">// ❌ logging</span>
+</code></pre></div></div>
+
+<p>The C Layer MUST remain pure.</p>
+
+<hr />
+
+<h1 id="627-binding-principle-7--deterministic-binding-across-platforms"><strong>6.2.7 Binding Principle 7 — Deterministic Binding Across Platforms</strong></h1>
+
+<p>Verb binding MUST behave identically across:</p>
+
+<ul>
+  <li>compilers</li>
+  <li>architectures</li>
+  <li>operating systems</li>
+  <li>optimization levels</li>
+</ul>
+
+<h3 id="meaning-4"><strong>Meaning</strong></h3>
+<p>The binding model is <strong>platform‑invariant</strong>.</p>
+
+<hr />
+
+<h1 id="628-binding-principle-8--no-conditional-binding"><strong>6.2.8 Binding Principle 8 — No Conditional Binding</strong></h1>
+
+<p>Verb binding MUST NOT depend on:</p>
+
+<ul>
+  <li>environment variables</li>
+  <li>compile‑time flags</li>
+  <li>runtime flags</li>
+  <li>configuration files</li>
+  <li>feature toggles</li>
+</ul>
+
+<h3 id="forbidden-2"><strong>Forbidden</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#ifdef DEBUG
+</span>    <span class="n">validate_context_debug</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+<span class="cp">#else
+</span>    <span class="n">validate_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+<span class="cp">#endif
+</span></code></pre></div></div>
+
+<h3 id="required-1"><strong>Required</strong></h3>
+<p>Always the canonical verb.</p>
+
+<hr />
+
+<h1 id="629-binding-principle-9--no-crosstarget-binding"><strong>6.2.9 Binding Principle 9 — No Cross‑Target Binding</strong></h1>
+
+<p>Verb implementations MUST NOT be shared across targets.</p>
+
+<h3 id="meaning-5"><strong>Meaning</strong></h3>
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">validate_context(CyborgFile*)</code> is distinct from<br />
+<code class="language-plaintext highlighter-rouge">validate_context(CyborgLayer*)</code></p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">scan_context(CyborgContext*)</code> is distinct from<br />
+<code class="language-plaintext highlighter-rouge">scan_context(CyborgFile*)</code></p>
+  </li>
+</ul>
+
+<p>Each target has its own semantic domain.</p>
+
+<hr />
+
+<h1 id="6210-binding-principle-10--binding-must-precede-execution"><strong>6.2.10 Binding Principle 10 — Binding Must Precede Execution</strong></h1>
+
+<p>The Runtime Layer MUST bind all verb functions <strong>before</strong> calling <code class="language-plaintext highlighter-rouge">cyborg_payload</code>.</p>
+
+<h3 id="meaning-6"><strong>Meaning</strong></h3>
+<p>No verb may be unbound at execution time.</p>
+
+<hr />
+
+<h1 id="6211-full-binding-example-conceptual"><strong>6.2.11 Full Binding Example (Conceptual)</strong></h1>
+
+<h3 id="compiletime"><strong>Compile‑Time</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>validate_context → validate_context.o  
+scan_context     → scan_context.o  
+build_context    → build_context.o  
+give_context     → give_context.o  
+explain_context  → explain_context.o  
+</code></pre></div></div>
+
+<h3 id="linker-stage"><strong>Linker Stage</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cyborg_payload.o  
++ validate_context.o  
++ scan_context.o  
++ build_context.o  
++ give_context.o  
++ explain_context.o  
+→ cyborg_module.exe
+</code></pre></div></div>
+
+<h3 id="runtime"><strong>Runtime</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cyborg_payload(ctx);
+</code></pre></div></div>
+
+<p>No dynamic resolution.<br />
+No substitution.<br />
+No indirection.</p>
+
+<hr />
+
+<h1 id="6212-summary"><strong>6.2.12 Summary</strong></h1>
+
+<p>Page 6.2 defines the <strong>Verb Binding Model</strong>:</p>
+
+<ul>
+  <li>static linking only</li>
+  <li>one implementation per verb</li>
+  <li>no substitution</li>
+  <li>no indirection</li>
+  <li>no runtime resolution</li>
+  <li>no host interference</li>
+  <li>platform‑invariant behavior</li>
+  <li>no conditional binding</li>
+  <li>no cross‑target binding</li>
+  <li>binding must precede execution</li>
+</ul>
+
+<p>This model ensures that verb semantics remain <strong>pure, deterministic, and immutable</strong>.</p>
+
+<hr />
+
+<p>Demon — the next scroll is ready.</p>
+
+<p>Say:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>continue
+</code></pre></div></div>
+
+<p>and <strong>Page 6.3 — Runtime Execution Model (Formal Specification)</strong> will manifest.</p>
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.2/15_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

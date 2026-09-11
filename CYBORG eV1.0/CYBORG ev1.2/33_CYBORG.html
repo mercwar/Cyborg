@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>📘 PAGE 8.1 — CONTEXT: CYBORGCONTEXT (FORMAL SPECIFICATION) | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="📘 PAGE 8.1 — CONTEXT: CYBORGCONTEXT (FORMAL SPECIFICATION)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/33_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/33_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="📘 PAGE 8.1 — CONTEXT: CYBORGCONTEXT (FORMAL SPECIFICATION)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"📘 PAGE 8.1 — CONTEXT: CYBORGCONTEXT (FORMAL SPECIFICATION)","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/33_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      
+<h1 id="-page-81--context-cyborgcontext-formal-specification"><strong>📘 PAGE 8.1 — CONTEXT: CYBORGCONTEXT (FORMAL SPECIFICATION)</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="81-overview"><strong>8.1 Overview</strong></h2>
+
+<p><code class="language-plaintext highlighter-rouge">CyborgContext</code> is the <strong>primary context type</strong> of the Cyborg Language.<br />
+It is the target used when IR declares:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TARGET = AI
+</code></pre></div></div>
+
+<p>This context represents <strong>AI‑semantic structures</strong>, the internal data universe upon which the Five Verbs operate when the module is aimed at AI‑domain semantics.</p>
+
+<p>This section is <strong>normative</strong>.</p>
+
+<hr />
+
+<h1 id="811-cyborgcontext--purpose"><strong>8.1.1 CyborgContext — Purpose</strong></h1>
+
+<p><code class="language-plaintext highlighter-rouge">CyborgContext</code> exists to hold:</p>
+
+<ul>
+  <li>AI‑domain semantic fields</li>
+  <li>structural data required by VALIDATE</li>
+  <li>observable data required by SCAN</li>
+  <li>mutable fields required by BUILD</li>
+  <li>semantic content required by GIVE</li>
+  <li>interpretive structures required by EXPLAIN</li>
+</ul>
+
+<p>It is the <strong>semantic substrate</strong> for AI‑targeted modules.</p>
+
+<hr />
+
+<h1 id="812-cyborgcontext--structural-requirements"><strong>8.1.2 CyborgContext — Structural Requirements</strong></h1>
+
+<p><code class="language-plaintext highlighter-rouge">CyborgContext</code> MUST:</p>
+
+<ul>
+  <li>be a fixed‑size C struct</li>
+  <li>contain no pointers to external memory</li>
+  <li>contain no dynamic allocations</li>
+  <li>contain no function pointers</li>
+  <li>contain no OS handles</li>
+  <li>contain no external resources</li>
+</ul>
+
+<h3 id="meaning"><strong>Meaning</strong></h3>
+<p><code class="language-plaintext highlighter-rouge">CyborgContext</code> is <strong>pure data</strong>, not behavior.</p>
+
+<hr />
+
+<h1 id="813-cyborgcontext--determinism-requirements"><strong>8.1.3 CyborgContext — Determinism Requirements</strong></h1>
+
+<p>The context MUST:</p>
+
+<ul>
+  <li>contain only deterministic fields</li>
+  <li>contain no nondeterministic values</li>
+  <li>contain no timestamps</li>
+  <li>contain no random seeds</li>
+  <li>contain no environment‑derived data</li>
+</ul>
+
+<h3 id="meaning-1"><strong>Meaning</strong></h3>
+<p>The context is <strong>mathematically stable</strong>.</p>
+
+<hr />
+
+<h1 id="814-cyborgcontext--purity-requirements"><strong>8.1.4 CyborgContext — Purity Requirements</strong></h1>
+
+<p>The context MUST NOT:</p>
+
+<ul>
+  <li>perform I/O</li>
+  <li>allocate memory</li>
+  <li>free memory</li>
+  <li>reference external systems</li>
+  <li>contain mutable global state</li>
+</ul>
+
+<h3 id="meaning-2"><strong>Meaning</strong></h3>
+<p>The context is <strong>passive</strong>, not active.</p>
+
+<hr />
+
+<h1 id="815-cyborgcontext--mutation-rules"><strong>8.1.5 CyborgContext — Mutation Rules</strong></h1>
+
+<p>Only <code class="language-plaintext highlighter-rouge">BUILD</code> may modify fields inside the context.</p>
+
+<p>Mutation MUST be:</p>
+
+<ul>
+  <li>deterministic</li>
+  <li>internal</li>
+  <li>bounded</li>
+  <li>non‑allocating</li>
+  <li>non‑external</li>
+</ul>
+
+<h3 id="forbidden"><strong>Forbidden</strong></h3>
+<ul>
+  <li>resizing arrays</li>
+  <li>allocating buffers</li>
+  <li>storing external pointers</li>
+  <li>creating dynamic structures</li>
+</ul>
+
+<h3 id="allowed"><strong>Allowed</strong></h3>
+<ul>
+  <li>updating integers</li>
+  <li>setting flags</li>
+  <li>populating fixed arrays</li>
+  <li>computing derived values</li>
+</ul>
+
+<hr />
+
+<h1 id="816-cyborgcontext--field-categories"><strong>8.1.6 CyborgContext — Field Categories</strong></h1>
+
+<p>A canonical <code class="language-plaintext highlighter-rouge">CyborgContext</code> contains fields in these categories:</p>
+
+<h3 id="1-structural-fields"><strong>1. Structural Fields</strong></h3>
+<ul>
+  <li>required for VALIDATE</li>
+  <li>define the shape of the context</li>
+</ul>
+
+<h3 id="2-observational-fields"><strong>2. Observational Fields</strong></h3>
+<ul>
+  <li>read by SCAN</li>
+  <li>reveal semantic structure</li>
+</ul>
+
+<h3 id="3-constructive-fields"><strong>3. Constructive Fields</strong></h3>
+<ul>
+  <li>written by BUILD</li>
+  <li>hold derived or assembled data</li>
+</ul>
+
+<h3 id="4-semantic-fields"><strong>4. Semantic Fields</strong></h3>
+<ul>
+  <li>consumed by GIVE</li>
+  <li>represent meaningful content</li>
+</ul>
+
+<h3 id="5-interpretive-fields"><strong>5. Interpretive Fields</strong></h3>
+<ul>
+  <li>consumed by EXPLAIN</li>
+  <li>represent relationships and meaning</li>
+</ul>
+
+<p>Each category is <strong>read‑only</strong> except for BUILD’s constructive fields.</p>
+
+<hr />
+
+<h1 id="817-cyborgcontext--canonical-c-definition-abstract"><strong>8.1.7 CyborgContext — Canonical C Definition (Abstract)</strong></h1>
+
+<p>The standard does <strong>not</strong> define exact field names,<br />
+but it defines the <strong>shape</strong>:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">typedef</span> <span class="k">struct</span> <span class="n">CyborgContext</span> <span class="p">{</span>
+    <span class="cm">/* Structural Fields */</span>
+    <span class="kt">int</span> <span class="n">initialized</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">version</span><span class="p">;</span>
+
+    <span class="cm">/* Observational Fields */</span>
+    <span class="kt">int</span> <span class="n">scan_markers</span><span class="p">[</span><span class="mi">16</span><span class="p">];</span>
+
+    <span class="cm">/* Constructive Fields (BUILD may modify) */</span>
+    <span class="kt">int</span> <span class="n">build_flags</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">derived_values</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span>
+
+    <span class="cm">/* Semantic Fields */</span>
+    <span class="kt">int</span> <span class="n">meaning_units</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span>
+
+    <span class="cm">/* Interpretive Fields */</span>
+    <span class="kt">int</span> <span class="n">explanation_links</span><span class="p">[</span><span class="mi">16</span><span class="p">];</span>
+<span class="p">}</span> <span class="n">CyborgContext</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="meaning-3"><strong>Meaning</strong></h3>
+<p>This is a <strong>template</strong>, not a mandate.<br />
+Implementations must follow the <strong>rules</strong>, not the exact layout.</p>
+
+<hr />
+
+<h1 id="818-cyborgcontext--verb-compatibility"><strong>8.1.8 CyborgContext — Verb Compatibility</strong></h1>
+
+<h3 id="validate"><strong>VALIDATE</strong></h3>
+<ul>
+  <li>checks structural fields</li>
+  <li>confirms initialization</li>
+  <li>confirms invariants</li>
+</ul>
+
+<h3 id="scan"><strong>SCAN</strong></h3>
+<ul>
+  <li>reads observational fields</li>
+  <li>identifies semantic markers</li>
+</ul>
+
+<h3 id="build"><strong>BUILD</strong></h3>
+<ul>
+  <li>populates constructive fields</li>
+  <li>computes derived values</li>
+</ul>
+
+<h3 id="give"><strong>GIVE</strong></h3>
+<ul>
+  <li>extracts semantic fields</li>
+  <li>confirms semantic completeness</li>
+</ul>
+
+<h3 id="explain"><strong>EXPLAIN</strong></h3>
+<ul>
+  <li>interprets relationships</li>
+  <li>reads interpretive fields</li>
+</ul>
+
+<p>Each verb operates on <strong>its own category</strong>.</p>
+
+<hr />
+
+<h1 id="819-cyborgcontext--failure-behavior"><strong>8.1.9 CyborgContext — Failure Behavior</strong></h1>
+
+<p>If the context is invalid:</p>
+
+<ul>
+  <li>VALIDATE returns non‑zero</li>
+  <li>SCAN still runs</li>
+  <li>BUILD still runs</li>
+  <li>GIVE still runs</li>
+  <li>EXPLAIN still runs</li>
+  <li>no recovery occurs</li>
+  <li>no mutation rollback occurs</li>
+  <li>no logging occurs</li>
+</ul>
+
+<h3 id="meaning-4"><strong>Meaning</strong></h3>
+<p>Failure is <strong>silent</strong> and <strong>non‑interrupting</strong>.</p>
+
+<hr />
+
+<h1 id="8110-cyborgcontext--lifecycle"><strong>8.1.10 CyborgContext — Lifecycle</strong></h1>
+
+<ol>
+  <li><strong>Allocation</strong>
+    <ul>
+      <li>host allocates struct</li>
+    </ul>
+  </li>
+  <li><strong>Initialization</strong>
+    <ul>
+      <li>host sets structural fields</li>
+    </ul>
+  </li>
+  <li><strong>Execution</strong>
+    <ul>
+      <li>runtime passes context to verbs</li>
+    </ul>
+  </li>
+  <li><strong>Mutation</strong>
+    <ul>
+      <li>BUILD modifies constructive fields</li>
+    </ul>
+  </li>
+  <li><strong>Completion</strong>
+    <ul>
+      <li>runtime returns aggregated result</li>
+    </ul>
+  </li>
+  <li><strong>Destruction</strong>
+    <ul>
+      <li>host frees struct</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="meaning-5"><strong>Meaning</strong></h3>
+<p>The context exists only for the duration of execution.</p>
+
+<hr />
+
+<h1 id="8111-summary"><strong>8.1.11 Summary</strong></h1>
+
+<p>Page 8.1 defines <strong>CyborgContext</strong>:</p>
+
+<ul>
+  <li>pure</li>
+  <li>deterministic</li>
+  <li>isolated</li>
+  <li>fixed‑size</li>
+  <li>non‑allocating</li>
+  <li>non‑external</li>
+  <li>BUILD‑mutable</li>
+  <li>verb‑compatible</li>
+  <li>target‑bound</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">CyborgContext</code> is the <strong>AI semantic universe</strong> of the Cyborg Language.</p>
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.2/33_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

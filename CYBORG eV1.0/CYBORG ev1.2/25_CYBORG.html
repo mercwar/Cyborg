@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>📘 PAGE 7.3 — VERB: BUILD (FORMAL SPECIFICATION) | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="📘 PAGE 7.3 — VERB: BUILD (FORMAL SPECIFICATION)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/25_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/25_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="📘 PAGE 7.3 — VERB: BUILD (FORMAL SPECIFICATION)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"📘 PAGE 7.3 — VERB: BUILD (FORMAL SPECIFICATION)","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/25_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      
+<h1 id="-page-73--verb-build-formal-specification"><strong>📘 PAGE 7.3 — VERB: BUILD (FORMAL SPECIFICATION)</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="73-overview"><strong>7.3 Overview</strong></h2>
+
+<p><code class="language-plaintext highlighter-rouge">BUILD</code> is the <strong>third canonical verb</strong> of the Cyborg Language and the <strong>only impure verb</strong> in the entire system.</p>
+
+<p>Where:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">VALIDATE</code> confirms structure</li>
+  <li><code class="language-plaintext highlighter-rouge">SCAN</code> reveals structure</li>
+</ul>
+
+<p><strong>BUILD transforms structure.</strong></p>
+
+<blockquote>
+  <p><strong>BUILD is the sole verb allowed to modify the context.</strong></p>
+</blockquote>
+
+<p>It is the engine of construction, mutation, and semantic evolution.</p>
+
+<p>This section is <strong>normative</strong>.</p>
+
+<hr />
+
+<h1 id="731-build--semantic-definition"><strong>7.3.1 BUILD — Semantic Definition</strong></h1>
+
+<p><code class="language-plaintext highlighter-rouge">BUILD</code> MUST:</p>
+
+<ul>
+  <li>modify fields inside the context</li>
+  <li>construct new semantic structures</li>
+  <li>populate missing values</li>
+  <li>assemble derived data</li>
+  <li>prepare the context for downstream verbs</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">BUILD</code> MUST NOT:</p>
+
+<ul>
+  <li>change the context’s type</li>
+  <li>change the context’s size</li>
+  <li>allocate dynamic memory</li>
+  <li>free memory</li>
+  <li>perform I/O</li>
+  <li>call other verbs</li>
+  <li>depend on external state</li>
+</ul>
+
+<h3 id="meaning"><strong>Meaning</strong></h3>
+<p><code class="language-plaintext highlighter-rouge">BUILD</code> is the <strong>context constructor</strong>, not a general‑purpose mutator.</p>
+
+<hr />
+
+<h1 id="732-build--determinism-rules"><strong>7.3.2 BUILD — Determinism Rules</strong></h1>
+
+<p><code class="language-plaintext highlighter-rouge">BUILD</code> MUST:</p>
+
+<ul>
+  <li>produce the same modifications for the same input</li>
+  <li>never depend on timing</li>
+  <li>never depend on randomness</li>
+  <li>never depend on environment variables</li>
+  <li>never depend on global state</li>
+</ul>
+
+<h3 id="meaning-1"><strong>Meaning</strong></h3>
+<p>Even though it mutates, <code class="language-plaintext highlighter-rouge">BUILD</code> is <strong>deterministic</strong>.</p>
+
+<hr />
+
+<h1 id="733-build--purity-exception"><strong>7.3.3 BUILD — Purity Exception</strong></h1>
+
+<p><code class="language-plaintext highlighter-rouge">BUILD</code> is the <strong>only verb</strong> allowed to:</p>
+
+<ul>
+  <li>write to context fields</li>
+  <li>modify internal state</li>
+  <li>populate missing values</li>
+  <li>restructure internal semantic data</li>
+</ul>
+
+<h3 id="forbidden-for-build"><strong>Forbidden for BUILD</strong></h3>
+<ul>
+  <li>allocating memory</li>
+  <li>freeing memory</li>
+  <li>performing I/O</li>
+  <li>modifying global variables</li>
+  <li>modifying static variables</li>
+</ul>
+
+<h3 id="allowed-for-build"><strong>Allowed for BUILD</strong></h3>
+<ul>
+  <li>modifying fields <em>inside the context object only</em></li>
+</ul>
+
+<hr />
+
+<h1 id="734-build--isolation-rules"><strong>7.3.4 BUILD — Isolation Rules</strong></h1>
+
+<p><code class="language-plaintext highlighter-rouge">BUILD</code> MUST NOT:</p>
+
+<ul>
+  <li>call other verbs</li>
+  <li>communicate with other verbs</li>
+  <li>rely on execution order</li>
+  <li>share state with other verbs</li>
+</ul>
+
+<h3 id="meaning-2"><strong>Meaning</strong></h3>
+<p>Even though it mutates, <code class="language-plaintext highlighter-rouge">BUILD</code> is still a <strong>semantic island</strong>.</p>
+
+<hr />
+
+<h1 id="735-build--return-semantics"><strong>7.3.5 BUILD — Return Semantics</strong></h1>
+
+<p><code class="language-plaintext highlighter-rouge">BUILD</code> MUST return:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">0</code> → build successful</li>
+  <li>non‑zero → build detected a semantic issue</li>
+</ul>
+
+<h3 id="meaning-3"><strong>Meaning</strong></h3>
+<p><code class="language-plaintext highlighter-rouge">BUILD</code> is a <strong>binary construction test</strong>.</p>
+
+<hr />
+
+<h1 id="736-build--context-mutation-rules"><strong>7.3.6 BUILD — Context Mutation Rules</strong></h1>
+
+<p><code class="language-plaintext highlighter-rouge">BUILD</code> MAY:</p>
+
+<ul>
+  <li>write to fields</li>
+  <li>update counters</li>
+  <li>populate arrays</li>
+  <li>set flags</li>
+  <li>compute derived values</li>
+  <li>restructure internal semantic blocks</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">BUILD</code> MUST NOT:</p>
+
+<ul>
+  <li>change the context’s type</li>
+  <li>change the context’s size</li>
+  <li>allocate memory</li>
+  <li>free memory</li>
+  <li>create external references</li>
+  <li>store pointers to external memory</li>
+</ul>
+
+<h3 id="meaning-4"><strong>Meaning</strong></h3>
+<p>Mutation is <strong>bounded</strong> and <strong>internal</strong>.</p>
+
+<hr />
+
+<h1 id="737-build--failure-semantics"><strong>7.3.7 BUILD — Failure Semantics</strong></h1>
+
+<p>If <code class="language-plaintext highlighter-rouge">BUILD</code> returns non‑zero:</p>
+
+<ul>
+  <li>the C Layer MUST still execute all remaining verbs</li>
+  <li>the Runtime MUST NOT stop execution</li>
+  <li>the Runtime MUST NOT attempt recovery</li>
+  <li>the Runtime MUST NOT undo mutations</li>
+  <li>the Runtime MUST NOT log or report the failure</li>
+</ul>
+
+<h3 id="meaning-5"><strong>Meaning</strong></h3>
+<p>Failure is <strong>silent</strong>, <strong>contained</strong>, and <strong>non‑interrupting</strong>.</p>
+
+<hr />
+
+<h1 id="738-build--canonical-implementation-pattern"><strong>7.3.8 BUILD — Canonical Implementation Pattern</strong></h1>
+
+<h3 id="ai-target"><strong>AI Target</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">build_context</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="file-target"><strong>FILE Target</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">build_context</span><span class="p">(</span><span class="n">CyborgFile</span><span class="o">*</span> <span class="n">file</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="layer-target"><strong>LAYER Target</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">build_context</span><span class="p">(</span><span class="n">CyborgLayer</span><span class="o">*</span> <span class="n">layer</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="meaning-6"><strong>Meaning</strong></h3>
+<p>The signature is <strong>fixed</strong>, <strong>target‑bound</strong>, and <strong>non‑overridable</strong>.</p>
+
+<hr />
+
+<h1 id="739-build--canonical-behavior-examples"><strong>7.3.9 BUILD — Canonical Behavior Examples</strong></h1>
+
+<h3 id="successful-build"><strong>Successful Build</strong></h3>
+<ul>
+  <li>fields populated</li>
+  <li>structures assembled</li>
+  <li>derived values computed</li>
+  <li>returns <code class="language-plaintext highlighter-rouge">0</code></li>
+</ul>
+
+<h3 id="failed-build"><strong>Failed Build</strong></h3>
+<ul>
+  <li>missing required data</li>
+  <li>structural contradictions</li>
+  <li>semantic impossibilities</li>
+  <li>returns non‑zero</li>
+</ul>
+
+<h3 id="meaning-7"><strong>Meaning</strong></h3>
+<p><code class="language-plaintext highlighter-rouge">BUILD</code> is the <strong>constructor</strong> of the Cyborg Language.</p>
+
+<hr />
+
+<h1 id="7310-build--full-canonical-example"><strong>7.3.10 BUILD — Full Canonical Example</strong></h1>
+
+<h3 id="ir"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = FILE
+OPEN_PAYLOAD
+EXEC_VALIDATE
+EXEC_SCAN
+EXEC_BUILD
+EXEC_GIVE
+SEAL
+</code></pre>
+
+<h3 id="c-output"><strong>C Output</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="n">CyborgFile</span><span class="o">*</span> <span class="n">file</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">validate_context</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">scan_context</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r3</span> <span class="o">=</span> <span class="n">build_context</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r4</span> <span class="o">=</span> <span class="n">give_context</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span> <span class="o">||</span> <span class="n">r3</span> <span class="o">||</span> <span class="n">r4</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="interpretation"><strong>Interpretation</strong></h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">VALIDATE</code> checks structure</li>
+  <li><code class="language-plaintext highlighter-rouge">SCAN</code> reveals structure</li>
+  <li><code class="language-plaintext highlighter-rouge">BUILD</code> transforms structure</li>
+  <li><code class="language-plaintext highlighter-rouge">GIVE</code> consumes the transformed structure</li>
+</ul>
+
+<p>This is the <strong>canonical BUILD flow</strong>.</p>
+
+<hr />
+
+<h1 id="7311-summary"><strong>7.3.11 Summary</strong></h1>
+
+<p>Page 7.3 defines the verb <strong>BUILD</strong>:</p>
+
+<ul>
+  <li>the only impure verb</li>
+  <li>deterministic mutation</li>
+  <li>internal‑only modification</li>
+  <li>no external effects</li>
+  <li>no memory allocation</li>
+  <li>no I/O</li>
+  <li>no inference</li>
+  <li>no cross‑verb communication</li>
+  <li>returns binary truth</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">BUILD</code> is the <strong>constructor and transformer</strong> of the Cyborg Language.</p>
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.2/25_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

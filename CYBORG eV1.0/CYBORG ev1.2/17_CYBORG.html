@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>📘 PAGE 6.4 — RUNTIME ISOLATION RULES (FORMAL) | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="📘 PAGE 6.4 — RUNTIME ISOLATION RULES (FORMAL)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/17_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/17_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="📘 PAGE 6.4 — RUNTIME ISOLATION RULES (FORMAL)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"📘 PAGE 6.4 — RUNTIME ISOLATION RULES (FORMAL)","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/17_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      
+<h1 id="-page-64--runtime-isolation-rules-formal"><strong>📘 PAGE 6.4 — RUNTIME ISOLATION RULES (FORMAL)</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="64-overview"><strong>6.4 Overview</strong></h2>
+
+<p>The <strong>Runtime Isolation Rules</strong> define how the Cyborg Runtime must protect:</p>
+
+<ul>
+  <li>the C Layer</li>
+  <li>the context object</li>
+  <li>the verb functions</li>
+  <li>the host environment</li>
+  <li>the module’s deterministic behavior</li>
+</ul>
+
+<p>Isolation is not optional.<br />
+It is the <strong>shield</strong> that preserves ceremonial purity and prevents contamination from external systems.</p>
+
+<p>This section is <strong>normative</strong>.</p>
+
+<hr />
+
+<h1 id="641-isolation-principle-1--module-isolation"><strong>6.4.1 Isolation Principle 1 — Module Isolation</strong></h1>
+
+<p>Each Cyborg Module MUST execute in complete isolation from:</p>
+
+<ul>
+  <li>other modules</li>
+  <li>other contexts</li>
+  <li>other payloads</li>
+  <li>host subsystems</li>
+  <li>external libraries</li>
+  <li>global state</li>
+</ul>
+
+<h3 id="meaning"><strong>Meaning</strong></h3>
+<p>A module is a <strong>sealed execution chamber</strong>.</p>
+
+<hr />
+
+<h1 id="642-isolation-principle-2--context-isolation"><strong>6.4.2 Isolation Principle 2 — Context Isolation</strong></h1>
+
+<p>The context object MUST be:</p>
+
+<ul>
+  <li>private</li>
+  <li>exclusive</li>
+  <li>non‑shared</li>
+  <li>non‑aliased</li>
+  <li>non‑referenced externally</li>
+</ul>
+
+<h3 id="forbidden"><strong>Forbidden</strong></h3>
+<ul>
+  <li>sharing context between modules</li>
+  <li>passing context to external functions</li>
+  <li>storing context in global variables</li>
+</ul>
+
+<p>The context belongs to <strong>one execution only</strong>.</p>
+
+<hr />
+
+<h1 id="643-isolation-principle-3--verb-isolation"><strong>6.4.3 Isolation Principle 3 — Verb Isolation</strong></h1>
+
+<p>Verb functions MUST NOT:</p>
+
+<ul>
+  <li>call each other</li>
+  <li>share state</li>
+  <li>communicate indirectly</li>
+  <li>modify global variables</li>
+  <li>access external resources</li>
+</ul>
+
+<h3 id="meaning-1"><strong>Meaning</strong></h3>
+<p>Each verb is a <strong>semantic island</strong>.</p>
+
+<hr />
+
+<h1 id="644-isolation-principle-4--host-isolation"><strong>6.4.4 Isolation Principle 4 — Host Isolation</strong></h1>
+
+<p>The host MUST NOT:</p>
+
+<ul>
+  <li>modify the context during execution</li>
+  <li>intercept verb calls</li>
+  <li>wrap or decorate verb calls</li>
+  <li>inject logic</li>
+  <li>override behavior</li>
+  <li>run concurrent tasks</li>
+</ul>
+
+<h3 id="meaning-2"><strong>Meaning</strong></h3>
+<p>The host becomes <strong>silent</strong> during execution.</p>
+
+<hr />
+
+<h1 id="645-isolation-principle-5--memory-isolation"><strong>6.4.5 Isolation Principle 5 — Memory Isolation</strong></h1>
+
+<p>The runtime MUST ensure:</p>
+
+<ul>
+  <li>no shared memory</li>
+  <li>no memory aliasing</li>
+  <li>no dynamic memory exchange</li>
+  <li>no external pointers in context</li>
+  <li>no global memory mutation</li>
+</ul>
+
+<h3 id="forbidden-1"><strong>Forbidden</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">global_ptr</span> <span class="o">=</span> <span class="n">ctx</span><span class="p">;</span>     <span class="c1">// ❌ illegal aliasing</span>
+</code></pre></div></div>
+
+<p>Memory isolation is absolute.</p>
+
+<hr />
+
+<h1 id="646-isolation-principle-6--execution-isolation"><strong>6.4.6 Isolation Principle 6 — Execution Isolation</strong></h1>
+
+<p>Execution MUST be:</p>
+
+<ul>
+  <li>single‑threaded</li>
+  <li>synchronous</li>
+  <li>non‑interruptible</li>
+  <li>non‑parallel</li>
+  <li>non‑preemptive</li>
+</ul>
+
+<h3 id="meaning-3"><strong>Meaning</strong></h3>
+<p>Nothing may run concurrently with <code class="language-plaintext highlighter-rouge">cyborg_payload</code>.</p>
+
+<hr />
+
+<h1 id="647-isolation-principle-7--environment-isolation"><strong>6.4.7 Isolation Principle 7 — Environment Isolation</strong></h1>
+
+<p>The runtime MUST NOT expose:</p>
+
+<ul>
+  <li>environment variables</li>
+  <li>system state</li>
+  <li>file handles</li>
+  <li>sockets</li>
+  <li>timers</li>
+  <li>signals</li>
+  <li>interrupts</li>
+</ul>
+
+<h3 id="meaning-4"><strong>Meaning</strong></h3>
+<p>The module cannot “see” the outside world.</p>
+
+<hr />
+
+<h1 id="648-isolation-principle-8--no-external-calls"><strong>6.4.8 Isolation Principle 8 — No External Calls</strong></h1>
+
+<p>The runtime MUST NOT allow:</p>
+
+<ul>
+  <li>system calls</li>
+  <li>library calls</li>
+  <li>host API calls</li>
+  <li>OS interactions</li>
+  <li>network interactions</li>
+</ul>
+
+<p>Only verb functions may execute.</p>
+
+<hr />
+
+<h1 id="649-isolation-principle-9--no-crossmodule-contamination"><strong>6.4.9 Isolation Principle 9 — No Cross‑Module Contamination</strong></h1>
+
+<p>Modules MUST NOT:</p>
+
+<ul>
+  <li>share verb implementations</li>
+  <li>share context structures</li>
+  <li>share memory</li>
+  <li>share runtime state</li>
+  <li>share execution logs</li>
+</ul>
+
+<p>Each module is a <strong>sealed universe</strong>.</p>
+
+<hr />
+
+<h1 id="6410-isolation-principle-10--deterministic-isolation"><strong>6.4.10 Isolation Principle 10 — Deterministic Isolation</strong></h1>
+
+<p>Isolation MUST be:</p>
+
+<ul>
+  <li>complete</li>
+  <li>consistent</li>
+  <li>platform‑invariant</li>
+  <li>compiler‑invariant</li>
+  <li>optimization‑invariant</li>
+</ul>
+
+<h3 id="meaning-5"><strong>Meaning</strong></h3>
+<p>Isolation is not a feature — it is <strong>law</strong>.</p>
+
+<hr />
+
+<h1 id="6411-full-isolation-example-conceptual"><strong>6.4.11 Full Isolation Example (Conceptual)</strong></h1>
+
+<h3 id="host"><strong>Host</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">CyborgLayer</span> <span class="n">layer</span><span class="p">;</span>
+<span class="n">init_layer</span><span class="p">(</span><span class="o">&amp;</span><span class="n">layer</span><span class="p">);</span>
+<span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">cyborg_payload</span><span class="p">(</span><span class="o">&amp;</span><span class="n">layer</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="runtime-guarantees"><strong>Runtime Guarantees</strong></h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">layer</code> is private</li>
+  <li>no other module sees it</li>
+  <li>no other thread touches it</li>
+  <li>no external system interacts</li>
+  <li>no global state is modified</li>
+  <li>no I/O occurs</li>
+  <li>no memory is shared</li>
+  <li>no interference is possible</li>
+</ul>
+
+<p>This is the <strong>canonical isolation model</strong>.</p>
+
+<hr />
+
+<h1 id="6412-summary"><strong>6.4.12 Summary</strong></h1>
+
+<p>Page 6.4 defines the <strong>Runtime Isolation Rules</strong>:</p>
+
+<ul>
+  <li>module isolation</li>
+  <li>context isolation</li>
+  <li>verb isolation</li>
+  <li>host isolation</li>
+  <li>memory isolation</li>
+  <li>execution isolation</li>
+  <li>environment isolation</li>
+  <li>no external calls</li>
+  <li>no cross‑module contamination</li>
+  <li>deterministic isolation</li>
+</ul>
+
+<p>These rules ensure that Cyborg execution remains <strong>pure, sealed, and ceremonially intact</strong>.</p>
+
+<hr />
+
+<p>Demon — the next scroll stands ready.</p>
+
+<p>Say:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>continue
+</code></pre></div></div>
+
+<p>and <strong>Page 6.5 — Runtime Determinism Rules (Formal)</strong> will manifest.</p>
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.2/17_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

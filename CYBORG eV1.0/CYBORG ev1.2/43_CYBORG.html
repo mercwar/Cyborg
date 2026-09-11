@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>📘 PAGE 9.5 — IR PURITY RULES (FORMAL) | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="📘 PAGE 9.5 — IR PURITY RULES (FORMAL)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/43_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/43_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="📘 PAGE 9.5 — IR PURITY RULES (FORMAL)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"📘 PAGE 9.5 — IR PURITY RULES (FORMAL)","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/43_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      
+<h1 id="-page-95--ir-purity-rules-formal"><strong>📘 PAGE 9.5 — IR PURITY RULES (FORMAL)</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="95-overview"><strong>9.5 Overview</strong></h2>
+
+<p>The <strong>IR Purity Rules</strong> define what the IR is <em>forbidden</em> to do.<br />
+Where determinism ensures the IR is <em>predictable</em>, purity ensures the IR is <em>clean</em> — free of side effects, computation, or external influence.</p>
+
+<p>IR purity is absolute.<br />
+IR is not code.<br />
+IR is not logic.<br />
+IR is not configuration.</p>
+
+<blockquote>
+  <p><strong>IR is pure semantic declaration. Nothing more.</strong></p>
+</blockquote>
+
+<p>This section is <strong>normative</strong>.</p>
+
+<hr />
+
+<h1 id="951-purity-rule-1--ir-contains-no-computation"><strong>9.5.1 Purity Rule 1 — IR Contains No Computation</strong></h1>
+
+<p>The IR MUST NOT contain:</p>
+
+<ul>
+  <li>arithmetic</li>
+  <li>logic</li>
+  <li>expressions</li>
+  <li>comparisons</li>
+  <li>conditions</li>
+  <li>loops</li>
+  <li>macros</li>
+</ul>
+
+<h3 id="meaning"><strong>Meaning</strong></h3>
+<p>IR is <strong>not executable</strong>.</p>
+
+<hr />
+
+<h1 id="952-purity-rule-2--ir-contains-no-parameters"><strong>9.5.2 Purity Rule 2 — IR Contains No Parameters</strong></h1>
+
+<p>The IR MUST NOT:</p>
+
+<ul>
+  <li>pass parameters to verbs</li>
+  <li>configure verbs</li>
+  <li>modify verb behavior</li>
+  <li>supply arguments</li>
+</ul>
+
+<h3 id="forbidden"><strong>Forbidden</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>EXEC_BUILD(flags=3)
+EXEC_SCAN(depth=2)
+</code></pre></div></div>
+
+<h3 id="meaning-1"><strong>Meaning</strong></h3>
+<p>Verbs are <strong>parameterless and immutable</strong>.</p>
+
+<hr />
+
+<h1 id="953-purity-rule-3--ir-contains-no-metadata"><strong>9.5.3 Purity Rule 3 — IR Contains No Metadata</strong></h1>
+
+<p>The IR MUST NOT contain:</p>
+
+<ul>
+  <li>comments</li>
+  <li>annotations</li>
+  <li>attributes</li>
+  <li>tags</li>
+  <li>hints</li>
+  <li>documentation</li>
+</ul>
+
+<h3 id="forbidden-1"><strong>Forbidden</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// run validation first
+EXEC_VALIDATE
+</code></pre></div></div>
+
+<h3 id="meaning-2"><strong>Meaning</strong></h3>
+<p>IR is <strong>signal only</strong>, never commentary.</p>
+
+<hr />
+
+<h1 id="954-purity-rule-4--ir-contains-no-external-references"><strong>9.5.4 Purity Rule 4 — IR Contains No External References</strong></h1>
+
+<p>The IR MUST NOT reference:</p>
+
+<ul>
+  <li>files</li>
+  <li>URLs</li>
+  <li>environment variables</li>
+  <li>system state</li>
+  <li>runtime values</li>
+</ul>
+
+<h3 id="meaning-3"><strong>Meaning</strong></h3>
+<p>IR is <strong>self‑contained</strong>.</p>
+
+<hr />
+
+<h1 id="955-purity-rule-5--ir-contains-no-dynamic-constructs"><strong>9.5.5 Purity Rule 5 — IR Contains No Dynamic Constructs</strong></h1>
+
+<p>The IR MUST NOT:</p>
+
+<ul>
+  <li>include other IR files</li>
+  <li>import modules</li>
+  <li>expand macros</li>
+  <li>generate content dynamically</li>
+</ul>
+
+<h3 id="forbidden-2"><strong>Forbidden</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>INCLUDE "common.ir"
+</code></pre></div></div>
+
+<h3 id="meaning-4"><strong>Meaning</strong></h3>
+<p>IR is <strong>static and monolithic</strong>.</p>
+
+<hr />
+
+<h1 id="956-purity-rule-6--ir-contains-no-side-effects"><strong>9.5.6 Purity Rule 6 — IR Contains No Side Effects</strong></h1>
+
+<p>The IR MUST NOT:</p>
+
+<ul>
+  <li>allocate memory</li>
+  <li>free memory</li>
+  <li>open files</li>
+  <li>perform I/O</li>
+  <li>trigger runtime behavior</li>
+</ul>
+
+<h3 id="meaning-5"><strong>Meaning</strong></h3>
+<p>IR is <strong>pure declaration</strong>, not action.</p>
+
+<hr />
+
+<h1 id="957-purity-rule-7--ir-contains-no-state"><strong>9.5.7 Purity Rule 7 — IR Contains No State</strong></h1>
+
+<p>The IR MUST NOT:</p>
+
+<ul>
+  <li>store variables</li>
+  <li>store values</li>
+  <li>store flags</li>
+  <li>store counters</li>
+  <li>store configuration</li>
+</ul>
+
+<h3 id="meaning-6"><strong>Meaning</strong></h3>
+<p>IR is <strong>stateless</strong>.</p>
+
+<hr />
+
+<h1 id="958-purity-rule-8--ir-contains-no-behavior"><strong>9.5.8 Purity Rule 8 — IR Contains No Behavior</strong></h1>
+
+<p>The IR MUST NOT:</p>
+
+<ul>
+  <li>execute logic</li>
+  <li>evaluate expressions</li>
+  <li>perform computation</li>
+  <li>branch</li>
+  <li>loop</li>
+</ul>
+
+<h3 id="meaning-7"><strong>Meaning</strong></h3>
+<p>IR is <strong>non‑procedural</strong>.</p>
+
+<hr />
+
+<h1 id="959-purity-rule-9--ir-contains-only-canonical-constructs"><strong>9.5.9 Purity Rule 9 — IR Contains Only Canonical Constructs</strong></h1>
+
+<p>The IR MUST contain only:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">TARGET = &lt;TYPE&gt;</code></li>
+  <li><code class="language-plaintext highlighter-rouge">OPEN_PAYLOAD</code></li>
+  <li>zero or more <code class="language-plaintext highlighter-rouge">EXEC_&lt;VERB&gt;</code> lines</li>
+  <li><code class="language-plaintext highlighter-rouge">SEAL</code></li>
+</ul>
+
+<p>Nothing else.</p>
+
+<h3 id="meaning-8"><strong>Meaning</strong></h3>
+<p>IR is a <strong>closed language</strong>.</p>
+
+<hr />
+
+<h1 id="9510-purity-rule-10--ir-is-semantically-inert"><strong>9.5.10 Purity Rule 10 — IR Is Semantically Inert</strong></h1>
+
+<p>The IR MUST NOT:</p>
+
+<ul>
+  <li>modify context</li>
+  <li>modify runtime</li>
+  <li>modify verbs</li>
+  <li>modify execution</li>
+  <li>modify semantics</li>
+</ul>
+
+<h3 id="meaning-9"><strong>Meaning</strong></h3>
+<p>IR declares <strong>intent</strong>, not behavior.</p>
+
+<hr />
+
+<h1 id="9511-full-purity-example"><strong>9.5.11 Full Purity Example</strong></h1>
+
+<h3 id="pure-ir"><strong>Pure IR</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TARGET = FILE
+OPEN_PAYLOAD
+EXEC_VALIDATE
+EXEC_SCAN
+EXEC_BUILD
+SEAL
+</code></pre></div></div>
+
+<h3 id="purity-interpretation"><strong>Purity Interpretation</strong></h3>
+<ul>
+  <li>no parameters</li>
+  <li>no metadata</li>
+  <li>no logic</li>
+  <li>no dynamic constructs</li>
+  <li>no external references</li>
+  <li>no state</li>
+  <li>no side effects</li>
+</ul>
+
+<p>This is the <strong>canonical pure IR</strong>.</p>
+
+<hr />
+
+<h1 id="9512-summary"><strong>9.5.12 Summary</strong></h1>
+
+<p>Page 9.5 defines the <strong>IR Purity Rules</strong>:</p>
+
+<ul>
+  <li>no computation</li>
+  <li>no parameters</li>
+  <li>no metadata</li>
+  <li>no external references</li>
+  <li>no dynamic constructs</li>
+  <li>no side effects</li>
+  <li>no state</li>
+  <li>no behavior</li>
+  <li>only canonical constructs</li>
+  <li>IR is semantically inert</li>
+</ul>
+
+<p>These rules ensure that the IR remains <strong>clean, literal, and uncorrupted</strong> — a perfect declaration of semantic intent.</p>
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.2/43_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

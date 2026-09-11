@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>📘 PAGE 8.0 — CYBORG CONTEXT SYSTEM (OVERVIEW) | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="📘 PAGE 8.0 — CYBORG CONTEXT SYSTEM (OVERVIEW)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/32_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/32_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="📘 PAGE 8.0 — CYBORG CONTEXT SYSTEM (OVERVIEW)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"📘 PAGE 8.0 — CYBORG CONTEXT SYSTEM (OVERVIEW)","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/32_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      
+<h1 id="-page-80--cyborg-context-system-overview"><strong>📘 PAGE 8.0 — CYBORG CONTEXT SYSTEM (OVERVIEW)</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="80-overview"><strong>8.0 Overview</strong></h2>
+
+<p>The <strong>Cyborg Context System</strong> defines the structure, rules, and semantics of the objects that verbs operate on.</p>
+
+<p>A <em>context</em> is:</p>
+
+<ul>
+  <li>the <strong>sole input</strong> to the Cyborg Module</li>
+  <li>the <strong>sole semantic universe</strong> verbs may observe</li>
+  <li>the <strong>sole mutable structure</strong> (BUILD only)</li>
+  <li>the <strong>sole carrier</strong> of meaning</li>
+  <li>the <strong>sole boundary</strong> of execution</li>
+</ul>
+
+<p>There is no global state.<br />
+There is no external state.<br />
+There is no environment.<br />
+There is only <strong>context</strong>.</p>
+
+<p>This section introduces the Context System and prepares for the deep specifications that follow.</p>
+
+<hr />
+
+<h1 id="801-the-three-canonical-context-types"><strong>8.0.1 The Three Canonical Context Types</strong></h1>
+
+<p>The Cyborg Language defines exactly <strong>three</strong> context types:</p>
+
+<ol>
+  <li><strong>CyborgContext</strong></li>
+  <li><strong>CyborgFile</strong></li>
+  <li><strong>CyborgLayer</strong></li>
+</ol>
+
+<p>These three types form the <strong>complete context universe</strong>.</p>
+
+<p>There are no others.<br />
+There will never be others.<br />
+The context set is <strong>closed</strong>.</p>
+
+<hr />
+
+<h1 id="802-context-purpose"><strong>8.0.2 Context Purpose</strong></h1>
+
+<p>Each context type serves a distinct semantic purpose:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Context Type</th>
+      <th>Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>CyborgContext</strong></td>
+      <td>AI‑targeted semantic structures</td>
+    </tr>
+    <tr>
+      <td><strong>CyborgFile</strong></td>
+      <td>file‑targeted semantic structures</td>
+    </tr>
+    <tr>
+      <td><strong>CyborgLayer</strong></td>
+      <td>runtime‑layer semantic structures</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Each context type is:</p>
+
+<ul>
+  <li>structurally distinct</li>
+  <li>semantically distinct</li>
+  <li>target‑bound</li>
+  <li>verb‑compatible</li>
+</ul>
+
+<hr />
+
+<h1 id="803-context-as-the-sole-semantic-universe"><strong>8.0.3 Context as the Sole Semantic Universe</strong></h1>
+
+<p>Verbs may only:</p>
+
+<ul>
+  <li>read fields from the context</li>
+  <li>(BUILD only) write fields inside the context</li>
+</ul>
+
+<p>Verbs may <strong>not</strong>:</p>
+
+<ul>
+  <li>allocate memory</li>
+  <li>free memory</li>
+  <li>create new structures</li>
+  <li>reference external memory</li>
+  <li>store pointers to external systems</li>
+</ul>
+
+<h3 id="meaning"><strong>Meaning</strong></h3>
+<p>The context is the <strong>entire world</strong> of the Cyborg Module.</p>
+
+<hr />
+
+<h1 id="804-context-isolation"><strong>8.0.4 Context Isolation</strong></h1>
+
+<p>The context MUST be:</p>
+
+<ul>
+  <li>private</li>
+  <li>exclusive</li>
+  <li>non‑shared</li>
+  <li>non‑aliased</li>
+  <li>non‑referenced externally</li>
+</ul>
+
+<h3 id="meaning-1"><strong>Meaning</strong></h3>
+<p>The context is a <strong>sealed semantic chamber</strong>.</p>
+
+<hr />
+
+<h1 id="805-context-determinism"><strong>8.0.5 Context Determinism</strong></h1>
+
+<p>The context MUST:</p>
+
+<ul>
+  <li>contain only deterministic fields</li>
+  <li>contain no pointers to external memory</li>
+  <li>contain no dynamic allocations</li>
+  <li>contain no nondeterministic values</li>
+</ul>
+
+<h3 id="meaning-2"><strong>Meaning</strong></h3>
+<p>The context is <strong>mathematically stable</strong>.</p>
+
+<hr />
+
+<h1 id="806-context-purity"><strong>8.0.6 Context Purity</strong></h1>
+
+<p>The context MUST NOT:</p>
+
+<ul>
+  <li>perform I/O</li>
+  <li>contain function pointers</li>
+  <li>contain external handles</li>
+  <li>contain OS resources</li>
+  <li>contain dynamic memory</li>
+</ul>
+
+<h3 id="meaning-3"><strong>Meaning</strong></h3>
+<p>The context is <strong>pure data</strong>, not behavior.</p>
+
+<hr />
+
+<h1 id="807-context-mutation-rules"><strong>8.0.7 Context Mutation Rules</strong></h1>
+
+<p>Only <code class="language-plaintext highlighter-rouge">BUILD</code> may mutate context fields.</p>
+
+<p>All other verbs MUST treat the context as read‑only.</p>
+
+<p>Mutation MUST be:</p>
+
+<ul>
+  <li>deterministic</li>
+  <li>internal</li>
+  <li>bounded</li>
+  <li>non‑allocating</li>
+  <li>non‑external</li>
+</ul>
+
+<h3 id="meaning-4"><strong>Meaning</strong></h3>
+<p>Mutation is <strong>strictly controlled</strong>.</p>
+
+<hr />
+
+<h1 id="808-context-lifecycle"><strong>8.0.8 Context Lifecycle</strong></h1>
+
+<p>The lifecycle of a context is:</p>
+
+<ol>
+  <li><strong>Allocation</strong> (host)</li>
+  <li><strong>Initialization</strong> (host)</li>
+  <li><strong>Execution</strong> (runtime)</li>
+  <li><strong>Mutation</strong> (BUILD only)</li>
+  <li><strong>Completion</strong> (runtime)</li>
+  <li><strong>Destruction</strong> (host)</li>
+</ol>
+
+<h3 id="meaning-5"><strong>Meaning</strong></h3>
+<p>The context lives only for the duration of execution.</p>
+
+<hr />
+
+<h1 id="809-context-and-ir"><strong>8.0.9 Context and IR</strong></h1>
+
+<p>The IR determines:</p>
+
+<ul>
+  <li>which context type is used</li>
+  <li>which verbs operate on it</li>
+  <li>in what order</li>
+</ul>
+
+<p>The context system does <strong>not</strong>:</p>
+
+<ul>
+  <li>infer IR</li>
+  <li>validate IR</li>
+  <li>modify IR</li>
+</ul>
+
+<h3 id="meaning-6"><strong>Meaning</strong></h3>
+<p>Context is <strong>target‑bound</strong>, not IR‑aware.</p>
+
+<hr />
+
+<h1 id="8010-context-system-summary"><strong>8.0.10 Context System Summary</strong></h1>
+
+<p>The Context System is:</p>
+
+<ul>
+  <li>closed</li>
+  <li>deterministic</li>
+  <li>pure</li>
+  <li>isolated</li>
+  <li>target‑bound</li>
+  <li>mutation‑bounded</li>
+  <li>semantically complete</li>
+</ul>
+
+<p>These three context types form the <strong>foundation</strong> of all Cyborg semantics.</p>
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.2/32_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

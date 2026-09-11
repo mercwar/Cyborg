@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>📘 PAGE 5.1 — C LAYER STRUCTURE (FORMAL SPECIFICATION) | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="📘 PAGE 5.1 — C LAYER STRUCTURE (FORMAL SPECIFICATION)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/03_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/03_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="📘 PAGE 5.1 — C LAYER STRUCTURE (FORMAL SPECIFICATION)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"📘 PAGE 5.1 — C LAYER STRUCTURE (FORMAL SPECIFICATION)","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/03_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      
+<h1 id="-page-51--c-layer-structure-formal-specification"><strong>📘 PAGE 5.1 — C LAYER STRUCTURE (FORMAL SPECIFICATION)</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="51-overview"><strong>5.1 Overview</strong></h2>
+
+<p>This section defines the <strong>formal, canonical structure</strong> of the Cyborg C Layer.<br />
+Where Page 5.0 introduced the C Layer conceptually, Page 5.1 establishes the <strong>exact structural rules</strong> that every generated C artifact MUST follow.</p>
+
+<p>The C Layer is:</p>
+
+<ul>
+  <li>rigid</li>
+  <li>minimal</li>
+  <li>deterministic</li>
+  <li>non‑inferential</li>
+  <li>non‑optimizing</li>
+  <li>strictly derived from IR</li>
+</ul>
+
+<p>This section is <strong>normative</strong>.</p>
+
+<hr />
+
+<h1 id="511-c-layer-structural-principles"><strong>5.1.1 C Layer Structural Principles</strong></h1>
+
+<p>The C Layer is governed by four structural principles:</p>
+
+<h3 id="principle-1--one-module--one-function"><strong>Principle 1 — One Module → One Function</strong></h3>
+<p>Every Cyborg Module produces exactly one C function.</p>
+
+<h3 id="principle-2--linear-execution"><strong>Principle 2 — Linear Execution</strong></h3>
+<p>The function body is a straight, top‑to‑bottom sequence of verb calls.</p>
+
+<h3 id="principle-3--no-structural-variation"><strong>Principle 3 — No Structural Variation</strong></h3>
+<p>No additional constructs may appear.</p>
+
+<h3 id="principle-4--deterministic-return"><strong>Principle 4 — Deterministic Return</strong></h3>
+<p>The return value is always the OR‑aggregation of verb results.</p>
+
+<hr />
+
+<h1 id="512-canonical-c-layer-layout"><strong>5.1.2 Canonical C Layer Layout</strong></h1>
+
+<p>Every C output MUST follow this exact layout:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] Function Signature
+[2] Opening Brace
+[3] Temporary Variables + Verb Calls
+[4] Return Aggregation
+[5] Closing Brace
+</code></pre></div></div>
+
+<p>Nothing else is permitted.</p>
+
+<hr />
+
+<h1 id="513-section-1--function-signature"><strong>5.1.3 Section 1 — Function Signature</strong></h1>
+
+<p>The signature MUST follow the rules defined in Page 4.6.</p>
+
+<h3 id="canonical-form"><strong>Canonical Form</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">cyborg_payload</span><span class="p">(</span><span class="o">&lt;</span><span class="n">TARGET_TYPE</span><span class="o">&gt;*</span> <span class="n">ctx</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Where <code class="language-plaintext highlighter-rouge">&lt;TARGET_TYPE&gt;</code> is:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">CyborgContext</code> for AI</li>
+  <li><code class="language-plaintext highlighter-rouge">CyborgFile</code> for FILE</li>
+  <li><code class="language-plaintext highlighter-rouge">CyborgLayer</code> for LAYER</li>
+</ul>
+
+<h3 id="forbidden"><strong>Forbidden</strong></h3>
+<ul>
+  <li>multiple parameters</li>
+  <li>const qualifiers</li>
+  <li>static qualifiers</li>
+  <li>inline qualifiers</li>
+  <li>attributes</li>
+  <li>comments</li>
+</ul>
+
+<hr />
+
+<h1 id="514-section-2--opening-brace"><strong>5.1.4 Section 2 — Opening Brace</strong></h1>
+
+<p>The function body MUST begin with:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+</code></pre></div></div>
+
+<p>No indentation rules are enforced, but no additional content may appear before the brace.</p>
+
+<hr />
+
+<h1 id="515-section-3--temporary-variables--verb-calls"><strong>5.1.5 Section 3 — Temporary Variables + Verb Calls</strong></h1>
+
+<p>Each EXEC_* opcode MUST produce:</p>
+
+<ol>
+  <li>a temporary variable</li>
+  <li>a direct call to the verb function</li>
+  <li>assignment of the result</li>
+</ol>
+
+<h3 id="canonical-pattern"><strong>Canonical Pattern</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">scan_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+<span class="kt">int</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">validate_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="rules"><strong>Rules</strong></h3>
+
+<ul>
+  <li>variables MUST be named sequentially (<code class="language-plaintext highlighter-rouge">r1</code>, <code class="language-plaintext highlighter-rouge">r2</code>, <code class="language-plaintext highlighter-rouge">r3</code>, …)</li>
+  <li>variables MUST NOT be reused</li>
+  <li>calls MUST NOT be reordered</li>
+  <li>calls MUST NOT be combined</li>
+  <li>calls MUST NOT be wrapped in conditions</li>
+  <li>calls MUST NOT be wrapped in loops</li>
+  <li>calls MUST NOT be optimized</li>
+</ul>
+
+<p>This section is the <strong>execution spine</strong> of the C Layer.</p>
+
+<hr />
+
+<h1 id="516-section-4--return-aggregation"><strong>5.1.6 Section 4 — Return Aggregation</strong></h1>
+
+<p>The return statement MUST aggregate all temporary variables using the OR operator.</p>
+
+<h3 id="canonical-form-1"><strong>Canonical Form</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span> <span class="o">||</span> <span class="n">r3</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="rules-1"><strong>Rules</strong></h3>
+
+<ul>
+  <li>MUST include all variables</li>
+  <li>MUST preserve order</li>
+  <li>MUST use <code class="language-plaintext highlighter-rouge">||</code></li>
+  <li>MUST be a single expression</li>
+  <li>MUST NOT contain parentheses around individual variables</li>
+  <li>MUST NOT contain additional logic</li>
+</ul>
+
+<h3 id="forbidden-1"><strong>Forbidden</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">return</span> <span class="n">r1</span><span class="p">;</span>                 <span class="c1">// ❌ ignores others</span>
+<span class="k">return</span> <span class="p">(</span><span class="n">r2</span> <span class="o">||</span> <span class="n">r1</span><span class="p">);</span>         <span class="c1">// ❌ reorders</span>
+<span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">&amp;&amp;</span> <span class="n">r2</span><span class="p">);</span>         <span class="c1">// ❌ wrong operator</span>
+<span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">|</span> <span class="n">r2</span><span class="p">);</span>          <span class="c1">// ❌ bitwise operator</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="517-section-5--closing-brace"><strong>5.1.7 Section 5 — Closing Brace</strong></h1>
+
+<p>The function MUST end with:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">}</span>
+</code></pre></div></div>
+
+<p>No trailing content is permitted.</p>
+
+<hr />
+
+<h1 id="518-full-canonical-example"><strong>5.1.8 Full Canonical Example</strong></h1>
+
+<h3 id="ir"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = AI
+OPEN_PAYLOAD
+EXEC_SCAN
+EXEC_VALIDATE
+EXEC_GIVE
+SEAL
+END_TRANSMISSION
+</code></pre>
+
+<h3 id="c-output"><strong>C Output</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">scan_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">validate_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r3</span> <span class="o">=</span> <span class="n">give_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span> <span class="o">||</span> <span class="n">r3</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This is the <strong>exact, immutable structure</strong> of the C Layer.</p>
+
+<hr />
+
+<h1 id="519-forbidden-structural-variations"><strong>5.1.9 Forbidden Structural Variations</strong></h1>
+
+<p>The following MUST be rejected:</p>
+
+<h3 id="-additional-functions">❌ Additional functions</h3>
+<h3 id="-additional-parameters">❌ Additional parameters</h3>
+<h3 id="-additional-variables">❌ Additional variables</h3>
+<h3 id="-missing-variables">❌ Missing variables</h3>
+<h3 id="-reordered-variables">❌ Reordered variables</h3>
+<h3 id="-combined-calls">❌ Combined calls</h3>
+<h3 id="-conditional-logic">❌ Conditional logic</h3>
+<h3 id="-loops">❌ Loops</h3>
+<h3 id="-macros">❌ Macros</h3>
+<h3 id="-comments">❌ Comments</h3>
+<h3 id="-logging">❌ Logging</h3>
+<h3 id="-memory-allocation">❌ Memory allocation</h3>
+<h3 id="-exception-handling">❌ Exception handling</h3>
+<h3 id="-parallel-execution">❌ Parallel execution</h3>
+
+<p>Any deviation breaks determinism.</p>
+
+<hr />
+
+<h1 id="5110-summary"><strong>5.1.10 Summary</strong></h1>
+
+<p>Page 5.1 defines the <strong>formal structure</strong> of the C Layer:</p>
+
+<ul>
+  <li>one function</li>
+  <li>fixed signature</li>
+  <li>linear verb calls</li>
+  <li>sequential temporary variables</li>
+  <li>OR‑aggregated return</li>
+  <li>no additional constructs</li>
+</ul>
+
+<p>This structure is the <strong>immutable skeleton</strong> of the Cyborg execution model.</p>
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.2/03_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

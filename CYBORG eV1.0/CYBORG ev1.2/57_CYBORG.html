@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>📘 PAGE 5.2 — C LAYER SEMANTICS (FORMAL SPECIFICATION) | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="📘 PAGE 5.2 — C LAYER SEMANTICS (FORMAL SPECIFICATION)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/57_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/57_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="📘 PAGE 5.2 — C LAYER SEMANTICS (FORMAL SPECIFICATION)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"📘 PAGE 5.2 — C LAYER SEMANTICS (FORMAL SPECIFICATION)","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/57_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      
+<h1 id="-page-52--c-layer-semantics-formal-specification"><strong>📘 PAGE 5.2 — C LAYER SEMANTICS (FORMAL SPECIFICATION)</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="52-overview"><strong>5.2 Overview</strong></h2>
+
+<p>Where Page 5.1 defined the <strong>structure</strong> of the C Layer,<br />
+Page 5.2 defines its <strong>semantics</strong> — the meaning and behavioral rules that govern execution.</p>
+
+<p>The C Layer is not merely a formatting target.<br />
+It is a <strong>semantic contract</strong>:</p>
+
+<ul>
+  <li>every line has meaning</li>
+  <li>every call has meaning</li>
+  <li>every return has meaning</li>
+  <li>nothing is decorative</li>
+  <li>nothing is optional</li>
+  <li>nothing is inferred</li>
+</ul>
+
+<p>This section is <strong>normative</strong>.</p>
+
+<hr />
+
+<h1 id="521-semantic-principle-1--linearity"><strong>5.2.1 Semantic Principle 1 — Linearity</strong></h1>
+
+<p>The C Layer executes <strong>strictly top‑to‑bottom</strong>, with:</p>
+
+<ul>
+  <li>no branching</li>
+  <li>no skipping</li>
+  <li>no short‑circuiting</li>
+  <li>no conditional execution</li>
+  <li>no loops</li>
+  <li>no recursion</li>
+</ul>
+
+<p>Each verb call MUST execute exactly once.</p>
+
+<h3 id="meaning"><strong>Meaning</strong></h3>
+<p>Execution is <strong>linear time</strong>, <strong>constant structure</strong>, <strong>deterministic order</strong>.</p>
+
+<hr />
+
+<h1 id="522-semantic-principle-2--deterministic-verb-semantics"><strong>5.2.2 Semantic Principle 2 — Deterministic Verb Semantics</strong></h1>
+
+<p>Each verb function:</p>
+
+<ul>
+  <li>MUST perform a deterministic operation</li>
+  <li>MUST NOT depend on global state</li>
+  <li>MUST NOT modify global state</li>
+  <li>MUST NOT allocate memory</li>
+  <li>MUST NOT perform I/O</li>
+  <li>MUST NOT call other verb functions</li>
+  <li>MUST NOT vary behavior based on metadata</li>
+  <li>MUST NOT vary behavior based on comments</li>
+</ul>
+
+<h3 id="meaning-1"><strong>Meaning</strong></h3>
+<p>Verb functions are <strong>pure semantic atoms</strong>.</p>
+
+<hr />
+
+<h1 id="523-semantic-principle-3--targetbound-context"><strong>5.2.3 Semantic Principle 3 — Target‑Bound Context</strong></h1>
+
+<p>The parameter type determines the <strong>semantic domain</strong> of the module.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Target</th>
+      <th>Semantic Domain</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>AI</td>
+      <td>AI context operations</td>
+    </tr>
+    <tr>
+      <td>FILE</td>
+      <td>File operations</td>
+    </tr>
+    <tr>
+      <td>LAYER</td>
+      <td>Layer operations</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="meaning-2"><strong>Meaning</strong></h3>
+<p>Verb functions MUST interpret their context <strong>only</strong> through the target type.</p>
+
+<p>No cross‑domain behavior is permitted.</p>
+
+<hr />
+
+<h1 id="524-semantic-principle-4--result-semantics"><strong>5.2.4 Semantic Principle 4 — Result Semantics</strong></h1>
+
+<p>Each verb returns an <code class="language-plaintext highlighter-rouge">int</code> representing:</p>
+
+<ul>
+  <li>success</li>
+  <li>failure</li>
+  <li>or a domain‑specific status</li>
+</ul>
+
+<p>The C Layer MUST NOT reinterpret these values.</p>
+
+<h3 id="meaning-3"><strong>Meaning</strong></h3>
+<p>The C Layer is a <strong>pass‑through aggregator</strong>, not a decision engine.</p>
+
+<hr />
+
+<h1 id="525-semantic-principle-5--oraggregation"><strong>5.2.5 Semantic Principle 5 — OR‑Aggregation</strong></h1>
+
+<p>The final return value is:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span> <span class="o">||</span> <span class="n">r3</span> <span class="o">||</span> <span class="p">...)</span>
+</code></pre></div></div>
+
+<p>This has strict semantic meaning:</p>
+
+<ul>
+  <li>if <strong>any</strong> verb returns non‑zero → the payload returns non‑zero</li>
+  <li>if <strong>all</strong> verbs return zero → the payload returns zero</li>
+</ul>
+
+<h3 id="meaning-4"><strong>Meaning</strong></h3>
+<p>The payload returns <strong>“did anything meaningful happen?”</strong></p>
+
+<p>This is the Cyborg Language’s <strong>semantic heartbeat</strong>.</p>
+
+<hr />
+
+<h1 id="526-semantic-principle-6--no-side-effects"><strong>5.2.6 Semantic Principle 6 — No Side Effects</strong></h1>
+
+<p>The C Layer MUST NOT:</p>
+
+<ul>
+  <li>allocate memory</li>
+  <li>free memory</li>
+  <li>open files</li>
+  <li>close files</li>
+  <li>write to disk</li>
+  <li>write to network</li>
+  <li>log</li>
+  <li>print</li>
+  <li>throw exceptions</li>
+  <li>modify global variables</li>
+</ul>
+
+<h3 id="meaning-5"><strong>Meaning</strong></h3>
+<p>All side effects MUST occur <strong>inside verb functions</strong>, never in the C Layer.</p>
+
+<hr />
+
+<h1 id="527-semantic-principle-7--no-semantic-inference"><strong>5.2.7 Semantic Principle 7 — No Semantic Inference</strong></h1>
+
+<p>The C Layer MUST NOT:</p>
+
+<ul>
+  <li>infer missing verbs</li>
+  <li>infer missing logic</li>
+  <li>infer missing markers</li>
+  <li>infer missing metadata</li>
+  <li>infer missing return values</li>
+  <li>infer missing context</li>
+</ul>
+
+<h3 id="meaning-6"><strong>Meaning</strong></h3>
+<p>The C Layer is <strong>semantically blind</strong> outside the IR.</p>
+
+<hr />
+
+<h1 id="528-semantic-principle-8--no-semantic-optimization"><strong>5.2.8 Semantic Principle 8 — No Semantic Optimization</strong></h1>
+
+<p>The C Layer MUST NOT:</p>
+
+<ul>
+  <li>reorder calls</li>
+  <li>remove calls</li>
+  <li>combine calls</li>
+  <li>inline calls</li>
+  <li>short‑circuit OR expressions</li>
+  <li>collapse expressions</li>
+  <li>eliminate temporary variables</li>
+</ul>
+
+<h3 id="meaning-7"><strong>Meaning</strong></h3>
+<p>The C Layer is <strong>not a compiler</strong>.<br />
+It is a <strong>semantic transcription engine</strong>.</p>
+
+<hr />
+
+<h1 id="529-semantic-principle-9--no-semantic-decoration"><strong>5.2.9 Semantic Principle 9 — No Semantic Decoration</strong></h1>
+
+<p>The C Layer MUST NOT include:</p>
+
+<ul>
+  <li>comments</li>
+  <li>annotations</li>
+  <li>attributes</li>
+  <li>macros</li>
+  <li>debug statements</li>
+  <li>logging</li>
+  <li>tracing</li>
+</ul>
+
+<h3 id="meaning-8"><strong>Meaning</strong></h3>
+<p>The C Layer is <strong>pure execution</strong>, nothing more.</p>
+
+<hr />
+
+<h1 id="5210-full-semantic-example"><strong>5.2.10 Full Semantic Example</strong></h1>
+
+<h3 id="ir"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = FILE
+OPEN_PAYLOAD
+EXEC_VALIDATE
+EXEC_SCAN
+EXEC_BUILD
+SEAL
+</code></pre>
+
+<h3 id="c-output"><strong>C Output</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="n">CyborgFile</span><span class="o">*</span> <span class="n">file</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">validate_context</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">scan_context</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r3</span> <span class="o">=</span> <span class="n">build_context</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span> <span class="o">||</span> <span class="n">r3</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="semantic-interpretation"><strong>Semantic Interpretation</strong></h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">validate_context</code> MUST run first</li>
+  <li><code class="language-plaintext highlighter-rouge">scan_context</code> MUST run second</li>
+  <li><code class="language-plaintext highlighter-rouge">build_context</code> MUST run third</li>
+  <li>all results MUST be OR‑aggregated</li>
+  <li>no call may be skipped</li>
+  <li>no call may be reordered</li>
+  <li>no call may be optimized</li>
+  <li>no call may be inferred</li>
+</ul>
+
+<p>This is the <strong>semantic contract</strong> of the C Layer.</p>
+
+<hr />
+
+<h1 id="5211-summary"><strong>5.2.11 Summary</strong></h1>
+
+<p>Page 5.2 defines the <strong>semantic laws</strong> of the C Layer:</p>
+
+<ul>
+  <li>linear execution</li>
+  <li>deterministic verb semantics</li>
+  <li>target‑bound context</li>
+  <li>OR‑aggregated results</li>
+  <li>no side effects</li>
+  <li>no inference</li>
+  <li>no optimization</li>
+  <li>no decoration</li>
+</ul>
+
+<p>The C Layer is the <strong>pure semantic executor</strong> of the Cyborg Language.</p>
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.2/57_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

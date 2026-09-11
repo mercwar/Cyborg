@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>📘 PAGE 9.6 — IR CANONICAL EXAMPLES (MASTER SET) | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="📘 PAGE 9.6 — IR CANONICAL EXAMPLES (MASTER SET)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/44_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/44_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="📘 PAGE 9.6 — IR CANONICAL EXAMPLES (MASTER SET)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"📘 PAGE 9.6 — IR CANONICAL EXAMPLES (MASTER SET)","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/44_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      
+<h1 id="-page-96--ir-canonical-examples-master-set"><strong>📘 PAGE 9.6 — IR CANONICAL EXAMPLES (MASTER SET)</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="96-overview"><strong>9.6 Overview</strong></h2>
+
+<p>This page provides the <strong>complete, authoritative example set</strong> for Cyborg IR:</p>
+
+<ul>
+  <li>minimal IR</li>
+  <li>single‑verb IR</li>
+  <li>multi‑verb IR</li>
+  <li>repeated‑verb IR</li>
+  <li>mixed‑order IR</li>
+  <li>full‑chain IR</li>
+  <li>failure‑tolerant IR</li>
+  <li>deterministic IR</li>
+  <li>purity‑compliant IR</li>
+</ul>
+
+<p>These examples define the <strong>reference truth</strong> for all IR implementations.</p>
+
+<p>This section is <strong>normative</strong>.</p>
+
+<hr />
+
+<h1 id="961-minimal-ir-example"><strong>9.6.1 Minimal IR Example</strong></h1>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TARGET = AI
+OPEN_PAYLOAD
+SEAL
+</code></pre></div></div>
+
+<h3 id="meaning"><strong>Meaning</strong></h3>
+<p>A module with no verbs.<br />
+Executes nothing.<br />
+Returns success (<code class="language-plaintext highlighter-rouge">0</code>).</p>
+
+<hr />
+
+<h1 id="962-singleverb-ir-example"><strong>9.6.2 Single‑Verb IR Example</strong></h1>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TARGET = FILE
+OPEN_PAYLOAD
+EXEC_VALIDATE
+SEAL
+</code></pre></div></div>
+
+<h3 id="meaning-1"><strong>Meaning</strong></h3>
+<p>Runs only VALIDATE on a <code class="language-plaintext highlighter-rouge">CyborgFile</code>.</p>
+
+<hr />
+
+<h1 id="963-twoverb-ir-example"><strong>9.6.3 Two‑Verb IR Example</strong></h1>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TARGET = LAYER
+OPEN_PAYLOAD
+EXEC_SCAN
+EXEC_BUILD
+SEAL
+</code></pre></div></div>
+
+<h3 id="meaning-2"><strong>Meaning</strong></h3>
+<p>SCAN → BUILD<br />
+No inference.<br />
+No optimization.</p>
+
+<hr />
+
+<h1 id="964-full-verb-chain-example"><strong>9.6.4 Full Verb Chain Example</strong></h1>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TARGET = AI
+OPEN_PAYLOAD
+EXEC_VALIDATE
+EXEC_SCAN
+EXEC_BUILD
+EXEC_GIVE
+EXEC_EXPLAIN
+SEAL
+</code></pre></div></div>
+
+<h3 id="meaning-3"><strong>Meaning</strong></h3>
+<p>The complete semantic lifecycle.</p>
+
+<hr />
+
+<h1 id="965-repeated-verb-example"><strong>9.6.5 Repeated Verb Example</strong></h1>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TARGET = FILE
+OPEN_PAYLOAD
+EXEC_BUILD
+EXEC_BUILD
+EXEC_BUILD
+SEAL
+</code></pre></div></div>
+
+<h3 id="meaning-4"><strong>Meaning</strong></h3>
+<p>Repeated verbs are allowed.<br />
+Runtime MUST NOT collapse or optimize them.</p>
+
+<hr />
+
+<h1 id="966-mixed-ordering-example"><strong>9.6.6 Mixed Ordering Example</strong></h1>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TARGET = AI
+OPEN_PAYLOAD
+EXEC_GIVE
+EXEC_VALIDATE
+EXEC_EXPLAIN
+SEAL
+</code></pre></div></div>
+
+<h3 id="meaning-5"><strong>Meaning</strong></h3>
+<p>Order is preserved exactly as written.<br />
+Semantics do not change.</p>
+
+<hr />
+
+<h1 id="967-failuretolerant-ir-example"><strong>9.6.7 Failure‑Tolerant IR Example</strong></h1>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TARGET = LAYER
+OPEN_PAYLOAD
+EXEC_VALIDATE
+EXEC_BUILD
+EXEC_GIVE
+SEAL
+</code></pre></div></div>
+
+<h3 id="meaning-6"><strong>Meaning</strong></h3>
+<p>Even if VALIDATE fails:<br />
+BUILD still runs.<br />
+GIVE still runs.<br />
+Execution never stops early.</p>
+
+<hr />
+
+<h1 id="968-deterministic-ir-example"><strong>9.6.8 Deterministic IR Example</strong></h1>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TARGET = FILE
+OPEN_PAYLOAD
+EXEC_SCAN
+EXEC_GIVE
+SEAL
+</code></pre></div></div>
+
+<h3 id="meaning-7"><strong>Meaning</strong></h3>
+<p>Same IR → same C code → same execution → same result.</p>
+
+<hr />
+
+<h1 id="969-puritycompliant-ir-example"><strong>9.6.9 Purity‑Compliant IR Example</strong></h1>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TARGET = AI
+OPEN_PAYLOAD
+EXEC_VALIDATE
+EXEC_SCAN
+SEAL
+</code></pre></div></div>
+
+<h3 id="meaning-8"><strong>Meaning</strong></h3>
+<p>No parameters.<br />
+No metadata.<br />
+No dynamic constructs.<br />
+Pure declaration.</p>
+
+<hr />
+
+<h1 id="9610-canonical-ir--c-example"><strong>9.6.10 Canonical IR → C Example</strong></h1>
+
+<h3 id="ir"><strong>IR</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TARGET = FILE
+OPEN_PAYLOAD
+EXEC_VALIDATE
+EXEC_SCAN
+EXEC_BUILD
+SEAL
+</code></pre></div></div>
+
+<h3 id="generated-c"><strong>Generated C</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="n">CyborgFile</span><span class="o">*</span> <span class="n">file</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">validate_context</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">scan_context</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r3</span> <span class="o">=</span> <span class="n">build_context</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span> <span class="o">||</span> <span class="n">r3</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="meaning-9"><strong>Meaning</strong></h3>
+<p>IR → C is a <strong>pure, deterministic mapping</strong>.</p>
+
+<hr />
+
+<h1 id="9611-canonical-ir-with-no-build"><strong>9.6.11 Canonical IR With No BUILD</strong></h1>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TARGET = AI
+OPEN_PAYLOAD
+EXEC_VALIDATE
+EXEC_GIVE
+EXEC_EXPLAIN
+SEAL
+</code></pre></div></div>
+
+<h3 id="meaning-10"><strong>Meaning</strong></h3>
+<p>GIVE and EXPLAIN MUST NOT assume BUILD ran.<br />
+They operate on whatever exists.</p>
+
+<hr />
+
+<h1 id="9612-canonical-ir-with-only-build"><strong>9.6.12 Canonical IR With Only BUILD</strong></h1>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TARGET = LAYER
+OPEN_PAYLOAD
+EXEC_BUILD
+SEAL
+</code></pre></div></div>
+
+<h3 id="meaning-11"><strong>Meaning</strong></h3>
+<p>BUILD mutates context.<br />
+No other verbs run.</p>
+
+<hr />
+
+<h1 id="9613-canonical-ir-with-zero-verbs"><strong>9.6.13 Canonical IR With Zero Verbs</strong></h1>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TARGET = FILE
+OPEN_PAYLOAD
+SEAL
+</code></pre></div></div>
+
+<h3 id="meaning-12"><strong>Meaning</strong></h3>
+<p>Valid.<br />
+Does nothing.<br />
+Returns success.</p>
+
+<hr />
+
+<h1 id="9614-summary"><strong>9.6.14 Summary</strong></h1>
+
+<p>Page 9.6 defines the <strong>master canonical IR example set</strong>:</p>
+
+<ul>
+  <li>minimal IR</li>
+  <li>single‑verb IR</li>
+  <li>multi‑verb IR</li>
+  <li>repeated verbs</li>
+  <li>mixed ordering</li>
+  <li>full chain</li>
+  <li>deterministic IR</li>
+  <li>purity‑compliant IR</li>
+  <li>IR → C mapping</li>
+</ul>
+
+<p>This library is the <strong>reference truth</strong> for all IR usage in the Cyborg Language.</p>
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.2/44_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>📘 PAGE 3.8 — MARKER RULES (ADVANCED) | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="📘 PAGE 3.8 — MARKER RULES (ADVANCED)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/18_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/18_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="📘 PAGE 3.8 — MARKER RULES (ADVANCED)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"📘 PAGE 3.8 — MARKER RULES (ADVANCED)","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/18_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      <h1 id="-page-38--marker-rules-advanced"><strong>📘 PAGE 3.8 — MARKER RULES (ADVANCED)</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="38-overview"><strong>3.8 Overview</strong></h2>
+
+<p>This section expands the marker system into its <strong>advanced, formalized rule set</strong>.<br />
+Markers are the <strong>structural law</strong> of the Cyborg Language.<br />
+They define:</p>
+
+<ul>
+  <li>where execution begins</li>
+  <li>where execution ends</li>
+  <li>what is real</li>
+  <li>what is ignored</li>
+  <li>what is allowed</li>
+  <li>what is forbidden</li>
+</ul>
+
+<p>Markers are <strong>non‑optional</strong>, <strong>non‑inferential</strong>, and <strong>non‑negotiable</strong>.</p>
+
+<p>This section is <strong>normative</strong>.</p>
+
+<hr />
+
+<h1 id="381-the-three-structural-markers-reaffirmed"><strong>3.8.1 The Three Structural Markers (Reaffirmed)</strong></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Marker</th>
+      <th>Purpose</th>
+      <th>Required</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">begin</code> / <code class="language-plaintext highlighter-rouge">#BGIN</code></td>
+      <td>Open payload</td>
+      <td><strong>MUST</strong></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">#!#</code></td>
+      <td>Seal payload</td>
+      <td><strong>MUST</strong></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">end</code></td>
+      <td>Terminate transmission</td>
+      <td><strong>SHOULD</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>These markers define the <strong>execution chamber</strong>.</p>
+
+<hr />
+
+<h1 id="382-marker-law-the-four-absolutes"><strong>3.8.2 Marker Law: The Four Absolutes</strong></h1>
+
+<p>The Cyborg Language enforces four absolute rules regarding markers:</p>
+
+<h3 id="absolute-1--markers-define-reality"><strong>Absolute 1 — Markers Define Reality</strong></h3>
+<p>Only content between <code class="language-plaintext highlighter-rouge">begin</code> and <code class="language-plaintext highlighter-rouge">#!#</code> exists.</p>
+
+<h3 id="absolute-2--markers-must-not-be-inferred"><strong>Absolute 2 — Markers Must Not Be Inferred</strong></h3>
+<p>AI systems MUST NOT guess missing markers.</p>
+
+<h3 id="absolute-3--markers-must-not-be-nested"><strong>Absolute 3 — Markers Must Not Be Nested</strong></h3>
+<p>Payloads cannot contain payloads.</p>
+
+<h3 id="absolute-4--markers-must-not-be-repeated"><strong>Absolute 4 — Markers Must Not Be Repeated</strong></h3>
+<p>Each marker appears exactly once per module.</p>
+
+<p>These rules ensure <strong>deterministic execution</strong>.</p>
+
+<hr />
+
+<h1 id="383-marker-boundary-model"><strong>3.8.3 Marker Boundary Model</strong></h1>
+
+<p>The Cyborg Language uses a <strong>hard boundary model</strong>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>OUTSIDE → NON-EXECUTABLE
+INSIDE  → EXECUTABLE
+SEALED  → UNTOUCHABLE
+</code></pre></div></div>
+
+<h3 id="outside-payload"><strong>Outside Payload</strong></h3>
+<ul>
+  <li>declarations allowed</li>
+  <li>comments allowed</li>
+  <li>no verbs allowed</li>
+</ul>
+
+<h3 id="inside-payload"><strong>Inside Payload</strong></h3>
+<ul>
+  <li>verbs allowed</li>
+  <li>comments allowed (non‑breaking)</li>
+  <li>no declarations allowed</li>
+</ul>
+
+<h3 id="after-seal"><strong>After Seal</strong></h3>
+<ul>
+  <li>nothing allowed</li>
+  <li>everything ignored</li>
+</ul>
+
+<hr />
+
+<h1 id="384-marker-integrity-rules"><strong>3.8.4 Marker Integrity Rules</strong></h1>
+
+<h3 id="rule-1--the-payload-must-begin-cleanly"><strong>Rule 1 — The Payload Must Begin Cleanly</strong></h3>
+<p>No content may precede <code class="language-plaintext highlighter-rouge">begin</code> except declarations and comments.</p>
+
+<h3 id="rule-2--the-payload-must-end-cleanly"><strong>Rule 2 — The Payload Must End Cleanly</strong></h3>
+<p>No content may follow <code class="language-plaintext highlighter-rouge">#!#</code> except <code class="language-plaintext highlighter-rouge">end</code> and comments.</p>
+
+<h3 id="rule-3--markers-must-be-alone-on-their-line"><strong>Rule 3 — Markers Must Be Alone on Their Line</strong></h3>
+<p>Valid:</p>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+</code></pre></div></div>
+
+<p>Invalid:</p>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span> <span class="n">validate</span>   <span class="c1">' ❌ forbidden</span>
+</code></pre></div></div>
+
+<h3 id="rule-4--markers-must-not-be-fragmented"><strong>Rule 4 — Markers Must Not Be Fragmented</strong></h3>
+<p>Forbidden:</p>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">#</span> <span class="n">B</span> <span class="n">G</span> <span class="n">I</span> <span class="n">N</span>   <span class="c1">' ❌ whitespace splitting</span>
+</code></pre></div></div>
+
+<h3 id="rule-5--markers-must-not-be-decorated"><strong>Rule 5 — Markers Must Not Be Decorated</strong></h3>
+<p>Forbidden:</p>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">***</span><span class="n">begin</span><span class="o">***</span>   <span class="c1">' ❌ invalid</span>
+</code></pre></div></div>
+
+<p>Markers must appear <strong>exactly</strong> as defined.</p>
+
+<hr />
+
+<h1 id="385-marker-precedence"><strong>3.8.5 Marker Precedence</strong></h1>
+
+<p>Markers override:</p>
+
+<ul>
+  <li>whitespace</li>
+  <li>comments</li>
+  <li>metadata</li>
+  <li>formatting</li>
+  <li>indentation</li>
+</ul>
+
+<p>Markers do <strong>not</strong> override:</p>
+
+<ul>
+  <li>targeting rules</li>
+  <li>verb ordering rules</li>
+  <li>sealing rules</li>
+</ul>
+
+<p>Markers define <strong>structure</strong>, not <strong>behavior</strong>.</p>
+
+<hr />
+
+<h1 id="386-marker-error-conditions"><strong>3.8.6 Marker Error Conditions</strong></h1>
+
+<p>The following MUST cause immediate rejection:</p>
+
+<h3 id="-missing-begin">❌ Missing <code class="language-plaintext highlighter-rouge">begin</code></h3>
+<h3 id="-missing-">❌ Missing <code class="language-plaintext highlighter-rouge">#!#</code></h3>
+<h3 id="-multiple-begin-markers">❌ Multiple <code class="language-plaintext highlighter-rouge">begin</code> markers</h3>
+<h3 id="-multiple--markers">❌ Multiple <code class="language-plaintext highlighter-rouge">#!#</code> markers</h3>
+<h3 id="-nested-payloads">❌ Nested payloads</h3>
+<h3 id="-trailing-content-after-seal">❌ Trailing content after seal</h3>
+<h3 id="-declarations-inside-payload">❌ Declarations inside payload</h3>
+<h3 id="-comments-between-marker-fragments">❌ Comments between marker fragments</h3>
+<h3 id="-marker-typos-or-variants">❌ Marker typos or variants</h3>
+<h3 id="-marker-decoration-or-whitespace-fragmentation">❌ Marker decoration or whitespace fragmentation</h3>
+
+<p>These errors are <strong>fatal</strong>.</p>
+
+<hr />
+
+<h1 id="387-advanced-marker-examples"><strong>3.8.7 Advanced Marker Examples</strong></h1>
+
+<h3 id="valid"><strong>Valid</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">set</span> <span class="n">to</span> <span class="n">you</span>
+<span class="n">begin</span>
+<span class="n">scan</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+<span class="n">end</span>
+</code></pre></div></div>
+
+<h3 id="valid-with-comments"><strong>Valid (with comments)</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">set</span> <span class="n">to</span> <span class="n">file</span>
+<span class="c1">' scanning file</span>
+<span class="n">begin</span>
+<span class="n">scan</span>      <span class="c1">' pass 1</span>
+<span class="n">validate</span>  <span class="c1">' pass 2</span>
+<span class="p">#!#</span>
+<span class="n">end</span>
+</code></pre></div></div>
+
+<h3 id="invalid--trailing-content"><strong>Invalid — Trailing Content</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+<span class="n">extra</span>   <span class="c1">' ❌ forbidden</span>
+</code></pre></div></div>
+
+<h3 id="invalid--nested-payload"><strong>Invalid — Nested Payload</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">begin</span>   <span class="c1">' ❌ forbidden</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<h3 id="invalid--marker-fragmentation"><strong>Invalid — Marker Fragmentation</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">#</span> <span class="n">B</span> <span class="n">G</span> <span class="n">I</span> <span class="n">N</span>   <span class="c1">' ❌ forbidden</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="388-marker--ir-mapping"><strong>3.8.8 Marker → IR Mapping</strong></h1>
+
+<h3 id="vbstyle"><strong>VB‑Style</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<h3 id="ir"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">OPEN_PAYLOAD
+EXEC_VALIDATE
+SEAL
+</code></pre>
+
+<p>Markers define the <strong>execution envelope</strong>.</p>
+
+<hr />
+
+<h1 id="389-marker--c-mapping"><strong>3.8.9 Marker → C Mapping</strong></h1>
+
+<p>Markers do not appear in C output.<br />
+They define <strong>structure</strong>, not <strong>syntax</strong>.</p>
+
+<h3 id="c-output"><strong>C Output</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">validate_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="3810-summary"><strong>3.8.10 Summary</strong></h1>
+
+<p>Page 3.8 defines the <strong>advanced marker rules</strong>:</p>
+
+<ul>
+  <li>markers define reality</li>
+  <li>markers must not be inferred</li>
+  <li>markers must not be nested</li>
+  <li>markers must not be repeated</li>
+  <li>markers must be exact</li>
+  <li>markers enforce deterministic execution</li>
+  <li>markers override formatting but not logic</li>
+</ul>
+
+<p>Markers are the <strong>ceremonial skeleton</strong> of the Cyborg Language.</p>
+
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.1/18_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

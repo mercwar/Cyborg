@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>📘 PAGE 4.9 — IR CANONICAL EXAMPLES (MASTER SET) | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="📘 PAGE 4.9 — IR CANONICAL EXAMPLES (MASTER SET)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/23_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/23_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="📘 PAGE 4.9 — IR CANONICAL EXAMPLES (MASTER SET)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"📘 PAGE 4.9 — IR CANONICAL EXAMPLES (MASTER SET)","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/23_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      
+<h1 id="-page-49--ir-canonical-examples-master-set"><strong>📘 PAGE 4.9 — IR CANONICAL EXAMPLES (MASTER SET)</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="49-overview"><strong>4.9 Overview</strong></h2>
+
+<p>This section provides the <strong>complete, authoritative library</strong> of canonical IR examples.<br />
+These examples demonstrate:</p>
+
+<ul>
+  <li>valid structures</li>
+  <li>invalid structures</li>
+  <li>boundary conditions</li>
+  <li>multi‑verb payloads</li>
+  <li>minimal payloads</li>
+  <li>metadata interactions</li>
+  <li>comment interactions</li>
+  <li>target variations</li>
+</ul>
+
+<p>This section is <strong>normative</strong> and serves as the <strong>reference corpus</strong> for all IR implementations.</p>
+
+<hr />
+
+<h1 id="491-canonical-example--minimal-valid-module"><strong>4.9.1 Canonical Example — Minimal Valid Module</strong></h1>
+
+<h3 id="vbstyle"><strong>VB‑Style</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">set</span> <span class="n">to</span> <span class="n">you</span>
+<span class="n">begin</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+<span class="n">end</span>
+</code></pre></div></div>
+
+<h3 id="ir"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = AI
+OPEN_PAYLOAD
+EXEC_VALIDATE
+SEAL
+END_TRANSMISSION
+</code></pre>
+
+<hr />
+
+<h1 id="492-canonical-example--multiverb-module"><strong>4.9.2 Canonical Example — Multi‑Verb Module</strong></h1>
+
+<h3 id="vbstyle-1"><strong>VB‑Style</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">set</span> <span class="n">to</span> <span class="n">file</span>
+<span class="n">begin</span>
+<span class="n">scan</span>
+<span class="n">validate</span>
+<span class="n">build</span>
+<span class="n">give</span>
+<span class="p">#!#</span>
+<span class="n">end</span>
+</code></pre></div></div>
+
+<h3 id="ir-1"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = FILE
+OPEN_PAYLOAD
+EXEC_SCAN
+EXEC_VALIDATE
+EXEC_BUILD
+EXEC_GIVE
+SEAL
+END_TRANSMISSION
+</code></pre>
+
+<hr />
+
+<h1 id="493-canonical-example--with-metadata"><strong>4.9.3 Canonical Example — With Metadata</strong></h1>
+
+<h3 id="vbstyle-2"><strong>VB‑Style</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">set</span> <span class="n">to</span> <span class="n">layer</span>
+<span class="n">meta</span> <span class="s">"description: test module"</span>
+<span class="n">begin</span>
+<span class="n">scan</span>
+<span class="p">#!#</span>
+<span class="n">end</span>
+</code></pre></div></div>
+
+<h3 id="ir-2"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = LAYER
+META("description: test module")
+OPEN_PAYLOAD
+EXEC_SCAN
+SEAL
+END_TRANSMISSION
+</code></pre>
+
+<p>Metadata is preserved but non‑executable.</p>
+
+<hr />
+
+<h1 id="494-canonical-example--with-comments"><strong>4.9.4 Canonical Example — With Comments</strong></h1>
+
+<h3 id="vbstyle-3"><strong>VB‑Style</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">' layer scan test</span>
+<span class="n">set</span> <span class="n">to</span> <span class="n">layer</span>
+<span class="n">begin</span>
+<span class="n">scan</span>      <span class="c1">' first pass</span>
+<span class="n">validate</span>  <span class="c1">' second pass</span>
+<span class="p">#!#</span>
+<span class="n">end</span>
+</code></pre></div></div>
+
+<h3 id="ir-3"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = LAYER
+OPEN_PAYLOAD
+EXEC_SCAN
+EXEC_VALIDATE
+SEAL
+END_TRANSMISSION
+</code></pre>
+
+<p>Comments do not appear in IR.</p>
+
+<hr />
+
+<h1 id="495-canonical-example--zeroverb-payload"><strong>4.9.5 Canonical Example — Zero‑Verb Payload</strong></h1>
+
+<h3 id="vbstyle-4"><strong>VB‑Style</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">set</span> <span class="n">to</span> <span class="n">you</span>
+<span class="n">begin</span>
+<span class="p">#!#</span>
+<span class="n">end</span>
+</code></pre></div></div>
+
+<h3 id="ir-4"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = AI
+OPEN_PAYLOAD
+SEAL
+END_TRANSMISSION
+</code></pre>
+
+<p>Zero‑verb payloads are valid.</p>
+
+<hr />
+
+<h1 id="496-canonical-example--maximal-verb-payload"><strong>4.9.6 Canonical Example — Maximal Verb Payload</strong></h1>
+
+<h3 id="vbstyle-5"><strong>VB‑Style</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">set</span> <span class="n">to</span> <span class="n">you</span>
+<span class="n">begin</span>
+<span class="n">validate</span>
+<span class="n">scan</span>
+<span class="n">build</span>
+<span class="n">give</span>
+<span class="n">explain</span>
+<span class="p">#!#</span>
+<span class="n">end</span>
+</code></pre></div></div>
+
+<h3 id="ir-5"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = AI
+OPEN_PAYLOAD
+EXEC_VALIDATE
+EXEC_SCAN
+EXEC_BUILD
+EXEC_GIVE
+EXEC_EXPLAIN
+SEAL
+END_TRANSMISSION
+</code></pre>
+
+<p>All five verbs in order.</p>
+
+<hr />
+
+<h1 id="497-invalid-example--missing-target"><strong>4.9.7 Invalid Example — Missing Target</strong></h1>
+
+<h3 id="vbstyle-6"><strong>VB‑Style</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<h3 id="ir-status"><strong>IR Status</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>INVALID — TARGET_ERROR: missing target.
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="498-invalid-example--missing-seal"><strong>4.9.8 Invalid Example — Missing Seal</strong></h1>
+
+<h3 id="vbstyle-7"><strong>VB‑Style</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">set</span> <span class="n">to</span> <span class="n">you</span>
+<span class="n">begin</span>
+<span class="n">validate</span>
+</code></pre></div></div>
+
+<h3 id="ir-status-1"><strong>IR Status</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>INVALID — MARKER_ERROR: missing seal.
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="499-invalid-example--nested-payload"><strong>4.9.9 Invalid Example — Nested Payload</strong></h1>
+
+<h3 id="vbstyle-8"><strong>VB‑Style</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">set</span> <span class="n">to</span> <span class="n">file</span>
+<span class="n">begin</span>
+<span class="n">begin</span>
+<span class="n">scan</span>
+<span class="p">#!#</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<h3 id="ir-status-2"><strong>IR Status</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>INVALID — BOUNDARY_ERROR: nested payload.
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="4910-invalid-example--unknown-verb"><strong>4.9.10 Invalid Example — Unknown Verb</strong></h1>
+
+<h3 id="vbstyle-9"><strong>VB‑Style</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">set</span> <span class="n">to</span> <span class="n">you</span>
+<span class="n">begin</span>
+<span class="n">optimize</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<h3 id="ir-status-3"><strong>IR Status</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>INVALID — EXECUTION_ERROR: unknown verb "optimize".
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="4911-invalid-example--trailing-content"><strong>4.9.11 Invalid Example — Trailing Content</strong></h1>
+
+<h3 id="vbstyle-10"><strong>VB‑Style</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">set</span> <span class="n">to</span> <span class="n">you</span>
+<span class="n">begin</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+<span class="n">extra</span>
+</code></pre></div></div>
+
+<h3 id="ir-status-4"><strong>IR Status</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>INVALID — MARKER_ERROR: trailing content after seal.
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="4912-invalid-example--verb-outside-payload"><strong>4.9.12 Invalid Example — Verb Outside Payload</strong></h1>
+
+<h3 id="vbstyle-11"><strong>VB‑Style</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">validate</span>
+<span class="n">set</span> <span class="n">to</span> <span class="n">you</span>
+<span class="n">begin</span>
+<span class="n">scan</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<h3 id="ir-status-5"><strong>IR Status</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>INVALID — EXECUTION_ERROR: verb outside payload.
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="4913-invalid-example--verb-with-arguments"><strong>4.9.13 Invalid Example — Verb With Arguments</strong></h1>
+
+<h3 id="vbstyle-12"><strong>VB‑Style</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">set</span> <span class="n">to</span> <span class="n">you</span>
+<span class="n">begin</span>
+<span class="n">validate</span> <span class="n">deep</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<h3 id="ir-status-6"><strong>IR Status</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>INVALID — EXECUTION_ERROR: verb contains arguments.
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="4914-invalid-example--grouped-verbs"><strong>4.9.14 Invalid Example — Grouped Verbs</strong></h1>
+
+<h3 id="vbstyle-13"><strong>VB‑Style</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">set</span> <span class="n">to</span> <span class="n">you</span>
+<span class="n">begin</span>
+<span class="n">scan</span> <span class="n">validate</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<h3 id="ir-status-7"><strong>IR Status</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>INVALID — EXECUTION_ERROR: grouped verbs.
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="4915-invalid-example--marker-fragmentation"><strong>4.9.15 Invalid Example — Marker Fragmentation</strong></h1>
+
+<h3 id="vbstyle-14"><strong>VB‑Style</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">set</span> <span class="n">to</span> <span class="n">you</span>
+<span class="p">#</span> <span class="n">B</span> <span class="n">G</span> <span class="n">I</span> <span class="n">N</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<h3 id="ir-status-8"><strong>IR Status</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>INVALID — MARKER_ERROR: fragmented marker.
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="4916-summary"><strong>4.9.16 Summary</strong></h1>
+
+<p>Page 4.9 provides the <strong>master canonical example set</strong>:</p>
+
+<ul>
+  <li>minimal modules</li>
+  <li>maximal modules</li>
+  <li>metadata modules</li>
+  <li>comment modules</li>
+  <li>zero‑verb modules</li>
+  <li>multi‑verb modules</li>
+  <li>all major invalid patterns</li>
+</ul>
+
+<p>This corpus defines the <strong>reference truth</strong> for all IR implementations.</p>
+
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.1/23_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>📘 PAGE 4.2 — IR GENERATION RULES (DEEP SPECIFICATION) | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="📘 PAGE 4.2 — IR GENERATION RULES (DEEP SPECIFICATION)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/21_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/21_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="📘 PAGE 4.2 — IR GENERATION RULES (DEEP SPECIFICATION)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"📘 PAGE 4.2 — IR GENERATION RULES (DEEP SPECIFICATION)","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/21_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      
+<h1 id="-page-42--ir-generation-rules-deep-specification"><strong>📘 PAGE 4.2 — IR GENERATION RULES (DEEP SPECIFICATION)</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="42-overview"><strong>4.2 Overview</strong></h2>
+
+<p>This section defines the <strong>deep, formal, machine‑level rules</strong> governing how VB‑style Cyborg syntax is transformed into Cyborg IR.<br />
+These rules ensure:</p>
+
+<ul>
+  <li>deterministic translation</li>
+  <li>zero inference</li>
+  <li>strict structural integrity</li>
+  <li>absolute ordering</li>
+  <li>reproducible C output</li>
+</ul>
+
+<p>IR generation is <strong>mechanical</strong>, <strong>non‑interpretive</strong>, and <strong>non‑negotiable</strong>.</p>
+
+<p>This section is <strong>normative</strong>.</p>
+
+<hr />
+
+<h1 id="421-the-ir-generation-pipeline"><strong>4.2.1 The IR Generation Pipeline</strong></h1>
+
+<p>IR generation proceeds through <strong>five mandatory phases</strong>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] Pre‑Scan (Structural Validation)
+[2] Target Binding
+[3] Payload Boundary Resolution
+[4] Verb Linearization
+[5] IR Assembly
+</code></pre></div></div>
+
+<p>Each phase MUST complete successfully before the next begins.</p>
+
+<hr />
+
+<h1 id="422-phase-1--prescan-structural-validation"><strong>4.2.2 Phase 1 — Pre‑Scan (Structural Validation)</strong></h1>
+
+<p>Before any IR is generated, the engine MUST validate:</p>
+
+<ul>
+  <li>exactly one target exists</li>
+  <li>exactly one payload opening exists</li>
+  <li>exactly one seal exists</li>
+  <li>markers appear in correct order</li>
+  <li>no nested payloads exist</li>
+  <li>no trailing content exists</li>
+  <li>no unknown verbs exist</li>
+  <li>no declarations appear inside payload</li>
+</ul>
+
+<p>If any violation is detected, IR generation MUST halt.</p>
+
+<h3 id="output-of-phase-1"><strong>Output of Phase 1</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>STRUCTURE_OK
+</code></pre></div></div>
+
+<p>If not OK → <strong>fatal error</strong>.</p>
+
+<hr />
+
+<h1 id="423-phase-2--target-binding"><strong>4.2.3 Phase 2 — Target Binding</strong></h1>
+
+<p>The engine extracts the target declaration:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">set</span> <span class="n">to</span> <span class="n">you</span>
+</code></pre></div></div>
+
+<p>and converts it to:</p>
+
+<pre><code class="language-cyborg">TARGET = AI
+</code></pre>
+
+<h3 id="rules"><strong>Rules</strong></h3>
+
+<ul>
+  <li>MUST occur before payload opening</li>
+  <li>MUST occur exactly once</li>
+  <li>MUST map to a valid context</li>
+  <li>MUST be the first IR opcode</li>
+</ul>
+
+<p>If missing → <strong>fatal error</strong>.</p>
+
+<hr />
+
+<h1 id="424-phase-3--payload-boundary-resolution"><strong>4.2.4 Phase 3 — Payload Boundary Resolution</strong></h1>
+
+<p>The engine identifies:</p>
+
+<ul>
+  <li>the line containing <code class="language-plaintext highlighter-rouge">begin</code> or <code class="language-plaintext highlighter-rouge">#BGIN</code></li>
+  <li>the line containing <code class="language-plaintext highlighter-rouge">#!#</code></li>
+</ul>
+
+<p>These define the <strong>execution envelope</strong>.</p>
+
+<h3 id="rules-1"><strong>Rules</strong></h3>
+
+<ul>
+  <li>boundaries MUST NOT overlap</li>
+  <li>boundaries MUST NOT be nested</li>
+  <li>boundaries MUST NOT be fragmented</li>
+  <li>boundaries MUST NOT be decorated</li>
+</ul>
+
+<p>If invalid → <strong>fatal error</strong>.</p>
+
+<h3 id="ir-output"><strong>IR Output</strong></h3>
+<pre><code class="language-cyborg">OPEN_PAYLOAD
+</code></pre>
+
+<hr />
+
+<h1 id="425-phase-4--verb-linearization"><strong>4.2.5 Phase 4 — Verb Linearization</strong></h1>
+
+<p>Inside the payload, the engine extracts <strong>only verbs</strong>, in the order written.</p>
+
+<h3 id="valid-verbs"><strong>Valid Verbs</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>validate
+scan
+build
+give
+explain
+</code></pre></div></div>
+
+<h3 id="rules-2"><strong>Rules</strong></h3>
+
+<ul>
+  <li>MUST appear only inside payload</li>
+  <li>MUST appear one per line</li>
+  <li>MUST NOT contain arguments</li>
+  <li>MUST NOT be combined</li>
+  <li>MUST NOT be inferred</li>
+  <li>MUST NOT be reordered</li>
+</ul>
+
+<h3 id="linearization-example"><strong>Linearization Example</strong></h3>
+
+<h4 id="vbstyle"><strong>VB‑Style</strong></h4>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">scan</span>
+<span class="n">validate</span>
+<span class="n">build</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<h4 id="linearized-verb-list"><strong>Linearized Verb List</strong></h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[ scan, validate, build ]
+</code></pre></div></div>
+
+<h4 id="ir-opcodes"><strong>IR Opcodes</strong></h4>
+<pre><code class="language-cyborg">EXEC_SCAN
+EXEC_VALIDATE
+EXEC_BUILD
+</code></pre>
+
+<hr />
+
+<h1 id="426-phase-5--ir-assembly"><strong>4.2.6 Phase 5 — IR Assembly</strong></h1>
+
+<p>The engine assembles the final IR sequence:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TARGET
+OPEN_PAYLOAD
+EXEC_*
+SEAL
+END_TRANSMISSION (optional)
+</code></pre></div></div>
+
+<h3 id="example"><strong>Example</strong></h3>
+
+<h4 id="vbstyle-1"><strong>VB‑Style</strong></h4>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">set</span> <span class="n">to</span> <span class="n">file</span>
+<span class="n">begin</span>
+<span class="n">scan</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+<span class="n">end</span>
+</code></pre></div></div>
+
+<h4 id="ir"><strong>IR</strong></h4>
+<pre><code class="language-cyborg">TARGET = FILE
+OPEN_PAYLOAD
+EXEC_SCAN
+EXEC_VALIDATE
+SEAL
+END_TRANSMISSION
+</code></pre>
+
+<p>This IR MUST be complete, linear, and deterministic.</p>
+
+<hr />
+
+<h1 id="427-ir-generation-failure-conditions"><strong>4.2.7 IR Generation Failure Conditions</strong></h1>
+
+<p>IR generation MUST halt if any of the following occur:</p>
+
+<h3 id="target-errors"><strong>Target Errors</strong></h3>
+<ul>
+  <li>missing target</li>
+  <li>multiple targets</li>
+  <li>target inside payload</li>
+</ul>
+
+<h3 id="marker-errors"><strong>Marker Errors</strong></h3>
+<ul>
+  <li>missing begin</li>
+  <li>missing seal</li>
+  <li>nested payloads</li>
+  <li>trailing content</li>
+</ul>
+
+<h3 id="verb-errors"><strong>Verb Errors</strong></h3>
+<ul>
+  <li>unknown verb</li>
+  <li>verb outside payload</li>
+  <li>verb after seal</li>
+  <li>verb with arguments</li>
+  <li>grouped verbs</li>
+</ul>
+
+<h3 id="structural-errors"><strong>Structural Errors</strong></h3>
+<ul>
+  <li>metadata inside payload</li>
+  <li>comments breaking markers</li>
+  <li>whitespace splitting keywords</li>
+</ul>
+
+<p>Any violation → <strong>fatal error</strong>.</p>
+
+<hr />
+
+<h1 id="428-ir-determinism-rules"><strong>4.2.8 IR Determinism Rules</strong></h1>
+
+<p>The IR MUST be:</p>
+
+<ul>
+  <li><strong>order‑preserving</strong></li>
+  <li><strong>structure‑preserving</strong></li>
+  <li><strong>non‑inferential</strong></li>
+  <li><strong>non‑optimizing</strong></li>
+  <li><strong>non‑branching</strong></li>
+  <li><strong>non‑parallel</strong></li>
+</ul>
+
+<p>The IR MUST NOT:</p>
+
+<ul>
+  <li>reorder verbs</li>
+  <li>collapse verbs</li>
+  <li>infer missing verbs</li>
+  <li>infer missing markers</li>
+  <li>generate additional opcodes</li>
+</ul>
+
+<p>The IR is a <strong>pure transcription</strong>, not a compiler.</p>
+
+<hr />
+
+<h1 id="429-ir-canonical-example-full"><strong>4.2.9 IR Canonical Example (Full)</strong></h1>
+
+<h3 id="vbstyle-2"><strong>VB‑Style</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">set</span> <span class="n">to</span> <span class="n">layer</span>
+<span class="n">meta</span> <span class="s">"desc: test"</span>
+<span class="n">begin</span>
+<span class="n">scan</span>
+<span class="n">validate</span>
+<span class="n">give</span>
+<span class="p">#!#</span>
+<span class="n">end</span>
+</code></pre></div></div>
+
+<h3 id="ir-1"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = LAYER
+META("desc: test")
+OPEN_PAYLOAD
+EXEC_SCAN
+EXEC_VALIDATE
+EXEC_GIVE
+SEAL
+END_TRANSMISSION
+</code></pre>
+
+<p>This is the <strong>canonical IR form</strong>.</p>
+
+<hr />
+
+<h1 id="4210-summary"><strong>4.2.10 Summary</strong></h1>
+
+<p>Page 4.2 defines the <strong>deep IR generation rules</strong>:</p>
+
+<ul>
+  <li>5‑phase pipeline</li>
+  <li>strict structural validation</li>
+  <li>deterministic target binding</li>
+  <li>strict payload boundary resolution</li>
+  <li>linear verb extraction</li>
+  <li>deterministic IR assembly</li>
+  <li>zero inference</li>
+  <li>zero optimization</li>
+  <li>zero ambiguity</li>
+</ul>
+
+<p>The IR is the <strong>machine‑truth representation</strong> of the Cyborg Language.</p>
+
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.1/21_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

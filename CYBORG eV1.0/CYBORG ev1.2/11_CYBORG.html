@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Cyborg | A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Cyborg" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/11_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/11_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Cyborg" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"Cyborg","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/11_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      <p>Understood, Demon. The Codex continues its descent into the master reference set.</p>
+
+<hr />
+
+<h1 id="-page-59--c-layer-canonical-examples-master-set"><strong>📘 PAGE 5.9 — C LAYER CANONICAL EXAMPLES (MASTER SET)</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="59-overview"><strong>5.9 Overview</strong></h2>
+
+<p>Page 5.9 provides the <strong>complete, authoritative library</strong> of canonical C Layer examples.<br />
+These examples demonstrate:</p>
+
+<ul>
+  <li>minimal modules</li>
+  <li>maximal modules</li>
+  <li>zero‑verb modules</li>
+  <li>multi‑verb modules</li>
+  <li>target variations</li>
+  <li>purity‑compliant outputs</li>
+  <li>constraint‑compliant outputs</li>
+  <li>error‑free, deterministic execution</li>
+</ul>
+
+<p>This section is <strong>normative</strong> and serves as the <strong>reference corpus</strong> for all C Layer implementations.</p>
+
+<hr />
+
+<h1 id="591-canonical-example--minimal-valid-c-layer"><strong>5.9.1 Canonical Example — Minimal Valid C Layer</strong></h1>
+
+<h3 id="ir"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = AI
+OPEN_PAYLOAD
+EXEC_VALIDATE
+SEAL
+</code></pre>
+
+<h3 id="c-output"><strong>C Output</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">validate_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r1</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This is the smallest possible valid C Layer.</p>
+
+<hr />
+
+<h1 id="592-canonical-example--zeroverb-c-layer"><strong>5.9.2 Canonical Example — Zero‑Verb C Layer</strong></h1>
+
+<h3 id="ir-1"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = FILE
+OPEN_PAYLOAD
+SEAL
+</code></pre>
+
+<h3 id="c-output-1"><strong>C Output</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="n">CyborgFile</span><span class="o">*</span> <span class="n">file</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>A zero‑verb payload returns <strong>0</strong>.</p>
+
+<hr />
+
+<h1 id="593-canonical-example--twoverb-c-layer"><strong>5.9.3 Canonical Example — Two‑Verb C Layer</strong></h1>
+
+<h3 id="ir-2"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = LAYER
+OPEN_PAYLOAD
+EXEC_SCAN
+EXEC_VALIDATE
+SEAL
+</code></pre>
+
+<h3 id="c-output-2"><strong>C Output</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="n">CyborgLayer</span><span class="o">*</span> <span class="n">layer</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">scan_context</span><span class="p">(</span><span class="n">layer</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">validate_context</span><span class="p">(</span><span class="n">layer</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Order is preserved exactly.</p>
+
+<hr />
+
+<h1 id="594-canonical-example--full-verb-set"><strong>5.9.4 Canonical Example — Full Verb Set</strong></h1>
+
+<h3 id="ir-3"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = AI
+OPEN_PAYLOAD
+EXEC_VALIDATE
+EXEC_SCAN
+EXEC_BUILD
+EXEC_GIVE
+EXEC_EXPLAIN
+SEAL
+</code></pre>
+
+<h3 id="c-output-3"><strong>C Output</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">validate_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">scan_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r3</span> <span class="o">=</span> <span class="n">build_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r4</span> <span class="o">=</span> <span class="n">give_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r5</span> <span class="o">=</span> <span class="n">explain_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span> <span class="o">||</span> <span class="n">r3</span> <span class="o">||</span> <span class="n">r4</span> <span class="o">||</span> <span class="n">r5</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This is the <strong>maximal canonical form</strong>.</p>
+
+<hr />
+
+<h1 id="595-canonical-example--with-metadata-ignored-in-c"><strong>5.9.5 Canonical Example — With Metadata (Ignored in C)</strong></h1>
+
+<h3 id="ir-4"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = FILE
+META("desc: test")
+OPEN_PAYLOAD
+EXEC_SCAN
+SEAL
+</code></pre>
+
+<h3 id="c-output-4"><strong>C Output</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="n">CyborgFile</span><span class="o">*</span> <span class="n">file</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">scan_context</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r1</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Metadata does not affect C output.</p>
+
+<hr />
+
+<h1 id="596-canonical-example--with-comments-ignored-in-c"><strong>5.9.6 Canonical Example — With Comments (Ignored in C)</strong></h1>
+
+<h3 id="ir-5"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = LAYER
+OPEN_PAYLOAD
+EXEC_VALIDATE
+EXEC_GIVE
+SEAL
+</code></pre>
+
+<h3 id="c-output-5"><strong>C Output</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="n">CyborgLayer</span><span class="o">*</span> <span class="n">layer</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">validate_context</span><span class="p">(</span><span class="n">layer</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">give_context</span><span class="p">(</span><span class="n">layer</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Comments never appear in C.</p>
+
+<hr />
+
+<h1 id="597-canonical-example--buildheavy-module"><strong>5.9.7 Canonical Example — Build‑Heavy Module</strong></h1>
+
+<h3 id="ir-6"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = FILE
+OPEN_PAYLOAD
+EXEC_BUILD
+EXEC_BUILD
+EXEC_BUILD
+SEAL
+</code></pre>
+
+<h3 id="c-output-6"><strong>C Output</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="n">CyborgFile</span><span class="o">*</span> <span class="n">file</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">build_context</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">build_context</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r3</span> <span class="o">=</span> <span class="n">build_context</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span> <span class="o">||</span> <span class="n">r3</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Repeated verbs are allowed and deterministic.</p>
+
+<hr />
+
+<h1 id="598-canonical-example--mixed-verb-ordering"><strong>5.9.8 Canonical Example — Mixed Verb Ordering</strong></h1>
+
+<h3 id="ir-7"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = AI
+OPEN_PAYLOAD
+EXEC_GIVE
+EXEC_VALIDATE
+EXEC_SCAN
+SEAL
+</code></pre>
+
+<h3 id="c-output-7"><strong>C Output</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">give_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">validate_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r3</span> <span class="o">=</span> <span class="n">scan_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span> <span class="o">||</span> <span class="n">r3</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Order is preserved exactly as written.</p>
+
+<hr />
+
+<h1 id="599-canonical-example--large-verb-sequence"><strong>5.9.9 Canonical Example — Large Verb Sequence</strong></h1>
+
+<h3 id="ir-8"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = LAYER
+OPEN_PAYLOAD
+EXEC_VALIDATE
+EXEC_VALIDATE
+EXEC_SCAN
+EXEC_BUILD
+EXEC_BUILD
+EXEC_EXPLAIN
+EXEC_GIVE
+EXEC_GIVE
+SEAL
+</code></pre>
+
+<h3 id="c-output-8"><strong>C Output</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="n">CyborgLayer</span><span class="o">*</span> <span class="n">layer</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">validate_context</span><span class="p">(</span><span class="n">layer</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">validate_context</span><span class="p">(</span><span class="n">layer</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r3</span> <span class="o">=</span> <span class="n">scan_context</span><span class="p">(</span><span class="n">layer</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r4</span> <span class="o">=</span> <span class="n">build_context</span><span class="p">(</span><span class="n">layer</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r5</span> <span class="o">=</span> <span class="n">build_context</span><span class="p">(</span><span class="n">layer</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r6</span> <span class="o">=</span> <span class="n">explain_context</span><span class="p">(</span><span class="n">layer</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r7</span> <span class="o">=</span> <span class="n">give_context</span><span class="p">(</span><span class="n">layer</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r8</span> <span class="o">=</span> <span class="n">give_context</span><span class="p">(</span><span class="n">layer</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span> <span class="o">||</span> <span class="n">r3</span> <span class="o">||</span> <span class="n">r4</span> <span class="o">||</span> <span class="n">r5</span> <span class="o">||</span> <span class="n">r6</span> <span class="o">||</span> <span class="n">r7</span> <span class="o">||</span> <span class="n">r8</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This demonstrates:</p>
+
+<ul>
+  <li>repeated verbs</li>
+  <li>mixed ordering</li>
+  <li>strict determinism</li>
+</ul>
+
+<hr />
+
+<h1 id="5910-canonical-example--target-variation"><strong>5.9.10 Canonical Example — Target Variation</strong></h1>
+
+<h3 id="ir-9"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = FILE
+OPEN_PAYLOAD
+EXEC_SCAN
+SEAL
+</code></pre>
+
+<h3 id="c-output-9"><strong>C Output</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="n">CyborgFile</span><span class="o">*</span> <span class="n">file</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">scan_context</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r1</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="ir-10"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = AI
+OPEN_PAYLOAD
+EXEC_SCAN
+SEAL
+</code></pre>
+
+<h3 id="c-output-10"><strong>C Output</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">scan_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r1</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Only the parameter type changes.</p>
+
+<hr />
+
+<h1 id="5911-summary"><strong>5.9.11 Summary</strong></h1>
+
+<p>Page 5.9 provides the <strong>master canonical example set</strong> for the C Layer:</p>
+
+<ul>
+  <li>minimal modules</li>
+  <li>zero‑verb modules</li>
+  <li>multi‑verb modules</li>
+  <li>maximal modules</li>
+  <li>repeated verbs</li>
+  <li>mixed ordering</li>
+  <li>metadata and comments ignored</li>
+  <li>strict determinism</li>
+  <li>strict purity</li>
+  <li>strict structural compliance</li>
+</ul>
+
+<p>This corpus defines the <strong>reference truth</strong> for all C Layer implementations.</p>
+
+<hr />
+
+<p>Demon — the next scroll is ready.</p>
+
+<p>Say:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>continue
+</code></pre></div></div>
+
+<p>and <strong>Page 6.0 — Cyborg Runtime Layer (Overview)</strong> will manifest.</p>
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.2/11_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

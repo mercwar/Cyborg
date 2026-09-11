@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>📘 PAGE 10.4 — C LAYER LOCAL VARIABLE RULES (FORMAL) | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="📘 PAGE 10.4 — C LAYER LOCAL VARIABLE RULES (FORMAL)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/49_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/49_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="📘 PAGE 10.4 — C LAYER LOCAL VARIABLE RULES (FORMAL)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"📘 PAGE 10.4 — C LAYER LOCAL VARIABLE RULES (FORMAL)","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/49_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      
+<h1 id="-page-104--c-layer-local-variable-rules-formal"><strong>📘 PAGE 10.4 — C LAYER LOCAL VARIABLE RULES (FORMAL)</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="104-overview"><strong>10.4 Overview</strong></h2>
+
+<p>Local variables inside the generated C function are:</p>
+
+<ul>
+  <li>deterministic</li>
+  <li>fixed‑pattern</li>
+  <li>non‑optimizing</li>
+  <li>non‑inferential</li>
+  <li>non‑reusable</li>
+  <li>non‑foldable</li>
+  <li>non‑reorderable</li>
+</ul>
+
+<p>They exist solely to capture verb return values in a <strong>literal</strong>, <strong>one‑to‑one</strong>, <strong>order‑preserving</strong> manner.</p>
+
+<p>This section is <strong>normative</strong>.</p>
+
+<hr />
+
+<h1 id="1041-local-rule-1--one-variable-per-verb"><strong>10.4.1 Local Rule 1 — One Variable Per Verb</strong></h1>
+
+<p>Each EXEC line MUST generate exactly one local variable:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>int r1 = validate_context(ctx);
+int r2 = scan_context(ctx);
+int r3 = build_context(ctx);
+</code></pre></div></div>
+
+<h3 id="meaning"><strong>Meaning</strong></h3>
+<p>No variable may capture more than one verb result.</p>
+
+<hr />
+
+<h1 id="1042-local-rule-2--variables-must-be-sequentially-numbered"><strong>10.4.2 Local Rule 2 — Variables Must Be Sequentially Numbered</strong></h1>
+
+<p>Variables MUST be named:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>r1, r2, r3, ..., rn
+</code></pre></div></div>
+
+<p>Numbering MUST:</p>
+
+<ul>
+  <li>start at 1</li>
+  <li>increment by 1</li>
+  <li>never skip numbers</li>
+  <li>never reuse numbers</li>
+</ul>
+
+<h3 id="meaning-1"><strong>Meaning</strong></h3>
+<p>Variable naming is <strong>strictly linear</strong>.</p>
+
+<hr />
+
+<h1 id="1043-local-rule-3--variables-must-be-declared-in-execution-order"><strong>10.4.3 Local Rule 3 — Variables Must Be Declared in Execution Order</strong></h1>
+
+<p>If the IR says:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>EXEC_GIVE
+EXEC_VALIDATE
+EXEC_EXPLAIN
+</code></pre></div></div>
+
+<p>The C Layer MUST generate:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">give_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+<span class="kt">int</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">validate_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+<span class="kt">int</span> <span class="n">r3</span> <span class="o">=</span> <span class="n">explain_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="meaning-2"><strong>Meaning</strong></h3>
+<p>Variable order mirrors verb order exactly.</p>
+
+<hr />
+
+<h1 id="1044-local-rule-4--variables-must-not-be-reused"><strong>10.4.4 Local Rule 4 — Variables Must Not Be Reused</strong></h1>
+
+<p>Even if two verbs are identical:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>EXEC_BUILD
+EXEC_BUILD
+</code></pre></div></div>
+
+<p>The C Layer MUST generate:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">build_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+<span class="kt">int</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">build_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="meaning-3"><strong>Meaning</strong></h3>
+<p>Repetition is <strong>literal</strong>, never optimized.</p>
+
+<hr />
+
+<h1 id="1045-local-rule-5--variables-must-not-be-declared-in-bulk"><strong>10.4.5 Local Rule 5 — Variables Must Not Be Declared in Bulk</strong></h1>
+
+<p>The following is <strong>forbidden</strong>:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">,</span> <span class="n">r3</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Variables MUST be declared individually:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="p">...;</span>
+<span class="kt">int</span> <span class="n">r2</span> <span class="o">=</span> <span class="p">...;</span>
+<span class="kt">int</span> <span class="n">r3</span> <span class="o">=</span> <span class="p">...;</span>
+</code></pre></div></div>
+
+<h3 id="meaning-4"><strong>Meaning</strong></h3>
+<p>Each variable is a <strong>distinct semantic event</strong>.</p>
+
+<hr />
+
+<h1 id="1046-local-rule-6--variables-must-not-be-initialized-separately"><strong>10.4.6 Local Rule 6 — Variables Must Not Be Initialized Separately</strong></h1>
+
+<p>Forbidden:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">r1</span><span class="p">;</span>
+<span class="n">r1</span> <span class="o">=</span> <span class="n">validate_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Required:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">validate_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="meaning-5"><strong>Meaning</strong></h3>
+<p>Declaration and initialization are <strong>atomic</strong>.</p>
+
+<hr />
+
+<h1 id="1047-local-rule-7--variables-must-not-be-modified"><strong>10.4.7 Local Rule 7 — Variables Must Not Be Modified</strong></h1>
+
+<p>After initialization:</p>
+
+<ul>
+  <li>no reassignment</li>
+  <li>no mutation</li>
+  <li>no arithmetic</li>
+  <li>no logical operations</li>
+</ul>
+
+<h3 id="meaning-6"><strong>Meaning</strong></h3>
+<p>Variables are <strong>write‑once</strong>.</p>
+
+<hr />
+
+<h1 id="1048-local-rule-8--variables-must-not-be-used-for-anything-else"><strong>10.4.8 Local Rule 8 — Variables Must Not Be Used for Anything Else</strong></h1>
+
+<p>Variables MUST NOT:</p>
+
+<ul>
+  <li>store intermediate values</li>
+  <li>store temporary computations</li>
+  <li>store flags</li>
+  <li>store counters</li>
+  <li>store state</li>
+</ul>
+
+<h3 id="meaning-7"><strong>Meaning</strong></h3>
+<p>Variables exist <strong>only</strong> to capture verb results.</p>
+
+<hr />
+
+<h1 id="1049-local-rule-9--variables-must-not-be-optimized-away"><strong>10.4.9 Local Rule 9 — Variables Must Not Be Optimized Away</strong></h1>
+
+<p>Even if a compiler <em>could</em> remove them:</p>
+
+<ul>
+  <li>the generated C MUST include them</li>
+  <li>the structure MUST remain intact</li>
+</ul>
+
+<h3 id="meaning-8"><strong>Meaning</strong></h3>
+<p>The C Layer is <strong>non‑optimizing by design</strong>.</p>
+
+<hr />
+
+<h1 id="10410-local-rule-10--variables-must-be-local-to-the-function"><strong>10.4.10 Local Rule 10 — Variables Must Be Local to the Function</strong></h1>
+
+<p>Variables MUST NOT be:</p>
+
+<ul>
+  <li>global</li>
+  <li>static</li>
+  <li>extern</li>
+  <li>volatile</li>
+  <li>shared</li>
+</ul>
+
+<h3 id="meaning-9"><strong>Meaning</strong></h3>
+<p>Variables are <strong>pure stack‑local</strong>, ephemeral, and isolated.</p>
+
+<hr />
+
+<h1 id="10411-canonical-example--mixed-verbs"><strong>10.4.11 Canonical Example — Mixed Verbs</strong></h1>
+
+<h3 id="ir"><strong>IR</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TARGET = LAYER
+OPEN_PAYLOAD
+EXEC_SCAN
+EXEC_BUILD
+EXEC_EXPLAIN
+SEAL
+</code></pre></div></div>
+
+<h3 id="generated-c"><strong>Generated C</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="n">CyborgLayer</span><span class="o">*</span> <span class="n">ctx</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">scan_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">build_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r3</span> <span class="o">=</span> <span class="n">explain_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span> <span class="o">||</span> <span class="n">r3</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="meaning-10"><strong>Meaning</strong></h3>
+<p>Local variable structure is <strong>canonical and immutable</strong>.</p>
+
+<hr />
+
+<h1 id="10412-summary"><strong>10.4.12 Summary</strong></h1>
+
+<p>Page 10.4 defines the <strong>C Layer Local Variable Rules</strong>:</p>
+
+<ul>
+  <li>one variable per verb</li>
+  <li>sequential numbering</li>
+  <li>order‑preserving</li>
+  <li>no reuse</li>
+  <li>no bulk declarations</li>
+  <li>atomic initialization</li>
+  <li>no mutation</li>
+  <li>no alternate uses</li>
+  <li>no optimization</li>
+  <li>pure stack‑local</li>
+</ul>
+
+<p>Local variables are the <strong>structural backbone</strong> of the C Layer’s deterministic execution.</p>
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.2/49_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>📘 PAGE 4.7 — VERB FUNCTION SIGNATURES (FORMAL) | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="📘 PAGE 4.7 — VERB FUNCTION SIGNATURES (FORMAL)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/27_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/27_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="📘 PAGE 4.7 — VERB FUNCTION SIGNATURES (FORMAL)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"📘 PAGE 4.7 — VERB FUNCTION SIGNATURES (FORMAL)","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/27_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      
+<h1 id="-page-47--verb-function-signatures-formal"><strong>📘 PAGE 4.7 — VERB FUNCTION SIGNATURES (FORMAL)</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="47-overview"><strong>4.7 Overview</strong></h2>
+
+<p>This section defines the <strong>formal, canonical C function signatures</strong> for all verb operations in the Cyborg Language.<br />
+These signatures are:</p>
+
+<ul>
+  <li>fixed</li>
+  <li>deterministic</li>
+  <li>non‑overloaded</li>
+  <li>non‑inferential</li>
+  <li>globally consistent</li>
+  <li>the only valid implementations of verb semantics</li>
+</ul>
+
+<p>Every verb in the Cyborg Language maps to <strong>exactly one</strong> C function with a fixed signature.</p>
+
+<p>This section is <strong>normative</strong>.</p>
+
+<hr />
+
+<h1 id="471-verb-function-philosophy"><strong>4.7.1 Verb Function Philosophy</strong></h1>
+
+<p>The Cyborg Language enforces three principles for verb functions:</p>
+
+<h3 id="principle-1--one-verb--one-function"><strong>Principle 1 — One Verb → One Function</strong></h3>
+<p>Each verb corresponds to exactly one C function.</p>
+
+<h3 id="principle-2--uniform-signature"><strong>Principle 2 — Uniform Signature</strong></h3>
+<p>All verb functions share the same signature pattern.</p>
+
+<h3 id="principle-3--no-variation"><strong>Principle 3 — No Variation</strong></h3>
+<p>Signatures MUST NOT change based on target, metadata, or payload content.</p>
+
+<hr />
+
+<h1 id="472-canonical-verb-function-signature-pattern"><strong>4.7.2 Canonical Verb Function Signature Pattern</strong></h1>
+
+<p>All verb functions MUST follow this exact signature form:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="o">&lt;</span><span class="n">verb</span><span class="o">&gt;</span><span class="n">_context</span><span class="p">(</span><span class="o">&lt;</span><span class="n">TARGET_TYPE</span><span class="o">&gt;*</span> <span class="n">ctx</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Where:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">&lt;verb&gt;</code> is one of the five canonical verbs</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;TARGET_TYPE&gt;</code> is determined by the module target</li>
+</ul>
+
+<h3 id="forbidden-variants"><strong>Forbidden Variants</strong></h3>
+<ul>
+  <li>additional parameters</li>
+  <li>default parameters</li>
+  <li>variadic parameters</li>
+  <li>const qualifiers</li>
+  <li>static qualifiers</li>
+  <li>inline qualifiers</li>
+  <li>attributes</li>
+  <li>comments</li>
+</ul>
+
+<hr />
+
+<h1 id="473-canonical-verb-functions"><strong>4.7.3 Canonical Verb Functions</strong></h1>
+
+<p>The Cyborg Language defines exactly <strong>five</strong> verb functions.</p>
+
+<h3 id="validate"><strong>validate</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">validate_context</span><span class="p">(</span><span class="o">&lt;</span><span class="n">TARGET_TYPE</span><span class="o">&gt;*</span> <span class="n">ctx</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="scan"><strong>scan</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">scan_context</span><span class="p">(</span><span class="o">&lt;</span><span class="n">TARGET_TYPE</span><span class="o">&gt;*</span> <span class="n">ctx</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="build"><strong>build</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">build_context</span><span class="p">(</span><span class="o">&lt;</span><span class="n">TARGET_TYPE</span><span class="o">&gt;*</span> <span class="n">ctx</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="give"><strong>give</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">give_context</span><span class="p">(</span><span class="o">&lt;</span><span class="n">TARGET_TYPE</span><span class="o">&gt;*</span> <span class="n">ctx</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="explain"><strong>explain</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">explain_context</span><span class="p">(</span><span class="o">&lt;</span><span class="n">TARGET_TYPE</span><span class="o">&gt;*</span> <span class="n">ctx</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>These are the <strong>only</strong> valid verb functions.</p>
+
+<hr />
+
+<h1 id="474-target-type-binding"><strong>4.7.4 Target Type Binding</strong></h1>
+
+<p>The <code class="language-plaintext highlighter-rouge">&lt;TARGET_TYPE&gt;</code> is determined solely by the IR target.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>IR Target</th>
+      <th>C Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AI</code></td>
+      <td><code class="language-plaintext highlighter-rouge">CyborgContext* ctx</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">FILE</code></td>
+      <td><code class="language-plaintext highlighter-rouge">CyborgFile* file</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">LAYER</code></td>
+      <td><code class="language-plaintext highlighter-rouge">CyborgLayer* layer</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="example"><strong>Example</strong></h3>
+
+<h4 id="ir"><strong>IR</strong></h4>
+<pre><code class="language-cyborg">TARGET = LAYER
+</code></pre>
+
+<h4 id="verb-function"><strong>Verb Function</strong></h4>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">scan_context</span><span class="p">(</span><span class="n">CyborgLayer</span><span class="o">*</span> <span class="n">layer</span><span class="p">);</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="475-signature-invariance-rules"><strong>4.7.5 Signature Invariance Rules</strong></h1>
+
+<p>Verb function signatures MUST NOT:</p>
+
+<ul>
+  <li>include extra parameters</li>
+  <li>include optional parameters</li>
+  <li>include variadic parameters</li>
+  <li>include const qualifiers</li>
+  <li>include restrict qualifiers</li>
+  <li>include inline/static modifiers</li>
+  <li>include attributes</li>
+  <li>include comments</li>
+  <li>include return types other than <code class="language-plaintext highlighter-rouge">int</code></li>
+</ul>
+
+<h3 id="forbidden-examples"><strong>Forbidden Examples</strong></h3>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">scan_context</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="kt">int</span> <span class="n">mode</span><span class="p">);</span>      <span class="c1">// ❌ extra parameter</span>
+<span class="kt">void</span> <span class="nf">validate_context</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">);</span>           <span class="c1">// ❌ wrong return type</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="nf">build_context</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">);</span>        <span class="c1">// ❌ static</span>
+<span class="kt">int</span> <span class="nf">explain_context</span><span class="p">(</span><span class="k">const</span> <span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">);</span>       <span class="c1">// ❌ const</span>
+</code></pre></div></div>
+
+<p>All MUST be rejected.</p>
+
+<hr />
+
+<h1 id="476-verb-function-placement-rules"><strong>4.7.6 Verb Function Placement Rules</strong></h1>
+
+<p>Verb functions MUST:</p>
+
+<ul>
+  <li>appear at global scope</li>
+  <li>not be nested</li>
+  <li>not be wrapped in macros</li>
+  <li>not be wrapped in namespaces</li>
+  <li>not be wrapped in classes</li>
+</ul>
+
+<h3 id="forbidden"><strong>Forbidden</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">namespace</span> <span class="n">cyborg</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">scan_context</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">);</span>   <span class="c1">// ❌</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="477-verb-function-behavior-rules"><strong>4.7.7 Verb Function Behavior Rules</strong></h1>
+
+<p>Verb functions MUST:</p>
+
+<ul>
+  <li>return an <code class="language-plaintext highlighter-rouge">int</code></li>
+  <li>perform a deterministic operation</li>
+  <li>not modify global state</li>
+  <li>not allocate memory</li>
+  <li>not throw exceptions</li>
+  <li>not perform I/O</li>
+  <li>not log</li>
+  <li>not recurse</li>
+  <li>not call other verb functions</li>
+</ul>
+
+<p>Verb functions MUST be <strong>pure</strong>.</p>
+
+<hr />
+
+<h1 id="478-full-example-target-ai"><strong>4.7.8 Full Example (Target: AI)</strong></h1>
+
+<h3 id="vbstyle"><strong>VB‑Style</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">set</span> <span class="n">to</span> <span class="n">you</span>
+<span class="n">begin</span>
+<span class="n">scan</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+<span class="n">end</span>
+</code></pre></div></div>
+
+<h3 id="ir-1"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = AI
+OPEN_PAYLOAD
+EXEC_SCAN
+EXEC_VALIDATE
+SEAL
+END_TRANSMISSION
+</code></pre>
+
+<h3 id="c-output"><strong>C Output</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">scan_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">validate_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="verb-functions"><strong>Verb Functions</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">scan_context</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">);</span>
+<span class="kt">int</span> <span class="nf">validate_context</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">);</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="479-full-example-target-file"><strong>4.7.9 Full Example (Target: FILE)</strong></h1>
+
+<h3 id="verb-functions-1"><strong>Verb Functions</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">scan_context</span><span class="p">(</span><span class="n">CyborgFile</span><span class="o">*</span> <span class="n">file</span><span class="p">);</span>
+<span class="kt">int</span> <span class="nf">validate_context</span><span class="p">(</span><span class="n">CyborgFile</span><span class="o">*</span> <span class="n">file</span><span class="p">);</span>
+<span class="kt">int</span> <span class="nf">build_context</span><span class="p">(</span><span class="n">CyborgFile</span><span class="o">*</span> <span class="n">file</span><span class="p">);</span>
+<span class="kt">int</span> <span class="nf">give_context</span><span class="p">(</span><span class="n">CyborgFile</span><span class="o">*</span> <span class="n">file</span><span class="p">);</span>
+<span class="kt">int</span> <span class="nf">explain_context</span><span class="p">(</span><span class="n">CyborgFile</span><span class="o">*</span> <span class="n">file</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>These signatures MUST NOT vary.</p>
+
+<hr />
+
+<h1 id="4710-summary"><strong>4.7.10 Summary</strong></h1>
+
+<p>Page 4.7 defines the <strong>formal verb function signatures</strong>:</p>
+
+<ul>
+  <li>one function per verb</li>
+  <li>fixed naming pattern</li>
+  <li>fixed return type</li>
+  <li>target‑dependent parameter type</li>
+  <li>no modifiers, no extras, no variation</li>
+  <li>pure, deterministic behavior</li>
+</ul>
+
+<p>These functions are the <strong>atomic execution units</strong> of the Cyborg Language.</p>
+
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.1/27_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

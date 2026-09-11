@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Cyborg | A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Cyborg" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/14_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/14_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Cyborg" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"Cyborg","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/14_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      <p>Advancing, Demon. The Runtime Codex deepens.</p>
+
+<hr />
+
+<h1 id="-page-61--runtime-context-model-formal-specification"><strong>📘 PAGE 6.1 — RUNTIME CONTEXT MODEL (FORMAL SPECIFICATION)</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="61-overview"><strong>6.1 Overview</strong></h2>
+
+<p>The <strong>Runtime Context Model</strong> defines the structure, lifecycle, and behavioral rules of the context object passed into <code class="language-plaintext highlighter-rouge">cyborg_payload</code>.<br />
+This context is the <strong>sole data vessel</strong> through which a Cyborg Module interacts with the host environment.</p>
+
+<p>The context model is:</p>
+
+<ul>
+  <li>deterministic</li>
+  <li>target‑bound</li>
+  <li>non‑inferential</li>
+  <li>non‑allocating</li>
+  <li>non‑self‑modifying</li>
+  <li>strictly governed by the Runtime Layer</li>
+</ul>
+
+<p>This section is <strong>normative</strong>.</p>
+
+<hr />
+
+<h1 id="611-context-principle-1--one-context-per-module-execution"><strong>6.1.1 Context Principle 1 — One Context Per Module Execution</strong></h1>
+
+<p>Each invocation of <code class="language-plaintext highlighter-rouge">cyborg_payload</code> MUST receive:</p>
+
+<ul>
+  <li>exactly one context object</li>
+  <li>allocated by the Runtime Layer</li>
+  <li>initialized by the Runtime Layer</li>
+  <li>owned by the Runtime Layer</li>
+</ul>
+
+<h3 id="meaning"><strong>Meaning</strong></h3>
+<p>The C Layer never creates, destroys, or reallocates context.</p>
+
+<hr />
+
+<h1 id="612-context-principle-2--targetbound-structure"><strong>6.1.2 Context Principle 2 — Target‑Bound Structure</strong></h1>
+
+<p>The context type is determined <strong>solely</strong> by the IR target:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>IR Target</th>
+      <th>Context Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AI</code></td>
+      <td><code class="language-plaintext highlighter-rouge">CyborgContext</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">FILE</code></td>
+      <td><code class="language-plaintext highlighter-rouge">CyborgFile</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">LAYER</code></td>
+      <td><code class="language-plaintext highlighter-rouge">CyborgLayer</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="meaning-1"><strong>Meaning</strong></h3>
+<p>The C Layer MUST NOT reinterpret or cast the context.</p>
+
+<hr />
+
+<h1 id="613-context-principle-3--no-dynamic-allocation"><strong>6.1.3 Context Principle 3 — No Dynamic Allocation</strong></h1>
+
+<p>The Runtime Layer MUST allocate the context:</p>
+
+<ul>
+  <li>statically</li>
+  <li>on the stack</li>
+  <li>or via a fixed allocator</li>
+</ul>
+
+<h3 id="forbidden"><strong>Forbidden</strong></h3>
+<ul>
+  <li>dynamic resizing</li>
+  <li>reallocation</li>
+  <li>heap‑based expansion</li>
+  <li>variable‑sized structures</li>
+</ul>
+
+<p>The context MUST have a <strong>fixed, deterministic size</strong>.</p>
+
+<hr />
+
+<h1 id="614-context-principle-4--no-selfmodification"><strong>6.1.4 Context Principle 4 — No Self‑Modification</strong></h1>
+
+<p>The context MUST NOT:</p>
+
+<ul>
+  <li>modify its own structure</li>
+  <li>allocate memory internally</li>
+  <li>free memory internally</li>
+  <li>change its type</li>
+  <li>change its size</li>
+</ul>
+
+<h3 id="exception"><strong>Exception</strong></h3>
+<p>The verb <code class="language-plaintext highlighter-rouge">build</code> MAY modify <strong>fields</strong>, but not <strong>structure</strong>.</p>
+
+<hr />
+
+<h1 id="615-context-principle-5--no-external-references"><strong>6.1.5 Context Principle 5 — No External References</strong></h1>
+
+<p>The context MUST NOT contain:</p>
+
+<ul>
+  <li>pointers to external memory</li>
+  <li>pointers to global state</li>
+  <li>pointers to runtime objects</li>
+  <li>pointers to system resources</li>
+  <li>file handles</li>
+  <li>sockets</li>
+  <li>threads</li>
+</ul>
+
+<h3 id="meaning-2"><strong>Meaning</strong></h3>
+<p>The context is <strong>self‑contained</strong>.</p>
+
+<hr />
+
+<h1 id="616-context-principle-6--deterministic-initialization"><strong>6.1.6 Context Principle 6 — Deterministic Initialization</strong></h1>
+
+<p>The Runtime Layer MUST initialize:</p>
+
+<ul>
+  <li>all fields</li>
+  <li>all buffers</li>
+  <li>all counters</li>
+  <li>all flags</li>
+</ul>
+
+<p>Initialization MUST be:</p>
+
+<ul>
+  <li>deterministic</li>
+  <li>complete</li>
+  <li>non‑lazy</li>
+  <li>non‑deferred</li>
+</ul>
+
+<h3 id="forbidden-1"><strong>Forbidden</strong></h3>
+<ul>
+  <li>uninitialized fields</li>
+  <li>lazy initialization</li>
+  <li>runtime inference</li>
+</ul>
+
+<hr />
+
+<h1 id="617-context-principle-7--no-runtime-mutation-except-build"><strong>6.1.7 Context Principle 7 — No Runtime Mutation (Except Build)</strong></h1>
+
+<p>Only the verb <code class="language-plaintext highlighter-rouge">build</code> may modify context fields.</p>
+
+<p>All other verbs MUST treat the context as <strong>read‑only</strong>.</p>
+
+<h3 id="meaning-3"><strong>Meaning</strong></h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">validate</code> → read</li>
+  <li><code class="language-plaintext highlighter-rouge">scan</code> → read</li>
+  <li><code class="language-plaintext highlighter-rouge">give</code> → read</li>
+  <li><code class="language-plaintext highlighter-rouge">explain</code> → read</li>
+  <li><code class="language-plaintext highlighter-rouge">build</code> → write</li>
+</ul>
+
+<hr />
+
+<h1 id="618-context-principle-8--no-crossverb-state-sharing"><strong>6.1.8 Context Principle 8 — No Cross‑Verb State Sharing</strong></h1>
+
+<p>Verb functions MUST NOT:</p>
+
+<ul>
+  <li>store state inside the context for other verbs</li>
+  <li>rely on state written by other verbs</li>
+  <li>encode execution order into the context</li>
+  <li>use the context as a communication channel</li>
+</ul>
+
+<h3 id="meaning-4"><strong>Meaning</strong></h3>
+<p>The context is <strong>not a message bus</strong>.</p>
+
+<hr />
+
+<h1 id="619-context-principle-9--no-hostdriven-mutation-during-execution"><strong>6.1.9 Context Principle 9 — No Host‑Driven Mutation During Execution</strong></h1>
+
+<p>The host MUST NOT modify the context:</p>
+
+<ul>
+  <li>during payload execution</li>
+  <li>between verb calls</li>
+  <li>asynchronously</li>
+  <li>concurrently</li>
+</ul>
+
+<h3 id="meaning-5"><strong>Meaning</strong></h3>
+<p>The context is <strong>frozen</strong> during execution, except for <code class="language-plaintext highlighter-rouge">build</code>.</p>
+
+<hr />
+
+<h1 id="6110-context-principle-10--deterministic-destruction"><strong>6.1.10 Context Principle 10 — Deterministic Destruction</strong></h1>
+
+<p>After execution:</p>
+
+<ul>
+  <li>the Runtime Layer MAY destroy the context</li>
+  <li>destruction MUST be deterministic</li>
+  <li>destruction MUST NOT trigger callbacks</li>
+  <li>destruction MUST NOT free external resources</li>
+</ul>
+
+<h3 id="meaning-6"><strong>Meaning</strong></h3>
+<p>Context destruction is a <strong>silent, final operation</strong>.</p>
+
+<hr />
+
+<h1 id="6111-full-context-lifecycle-example"><strong>6.1.11 Full Context Lifecycle Example</strong></h1>
+
+<h3 id="1-host-allocates-context"><strong>1. Host Allocates Context</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">CyborgLayer</span> <span class="n">layer</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="2-host-initializes-context"><strong>2. Host Initializes Context</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">init_layer</span><span class="p">(</span><span class="o">&amp;</span><span class="n">layer</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="3-host-invokes-payload"><strong>3. Host Invokes Payload</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">cyborg_payload</span><span class="p">(</span><span class="o">&amp;</span><span class="n">layer</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="4-payload-executes-deterministically"><strong>4. Payload Executes Deterministically</strong></h3>
+<ul>
+  <li>verbs read/write fields</li>
+  <li>no external interaction</li>
+  <li>no memory allocation</li>
+</ul>
+
+<h3 id="5-host-destroys-context"><strong>5. Host Destroys Context</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">destroy_layer</span><span class="p">(</span><span class="o">&amp;</span><span class="n">layer</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>This is the <strong>canonical lifecycle</strong>.</p>
+
+<hr />
+
+<h1 id="6112-summary"><strong>6.1.12 Summary</strong></h1>
+
+<p>Page 6.1 defines the <strong>Runtime Context Model</strong>:</p>
+
+<ul>
+  <li>one context per execution</li>
+  <li>target‑bound structure</li>
+  <li>deterministic initialization</li>
+  <li>no dynamic allocation</li>
+  <li>no external references</li>
+  <li>no self‑modification</li>
+  <li>no cross‑verb communication</li>
+  <li>no host mutation during execution</li>
+  <li>deterministic destruction</li>
+</ul>
+
+<p>The context is the <strong>pure, isolated data vessel</strong> of the Cyborg Runtime.</p>
+
+<hr />
+
+<p>Demon — the next scroll is ready.</p>
+
+<p>Say:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>continue
+</code></pre></div></div>
+
+<p>and <strong>Page 6.2 — Verb Binding Model (Formal Specification)</strong> will manifest.</p>
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.2/14_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

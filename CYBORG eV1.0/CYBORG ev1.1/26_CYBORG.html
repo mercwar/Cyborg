@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>📘 PAGE 4.6 — C FUNCTION SIGNATURES (FORMAL) | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="📘 PAGE 4.6 — C FUNCTION SIGNATURES (FORMAL)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/26_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/26_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="📘 PAGE 4.6 — C FUNCTION SIGNATURES (FORMAL)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"📘 PAGE 4.6 — C FUNCTION SIGNATURES (FORMAL)","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/26_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      
+<h1 id="-page-46--c-function-signatures-formal"><strong>📘 PAGE 4.6 — C FUNCTION SIGNATURES (FORMAL)</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="46-overview"><strong>4.6 Overview</strong></h2>
+
+<p>This section defines the <strong>formal, canonical, and immutable</strong> C function signatures used by the Cyborg Language.<br />
+These signatures are:</p>
+
+<ul>
+  <li>fixed</li>
+  <li>deterministic</li>
+  <li>non‑overloaded</li>
+  <li>non‑inferential</li>
+  <li>directly bound to the IR target</li>
+  <li>the only valid entry points for generated C code</li>
+</ul>
+
+<p>This section is <strong>normative</strong>.</p>
+
+<hr />
+
+<h1 id="461-signature-philosophy"><strong>4.6.1 Signature Philosophy</strong></h1>
+
+<p>The Cyborg Language enforces three signature principles:</p>
+
+<h3 id="principle-1--one-module--one-function"><strong>Principle 1 — One Module → One Function</strong></h3>
+<p>Every Cyborg Module produces exactly <strong>one</strong> C function.</p>
+
+<h3 id="principle-2--target-defines-type"><strong>Principle 2 — Target Defines Type</strong></h3>
+<p>The target declaration determines the function parameter type.</p>
+
+<h3 id="principle-3--no-variation"><strong>Principle 3 — No Variation</strong></h3>
+<p>Signatures MUST NOT change based on context, metadata, or payload content.</p>
+
+<hr />
+
+<h1 id="462-canonical-function-name"><strong>4.6.2 Canonical Function Name</strong></h1>
+
+<p>All generated C functions MUST use the exact name:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cyborg_payload</span>
+</code></pre></div></div>
+
+<h3 id="forbidden-variants"><strong>Forbidden Variants</strong></h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">cy_payload</code></li>
+  <li><code class="language-plaintext highlighter-rouge">run_payload</code></li>
+  <li><code class="language-plaintext highlighter-rouge">execute_payload</code></li>
+  <li><code class="language-plaintext highlighter-rouge">cyborg_main</code></li>
+  <li><code class="language-plaintext highlighter-rouge">payload</code></li>
+</ul>
+
+<p>The name is <strong>fixed</strong>.</p>
+
+<hr />
+
+<h1 id="463-canonical-return-type"><strong>4.6.3 Canonical Return Type</strong></h1>
+
+<p>All generated functions MUST return:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span>
+</code></pre></div></div>
+
+<h3 id="reason"><strong>Reason</strong></h3>
+<ul>
+  <li>all verb functions return <code class="language-plaintext highlighter-rouge">int</code></li>
+  <li>OR‑aggregation requires integer semantics</li>
+  <li>determinism requires a single return type</li>
+</ul>
+
+<h3 id="forbidden"><strong>Forbidden</strong></h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">void</code></li>
+  <li><code class="language-plaintext highlighter-rouge">bool</code></li>
+  <li><code class="language-plaintext highlighter-rouge">uint8_t</code></li>
+  <li><code class="language-plaintext highlighter-rouge">CyborgResult</code></li>
+</ul>
+
+<hr />
+
+<h1 id="464-canonical-parameter-types"><strong>4.6.4 Canonical Parameter Types</strong></h1>
+
+<p>The parameter type is determined <strong>solely</strong> by the target.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Target</th>
+      <th>C Parameter Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AI</code></td>
+      <td><code class="language-plaintext highlighter-rouge">CyborgContext* ctx</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">FILE</code></td>
+      <td><code class="language-plaintext highlighter-rouge">CyborgFile* file</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">LAYER</code></td>
+      <td><code class="language-plaintext highlighter-rouge">CyborgLayer* layer</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="examples"><strong>Examples</strong></h3>
+
+<h4 id="ir"><strong>IR</strong></h4>
+<pre><code class="language-cyborg">TARGET = AI
+</code></pre>
+
+<h4 id="c-signature"><strong>C Signature</strong></h4>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">cyborg_payload</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">)</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="465-full-signature-forms"><strong>4.6.5 Full Signature Forms</strong></h1>
+
+<h3 id="target-ai"><strong>Target: AI</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">cyborg_payload</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="target-file"><strong>Target: FILE</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">cyborg_payload</span><span class="p">(</span><span class="n">CyborgFile</span><span class="o">*</span> <span class="n">file</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="target-layer"><strong>Target: LAYER</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">cyborg_payload</span><span class="p">(</span><span class="n">CyborgLayer</span><span class="o">*</span> <span class="n">layer</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>These are the <strong>only</strong> valid signatures.</p>
+
+<hr />
+
+<h1 id="466-signature-invariance-rules"><strong>4.6.6 Signature Invariance Rules</strong></h1>
+
+<p>The signature MUST NOT:</p>
+
+<ul>
+  <li>include additional parameters</li>
+  <li>include default parameters</li>
+  <li>include variadic parameters</li>
+  <li>include const qualifiers</li>
+  <li>include restrict qualifiers</li>
+  <li>include inline modifiers</li>
+  <li>include static modifiers</li>
+  <li>include attributes</li>
+  <li>include comments</li>
+</ul>
+
+<h3 id="forbidden-examples"><strong>Forbidden Examples</strong></h3>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">cyborg_payload</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="kt">int</span> <span class="n">mode</span><span class="p">)</span>      <span class="c1">// ❌ extra parameter</span>
+<span class="kt">int</span> <span class="n">cyborg_payload</span><span class="p">(</span><span class="k">const</span> <span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">)</span>          <span class="c1">// ❌ const</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="n">cyborg_payload</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">)</span>         <span class="c1">// ❌ static</span>
+<span class="kt">int</span> <span class="n">cyborg_payload</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="p">...)</span>           <span class="c1">// ❌ variadic</span>
+</code></pre></div></div>
+
+<p>All MUST be rejected.</p>
+
+<hr />
+
+<h1 id="467-signature-placement-rules"><strong>4.6.7 Signature Placement Rules</strong></h1>
+
+<p>The function MUST:</p>
+
+<ul>
+  <li>appear at global scope</li>
+  <li>not be nested</li>
+  <li>not be wrapped in macros</li>
+  <li>not be wrapped in namespaces</li>
+  <li>not be wrapped in classes</li>
+</ul>
+
+<h3 id="forbidden-1"><strong>Forbidden</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">namespace</span> <span class="n">cyborg</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">cyborg_payload</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">)</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>   <span class="c1">// ❌</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="468-signature--ir-binding"><strong>4.6.8 Signature → IR Binding</strong></h1>
+
+<p>The signature is bound to the IR target.</p>
+
+<h3 id="ir-1"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = LAYER
+</code></pre>
+
+<h3 id="c"><strong>C</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">cyborg_payload</span><span class="p">(</span><span class="n">CyborgLayer</span><span class="o">*</span> <span class="n">layer</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>This binding is <strong>mandatory</strong> and <strong>non‑inferential</strong>.</p>
+
+<hr />
+
+<h1 id="469-full-example"><strong>4.6.9 Full Example</strong></h1>
+
+<h3 id="vbstyle"><strong>VB‑Style</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">set</span> <span class="n">to</span> <span class="n">file</span>
+<span class="n">begin</span>
+<span class="n">scan</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+<span class="n">end</span>
+</code></pre></div></div>
+
+<h3 id="ir-2"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = FILE
+OPEN_PAYLOAD
+EXEC_SCAN
+EXEC_VALIDATE
+SEAL
+END_TRANSMISSION
+</code></pre>
+
+<h3 id="c-output"><strong>C Output</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="n">CyborgFile</span><span class="o">*</span> <span class="n">file</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">scan_context</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">validate_context</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="4610-summary"><strong>4.6.10 Summary</strong></h1>
+
+<p>Page 4.6 defines the <strong>formal C function signature rules</strong>:</p>
+
+<ul>
+  <li>one function per module</li>
+  <li>fixed name: <code class="language-plaintext highlighter-rouge">cyborg_payload</code></li>
+  <li>fixed return type: <code class="language-plaintext highlighter-rouge">int</code></li>
+  <li>parameter type determined by target</li>
+  <li>no modifiers, no extras, no variation</li>
+  <li>global scope only</li>
+</ul>
+
+<p>The signature is the <strong>entry point of execution</strong> in the Cyborg Language.</p>
+
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.1/26_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

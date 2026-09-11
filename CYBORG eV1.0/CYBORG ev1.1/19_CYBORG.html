@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>📘 PAGE 3.9 — ERROR CONDITIONS AND DIAGNOSTICS | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="📘 PAGE 3.9 — ERROR CONDITIONS AND DIAGNOSTICS" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/19_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/19_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="📘 PAGE 3.9 — ERROR CONDITIONS AND DIAGNOSTICS" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"📘 PAGE 3.9 — ERROR CONDITIONS AND DIAGNOSTICS","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/19_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      <h1 id="-page-39--error-conditions-and-diagnostics"><strong>📘 PAGE 3.9 — ERROR CONDITIONS AND DIAGNOSTICS</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="39-overview"><strong>3.9 Overview</strong></h2>
+
+<p>Error handling in the Cyborg Language is <strong>binary and absolute</strong>:</p>
+
+<ul>
+  <li>A module is either <strong>valid</strong></li>
+  <li>or <strong>invalid</strong></li>
+</ul>
+
+<p>There is <strong>no partial validity</strong>, no recovery, no inference, and no fallback behavior.</p>
+
+<p>This section defines:</p>
+
+<ul>
+  <li>all error conditions</li>
+  <li>how errors are detected</li>
+  <li>how errors MUST be reported</li>
+  <li>how the engine MUST behave when errors occur</li>
+</ul>
+
+<p>This section is <strong>normative</strong>.</p>
+
+<hr />
+
+<h1 id="391-error-philosophy"><strong>3.9.1 Error Philosophy</strong></h1>
+
+<p>The Cyborg Language treats errors as <strong>structural violations</strong>, not runtime events.</p>
+
+<h3 id="principles"><strong>Principles</strong></h3>
+
+<ul>
+  <li>Errors MUST be detected immediately.</li>
+  <li>Errors MUST halt execution.</li>
+  <li>Errors MUST NOT be corrected automatically.</li>
+  <li>Errors MUST NOT be inferred away.</li>
+  <li>Errors MUST NOT be softened or interpreted.</li>
+</ul>
+
+<h3 id="reason"><strong>Reason</strong></h3>
+
+<p>Determinism requires <strong>strict rejection</strong> of invalid constructs.</p>
+
+<hr />
+
+<h1 id="392-categories-of-errors"><strong>3.9.2 Categories of Errors</strong></h1>
+
+<p>All errors fall into one of five categories:</p>
+
+<ol>
+  <li><strong>Targeting Errors</strong></li>
+  <li><strong>Marker Errors</strong></li>
+  <li><strong>Verb Errors</strong></li>
+  <li><strong>Ordering Errors</strong></li>
+  <li><strong>Structural Errors</strong></li>
+</ol>
+
+<p>Each category is defined below.</p>
+
+<hr />
+
+<h1 id="393-targeting-errors"><strong>3.9.3 Targeting Errors</strong></h1>
+
+<h3 id="error-1--missing-target"><strong>Error 1 — Missing Target</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<h3 id="error-2--multiple-targets"><strong>Error 2 — Multiple Targets</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">set</span> <span class="n">to</span> <span class="n">you</span>
+<span class="n">set</span> <span class="n">to</span> <span class="n">file</span>
+<span class="n">begin</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<h3 id="error-3--target-inside-payload"><strong>Error 3 — Target Inside Payload</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">set</span> <span class="n">to</span> <span class="n">you</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<h3 id="error-4--target-after-seal"><strong>Error 4 — Target After Seal</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">set</span> <span class="n">to</span> <span class="n">you</span>
+<span class="n">begin</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+<span class="n">set</span> <span class="n">to</span> <span class="n">file</span>
+</code></pre></div></div>
+
+<p>All MUST be rejected.</p>
+
+<hr />
+
+<h1 id="394-marker-errors"><strong>3.9.4 Marker Errors</strong></h1>
+
+<h3 id="error-1--missing-begin"><strong>Error 1 — Missing <code class="language-plaintext highlighter-rouge">begin</code></strong></h3>
+<h3 id="error-2--missing-"><strong>Error 2 — Missing <code class="language-plaintext highlighter-rouge">#!#</code></strong></h3>
+<h3 id="error-3--nested-payloads"><strong>Error 3 — Nested Payloads</strong></h3>
+<h3 id="error-4--multiple-opens"><strong>Error 4 — Multiple Opens</strong></h3>
+<h3 id="error-5--multiple-seals"><strong>Error 5 — Multiple Seals</strong></h3>
+<h3 id="error-6--trailing-content"><strong>Error 6 — Trailing Content</strong></h3>
+<h3 id="error-7--marker-fragmentation"><strong>Error 7 — Marker Fragmentation</strong></h3>
+<h3 id="error-8--marker-decoration"><strong>Error 8 — Marker Decoration</strong></h3>
+
+<p>Examples:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+<span class="n">extra</span>   <span class="c1">' ❌ trailing content</span>
+</code></pre></div></div>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">#</span> <span class="n">B</span> <span class="n">G</span> <span class="n">I</span> <span class="n">N</span>   <span class="c1">' ❌ fragmented</span>
+</code></pre></div></div>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">***</span><span class="p">#!#</span><span class="o">***</span>   <span class="c1">' ❌ decorated</span>
+</code></pre></div></div>
+
+<p>All MUST be rejected.</p>
+
+<hr />
+
+<h1 id="395-verb-errors"><strong>3.9.5 Verb Errors</strong></h1>
+
+<h3 id="error-1--verb-outside-payload"><strong>Error 1 — Verb Outside Payload</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">validate</span>
+<span class="n">begin</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<h3 id="error-2--verb-after-seal"><strong>Error 2 — Verb After Seal</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+<span class="n">scan</span>   <span class="c1">' ❌</span>
+</code></pre></div></div>
+
+<h3 id="error-3--unknown-verb"><strong>Error 3 — Unknown Verb</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">optimize</span>   <span class="c1">' ❌ invalid verb</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<h3 id="error-4--verb-with-arguments"><strong>Error 4 — Verb With Arguments</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">validate</span> <span class="n">now</span>   <span class="c1">' ❌</span>
+</code></pre></div></div>
+
+<h3 id="error-5--combined-verbs"><strong>Error 5 — Combined Verbs</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">scan</span> <span class="n">validate</span>   <span class="c1">' ❌</span>
+</code></pre></div></div>
+
+<p>All MUST be rejected.</p>
+
+<hr />
+
+<h1 id="396-ordering-errors"><strong>3.9.6 Ordering Errors</strong></h1>
+
+<h3 id="error-1--reordered-verbs-by-ai"><strong>Error 1 — Reordered Verbs by AI</strong></h3>
+<p>AI MUST NOT reorder verbs.</p>
+
+<h3 id="error-2--grouped-verbs"><strong>Error 2 — Grouped Verbs</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">scan</span><span class="p">,</span> <span class="n">validate</span>   <span class="c1">' ❌</span>
+</code></pre></div></div>
+
+<h3 id="error-3--parallel-verbs"><strong>Error 3 — Parallel Verbs</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">scan</span> <span class="err">||</span> <span class="n">validate</span>   <span class="c1">' ❌</span>
+</code></pre></div></div>
+
+<h3 id="error-4--conditional-verbs"><strong>Error 4 — Conditional Verbs</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">if</span> <span class="n">ready</span> <span class="n">then</span> <span class="n">validate</span>   <span class="c1">' ❌</span>
+</code></pre></div></div>
+
+<p>All MUST be rejected.</p>
+
+<hr />
+
+<h1 id="397-structural-errors"><strong>3.9.7 Structural Errors</strong></h1>
+
+<h3 id="error-1--declarations-inside-payload"><strong>Error 1 — Declarations Inside Payload</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">meta</span> <span class="s">"illegal"</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<h3 id="error-2--comments-breaking-markers"><strong>Error 2 — Comments Breaking Markers</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="c1">' illegal</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<h3 id="error-3--whitespace-splitting-keywords"><strong>Error 3 — Whitespace Splitting Keywords</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">v</span> <span class="n">a</span> <span class="n">l</span> <span class="n">i</span> <span class="n">d</span> <span class="n">a</span> <span class="n">t</span> <span class="n">e</span>   <span class="c1">' ❌</span>
+</code></pre></div></div>
+
+<h3 id="error-4--payload-inside-payload"><strong>Error 4 — Payload Inside Payload</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">begin</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<p>All MUST be rejected.</p>
+
+<hr />
+
+<h1 id="398-diagnostic-output-requirements"><strong>3.9.8 Diagnostic Output Requirements</strong></h1>
+
+<p>When an error occurs, the engine MUST:</p>
+
+<ul>
+  <li>halt immediately</li>
+  <li>report the error category</li>
+  <li>report the specific violation</li>
+  <li>report the line where the violation occurred</li>
+  <li>MUST NOT attempt correction</li>
+  <li>MUST NOT infer intent</li>
+  <li>MUST NOT continue execution</li>
+</ul>
+
+<h3 id="example-diagnostic"><strong>Example Diagnostic</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ERROR: Marker violation — trailing content after seal.
+Line 5: "extra"
+Execution halted.
+</code></pre></div></div>
+
+<h3 id="example-diagnostic-1"><strong>Example Diagnostic</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ERROR: Target missing.
+No valid execution context found.
+Execution halted.
+</code></pre></div></div>
+
+<p>Diagnostics MUST be:</p>
+
+<ul>
+  <li>clear</li>
+  <li>direct</li>
+  <li>non‑negotiable</li>
+  <li>non‑interpretive</li>
+</ul>
+
+<hr />
+
+<h1 id="399-error-severity"><strong>3.9.9 Error Severity</strong></h1>
+
+<p>All errors are <strong>fatal</strong>.</p>
+
+<p>There are no warnings.<br />
+There are no recoverable states.<br />
+There is no “best effort” mode.</p>
+
+<p>If a module violates the rules, it is <strong>invalid</strong>.</p>
+
+<hr />
+
+<h1 id="3910-summary"><strong>3.9.10 Summary</strong></h1>
+
+<p>Page 3.9 defines the <strong>error and diagnostic system</strong> of the Cyborg Language:</p>
+
+<ul>
+  <li>errors are structural</li>
+  <li>errors are fatal</li>
+  <li>errors halt execution</li>
+  <li>errors MUST NOT be corrected</li>
+  <li>errors MUST NOT be inferred away</li>
+  <li>diagnostics MUST be explicit and direct</li>
+</ul>
+
+<p>This ensures the language remains <strong>deterministic, strict, and ceremonial</strong>.</p>
+
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.1/19_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

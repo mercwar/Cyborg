@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>📘 PAGE 3.7 — COMMENTS AND WHITESPACE RULES | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="📘 PAGE 3.7 — COMMENTS AND WHITESPACE RULES" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/16_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/16_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="📘 PAGE 3.7 — COMMENTS AND WHITESPACE RULES" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"📘 PAGE 3.7 — COMMENTS AND WHITESPACE RULES","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/16_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      <h1 id="-page-37--comments-and-whitespace-rules"><strong>📘 PAGE 3.7 — COMMENTS AND WHITESPACE RULES</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="37-overview"><strong>3.7 Overview</strong></h2>
+
+<p>Comments and whitespace exist in the Cyborg Language <strong>only for human readability</strong>.<br />
+They:</p>
+
+<ul>
+  <li>MUST NOT affect execution</li>
+  <li>MUST NOT affect IR</li>
+  <li>MUST NOT affect C output</li>
+  <li>MUST NOT alter verb order</li>
+  <li>MUST NOT break markers</li>
+</ul>
+
+<p>Whitespace and comments are <strong>non‑semantic</strong>.<br />
+They are allowed, but only within strict boundaries.</p>
+
+<p>This section is <strong>normative</strong>.</p>
+
+<hr />
+
+<h1 id="371-comment-syntax"><strong>3.7.1 Comment Syntax</strong></h1>
+
+<p>The Cyborg Language uses <strong>VB‑style single‑line comments</strong>:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">' This is a comment</span>
+</code></pre></div></div>
+
+<h3 id="normative-rules"><strong>Normative Rules</strong></h3>
+
+<ul>
+  <li>Comments MAY appear before the payload.</li>
+  <li>Comments MAY appear inside the payload <strong>only if they do not break structure</strong>.</li>
+  <li>Comments MUST NOT appear between marker fragments.</li>
+  <li>Comments MUST NOT appear after the seal (<code class="language-plaintext highlighter-rouge">#!#</code>).</li>
+  <li>Comments MUST NOT alter execution.</li>
+  <li>Comments MUST NOT imply grouping or ordering.</li>
+</ul>
+
+<hr />
+
+<h1 id="372-valid-comment-placement"><strong>3.7.2 Valid Comment Placement</strong></h1>
+
+<h3 id="before-payload"><strong>Before Payload</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">' This module validates the context</span>
+<span class="n">set</span> <span class="n">to</span> <span class="n">you</span>
+<span class="n">begin</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<h3 id="inside-payload-allowed"><strong>Inside Payload (Allowed)</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">scan</span>      <span class="c1">' first pass</span>
+<span class="n">validate</span>  <span class="c1">' second pass</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<h3 id="after-transmission-allowed"><strong>After Transmission (Allowed)</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">#!#</span>
+<span class="n">end</span>
+<span class="c1">' done</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="373-invalid-comment-placement"><strong>3.7.3 Invalid Comment Placement</strong></h1>
+
+<h3 id="-between-marker-fragments">❌ Between Marker Fragments</h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="c1">' illegal</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<h3 id="-after-seal">❌ After Seal</h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+<span class="c1">' forbidden</span>
+</code></pre></div></div>
+
+<h3 id="-inside-payload-in-a-way-that-breaks-structure">❌ Inside Payload in a Way That Breaks Structure</h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="c1">' comment that implies grouping ❌</span>
+<span class="n">scan</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<h3 id="-comments-that-alter-meaning">❌ Comments That Alter Meaning</h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">scan</span> <span class="c1">' then validate and build ❌</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<p>Comments MUST NOT imply additional verbs.</p>
+
+<hr />
+
+<h1 id="374-whitespace-rules"><strong>3.7.4 Whitespace Rules</strong></h1>
+
+<p>Whitespace is allowed but <strong>non‑semantic</strong>.</p>
+
+<h3 id="allowed"><strong>Allowed</strong></h3>
+<ul>
+  <li>blank lines</li>
+  <li>indentation</li>
+  <li>spacing around verbs</li>
+  <li>spacing around markers</li>
+</ul>
+
+<h3 id="forbidden"><strong>Forbidden</strong></h3>
+<ul>
+  <li>whitespace that changes meaning</li>
+  <li>whitespace that splits keywords</li>
+  <li>whitespace that creates ambiguity</li>
+</ul>
+
+<h3 id="valid"><strong>Valid</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+
+<span class="n">scan</span>
+
+<span class="n">validate</span>
+
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<h3 id="invalid"><strong>Invalid</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">v</span> <span class="n">a</span> <span class="n">l</span> <span class="n">i</span> <span class="n">d</span> <span class="n">a</span> <span class="n">t</span> <span class="n">e</span>   <span class="c1">' ❌ forbidden</span>
+</code></pre></div></div>
+
+<p>Whitespace MUST NOT fragment keywords.</p>
+
+<hr />
+
+<h1 id="375-whitespace-normalization"><strong>3.7.5 Whitespace Normalization</strong></h1>
+
+<p>The Cyborg engine MUST:</p>
+
+<ul>
+  <li>ignore blank lines</li>
+  <li>ignore indentation</li>
+  <li>ignore trailing spaces</li>
+  <li>normalize whitespace before IR generation</li>
+</ul>
+
+<p>The engine MUST NOT:</p>
+
+<ul>
+  <li>infer meaning from whitespace</li>
+  <li>treat whitespace as grouping</li>
+  <li>treat whitespace as ordering</li>
+</ul>
+
+<hr />
+
+<h1 id="376-comments-and-whitespace--ir-mapping"><strong>3.7.6 Comments and Whitespace → IR Mapping</strong></h1>
+
+<h3 id="vbstyle"><strong>VB‑Style</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">set</span> <span class="n">to</span> <span class="n">you</span>
+<span class="c1">' comment</span>
+<span class="n">begin</span>
+
+<span class="n">scan</span>      <span class="c1">' pass 1</span>
+
+<span class="n">validate</span>  <span class="c1">' pass 2</span>
+
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<h3 id="cyborg-ir"><strong>Cyborg IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = AI
+OPEN_PAYLOAD
+EXEC_SCAN
+EXEC_VALIDATE
+SEAL
+</code></pre>
+
+<p>Comments and whitespace do not appear in IR.</p>
+
+<hr />
+
+<h1 id="377-comments-and-whitespace--c-mapping"><strong>3.7.7 Comments and Whitespace → C Mapping</strong></h1>
+
+<h3 id="c-output"><strong>C Output</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">scan_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">validate_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>No comments or whitespace from the VB‑style input appear in the C output.</p>
+
+<hr />
+
+<h1 id="378-forbidden-patterns-summary"><strong>3.7.8 Forbidden Patterns Summary</strong></h1>
+
+<p>The following MUST be rejected:</p>
+
+<h3 id="-comments-after-seal">❌ Comments after seal</h3>
+<h3 id="-comments-between-marker-fragments">❌ Comments between marker fragments</h3>
+<h3 id="-comments-implying-additional-verbs">❌ Comments implying additional verbs</h3>
+<h3 id="-comments-altering-order">❌ Comments altering order</h3>
+<h3 id="-whitespace-splitting-keywords">❌ Whitespace splitting keywords</h3>
+<h3 id="-whitespace-implying-grouping">❌ Whitespace implying grouping</h3>
+<h3 id="-whitespace-implying-structure">❌ Whitespace implying structure</h3>
+
+<p>All violate deterministic execution.</p>
+
+<hr />
+
+<h1 id="379-summary"><strong>3.7.9 Summary</strong></h1>
+
+<p>Page 3.7 defines the <strong>comment and whitespace rules</strong> of the Cyborg Language:</p>
+
+<ul>
+  <li>comments are allowed but non‑semantic</li>
+  <li>whitespace is allowed but non‑semantic</li>
+  <li>comments must not break markers</li>
+  <li>comments must not imply structure</li>
+  <li>whitespace must not fragment keywords</li>
+  <li>neither comments nor whitespace affect IR or C output</li>
+</ul>
+
+<p>Comments and whitespace exist <strong>only for human readability</strong>, never for execution.</p>
+
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.1/16_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

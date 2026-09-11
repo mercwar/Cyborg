@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Cyborg | A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Cyborg" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/08_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/08_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Cyborg" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"Cyborg","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/08_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      <p>Absolutely, Demon. The Codex advances.</p>
+
+<hr />
+
+<h1 id="-page-56--c-layer-return-semantics-formal"><strong>📘 PAGE 5.6 — C LAYER RETURN SEMANTICS (FORMAL)</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="56-overview"><strong>5.6 Overview</strong></h2>
+
+<p>Page 5.6 defines the <strong>formal semantics</strong> of the return value produced by the C Layer.<br />
+This is the final output of a Cyborg Module — the distilled result of all verb executions.</p>
+
+<p>The return semantics are:</p>
+
+<ul>
+  <li>deterministic</li>
+  <li>non‑inferential</li>
+  <li>non‑optimizing</li>
+  <li>strictly OR‑aggregated</li>
+  <li>structurally fixed</li>
+  <li>semantically meaningful</li>
+</ul>
+
+<p>This section is <strong>normative</strong>.</p>
+
+<hr />
+
+<h1 id="561-return-semantics-principle-1--oraggregation-is-mandatory"><strong>5.6.1 Return Semantics Principle 1 — OR‑Aggregation Is Mandatory</strong></h1>
+
+<p>The return value MUST be the OR‑aggregation of all verb results:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span> <span class="o">||</span> <span class="n">r3</span> <span class="p">...);</span>
+</code></pre></div></div>
+
+<h3 id="meaning"><strong>Meaning</strong></h3>
+<ul>
+  <li>If <strong>any</strong> verb returns non‑zero → the payload returns non‑zero.</li>
+  <li>If <strong>all</strong> verbs return zero → the payload returns zero.</li>
+</ul>
+
+<p>This is the Cyborg Language’s <strong>binary semantic contract</strong>.</p>
+
+<hr />
+
+<h1 id="562-return-semantics-principle-2--no-shortcircuiting"><strong>5.6.2 Return Semantics Principle 2 — No Short‑Circuiting</strong></h1>
+
+<p>Even though <code class="language-plaintext highlighter-rouge">||</code> is used, the C Layer MUST NOT rely on short‑circuit behavior.</p>
+
+<h3 id="meaning-1"><strong>Meaning</strong></h3>
+<ul>
+  <li>All verb calls MUST execute.</li>
+  <li>The OR expression is a <strong>logical aggregation</strong>, not a control structure.</li>
+</ul>
+
+<hr />
+
+<h1 id="563-return-semantics-principle-3--no-reinterpretation"><strong>5.6.3 Return Semantics Principle 3 — No Reinterpretation</strong></h1>
+
+<p>The C Layer MUST NOT reinterpret verb results.</p>
+
+<h3 id="forbidden"><strong>Forbidden</strong></h3>
+<ul>
+  <li>converting results to booleans</li>
+  <li>negating results</li>
+  <li>thresholding results</li>
+  <li>mapping results to enums</li>
+  <li>mapping results to strings</li>
+</ul>
+
+<h3 id="allowed"><strong>Allowed</strong></h3>
+<ul>
+  <li>OR‑aggregating integers exactly as returned</li>
+</ul>
+
+<hr />
+
+<h1 id="564-return-semantics-principle-4--no-additional-logic"><strong>5.6.4 Return Semantics Principle 4 — No Additional Logic</strong></h1>
+
+<p>The return statement MUST NOT include:</p>
+
+<ul>
+  <li>conditions</li>
+  <li>arithmetic</li>
+  <li>bitwise operations</li>
+  <li>function calls</li>
+  <li>casts</li>
+  <li>ternary operators</li>
+  <li>parentheses around individual variables</li>
+</ul>
+
+<h3 id="forbidden-examples"><strong>Forbidden Examples</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">&amp;&amp;</span> <span class="n">r2</span><span class="p">);</span>          <span class="c1">// ❌ wrong operator</span>
+<span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">|</span> <span class="n">r2</span><span class="p">);</span>           <span class="c1">// ❌ bitwise OR</span>
+<span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">+</span> <span class="n">r2</span><span class="p">);</span>           <span class="c1">// ❌ arithmetic</span>
+<span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">?</span> <span class="n">r1</span> <span class="o">:</span> <span class="n">r2</span><span class="p">);</span>      <span class="c1">// ❌ conditional</span>
+<span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">r3</span><span class="p">;</span>    <span class="c1">// ❌ mixed logic</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="565-return-semantics-principle-5--order-preservation"><strong>5.6.5 Return Semantics Principle 5 — Order Preservation</strong></h1>
+
+<p>The order of variables in the return expression MUST match the order of verb execution.</p>
+
+<h3 id="forbidden-1"><strong>Forbidden</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">return</span> <span class="p">(</span><span class="n">r3</span> <span class="o">||</span> <span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span><span class="p">);</span>    <span class="c1">// ❌ reordering</span>
+</code></pre></div></div>
+
+<h3 id="required"><strong>Required</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span> <span class="o">||</span> <span class="n">r3</span><span class="p">);</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="566-return-semantics-principle-6--single-expression-only"><strong>5.6.6 Return Semantics Principle 6 — Single Expression Only</strong></h1>
+
+<p>The return MUST be a <strong>single expression</strong>.</p>
+
+<h3 id="forbidden-2"><strong>Forbidden</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="n">r1</span><span class="p">)</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>           <span class="c1">// ❌ branching</span>
+<span class="k">return</span> <span class="n">r1</span><span class="p">;</span>                  <span class="c1">// ❌ incomplete</span>
+<span class="k">return</span> <span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span><span class="p">;</span>            <span class="c1">// ❌ missing others</span>
+</code></pre></div></div>
+
+<h3 id="required-1"><strong>Required</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span> <span class="o">||</span> <span class="n">r3</span><span class="p">);</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="567-return-semantics-principle-7--no-postreturn-logic"><strong>5.6.7 Return Semantics Principle 7 — No Post‑Return Logic</strong></h1>
+
+<p>Nothing may appear after the return statement.</p>
+
+<h3 id="forbidden-3"><strong>Forbidden</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span><span class="p">);</span>
+<span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>                  <span class="c1">// ❌ trailing content</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="568-full-canonical-example"><strong>5.6.8 Full Canonical Example</strong></h1>
+
+<h3 id="ir"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = FILE
+OPEN_PAYLOAD
+EXEC_VALIDATE
+EXEC_SCAN
+EXEC_BUILD
+EXEC_GIVE
+SEAL
+</code></pre>
+
+<h3 id="c-output"><strong>C Output</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="n">CyborgFile</span><span class="o">*</span> <span class="n">file</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">validate_context</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">scan_context</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r3</span> <span class="o">=</span> <span class="n">build_context</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r4</span> <span class="o">=</span> <span class="n">give_context</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span> <span class="o">||</span> <span class="n">r3</span> <span class="o">||</span> <span class="n">r4</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="return-semantics-interpretation"><strong>Return Semantics Interpretation</strong></h3>
+<ul>
+  <li>All verbs executed</li>
+  <li>All results aggregated</li>
+  <li>No inference</li>
+  <li>No optimization</li>
+  <li>No short‑circuiting</li>
+  <li>Deterministic final value</li>
+</ul>
+
+<hr />
+
+<h1 id="569-summary"><strong>5.6.9 Summary</strong></h1>
+
+<p>Page 5.6 defines the <strong>formal return semantics</strong> of the C Layer:</p>
+
+<ul>
+  <li>OR‑aggregation is mandatory</li>
+  <li>no short‑circuiting</li>
+  <li>no reinterpretation</li>
+  <li>no additional logic</li>
+  <li>strict order preservation</li>
+  <li>single expression</li>
+  <li>no trailing content</li>
+</ul>
+
+<p>The return value is the <strong>final semantic truth</strong> of a Cyborg Module.</p>
+
+<hr />
+
+<p>Demon — the next scroll is ready.</p>
+
+<p>Say:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>continue
+</code></pre></div></div>
+
+<p>and <strong>Page 5.7 — C Layer Error Handling Rules (Formal)</strong> will manifest.</p>
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.2/08_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

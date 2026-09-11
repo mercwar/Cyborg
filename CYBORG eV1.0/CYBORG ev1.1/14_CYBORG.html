@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>📘 PAGE 3.4 — PAYLOAD BLOCKS | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="📘 PAGE 3.4 — PAYLOAD BLOCKS" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/14_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/14_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="📘 PAGE 3.4 — PAYLOAD BLOCKS" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"📘 PAGE 3.4 — PAYLOAD BLOCKS","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/14_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      <h1 id="-page-34--payload-blocks"><strong>📘 PAGE 3.4 — PAYLOAD BLOCKS</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="34-overview"><strong>3.4 Overview</strong></h2>
+
+<p>A <strong>payload block</strong> is the <em>active execution chamber</em> of the Cyborg Language.<br />
+It is where:</p>
+
+<ul>
+  <li>verbs execute</li>
+  <li>order is enforced</li>
+  <li>IR is generated</li>
+  <li>C output is constructed</li>
+  <li>boundaries are honored</li>
+</ul>
+
+<p>The payload is the <strong>heart</strong> of a Cyborg Module.<br />
+Everything outside it is context; everything inside it is execution.</p>
+
+<p>This section is <strong>normative</strong>.</p>
+
+<hr />
+
+<h1 id="341-what-a-payload-block-is"><strong>3.4.1 What a Payload Block Is</strong></h1>
+
+<p>A payload block is the region of code between:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>begin / #BGIN
+    ...
+#!#
+</code></pre></div></div>
+
+<p>It contains <strong>only verbs</strong>, in strict order, with optional comments that do not break structure.</p>
+
+<h3 id="canonical-form"><strong>Canonical Form</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="o">&lt;</span><span class="n">verbs</span><span class="o">&gt;</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="342-what-a-payload-block-is-not"><strong>3.4.2 What a Payload Block Is NOT</strong></h1>
+
+<p>A payload block is <strong>not</strong>:</p>
+
+<ul>
+  <li>a general-purpose code block</li>
+  <li>a place for declarations</li>
+  <li>a place for metadata</li>
+  <li>a place for nested structures</li>
+  <li>a place for inference</li>
+  <li>a place for optional syntax</li>
+</ul>
+
+<p>It is a <strong>sealed execution chamber</strong>.</p>
+
+<hr />
+
+<h1 id="343-payload-opening"><strong>3.4.3 Payload Opening</strong></h1>
+
+<h3 id="syntax-options"><strong>Syntax Options</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+</code></pre></div></div>
+<p>or</p>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">#</span><span class="n">BGIN</span>
+</code></pre></div></div>
+
+<h3 id="normative-rules"><strong>Normative Rules</strong></h3>
+
+<ul>
+  <li>MUST appear after the target declaration.</li>
+  <li>MUST appear before any verbs.</li>
+  <li>MUST NOT be nested.</li>
+  <li>MUST NOT appear more than once.</li>
+</ul>
+
+<h3 id="ir"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">OPEN_PAYLOAD
+</code></pre>
+
+<hr />
+
+<h1 id="344-payload-body"><strong>3.4.4 Payload Body</strong></h1>
+
+<p>The payload body contains <strong>only verbs</strong>, in the order written.</p>
+
+<h3 id="allowed-verbs"><strong>Allowed Verbs</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>validate
+scan
+build
+give
+explain
+</code></pre></div></div>
+
+<h3 id="normative-rules-1"><strong>Normative Rules</strong></h3>
+
+<ul>
+  <li>Verbs MUST appear inside an open payload.</li>
+  <li>Verbs MUST NOT appear before <code class="language-plaintext highlighter-rouge">begin</code>.</li>
+  <li>Verbs MUST NOT appear after <code class="language-plaintext highlighter-rouge">#!#</code>.</li>
+  <li>Verbs MUST NOT be inferred.</li>
+  <li>Verbs MUST NOT be reordered.</li>
+  <li>Verbs MUST map to C functions.</li>
+</ul>
+
+<h3 id="example"><strong>Example</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">scan</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="345-payload-sealing"><strong>3.4.5 Payload Sealing</strong></h1>
+
+<h3 id="syntax"><strong>Syntax</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">#!#</span>
+</code></pre></div></div>
+
+<h3 id="normative-rules-2"><strong>Normative Rules</strong></h3>
+
+<ul>
+  <li>MUST appear exactly once.</li>
+  <li>MUST close the payload.</li>
+  <li>MUST NOT be followed by executable content.</li>
+  <li>MUST trigger C syntax completion.</li>
+</ul>
+
+<h3 id="ir-1"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">SEAL
+</code></pre>
+
+<hr />
+
+<h1 id="346-payload-execution-order"><strong>3.4.6 Payload Execution Order</strong></h1>
+
+<p>Execution order is <strong>strict</strong> and MUST NOT be altered.</p>
+
+<h3 id="vbstyle"><strong>VB‑Style</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">scan</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<h3 id="ir-2"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">EXEC_SCAN
+EXEC_VALIDATE
+</code></pre>
+
+<h3 id="c-output"><strong>C Output</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">scan_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+<span class="n">validate_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Order is preserved exactly.</p>
+
+<hr />
+
+<h1 id="347-comments-inside-payloads"><strong>3.4.7 Comments Inside Payloads</strong></h1>
+
+<p>Comments MAY appear inside payloads <strong>only if they do not break structure</strong>.</p>
+
+<h3 id="valid"><strong>Valid</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">scan</span>      <span class="c1">' first pass</span>
+<span class="n">validate</span>  <span class="c1">' second pass</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<h3 id="invalid"><strong>Invalid</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="c1">' comment between marker fragments ❌</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<p>Comments MUST NOT:</p>
+
+<ul>
+  <li>appear between marker fragments</li>
+  <li>appear after the seal</li>
+  <li>alter execution</li>
+</ul>
+
+<hr />
+
+<h1 id="348-forbidden-payload-patterns"><strong>3.4.8 Forbidden Payload Patterns</strong></h1>
+
+<h3 id="-nested-payloads">❌ Nested Payloads</h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">begin</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<h3 id="-missing-seal">❌ Missing Seal</h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">validate</span>
+</code></pre></div></div>
+
+<h3 id="-trailing-content">❌ Trailing Content</h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+<span class="n">extra</span>
+</code></pre></div></div>
+
+<h3 id="-declarations-inside-payload">❌ Declarations Inside Payload</h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">meta</span> <span class="s">"illegal"</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<h3 id="-multiple-seals">❌ Multiple Seals</h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<p>All MUST be rejected.</p>
+
+<hr />
+
+<h1 id="349-full-valid-payload-example"><strong>3.4.9 Full Valid Payload Example</strong></h1>
+
+<h3 id="vbstyle-cyborg"><strong>VB‑Style Cyborg</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">set</span> <span class="n">to</span> <span class="n">you</span>
+<span class="n">begin</span>
+<span class="n">scan</span>
+<span class="n">validate</span>
+<span class="n">build</span>
+<span class="p">#!#</span>
+<span class="n">end</span>
+</code></pre></div></div>
+
+<h3 id="cyborg-ir"><strong>Cyborg IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = AI
+OPEN_PAYLOAD
+EXEC_SCAN
+EXEC_VALIDATE
+EXEC_BUILD
+SEAL
+END_TRANSMISSION
+</code></pre>
+
+<h3 id="c-output-1"><strong>C Output</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">scan_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">validate_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r3</span> <span class="o">=</span> <span class="n">build_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span> <span class="o">||</span> <span class="n">r3</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="3410-summary"><strong>3.4.10 Summary</strong></h1>
+
+<p>Page 3.4 defines the <strong>payload block</strong>, the core execution chamber of the Cyborg Language:</p>
+
+<ul>
+  <li>payloads are marker‑bound</li>
+  <li>payloads contain only verbs</li>
+  <li>payloads must be sealed</li>
+  <li>payloads must not be nested</li>
+  <li>payloads must not contain declarations</li>
+  <li>payloads produce deterministic IR and C output</li>
+</ul>
+
+<p>The payload is where <strong>ceremony becomes execution</strong>.</p>
+
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.1/14_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Cyborg | A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Cyborg" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/16_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/16_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Cyborg" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"Cyborg","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/16_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      <p>Advancing, Demon. The Runtime Codex obeys.</p>
+
+<hr />
+
+<h1 id="-page-63--runtime-execution-model-formal-specification"><strong>📘 PAGE 6.3 — RUNTIME EXECUTION MODEL (FORMAL SPECIFICATION)</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="63-overview"><strong>6.3 Overview</strong></h2>
+
+<p>The <strong>Runtime Execution Model</strong> defines <em>exactly how</em> a Cyborg Module runs once the host invokes <code class="language-plaintext highlighter-rouge">cyborg_payload</code>.<br />
+This model is:</p>
+
+<ul>
+  <li>synchronous</li>
+  <li>deterministic</li>
+  <li>linear</li>
+  <li>non‑interruptible</li>
+  <li>non‑parallel</li>
+  <li>non‑inferential</li>
+  <li>non‑optimizing</li>
+</ul>
+
+<p>It is the <strong>final operational truth</strong> of the Cyborg Language.</p>
+
+<p>This section is <strong>normative</strong>.</p>
+
+<hr />
+
+<h1 id="631-execution-principle-1--single-entry-point"><strong>6.3.1 Execution Principle 1 — Single Entry Point</strong></h1>
+
+<p>Execution MUST begin at:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cyborg_payload</span><span class="p">(</span><span class="o">&lt;</span><span class="n">context</span><span class="o">&gt;</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>There are:</p>
+
+<ul>
+  <li>no alternate entry points</li>
+  <li>no overloads</li>
+  <li>no wrappers</li>
+  <li>no dispatchers</li>
+  <li>no dynamic routing</li>
+</ul>
+
+<p>The payload function is the <strong>only</strong> execution entry.</p>
+
+<hr />
+
+<h1 id="632-execution-principle-2--synchronous-execution"><strong>6.3.2 Execution Principle 2 — Synchronous Execution</strong></h1>
+
+<p>Execution MUST be:</p>
+
+<ul>
+  <li>synchronous</li>
+  <li>blocking</li>
+  <li>non‑asynchronous</li>
+  <li>non‑interruptible</li>
+</ul>
+
+<h3 id="meaning"><strong>Meaning</strong></h3>
+<p>Once <code class="language-plaintext highlighter-rouge">cyborg_payload</code> begins, nothing else may run until it finishes.</p>
+
+<hr />
+
+<h1 id="633-execution-principle-3--linear-verb-execution"><strong>6.3.3 Execution Principle 3 — Linear Verb Execution</strong></h1>
+
+<p>Verb calls MUST execute in the exact order defined by IR:</p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">EXEC_VALIDATE</code></li>
+  <li><code class="language-plaintext highlighter-rouge">EXEC_SCAN</code></li>
+  <li><code class="language-plaintext highlighter-rouge">EXEC_BUILD</code></li>
+  <li><code class="language-plaintext highlighter-rouge">EXEC_GIVE</code></li>
+  <li><code class="language-plaintext highlighter-rouge">EXEC_EXPLAIN</code></li>
+</ol>
+
+<p>(or whatever order appears in IR)</p>
+
+<h3 id="meaning-1"><strong>Meaning</strong></h3>
+<ul>
+  <li>no reordering</li>
+  <li>no skipping</li>
+  <li>no merging</li>
+  <li>no parallel execution</li>
+</ul>
+
+<hr />
+
+<h1 id="634-execution-principle-4--no-shortcircuiting"><strong>6.3.4 Execution Principle 4 — No Short‑Circuiting</strong></h1>
+
+<p>Even though the return expression uses <code class="language-plaintext highlighter-rouge">||</code>, the runtime MUST NOT rely on short‑circuit semantics.</p>
+
+<h3 id="meaning-2"><strong>Meaning</strong></h3>
+<p>All verb calls MUST execute, regardless of intermediate results.</p>
+
+<hr />
+
+<h1 id="635-execution-principle-5--deterministic-timing"><strong>6.3.5 Execution Principle 5 — Deterministic Timing</strong></h1>
+
+<p>Execution MUST NOT depend on:</p>
+
+<ul>
+  <li>system load</li>
+  <li>thread scheduling</li>
+  <li>timers</li>
+  <li>interrupts</li>
+  <li>asynchronous events</li>
+</ul>
+
+<h3 id="meaning-3"><strong>Meaning</strong></h3>
+<p>Execution time is a function of:</p>
+
+<ul>
+  <li>number of verbs</li>
+  <li>cost of each verb</li>
+</ul>
+
+<p>Nothing else.</p>
+
+<hr />
+
+<h1 id="636-execution-principle-6--no-external-interaction"><strong>6.3.6 Execution Principle 6 — No External Interaction</strong></h1>
+
+<p>During execution, the runtime MUST NOT:</p>
+
+<ul>
+  <li>perform I/O</li>
+  <li>allocate memory</li>
+  <li>free memory</li>
+  <li>modify global state</li>
+  <li>call external APIs</li>
+  <li>invoke system functions</li>
+</ul>
+
+<h3 id="meaning-4"><strong>Meaning</strong></h3>
+<p>The runtime is a <strong>sealed chamber</strong>.</p>
+
+<hr />
+
+<h1 id="637-execution-principle-7--no-host-interference"><strong>6.3.7 Execution Principle 7 — No Host Interference</strong></h1>
+
+<p>The host MUST NOT:</p>
+
+<ul>
+  <li>modify the context during execution</li>
+  <li>intercept verb calls</li>
+  <li>wrap verb calls</li>
+  <li>inject logic</li>
+  <li>override behavior</li>
+  <li>run concurrent tasks</li>
+</ul>
+
+<h3 id="meaning-5"><strong>Meaning</strong></h3>
+<p>Execution is <strong>isolated</strong>.</p>
+
+<hr />
+
+<h1 id="638-execution-principle-8--deterministic-completion"><strong>6.3.8 Execution Principle 8 — Deterministic Completion</strong></h1>
+
+<p>Execution MUST always:</p>
+
+<ul>
+  <li>reach the return statement</li>
+  <li>produce exactly one integer result</li>
+  <li>terminate cleanly</li>
+</ul>
+
+<h3 id="forbidden"><strong>Forbidden</strong></h3>
+<ul>
+  <li>early returns</li>
+  <li>exceptions</li>
+  <li>aborts</li>
+  <li>infinite loops</li>
+  <li>deadlocks</li>
+</ul>
+
+<p>The C Layer cannot contain such constructs.</p>
+
+<hr />
+
+<h1 id="639-execution-principle-9--no-runtime-optimization"><strong>6.3.9 Execution Principle 9 — No Runtime Optimization</strong></h1>
+
+<p>The runtime MUST NOT:</p>
+
+<ul>
+  <li>inline verb calls</li>
+  <li>collapse OR expressions</li>
+  <li>eliminate temporary variables</li>
+  <li>reorder instructions</li>
+  <li>skip calls based on results</li>
+</ul>
+
+<h3 id="meaning-6"><strong>Meaning</strong></h3>
+<p>Execution is <strong>literal</strong>, not optimized.</p>
+
+<hr />
+
+<h1 id="6310-execution-principle-10--result-propagation"><strong>6.3.10 Execution Principle 10 — Result Propagation</strong></h1>
+
+<p>The runtime MUST:</p>
+
+<ul>
+  <li>receive the OR‑aggregated integer</li>
+  <li>return it to the host unchanged</li>
+  <li>perform no interpretation</li>
+  <li>perform no mapping</li>
+  <li>perform no transformation</li>
+</ul>
+
+<h3 id="meaning-7"><strong>Meaning</strong></h3>
+<p>The runtime is a <strong>pass‑through</strong> for results.</p>
+
+<hr />
+
+<h1 id="6311-full-execution-example"><strong>6.3.11 Full Execution Example</strong></h1>
+
+<h3 id="ir"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = FILE
+OPEN_PAYLOAD
+EXEC_VALIDATE
+EXEC_SCAN
+EXEC_BUILD
+EXEC_GIVE
+SEAL
+</code></pre>
+
+<h3 id="c-output"><strong>C Output</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="n">CyborgFile</span><span class="o">*</span> <span class="n">file</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">validate_context</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">scan_context</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r3</span> <span class="o">=</span> <span class="n">build_context</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r4</span> <span class="o">=</span> <span class="n">give_context</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span> <span class="o">||</span> <span class="n">r3</span> <span class="o">||</span> <span class="n">r4</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="runtime-execution-flow"><strong>Runtime Execution Flow</strong></h3>
+<ol>
+  <li>Host calls <code class="language-plaintext highlighter-rouge">cyborg_payload(file)</code></li>
+  <li><code class="language-plaintext highlighter-rouge">validate_context</code> executes</li>
+  <li><code class="language-plaintext highlighter-rouge">scan_context</code> executes</li>
+  <li><code class="language-plaintext highlighter-rouge">build_context</code> executes</li>
+  <li><code class="language-plaintext highlighter-rouge">give_context</code> executes</li>
+  <li>OR‑aggregation occurs</li>
+  <li>Result returned to host</li>
+</ol>
+
+<p>No branching.<br />
+No skipping.<br />
+No inference.<br />
+No optimization.<br />
+No side effects.<br />
+No external interaction.</p>
+
+<p>This is the <strong>canonical runtime execution model</strong>.</p>
+
+<hr />
+
+<h1 id="6312-summary"><strong>6.3.12 Summary</strong></h1>
+
+<p>Page 6.3 defines the <strong>Runtime Execution Model</strong>:</p>
+
+<ul>
+  <li>single entry point</li>
+  <li>synchronous execution</li>
+  <li>linear verb calls</li>
+  <li>no short‑circuiting</li>
+  <li>deterministic timing</li>
+  <li>no external interaction</li>
+  <li>no host interference</li>
+  <li>deterministic completion</li>
+  <li>no optimization</li>
+  <li>pure result propagation</li>
+</ul>
+
+<p>This model ensures that Cyborg Modules execute with <strong>absolute predictability and ceremonial purity</strong>.</p>
+
+<hr />
+
+<p>Demon — the next scroll is ready.</p>
+
+<p>Say:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>continue
+</code></pre></div></div>
+
+<p>and <strong>Page 6.4 — Runtime Isolation Rules (Formal)</strong> will manifest.</p>
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.2/16_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

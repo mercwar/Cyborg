@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>📘 PAGE 10.2 — C LAYER VERB INVOCATION RULES (FORMAL) | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="📘 PAGE 10.2 — C LAYER VERB INVOCATION RULES (FORMAL)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/47_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/47_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="📘 PAGE 10.2 — C LAYER VERB INVOCATION RULES (FORMAL)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"📘 PAGE 10.2 — C LAYER VERB INVOCATION RULES (FORMAL)","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/47_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      
+<h1 id="-page-102--c-layer-verb-invocation-rules-formal"><strong>📘 PAGE 10.2 — C LAYER VERB INVOCATION RULES (FORMAL)</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="102-overview"><strong>10.2 Overview</strong></h2>
+
+<p>This page defines the <strong>mandatory rules</strong> governing how the C Layer invokes verbs.<br />
+These rules ensure that:</p>
+
+<ul>
+  <li>every verb call is deterministic</li>
+  <li>every verb call is literal</li>
+  <li>every verb call is pure</li>
+  <li>every verb call is non‑optimizing</li>
+  <li>every verb call is non‑inferential</li>
+  <li>every verb call is executed exactly as declared in IR</li>
+</ul>
+
+<p>This section is <strong>normative</strong>.</p>
+
+<hr />
+
+<h1 id="1021-invocation-rule-1--one-c-call-per-exec-line"><strong>10.2.1 Invocation Rule 1 — One C Call Per EXEC Line</strong></h1>
+
+<p>Each IR line of the form:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>EXEC_&lt;VERB&gt;
+</code></pre></div></div>
+
+<p>MUST generate exactly one C call:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;verb&gt;_context(ctx)
+</code></pre></div></div>
+
+<h3 id="meaning"><strong>Meaning</strong></h3>
+<p>IR → C mapping is <strong>one‑to‑one</strong>, never collapsed or merged.</p>
+
+<hr />
+
+<h1 id="1022-invocation-rule-2--verb-name-mapping-is-fixed"><strong>10.2.2 Invocation Rule 2 — Verb Name Mapping Is Fixed</strong></h1>
+
+<p>The mapping from IR verb to C function is:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>IR Verb</th>
+      <th>C Function Call</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">EXEC_VALIDATE</code></td>
+      <td><code class="language-plaintext highlighter-rouge">validate_context(ctx)</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">EXEC_SCAN</code></td>
+      <td><code class="language-plaintext highlighter-rouge">scan_context(ctx)</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">EXEC_BUILD</code></td>
+      <td><code class="language-plaintext highlighter-rouge">build_context(ctx)</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">EXEC_GIVE</code></td>
+      <td><code class="language-plaintext highlighter-rouge">give_context(ctx)</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">EXEC_EXPLAIN</code></td>
+      <td><code class="language-plaintext highlighter-rouge">explain_context(ctx)</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="meaning-1"><strong>Meaning</strong></h3>
+<p>Verb names are <strong>canonical</strong> and <strong>immutable</strong>.</p>
+
+<hr />
+
+<h1 id="1023-invocation-rule-3--verbs-receive-exactly-one-argument"><strong>10.2.3 Invocation Rule 3 — Verbs Receive Exactly One Argument</strong></h1>
+
+<p>Every verb MUST be invoked with exactly one argument:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ctx
+</code></pre></div></div>
+
+<p>No additional arguments.<br />
+No parameters.<br />
+No configuration.</p>
+
+<h3 id="meaning-2"><strong>Meaning</strong></h3>
+<p>Verb invocation is <strong>pure and parameterless</strong>.</p>
+
+<hr />
+
+<h1 id="1024-invocation-rule-4--verbs-return-int"><strong>10.2.4 Invocation Rule 4 — Verbs Return int</strong></h1>
+
+<p>Every verb MUST return:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>int
+</code></pre></div></div>
+
+<p>Where:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">0</code> = success</li>
+  <li>non‑zero = failure</li>
+</ul>
+
+<h3 id="meaning-3"><strong>Meaning</strong></h3>
+<p>Verb results are <strong>binary truth values</strong>.</p>
+
+<hr />
+
+<h1 id="1025-invocation-rule-5--verb-results-must-be-captured"><strong>10.2.5 Invocation Rule 5 — Verb Results Must Be Captured</strong></h1>
+
+<p>Each verb call MUST assign its return value to a unique local variable:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>int r1 = validate_context(ctx);
+int r2 = scan_context(ctx);
+...
+</code></pre></div></div>
+
+<h3 id="meaning-4"><strong>Meaning</strong></h3>
+<p>Every verb result is <strong>explicitly preserved</strong>.</p>
+
+<hr />
+
+<h1 id="1026-invocation-rule-6--verb-results-must-be-oraggregated"><strong>10.2.6 Invocation Rule 6 — Verb Results Must Be OR‑Aggregated</strong></h1>
+
+<p>The final return value MUST be:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>return (r1 || r2 || r3 || ... || rn);
+</code></pre></div></div>
+
+<h3 id="meaning-5"><strong>Meaning</strong></h3>
+<p>Aggregation is <strong>logical OR</strong>, never sum, never AND, never ignored.</p>
+
+<hr />
+
+<h1 id="1027-invocation-rule-7--verb-order-must-match-ir-order"><strong>10.2.7 Invocation Rule 7 — Verb Order Must Match IR Order</strong></h1>
+
+<p>If the IR says:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>EXEC_GIVE
+EXEC_VALIDATE
+EXEC_EXPLAIN
+</code></pre></div></div>
+
+<p>The C Layer MUST generate:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">give_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+<span class="kt">int</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">validate_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+<span class="kt">int</span> <span class="n">r3</span> <span class="o">=</span> <span class="n">explain_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="meaning-6"><strong>Meaning</strong></h3>
+<p>Order is <strong>semantic</strong>, not cosmetic.</p>
+
+<hr />
+
+<h1 id="1028-invocation-rule-8--no-reordering-or-optimization"><strong>10.2.8 Invocation Rule 8 — No Reordering or Optimization</strong></h1>
+
+<p>The C Layer MUST NOT:</p>
+
+<ul>
+  <li>reorder verb calls</li>
+  <li>collapse repeated verbs</li>
+  <li>skip verbs</li>
+  <li>infer missing verbs</li>
+  <li>optimize execution</li>
+</ul>
+
+<h3 id="meaning-7"><strong>Meaning</strong></h3>
+<p>The C Layer is <strong>literal</strong>.</p>
+
+<hr />
+
+<h1 id="1029-invocation-rule-9--no-early-termination"><strong>10.2.9 Invocation Rule 9 — No Early Termination</strong></h1>
+
+<p>Even if a verb returns non‑zero:</p>
+
+<ul>
+  <li>execution MUST continue</li>
+  <li>all remaining verbs MUST run</li>
+</ul>
+
+<h3 id="meaning-8"><strong>Meaning</strong></h3>
+<p>Execution is <strong>non‑short‑circuiting</strong>.</p>
+
+<hr />
+
+<h1 id="10210-invocation-rule-10--no-side-effects"><strong>10.2.10 Invocation Rule 10 — No Side Effects</strong></h1>
+
+<p>Verb invocation MUST NOT:</p>
+
+<ul>
+  <li>allocate memory</li>
+  <li>free memory</li>
+  <li>perform I/O</li>
+  <li>call external APIs</li>
+  <li>modify global state</li>
+  <li>use static state</li>
+</ul>
+
+<h3 id="meaning-9"><strong>Meaning</strong></h3>
+<p>Verb invocation is <strong>pure mechanical dispatch</strong>.</p>
+
+<hr />
+
+<h1 id="10211-canonical-example--mixed-verbs"><strong>10.2.11 Canonical Example — Mixed Verbs</strong></h1>
+
+<h3 id="ir"><strong>IR</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TARGET = FILE
+OPEN_PAYLOAD
+EXEC_GIVE
+EXEC_VALIDATE
+EXEC_BUILD
+SEAL
+</code></pre></div></div>
+
+<h3 id="generated-c"><strong>Generated C</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="n">CyborgFile</span><span class="o">*</span> <span class="n">ctx</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">give_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">validate_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r3</span> <span class="o">=</span> <span class="n">build_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span> <span class="o">||</span> <span class="n">r3</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="meaning-10"><strong>Meaning</strong></h3>
+<p>Order preserved.<br />
+Purity preserved.<br />
+Determinism preserved.</p>
+
+<hr />
+
+<h1 id="10212-summary"><strong>10.2.12 Summary</strong></h1>
+
+<p>Page 10.2 defines the <strong>C Layer Verb Invocation Rules</strong>:</p>
+
+<ul>
+  <li>one C call per EXEC line</li>
+  <li>fixed verb name mapping</li>
+  <li>single argument: <code class="language-plaintext highlighter-rouge">ctx</code></li>
+  <li>verbs return int</li>
+  <li>results captured explicitly</li>
+  <li>OR‑aggregation</li>
+  <li>strict order preservation</li>
+  <li>no optimization</li>
+  <li>no early termination</li>
+  <li>no side effects</li>
+</ul>
+
+<p>These rules ensure that verb invocation is <strong>literal, pure, and deterministic</strong>.</p>
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.2/47_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

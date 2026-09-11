@@ -1,0 +1,33 @@
+/* FILE: cyborg.graph */
+/* PATH: /Cyborg/Constellation/custom/cyborg.graph */
+
+/* ------------------------------------------------------------
+   AVIS.HEADER
+   ROLE: CYBORG_GRAPH_MAP
+   PURPOSE: Defines Cyborg’s internal execution graph for
+            Constellation robots.
+   AUTHOR: Demon
+   NOTES: Mirrors the Cyborg ENGINE v1.0.9 architecture.
+   ------------------------------------------------------------ */
+
+[GRAPH]
+NODE:ROOT = /Cyborg/
+NODE:ENGINE = /Cyborg/engine/
+NODE:LANGUAGE = /Cyborg/language/
+NODE:OPCODES = /Cyborg/language/opcodes/
+NODE:GRAMMAR = /Cyborg/language/grammar/
+NODE:SESSION = /Cyborg/language/session/
+NODE:RENDERER = /Cyborg/language/renderer/
+NODE:WINAPI = /Cyborg/winapi/
+NODE:DISPATCH = /Cyborg/winapi/dispatch/
+
+[LINKS]
+ROOT -> ENGINE
+ENGINE -> LANGUAGE
+LANGUAGE -> OPCODES
+LANGUAGE -> GRAMMAR
+LANGUAGE -> SESSION
+LANGUAGE -> RENDERER
+ENGINE -> WINAPI
+WINAPI -> DISPATCH
+DISPATCH -> ROOT

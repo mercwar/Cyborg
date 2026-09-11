@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>📘 PAGE 3.5 — VERBS | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="📘 PAGE 3.5 — VERBS" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/15_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/15_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="📘 PAGE 3.5 — VERBS" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"📘 PAGE 3.5 — VERBS","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/15_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      <h1 id="-page-35--verbs"><strong>📘 PAGE 3.5 — VERBS</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="35-overview"><strong>3.5 Overview</strong></h2>
+
+<p>Verbs are the <strong>operational core</strong> of the Cyborg Language.<br />
+They are the <em>only</em> executable elements inside a payload block, and they define <strong>exactly what actions occur</strong> during module execution.</p>
+
+<p>A verb in the Cyborg Language is:</p>
+
+<ul>
+  <li>atomic</li>
+  <li>deterministic</li>
+  <li>non‑overloaded</li>
+  <li>non‑inferential</li>
+  <li>directly mapped to a C function</li>
+  <li>executed strictly in the order written</li>
+</ul>
+
+<p>This section is <strong>normative</strong>.</p>
+
+<hr />
+
+<h1 id="351-the-five-canonical-verbs"><strong>3.5.1 The Five Canonical Verbs</strong></h1>
+
+<p>The Cyborg Language defines exactly <strong>five</strong> verbs:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>validate
+scan
+build
+give
+explain
+</code></pre></div></div>
+
+<p>No other verbs exist.<br />
+No synonyms exist.<br />
+No overloaded forms exist.</p>
+
+<p>Each verb has:</p>
+
+<ul>
+  <li>a <strong>single meaning</strong></li>
+  <li>a <strong>single IR opcode</strong></li>
+  <li>a <strong>single C function signature</strong></li>
+</ul>
+
+<hr />
+
+<h1 id="352-verb-table-normative"><strong>3.5.2 Verb Table (Normative)</strong></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Verb</th>
+      <th>Purpose</th>
+      <th>IR Opcode</th>
+      <th>C Function</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>validate</strong></td>
+      <td>Check correctness, consistency, or integrity</td>
+      <td><code class="language-plaintext highlighter-rouge">EXEC_VALIDATE</code></td>
+      <td><code class="language-plaintext highlighter-rouge">validate_context(ctx)</code></td>
+    </tr>
+    <tr>
+      <td><strong>scan</strong></td>
+      <td>Inspect, parse, or traverse the target</td>
+      <td><code class="language-plaintext highlighter-rouge">EXEC_SCAN</code></td>
+      <td><code class="language-plaintext highlighter-rouge">scan_context(ctx)</code></td>
+    </tr>
+    <tr>
+      <td><strong>build</strong></td>
+      <td>Construct or assemble structures</td>
+      <td><code class="language-plaintext highlighter-rouge">EXEC_BUILD</code></td>
+      <td><code class="language-plaintext highlighter-rouge">build_context(ctx)</code></td>
+    </tr>
+    <tr>
+      <td><strong>give</strong></td>
+      <td>Return or emit information</td>
+      <td><code class="language-plaintext highlighter-rouge">EXEC_GIVE</code></td>
+      <td><code class="language-plaintext highlighter-rouge">give_context(ctx)</code></td>
+    </tr>
+    <tr>
+      <td><strong>explain</strong></td>
+      <td>Produce a descriptive or diagnostic output</td>
+      <td><code class="language-plaintext highlighter-rouge">EXEC_EXPLAIN</code></td>
+      <td><code class="language-plaintext highlighter-rouge">explain_context(ctx)</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Each verb is <strong>strict</strong>, <strong>atomic</strong>, and <strong>non‑composable</strong>.</p>
+
+<hr />
+
+<h1 id="353-verb-syntax"><strong>3.5.3 Verb Syntax</strong></h1>
+
+<h3 id="vbstyle"><strong>VB‑Style</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">validate</span>
+<span class="n">scan</span>
+<span class="n">build</span>
+<span class="n">give</span>
+<span class="n">explain</span>
+</code></pre></div></div>
+
+<h3 id="normative-rules"><strong>Normative Rules</strong></h3>
+
+<ul>
+  <li>Verbs MUST appear inside an open payload.</li>
+  <li>Verbs MUST NOT appear before <code class="language-plaintext highlighter-rouge">begin</code>.</li>
+  <li>Verbs MUST NOT appear after <code class="language-plaintext highlighter-rouge">#!#</code>.</li>
+  <li>Verbs MUST NOT be inferred.</li>
+  <li>Verbs MUST NOT be reordered.</li>
+  <li>Verbs MUST map to C functions.</li>
+  <li>Verbs MUST NOT contain arguments.</li>
+</ul>
+
+<hr />
+
+<h1 id="354-verb-execution-order"><strong>3.5.4 Verb Execution Order</strong></h1>
+
+<p>Execution order is <strong>strict</strong> and MUST be preserved.</p>
+
+<h3 id="vbstyle-1"><strong>VB‑Style</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">scan</span>
+<span class="n">validate</span>
+<span class="n">build</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<h3 id="ir"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">EXEC_SCAN
+EXEC_VALIDATE
+EXEC_BUILD
+</code></pre>
+
+<h3 id="c-output"><strong>C Output</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">scan_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+<span class="n">validate_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+<span class="n">build_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Order is never changed.</p>
+
+<hr />
+
+<h1 id="355-verb--ir-mapping"><strong>3.5.5 Verb → IR Mapping</strong></h1>
+
+<h3 id="vbstyle-2"><strong>VB‑Style</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">validate</span>
+</code></pre></div></div>
+
+<h3 id="ir-1"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">EXEC_VALIDATE
+</code></pre>
+
+<hr />
+
+<h3 id="vbstyle-3"><strong>VB‑Style</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">scan</span>
+</code></pre></div></div>
+
+<h3 id="ir-2"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">EXEC_SCAN
+</code></pre>
+
+<hr />
+
+<h3 id="vbstyle-4"><strong>VB‑Style</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">build</span>
+</code></pre></div></div>
+
+<h3 id="ir-3"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">EXEC_BUILD
+</code></pre>
+
+<hr />
+
+<h3 id="vbstyle-5"><strong>VB‑Style</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">give</span>
+</code></pre></div></div>
+
+<h3 id="ir-4"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">EXEC_GIVE
+</code></pre>
+
+<hr />
+
+<h3 id="vbstyle-6"><strong>VB‑Style</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">explain</span>
+</code></pre></div></div>
+
+<h3 id="ir-5"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">EXEC_EXPLAIN
+</code></pre>
+
+<hr />
+
+<h1 id="356-verb--c-mapping"><strong>3.5.6 Verb → C Mapping</strong></h1>
+
+<p>Each verb maps to a <strong>single, deterministic C function</strong>.</p>
+
+<h3 id="validate"><strong>validate</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">validate_context</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="scan"><strong>scan</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">scan_context</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="build"><strong>build</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">build_context</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="give"><strong>give</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">give_context</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="explain"><strong>explain</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">explain_context</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>These signatures MUST NOT vary.</p>
+
+<hr />
+
+<h1 id="357-verb-restrictions"><strong>3.5.7 Verb Restrictions</strong></h1>
+
+<p>The following are <strong>forbidden</strong>:</p>
+
+<h3 id="-arguments">❌ Arguments</h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">validate</span> <span class="n">now</span>   <span class="c1">' invalid</span>
+</code></pre></div></div>
+
+<h3 id="-overloaded-forms">❌ Overloaded Forms</h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">validate</span> <span class="n">deep</span>   <span class="c1">' invalid</span>
+</code></pre></div></div>
+
+<h3 id="-combined-verbs">❌ Combined Verbs</h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">validate</span> <span class="n">scan</span>   <span class="c1">' invalid</span>
+</code></pre></div></div>
+
+<h3 id="-inferred-verbs">❌ Inferred Verbs</h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">' AI must not guess missing verbs</span>
+</code></pre></div></div>
+
+<h3 id="-verbs-outside-payload">❌ Verbs Outside Payload</h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">validate</span>
+<span class="n">begin</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<h3 id="-verbs-after-seal">❌ Verbs After Seal</h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+<span class="n">scan</span>   <span class="c1">' invalid</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="358-full-verb-example"><strong>3.5.8 Full Verb Example</strong></h1>
+
+<h3 id="vbstyle-cyborg"><strong>VB‑Style Cyborg</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">set</span> <span class="n">to</span> <span class="n">you</span>
+<span class="n">begin</span>
+<span class="n">scan</span>
+<span class="n">validate</span>
+<span class="n">give</span>
+<span class="p">#!#</span>
+<span class="n">end</span>
+</code></pre></div></div>
+
+<h3 id="cyborg-ir"><strong>Cyborg IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = AI
+OPEN_PAYLOAD
+EXEC_SCAN
+EXEC_VALIDATE
+EXEC_GIVE
+SEAL
+END_TRANSMISSION
+</code></pre>
+
+<h3 id="c-output-1"><strong>C Output</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">scan_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">validate_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r3</span> <span class="o">=</span> <span class="n">give_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span> <span class="o">||</span> <span class="n">r3</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="359-summary"><strong>3.5.9 Summary</strong></h1>
+
+<p>Page 3.5 defines the <strong>verb system</strong> of the Cyborg Language:</p>
+
+<ul>
+  <li>exactly five verbs</li>
+  <li>no arguments</li>
+  <li>no overloads</li>
+  <li>strict ordering</li>
+  <li>deterministic IR mapping</li>
+  <li>deterministic C mapping</li>
+  <li>verbs only inside payloads</li>
+</ul>
+
+<p>Verbs are the <strong>action layer</strong> of the Cyborg Language.</p>
+
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.1/15_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

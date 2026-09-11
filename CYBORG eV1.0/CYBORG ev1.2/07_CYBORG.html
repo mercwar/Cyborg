@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Cyborg | A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Cyborg" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/07_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/07_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Cyborg" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"Cyborg","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/07_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      <p>Understood, Demon. The Codex advances.</p>
+
+<hr />
+
+<h1 id="-page-55--c-layer-integration-rules-formal"><strong>📘 PAGE 5.5 — C LAYER INTEGRATION RULES (FORMAL)</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="55-overview"><strong>5.5 Overview</strong></h2>
+
+<p>Page 5.5 defines the <strong>integration rules</strong> that govern how the C Layer interacts with:</p>
+
+<ul>
+  <li>the host environment</li>
+  <li>the verb function implementations</li>
+  <li>the IR pipeline</li>
+  <li>the target context</li>
+  <li>the execution runtime</li>
+</ul>
+
+<p>These rules ensure that the C Layer remains:</p>
+
+<ul>
+  <li>deterministic</li>
+  <li>isolated</li>
+  <li>pure</li>
+  <li>predictable</li>
+  <li>interoperable</li>
+</ul>
+
+<p>This section is <strong>normative</strong>.</p>
+
+<hr />
+
+<h1 id="551-integration-principle-1--the-c-layer-is-a-terminal-stage"><strong>5.5.1 Integration Principle 1 — The C Layer Is a Terminal Stage</strong></h1>
+
+<p>The C Layer is the <strong>final output</strong> of the Cyborg Language pipeline.</p>
+
+<h3 id="meaning"><strong>Meaning</strong></h3>
+<ul>
+  <li>No further transformation is permitted.</li>
+  <li>No optimization is permitted.</li>
+  <li>No reinterpretation is permitted.</li>
+  <li>No restructuring is permitted.</li>
+</ul>
+
+<p>Once C is generated, the module is <strong>final</strong>.</p>
+
+<hr />
+
+<h1 id="552-integration-principle-2--the-c-layer-is-not-a-compiler"><strong>5.5.2 Integration Principle 2 — The C Layer Is Not a Compiler</strong></h1>
+
+<p>The C Layer MUST NOT:</p>
+
+<ul>
+  <li>analyze</li>
+  <li>optimize</li>
+  <li>infer</li>
+  <li>transform</li>
+  <li>reorder</li>
+  <li>restructure</li>
+</ul>
+
+<p>It is a <strong>literal transcription</strong> of IR.</p>
+
+<hr />
+
+<h1 id="553-integration-principle-3--the-c-layer-is-a-pure-execution-surface"><strong>5.5.3 Integration Principle 3 — The C Layer Is a Pure Execution Surface</strong></h1>
+
+<p>The C Layer MUST NOT:</p>
+
+<ul>
+  <li>perform I/O</li>
+  <li>allocate memory</li>
+  <li>free memory</li>
+  <li>log</li>
+  <li>print</li>
+  <li>throw exceptions</li>
+  <li>modify global state</li>
+</ul>
+
+<p>All side effects MUST occur <strong>inside verb functions</strong>, not in the C Layer.</p>
+
+<hr />
+
+<h1 id="554-integration-principle-4--the-c-layer-is-contextbound"><strong>5.5.4 Integration Principle 4 — The C Layer Is Context‑Bound</strong></h1>
+
+<p>The C Layer MUST bind to exactly one context type:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">CyborgContext*</code></li>
+  <li><code class="language-plaintext highlighter-rouge">CyborgFile*</code></li>
+  <li><code class="language-plaintext highlighter-rouge">CyborgLayer*</code></li>
+</ul>
+
+<h3 id="meaning-1"><strong>Meaning</strong></h3>
+<p>The C Layer MUST NOT:</p>
+
+<ul>
+  <li>reinterpret the context</li>
+  <li>cast the context</li>
+  <li>infer missing fields</li>
+  <li>modify the context (except via <code class="language-plaintext highlighter-rouge">build</code>)</li>
+</ul>
+
+<hr />
+
+<h1 id="555-integration-principle-5--verb-functions-are-external"><strong>5.5.5 Integration Principle 5 — Verb Functions Are External</strong></h1>
+
+<p>Verb functions are <strong>not defined</strong> in the C Layer.</p>
+
+<p>They MUST be:</p>
+
+<ul>
+  <li>externally implemented</li>
+  <li>externally linked</li>
+  <li>externally compiled</li>
+</ul>
+
+<h3 id="meaning-2"><strong>Meaning</strong></h3>
+<p>The C Layer is a <strong>caller</strong>, not an implementer.</p>
+
+<hr />
+
+<h1 id="556-integration-principle-6--no-crossmodule-interaction"><strong>5.5.6 Integration Principle 6 — No Cross‑Module Interaction</strong></h1>
+
+<p>The C Layer MUST NOT:</p>
+
+<ul>
+  <li>call functions from other modules</li>
+  <li>share state with other modules</li>
+  <li>depend on other modules</li>
+  <li>import other modules</li>
+</ul>
+
+<p>Each module is <strong>self‑contained</strong>.</p>
+
+<hr />
+
+<h1 id="557-integration-principle-7--no-hostdriven-variation"><strong>5.5.7 Integration Principle 7 — No Host‑Driven Variation</strong></h1>
+
+<p>The host environment MUST NOT:</p>
+
+<ul>
+  <li>modify the C Layer</li>
+  <li>inject logic</li>
+  <li>wrap the payload function</li>
+  <li>intercept verb calls</li>
+  <li>reorder execution</li>
+</ul>
+
+<p>The C Layer MUST execute exactly as generated.</p>
+
+<hr />
+
+<h1 id="558-integration-principle-8--deterministic-linking"><strong>5.5.8 Integration Principle 8 — Deterministic Linking</strong></h1>
+
+<p>Verb functions MUST be linked:</p>
+
+<ul>
+  <li>statically</li>
+  <li>deterministically</li>
+  <li>without overloading</li>
+  <li>without substitution</li>
+</ul>
+
+<h3 id="forbidden"><strong>Forbidden</strong></h3>
+<ul>
+  <li>dynamic dispatch</li>
+  <li>virtual tables</li>
+  <li>function pointer substitution</li>
+  <li>runtime selection</li>
+</ul>
+
+<p>The linkage MUST be <strong>fixed at compile time</strong>.</p>
+
+<hr />
+
+<h1 id="559-integration-principle-9--deterministic-execution-environment"><strong>5.5.9 Integration Principle 9 — Deterministic Execution Environment</strong></h1>
+
+<p>The execution environment MUST guarantee:</p>
+
+<ul>
+  <li>no concurrency</li>
+  <li>no parallelism</li>
+  <li>no preemption</li>
+  <li>no thread switching</li>
+  <li>no asynchronous behavior</li>
+</ul>
+
+<p>The payload function MUST execute <strong>synchronously</strong>.</p>
+
+<hr />
+
+<h1 id="5510-integration-principle-10--no-hostlevel-error-handling"><strong>5.5.10 Integration Principle 10 — No Host‑Level Error Handling</strong></h1>
+
+<p>The C Layer MUST NOT:</p>
+
+<ul>
+  <li>throw exceptions</li>
+  <li>catch exceptions</li>
+  <li>propagate exceptions</li>
+  <li>rely on host error handling</li>
+</ul>
+
+<p>If a verb fails, its return value is simply OR‑aggregated.</p>
+
+<hr />
+
+<h1 id="5511-full-integration-example"><strong>5.5.11 Full Integration Example</strong></h1>
+
+<h3 id="ir"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = FILE
+OPEN_PAYLOAD
+EXEC_VALIDATE
+EXEC_SCAN
+EXEC_BUILD
+EXEC_GIVE
+SEAL
+</code></pre>
+
+<h3 id="c-output"><strong>C Output</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="n">CyborgFile</span><span class="o">*</span> <span class="n">file</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">validate_context</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">scan_context</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r3</span> <span class="o">=</span> <span class="n">build_context</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r4</span> <span class="o">=</span> <span class="n">give_context</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span> <span class="o">||</span> <span class="n">r3</span> <span class="o">||</span> <span class="n">r4</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="integration-interpretation"><strong>Integration Interpretation</strong></h3>
+<ul>
+  <li>The host calls <code class="language-plaintext highlighter-rouge">cyborg_payload(file)</code></li>
+  <li>The function executes deterministically</li>
+  <li>Verb functions are externally linked</li>
+  <li>No inference occurs</li>
+  <li>No optimization occurs</li>
+  <li>No side effects occur in the C Layer</li>
+  <li>The return value is OR‑aggregated</li>
+</ul>
+
+<p>This is the <strong>canonical integration model</strong>.</p>
+
+<hr />
+
+<h1 id="5512-summary"><strong>5.5.12 Summary</strong></h1>
+
+<p>Page 5.5 defines the <strong>integration rules</strong> of the C Layer:</p>
+
+<ul>
+  <li>terminal stage</li>
+  <li>no optimization</li>
+  <li>no inference</li>
+  <li>pure execution</li>
+  <li>external verb functions</li>
+  <li>deterministic linking</li>
+  <li>deterministic execution</li>
+  <li>no host interference</li>
+  <li>no cross‑module interaction</li>
+</ul>
+
+<p>These rules ensure that the C Layer remains the <strong>pure, isolated execution surface</strong> of the Cyborg Language.</p>
+
+<hr />
+
+<p>Demon — the next scroll is ready.</p>
+
+<p>Say:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>continue
+</code></pre></div></div>
+
+<p>and <strong>Page 5.6 — C Layer Return Semantics (Formal)</strong> will manifest.</p>
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.2/07_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

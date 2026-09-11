@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Cyborg | A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Cyborg" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/app/README-4.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/app/README-4.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Cyborg" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"Cyborg","url":"https://mercwar.github.io/Cyborg/app/README-4.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      <p>Go <a href="/Cyborg/CONTRIBUTING.md">🔄 HOME</a> or <a href="/Cyborg/app/README-3.html">«↩️ BACK</a>  or <a href="/Cyborg/app/README-5.html">FORWARD ➡️»</a></p>
+
+<p><a target="_self" title="CLICK HERE to ENTER the GATEWAY FREE!" href="https://mercwar.github.io/Constellation/index.html">
+<img src="https://raw.githubusercontent.com/mercwar/Robo-Knight-Gallery/refs/heads/main/Version%207/image_d2a07390.png" alt="Mercwar Constellation" style="width:100%; height:auto;" />
+</a></p>
+
+<h5 id="toc-jump--">TOC: JUMP @ 🌀</h5>
+<h6 id="--readme-2--readme-5--readme-8--readme-11">- <a href="/Cyborg/app/README-2.html">README 2</a> 💥 <a href="/Cyborg/app/README-5.html">README 5</a> 💥 <a href="/Cyborg/app/README-8.html">README 8</a> 💥 <a href="/Cyborg/app/README-11.html">README 11</a></h6>
+<h6 id="--readme-3--readme-6--readme-9--readme-12">- <a href="/Cyborg/app/README-3.html">README 3</a> 💥 <a href="/Cyborg/app/README-6.html">README 6</a> 💥 <a href="/Cyborg/app/README-9.html">README 9</a> 💥 <a href="/Cyborg/app/README-12.html">README 12</a></h6>
+<h6 id="--readme-4--readme-7--readme-10--readme-13">- <a href="/Cyborg/app/README-4.html">README 4</a> 💥 <a href="/Cyborg/app/README-7.html">README 7</a> 💥 <a href="/Cyborg/app/README-10.html">README 10</a> 💥 <a href="/Cyborg/app/README-13.html">README 13</a></h6>
+
+<hr />
+
+<h1 id="-readme-4">⭐ README 4</h1>
+<ul>
+  <li>Cyborg Language Specification**</li>
+  <li>Deterministic Windows‑Message Translation for AI‑Operated Systems</li>
+</ul>
+
+<hr />
+
+<h1 id="-1-purpose-of-cyborg">🔷 1. Purpose of Cyborg</h1>
+<p>Cyborg is a <strong>deterministic, reversible, human‑readable translation language</strong> for Windows message communication.</p>
+
+<p>It exists so that:</p>
+
+<ul>
+  <li>AIs can interpret Windows messages without ambiguity</li>
+  <li>Message streams can be validated through AVIS</li>
+  <li>Constellation can ingest, index, and navigate message logic</li>
+  <li>Users can request translations in conversation</li>
+</ul>
+
+<p>Cyborg is not a programming language.<br />
+It is a <strong>message encoding standard</strong>.</p>
+
+<hr />
+
+<h1 id="-2-cyborg-design-principles">🔷 2. Cyborg Design Principles</h1>
+
+<h2 id="21-determinism"><strong>2.1 Determinism</strong></h2>
+<p>Identical input must always produce identical output.<br />
+There are no random, probabilistic, or context‑dependent transformations.</p>
+
+<h2 id="22-reversibility"><strong>2.2 Reversibility</strong></h2>
+<p>Every Cyborg translation must support a <strong>lossless round‑trip</strong>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Windows Message → Cyborg Hex → Windows Message
+</code></pre></div></div>
+
+<h2 id="23-clarity"><strong>2.3 Clarity</strong></h2>
+<p>Cyborg messages must be readable by:</p>
+
+<ul>
+  <li>humans</li>
+  <li>AIs</li>
+  <li>Constellation’s ingestion pipeline</li>
+</ul>
+
+<h2 id="24-compatibility"><strong>2.4 Compatibility</strong></h2>
+<p>Cyborg aligns with:</p>
+
+<ul>
+  <li>Windows message structures</li>
+  <li>WPARAM / LPARAM semantics</li>
+  <li>HWND routing</li>
+  <li>Message loop behavior</li>
+</ul>
+
+<hr />
+
+<h1 id="-3-cyborg-message-structure">🔷 3. Cyborg Message Structure</h1>
+
+<p>A Cyborg message is composed of:</p>
+
+<ol>
+  <li><strong>Header Block</strong></li>
+  <li><strong>Opcode Block</strong></li>
+  <li><strong>Payload Block</strong></li>
+  <li><strong>Checksum Block</strong></li>
+</ol>
+
+<p>Example (simplified):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CYBORG:01
+OP:0x000F
+PAYLOAD:001A00FF00C2
+CHK:7A
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="-4-cyborg-header-block">🔷 4. Cyborg Header Block</h1>
+
+<p>The header identifies:</p>
+
+<ul>
+  <li>Cyborg version</li>
+  <li>Message class</li>
+  <li>Routing intent</li>
+</ul>
+
+<p>Example:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CYBORG:01
+CLASS:WM_PAINT
+</code></pre></div></div>
+
+<p>Your AI can retrieve header definitions via Constellation:</p>
+
+<ul>
+  <li><strong>Show Cyborg headers</strong></li>
+</ul>
+
+<hr />
+
+<h1 id="-5-opcode-block">🔷 5. Opcode Block</h1>
+
+<p>The opcode block maps directly to Windows message constants.</p>
+
+<p>Examples:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Windows Message</th>
+      <th>Cyborg Opcode</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">WM_PAINT</code></td>
+      <td><code class="language-plaintext highlighter-rouge">OP:0x000F</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">WM_MOUSEMOVE</code></td>
+      <td><code class="language-plaintext highlighter-rouge">OP:0x0200</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">WM_LBUTTONDOWN</code></td>
+      <td><code class="language-plaintext highlighter-rouge">OP:0x0201</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">WM_KEYDOWN</code></td>
+      <td><code class="language-plaintext highlighter-rouge">OP:0x0100</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Your AI can navigate opcode maps via Constellation:</p>
+
+<ul>
+  <li><strong>Navigate opcode maps</strong></li>
+</ul>
+
+<hr />
+
+<h1 id="-6-payload-block">🔷 6. Payload Block</h1>
+
+<p>Payloads encode:</p>
+
+<ul>
+  <li>WPARAM</li>
+  <li>LPARAM</li>
+  <li>Additional structured data</li>
+</ul>
+
+<p>Payloads must be:</p>
+
+<ul>
+  <li>hex‑encoded</li>
+  <li>reversible</li>
+  <li>schema‑compliant</li>
+</ul>
+
+<p>Example:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PAYLOAD:001A00FF00C2
+</code></pre></div></div>
+
+<p>Your AI can inspect payload schemas:</p>
+
+<ul>
+  <li><strong>Show payload schemas</strong></li>
+</ul>
+
+<hr />
+
+<h1 id="-7-checksum-block">🔷 7. Checksum Block</h1>
+
+<p>The checksum ensures:</p>
+
+<ul>
+  <li>message integrity</li>
+  <li>deterministic validation</li>
+  <li>AVIS compliance</li>
+</ul>
+
+<p>Example:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CHK:7A
+</code></pre></div></div>
+
+<p>Your AI can validate checksums:</p>
+
+<ul>
+  <li><strong>Validate Cyborg checksum</strong></li>
+</ul>
+
+<hr />
+
+<h1 id="-8-cyborg-roundtrip-rules">🔷 8. Cyborg Round‑Trip Rules</h1>
+
+<p>Cyborg must always support:</p>
+
+<h3 id="81-forward-translation"><strong>8.1 Forward Translation</strong></h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Windows Message → Cyborg Hex
+</code></pre></div></div>
+
+<p>Ask your AI:</p>
+
+<ul>
+  <li><strong>Translate Windows message to Cyborg</strong></li>
+</ul>
+
+<h3 id="82-reverse-translation"><strong>8.2 Reverse Translation</strong></h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Cyborg Hex → Windows Message
+</code></pre></div></div>
+
+<p>Ask your AI:</p>
+
+<ul>
+  <li><strong>Decode Cyborg hex</strong></li>
+</ul>
+
+<h3 id="83-structural-validation"><strong>8.3 Structural Validation</strong></h3>
+
+<p>Ask your AI:</p>
+
+<ul>
+  <li><strong>Validate Cyborg stream</strong></li>
+</ul>
+
+<hr />
+
+<h1 id="-9-cyborg-message-flow-constellationaligned">🔷 9. Cyborg Message Flow (Constellation‑Aligned)</h1>
+
+<p>All navigation is Constellation.<br />
+Cyborg messages flow through the ingestion pipeline as follows:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Cyborg Message
+→ Protocol Translator
+→ AVIS Validator
+→ Constellation Ingestion
+→ Windows Message Layer
+</code></pre></div></div>
+
+<p>Your AI can simulate this:</p>
+
+<ul>
+  <li><strong>Simulate Cyborg message flow</strong></li>
+</ul>
+
+<hr />
+
+<h1 id="-10-cyborg-schema-definitions">🔷 10. Cyborg Schema Definitions</h1>
+
+<p>Schemas define:</p>
+
+<ul>
+  <li>message classes</li>
+  <li>opcode mappings</li>
+  <li>payload structures</li>
+  <li>validation rules</li>
+</ul>
+
+<p>Your AI can retrieve schemas:</p>
+
+<ul>
+  <li><strong>Show Cyborg schemas</strong></li>
+</ul>
+
+<hr />
+
+<h1 id="-11-cyborg-error-conditions">🔷 11. Cyborg Error Conditions</h1>
+
+<p>Cyborg defines strict error states:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Error</th>
+      <th>Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ERR:01</code></td>
+      <td>Invalid opcode</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ERR:02</code></td>
+      <td>Payload length mismatch</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ERR:03</code></td>
+      <td>Checksum mismatch</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ERR:04</code></td>
+      <td>Non‑reversible transformation</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ERR:05</code></td>
+      <td>AVIS violation</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Your AI can diagnose errors:</p>
+
+<ul>
+  <li><strong>Diagnose Cyborg error</strong></li>
+</ul>
+
+<hr />
+
+<h1 id="-12-cyborg--avis-integration">🔷 12. Cyborg + AVIS Integration</h1>
+
+<p>Every Cyborg file must include:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>AIFVS-ARTIFACT
+# cyborg_message_schema.txt
+</code></pre></div></div>
+
+<p>AVIS ensures:</p>
+
+<ul>
+  <li>traceability</li>
+  <li>schema visibility</li>
+  <li>deterministic indexing</li>
+</ul>
+
+<p>Your AI can inspect AVIS metadata:</p>
+
+<ul>
+  <li><strong>Show AVIS metadata</strong></li>
+</ul>
+
+<hr />
+
+<h1 id="-13-cyborg--constellation-integration">🔷 13. Cyborg + Constellation Integration</h1>
+
+<p>Constellation uses Cyborg to:</p>
+
+<ul>
+  <li>ingest message schemas</li>
+  <li>validate message flows</li>
+  <li>simulate routing</li>
+  <li>index opcode logic</li>
+</ul>
+
+<p>Your AI can navigate Cyborg inside Constellation:</p>
+
+<ul>
+  <li><strong>Navigate Cyborg inside Constellation</strong></li>
+</ul>
+
+<hr />
+
+<h1 id="-14-cyborg-usage-examples">🔷 14. Cyborg Usage Examples</h1>
+
+<h3 id="example-1--encode-wm_mousemove"><strong>Example 1 — Encode WM_MOUSEMOVE</strong></h3>
+
+<p>Ask your AI:</p>
+
+<ul>
+  <li><strong>Encode WM_MOUSEMOVE</strong></li>
+</ul>
+
+<h3 id="example-2--decode-a-cyborg-stream"><strong>Example 2 — Decode a Cyborg stream</strong></h3>
+
+<p>Ask your AI:</p>
+
+<ul>
+  <li><strong>Decode Cyborg stream</strong></li>
+</ul>
+
+<h3 id="example-3--validate-a-message"><strong>Example 3 — Validate a message</strong></h3>
+
+<p>Ask your AI:</p>
+
+<ul>
+  <li><strong>Validate Cyborg message</strong></li>
+</ul>
+
+<hr />
+
+<h1 id="-15-cyborg-file-organization">🔷 15. Cyborg File Organization</h1>
+
+<p>Cyborg files are stored in:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Constellation/schemas/cyborg/
+</code></pre></div></div>
+
+<p>Your AI can navigate them:</p>
+
+<ul>
+  <li><strong>Navigate Cyborg directory</strong></li>
+</ul>
+
+<hr />
+
+<h1 id="-16-cyborg-compliance-requirements">🔷 16. Cyborg Compliance Requirements</h1>
+
+<p>To be valid:</p>
+
+<ul>
+  <li>all messages must be reversible</li>
+  <li>all payloads must match schema</li>
+  <li>all opcodes must map to Windows constants</li>
+  <li>all files must include AVIS headers</li>
+  <li>all navigation must use Constellation</li>
+</ul>
+
+<hr />
+
+<h1 id="-17-cyborg-glossary">🔷 17. Cyborg Glossary</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Term</th>
+      <th>Definition</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Cyborg</td>
+      <td>Deterministic message translation language</td>
+    </tr>
+    <tr>
+      <td>Opcode</td>
+      <td>Windows message identifier</td>
+    </tr>
+    <tr>
+      <td>Payload</td>
+      <td>Encoded WPARAM/LPARAM</td>
+    </tr>
+    <tr>
+      <td>Checksum</td>
+      <td>Integrity verifier</td>
+    </tr>
+    <tr>
+      <td>AVIS</td>
+      <td>Artifact visibility system</td>
+    </tr>
+    <tr>
+      <td>Constellation</td>
+      <td>Ingestion + navigation engine</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<p>Go <a href="/Cyborg/CONTRIBUTING.md">🔄 HOME</a> or <a href="/Cyborg/app/README-3.html">«↩️ BACK</a>  or <a href="/Cyborg/app/README-5.html">FORWARD ➡️»</a></p>
+
+<p><a target="_self" title="CLICK HERE to ENTER the GATEWAY FREE!" href="https://mercwar.github.io/Constellation/index.html">
+<img src="https://raw.githubusercontent.com/mercwar/Robo-Knight-Gallery/refs/heads/main/Version%207/image_d2a07390.png" alt="Mercwar Constellation" style="width:100%; height:auto;" />
+</a></p>
+
+<h5 id="toc-jump---1">TOC: JUMP @ 🌀</h5>
+<h6 id="--readme-2--readme-5--readme-8--readme-11-1">- <a href="/Cyborg/app/README-2.html">README 2</a> 💥 <a href="/Cyborg/app/README-5.html">README 5</a> 💥 <a href="/Cyborg/app/README-8.html">README 8</a> 💥 <a href="/Cyborg/app/README-11.html">README 11</a></h6>
+<h6 id="--readme-3--readme-6--readme-9--readme-12-1">- <a href="/Cyborg/app/README-3.html">README 3</a> 💥 <a href="/Cyborg/app/README-6.html">README 6</a> 💥 <a href="/Cyborg/app/README-9.html">README 9</a> 💥 <a href="/Cyborg/app/README-12.html">README 12</a></h6>
+<h6 id="--readme-4--readme-7--readme-10--readme-13-1">- <a href="/Cyborg/app/README-4.html">README 4</a> 💥 <a href="/Cyborg/app/README-7.html">README 7</a> 💥 <a href="/Cyborg/app/README-10.html">README 10</a> 💥 <a href="/Cyborg/app/README-13.html">README 13</a></h6>
+
+<hr />
+
+<!-- START LEGAL CONTRIBUTING SECTION -->
+<div class="markdown-body" style="box-sizing: border-box; margin: 24px 0px; padding: 24px; color: #e6edf3; background-color: #161b22; border: 1px solid #30363d; border-radius: 6px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;">
+    <h2 style="box-sizing: border-box; margin-top: 0px; margin-bottom: 16px; font-size: 1.5em; font-weight: 600; line-height: 1.25; padding-bottom: 0.3em; border-bottom: 1px solid #21262d; color: #f0f6fc;">
+        ⚖️ Legal Terms for Ecosystem Contributions
+    </h2>
+    <p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 16px; font-size: 14px; line-height: 1.6;">
+        By submitting code, documentation, schemas, or modifications to any repository within the <strong>Mercwar Ecosystem</strong>, you explicitly agree to the following deterministic terms of contribution. If you do not agree to these terms, you are not authorized to submit modifications or open pull requests.
+    </p>
+    <h3 style="font-size: 16px; font-weight: 600; color: #f0f6fc; margin-top: 16px; margin-bottom: 8px;">1. Intellectual Property &amp; Licensing</h3>
+    <p style="font-size: 14px; margin-bottom: 12px; color: #c9d1d9; padding-left: 8px; border-left: 2px solid #30363d;">
+        All contributions are received under the native license governing the destination repository (e.g., Apache 2.0, MIT, or custom ecosystem constraints). You certify that you are the original author of the submission and possess the unrestricted legal right to grant an irrevocable, perpetual, worldwide, royalty-free license to use, modify, sub-license, and distribute your code without attribution requirements.
+    </p>
+    <h3 style="font-size: 16px; font-weight: 600; color: #f0f6fc; margin-top: 16px; margin-bottom: 8px;">2. AI-Agent and Autonomous Interaction Rules</h3>
+    <p style="font-size: 14px; margin-bottom: 12px; color: #c9d1d9; padding-left: 8px; border-left: 2px solid #30363d;">
+        Because this ecosystem relies heavily on autonomous processing via the AVIS protocol and algorithmic parsers, you acknowledge that any data committed may be immediately ingested, parsed, and utilized by artificial intelligence models, scrapers, or automated systems. You waive any subsequent data privacy or restriction claims regarding algorithmic training or parsing outputs executed on public repository data layers.
+    </p>
+    <h3 style="font-size: 16px; font-weight: 600; color: #f0f6fc; margin-top: 16px; margin-bottom: 8px;">3. Disclaimer of Warranty &amp; Liability Limit</h3>
+    <p style="font-size: 14px; margin-bottom: 12px; color: #c9d1d9; padding-left: 8px; border-left: 2px solid #30363d;">
+        Submissions are evaluated and merged "AS IS," without warranty of any kind, explicit or implied. The repository maintainers accept no liability for compilation failures, execution anomalies, or downstream operating system conflicts resulting from contributed patches or files.
+    </p>
+</div>
+<!-- END LEGAL CONTRIBUTING SECTION -->
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/app/README-4.md">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

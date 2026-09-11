@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>📘 PAGE 5.0 — CYBORG C LAYER (OVERVIEW) | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="📘 PAGE 5.0 — CYBORG C LAYER (OVERVIEW)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/02_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/02_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="📘 PAGE 5.0 — CYBORG C LAYER (OVERVIEW)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"📘 PAGE 5.0 — CYBORG C LAYER (OVERVIEW)","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/02_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      
+<h1 id="-page-50--cyborg-c-layer-overview"><strong>📘 PAGE 5.0 — CYBORG C LAYER (OVERVIEW)</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="50-overview"><strong>5.0 Overview</strong></h2>
+
+<p>The <strong>C Layer</strong> is the final, executable manifestation of a Cyborg Module.<br />
+It is the point where:</p>
+
+<ul>
+  <li>VB‑style Cyborg syntax</li>
+  <li>becomes IR</li>
+  <li>becomes deterministic C code</li>
+  <li>becomes a compiled, runnable artifact</li>
+</ul>
+
+<p>The C Layer is:</p>
+
+<ul>
+  <li>minimal</li>
+  <li>linear</li>
+  <li>deterministic</li>
+  <li>non‑branching</li>
+  <li>non‑optimizing</li>
+  <li>non‑inferential</li>
+</ul>
+
+<p>It is the <strong>machine‑truth execution layer</strong> of the Cyborg Language.</p>
+
+<p>This section introduces the C Layer and prepares for the deeper specifications that follow.</p>
+
+<hr />
+
+<h1 id="501-purpose-of-the-c-layer"><strong>5.0.1 Purpose of the C Layer</strong></h1>
+
+<p>The C Layer exists to:</p>
+
+<ul>
+  <li>provide a stable, low‑level execution model</li>
+  <li>ensure deterministic behavior across platforms</li>
+  <li>eliminate ambiguity</li>
+  <li>enforce strict ordering</li>
+  <li>guarantee reproducibility</li>
+  <li>bind verb semantics to real functions</li>
+  <li>serve as the final output of the Cyborg pipeline</li>
+</ul>
+
+<p>The C Layer is the <strong>ground truth</strong> of the system.</p>
+
+<hr />
+
+<h1 id="502-c-layer-characteristics"><strong>5.0.2 C Layer Characteristics</strong></h1>
+
+<p>The C Layer MUST be:</p>
+
+<ul>
+  <li><strong>pure</strong> (no side effects beyond verb functions)</li>
+  <li><strong>linear</strong> (no loops, no branches)</li>
+  <li><strong>flat</strong> (no nested functions, no macros)</li>
+  <li><strong>deterministic</strong> (same input → same output)</li>
+  <li><strong>strict</strong> (no inference, no optimization)</li>
+  <li><strong>minimal</strong> (only what IR demands)</li>
+</ul>
+
+<p>The C Layer MUST NOT:</p>
+
+<ul>
+  <li>reorder logic</li>
+  <li>add logic</li>
+  <li>remove logic</li>
+  <li>infer missing logic</li>
+  <li>optimize logic</li>
+  <li>introduce conditions</li>
+  <li>introduce loops</li>
+  <li>introduce parallelism</li>
+</ul>
+
+<p>The C Layer is a <strong>pure transcription</strong> of IR.</p>
+
+<hr />
+
+<h1 id="503-c-layer-components"><strong>5.0.3 C Layer Components</strong></h1>
+
+<p>The C Layer consists of:</p>
+
+<ol>
+  <li><strong>The Payload Function</strong>
+    <ul>
+      <li>always named <code class="language-plaintext highlighter-rouge">cyborg_payload</code></li>
+      <li>always returns <code class="language-plaintext highlighter-rouge">int</code></li>
+      <li>always takes exactly one parameter</li>
+    </ul>
+  </li>
+  <li><strong>Verb Function Calls</strong>
+    <ul>
+      <li>one per EXEC_* opcode</li>
+      <li>in strict order</li>
+    </ul>
+  </li>
+  <li><strong>Return Aggregation</strong>
+    <ul>
+      <li>OR‑aggregation of all verb results</li>
+    </ul>
+  </li>
+  <li><strong>Target‑Bound Parameter Type</strong>
+    <ul>
+      <li>determined by <code class="language-plaintext highlighter-rouge">TARGET = &lt;context&gt;</code></li>
+    </ul>
+  </li>
+</ol>
+
+<p>These four components define the entire C Layer.</p>
+
+<hr />
+
+<h1 id="504-c-layer-execution-model"><strong>5.0.4 C Layer Execution Model</strong></h1>
+
+<p>Execution proceeds as follows:</p>
+
+<ol>
+  <li>The host environment calls <code class="language-plaintext highlighter-rouge">cyborg_payload</code>.</li>
+  <li>The function executes each verb function in order.</li>
+  <li>Each verb returns an integer result.</li>
+  <li>Results are OR‑aggregated.</li>
+  <li>The final aggregated result is returned.</li>
+</ol>
+
+<p>There is no branching, no skipping, no inference.</p>
+
+<hr />
+
+<h1 id="505-c-layer-determinism"><strong>5.0.5 C Layer Determinism</strong></h1>
+
+<p>The C Layer MUST be:</p>
+
+<ul>
+  <li><strong>structurally deterministic</strong></li>
+  <li><strong>semantically deterministic</strong></li>
+  <li><strong>execution‑deterministic</strong></li>
+</ul>
+
+<p>Meaning:</p>
+
+<ul>
+  <li>the structure is fixed</li>
+  <li>the semantics are fixed</li>
+  <li>the execution order is fixed</li>
+</ul>
+
+<p>No variation is permitted.</p>
+
+<hr />
+
+<h1 id="506-c-layer-restrictions"><strong>5.0.6 C Layer Restrictions</strong></h1>
+
+<p>The C Layer MUST NOT contain:</p>
+
+<ul>
+  <li>loops</li>
+  <li>conditionals</li>
+  <li>recursion</li>
+  <li>macros</li>
+  <li>inline functions</li>
+  <li>static functions</li>
+  <li>global variables</li>
+  <li>logging</li>
+  <li>I/O</li>
+  <li>memory allocation</li>
+  <li>exceptions</li>
+  <li>comments</li>
+</ul>
+
+<p>The C Layer is <strong>pure execution</strong>, nothing more.</p>
+
+<hr />
+
+<h1 id="507-c-layer-example-simple"><strong>5.0.7 C Layer Example (Simple)</strong></h1>
+
+<h3 id="ir"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = AI
+OPEN_PAYLOAD
+EXEC_SCAN
+EXEC_VALIDATE
+SEAL
+</code></pre>
+
+<h3 id="c-output"><strong>C Output</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">scan_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">validate_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This is the canonical form.</p>
+
+<hr />
+
+<h1 id="508-c-layer-example-maximal"><strong>5.0.8 C Layer Example (Maximal)</strong></h1>
+
+<h3 id="ir-1"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = FILE
+OPEN_PAYLOAD
+EXEC_VALIDATE
+EXEC_SCAN
+EXEC_BUILD
+EXEC_GIVE
+EXEC_EXPLAIN
+SEAL
+END_TRANSMISSION
+</code></pre>
+
+<h3 id="c-output-1"><strong>C Output</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="n">CyborgFile</span><span class="o">*</span> <span class="n">file</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">validate_context</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">scan_context</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r3</span> <span class="o">=</span> <span class="n">build_context</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r4</span> <span class="o">=</span> <span class="n">give_context</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r5</span> <span class="o">=</span> <span class="n">explain_context</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span> <span class="o">||</span> <span class="n">r3</span> <span class="o">||</span> <span class="n">r4</span> <span class="o">||</span> <span class="n">r5</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="509-summary"><strong>5.0.9 Summary</strong></h1>
+
+<p>Page 5.0 introduces the <strong>C Layer</strong>, the final execution stage of the Cyborg Language:</p>
+
+<ul>
+  <li>deterministic</li>
+  <li>linear</li>
+  <li>strict</li>
+  <li>non‑inferential</li>
+  <li>non‑optimizing</li>
+  <li>pure transcription of IR</li>
+</ul>
+
+<p>The next pages will define:</p>
+
+<ul>
+  <li>C Layer structure</li>
+  <li>C Layer semantics</li>
+  <li>C Layer constraints</li>
+  <li>C Layer integration rules</li>
+  <li>Verb function implementation rules</li>
+</ul>
+
+<p>The C Layer is where the Cyborg Language becomes <strong>real</strong>.</p>
+
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.2/02_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

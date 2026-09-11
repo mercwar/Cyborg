@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>📘 PAGE 9.0 — CYBORG IR SYSTEM (OVERVIEW) | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="📘 PAGE 9.0 — CYBORG IR SYSTEM (OVERVIEW)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/37_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/37_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="📘 PAGE 9.0 — CYBORG IR SYSTEM (OVERVIEW)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"📘 PAGE 9.0 — CYBORG IR SYSTEM (OVERVIEW)","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/37_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      
+<h1 id="-page-90--cyborg-ir-system-overview"><strong>📘 PAGE 9.0 — CYBORG IR SYSTEM (OVERVIEW)</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="90-overview"><strong>9.0 Overview</strong></h2>
+
+<p>The <strong>Cyborg IR System</strong> (Intermediate Representation) is the <strong>declarative layer</strong> of the Cyborg Language.<br />
+It defines:</p>
+
+<ul>
+  <li>the <strong>target</strong> of execution</li>
+  <li>the <strong>verbs</strong> to be executed</li>
+  <li>the <strong>order</strong> of execution</li>
+  <li>the <strong>payload boundaries</strong></li>
+  <li>the <strong>semantic intent</strong> of the module</li>
+</ul>
+
+<p>IR is not code.<br />
+IR is not metadata.<br />
+IR is not configuration.</p>
+
+<blockquote>
+  <p><strong>IR is the semantic blueprint of the Cyborg Module.</strong></p>
+</blockquote>
+
+<p>This section introduces the IR System and prepares for the deep specifications that follow.</p>
+
+<hr />
+
+<h1 id="901-ir-as-the-semantic-contract"><strong>9.0.1 IR as the Semantic Contract</strong></h1>
+
+<p>The IR defines:</p>
+
+<ul>
+  <li><em>what</em> the module does</li>
+  <li><em>in what order</em></li>
+  <li><em>on what context type</em></li>
+</ul>
+
+<p>The IR does <strong>not</strong> define:</p>
+
+<ul>
+  <li>how verbs behave</li>
+  <li>how context is structured</li>
+  <li>how runtime executes</li>
+  <li>how C code is generated</li>
+</ul>
+
+<h3 id="meaning"><strong>Meaning</strong></h3>
+<p>IR is the <strong>contract</strong>, not the implementation.</p>
+
+<hr />
+
+<h1 id="902-ir-structure"><strong>9.0.2 IR Structure</strong></h1>
+
+<p>A canonical IR block has four components:</p>
+
+<ol>
+  <li><strong>TARGET</strong></li>
+  <li><strong>OPEN_PAYLOAD</strong></li>
+  <li><strong>Verb Sequence</strong></li>
+  <li><strong>SEAL</strong></li>
+</ol>
+
+<h3 id="example"><strong>Example</strong></h3>
+<pre><code class="language-cyborg">TARGET = AI
+OPEN_PAYLOAD
+EXEC_VALIDATE
+EXEC_SCAN
+EXEC_BUILD
+SEAL
+</code></pre>
+
+<p>This is the <strong>minimal complete IR structure</strong>.</p>
+
+<hr />
+
+<h1 id="903-ir-target-declaration"><strong>9.0.3 IR Target Declaration</strong></h1>
+
+<p>The IR MUST declare exactly one target:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TARGET = AI
+TARGET = FILE
+TARGET = LAYER
+</code></pre></div></div>
+
+<p>The target determines:</p>
+
+<ul>
+  <li>which context type is used</li>
+  <li>which verb signatures are bound</li>
+  <li>how the C Layer is generated</li>
+</ul>
+
+<h3 id="meaning-1"><strong>Meaning</strong></h3>
+<p>The target is the <strong>semantic domain</strong>.</p>
+
+<hr />
+
+<h1 id="904-ir-payload-boundary-markers"><strong>9.0.4 IR Payload Boundary Markers</strong></h1>
+
+<p>Two markers define the payload:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>OPEN_PAYLOAD
+SEAL
+</code></pre></div></div>
+
+<p>Everything between them is:</p>
+
+<ul>
+  <li>ordered</li>
+  <li>deterministic</li>
+  <li>verb‑only</li>
+  <li>non‑inferential</li>
+</ul>
+
+<h3 id="meaning-2"><strong>Meaning</strong></h3>
+<p>The payload is the <strong>execution body</strong> of the module.</p>
+
+<hr />
+
+<h1 id="905-ir-verb-sequence"><strong>9.0.5 IR Verb Sequence</strong></h1>
+
+<p>Inside the payload, the IR may contain:</p>
+
+<ul>
+  <li>zero verbs</li>
+  <li>one verb</li>
+  <li>multiple verbs</li>
+  <li>repeated verbs</li>
+  <li>verbs in any order</li>
+</ul>
+
+<h3 id="meaning-3"><strong>Meaning</strong></h3>
+<p>IR defines <strong>sequence</strong>, not semantics.</p>
+
+<hr />
+
+<h1 id="906-ir-order-preservation"><strong>9.0.6 IR Order Preservation</strong></h1>
+
+<p>The IR MUST preserve verb order exactly.</p>
+
+<p>The runtime MUST:</p>
+
+<ul>
+  <li>execute verbs in the order written</li>
+  <li>never reorder</li>
+  <li>never optimize</li>
+  <li>never infer missing verbs</li>
+  <li>never skip verbs</li>
+</ul>
+
+<h3 id="meaning-4"><strong>Meaning</strong></h3>
+<p>Order is <strong>absolute</strong>.</p>
+
+<hr />
+
+<h1 id="907-ir-determinism"><strong>9.0.7 IR Determinism</strong></h1>
+
+<p>The IR MUST be:</p>
+
+<ul>
+  <li>static</li>
+  <li>explicit</li>
+  <li>deterministic</li>
+  <li>non‑inferential</li>
+</ul>
+
+<p>The IR MUST NOT:</p>
+
+<ul>
+  <li>contain conditional logic</li>
+  <li>contain loops</li>
+  <li>contain branches</li>
+  <li>contain dynamic constructs</li>
+</ul>
+
+<h3 id="meaning-5"><strong>Meaning</strong></h3>
+<p>IR is <strong>declarative</strong>, not procedural.</p>
+
+<hr />
+
+<h1 id="908-ir-purity"><strong>9.0.8 IR Purity</strong></h1>
+
+<p>The IR MUST NOT:</p>
+
+<ul>
+  <li>perform I/O</li>
+  <li>reference external systems</li>
+  <li>contain executable code</li>
+  <li>contain dynamic expressions</li>
+</ul>
+
+<h3 id="meaning-6"><strong>Meaning</strong></h3>
+<p>IR is <strong>pure declaration</strong>.</p>
+
+<hr />
+
+<h1 id="909-ir-and-the-c-layer"><strong>9.0.9 IR and the C Layer</strong></h1>
+
+<p>The IR determines:</p>
+
+<ul>
+  <li>which C function signature is generated</li>
+  <li>which verbs are invoked</li>
+  <li>in what order</li>
+  <li>how results are aggregated</li>
+</ul>
+
+<p>The IR does <strong>not</strong> determine:</p>
+
+<ul>
+  <li>how verbs are implemented</li>
+  <li>how context is structured</li>
+  <li>how runtime is initialized</li>
+</ul>
+
+<h3 id="meaning-7"><strong>Meaning</strong></h3>
+<p>IR is the <strong>blueprint</strong>, C Layer is the <strong>machinery</strong>.</p>
+
+<hr />
+
+<h1 id="9010-ir-and-the-runtime-layer"><strong>9.0.10 IR and the Runtime Layer</strong></h1>
+
+<p>The IR determines:</p>
+
+<ul>
+  <li>which context type is allocated</li>
+  <li>which verbs operate on it</li>
+</ul>
+
+<p>The IR does <strong>not</strong> determine:</p>
+
+<ul>
+  <li>how context is allocated</li>
+  <li>how context is destroyed</li>
+  <li>how runtime manages memory</li>
+</ul>
+
+<h3 id="meaning-8"><strong>Meaning</strong></h3>
+<p>IR is <strong>semantic</strong>, runtime is <strong>mechanical</strong>.</p>
+
+<hr />
+
+<h1 id="9011-ir-summary"><strong>9.0.11 IR Summary</strong></h1>
+
+<p>Page 9.0 defines the <strong>IR System</strong>:</p>
+
+<ul>
+  <li>declarative</li>
+  <li>deterministic</li>
+  <li>pure</li>
+  <li>target‑bound</li>
+  <li>order‑preserving</li>
+  <li>verb‑only</li>
+  <li>non‑inferential</li>
+  <li>non‑procedural</li>
+</ul>
+
+<p>IR is the <strong>semantic blueprint</strong> of the Cyborg Module.</p>
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.2/37_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

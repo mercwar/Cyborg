@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>📘 PAGE 6.7 — RUNTIME FAILURE MODEL (FORMAL) | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="📘 PAGE 6.7 — RUNTIME FAILURE MODEL (FORMAL)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/20_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/20_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="📘 PAGE 6.7 — RUNTIME FAILURE MODEL (FORMAL)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"📘 PAGE 6.7 — RUNTIME FAILURE MODEL (FORMAL)","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/20_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      
+<h1 id="-page-67--runtime-failure-model-formal"><strong>📘 PAGE 6.7 — RUNTIME FAILURE MODEL (FORMAL)</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="67-overview"><strong>6.7 Overview</strong></h2>
+
+<p>The <strong>Runtime Failure Model</strong> defines what it means for a Cyborg Module to fail, how failure is represented, and how the Runtime Layer must behave when failure occurs.</p>
+
+<p>This model is:</p>
+
+<ul>
+  <li>deterministic</li>
+  <li>silent</li>
+  <li>non‑recovering</li>
+  <li>non‑exceptional</li>
+  <li>non‑propagating</li>
+  <li>non‑interactive</li>
+</ul>
+
+<p>Failure in the Cyborg Runtime is not an “event.”<br />
+It is a <strong>state</strong>, represented purely by verb return values.</p>
+
+<p>This section is <strong>normative</strong>.</p>
+
+<hr />
+
+<h1 id="671-failure-principle-1--failure-is-represented-only-by-verb-return-values"><strong>6.7.1 Failure Principle 1 — Failure Is Represented Only by Verb Return Values</strong></h1>
+
+<p>The <strong>only</strong> way a Cyborg Module can fail is:</p>
+
+<ul>
+  <li>a verb returns a non‑zero integer</li>
+  <li>the OR‑aggregation produces a non‑zero result</li>
+</ul>
+
+<h3 id="meaning"><strong>Meaning</strong></h3>
+<p>There are no exceptions, no error objects, no logs, no messages.</p>
+
+<p>Failure is <strong>numeric</strong>, not procedural.</p>
+
+<hr />
+
+<h1 id="672-failure-principle-2--no-exceptions"><strong>6.7.2 Failure Principle 2 — No Exceptions</strong></h1>
+
+<p>The Runtime MUST NOT:</p>
+
+<ul>
+  <li>throw exceptions</li>
+  <li>catch exceptions</li>
+  <li>propagate exceptions</li>
+  <li>use <code class="language-plaintext highlighter-rouge">longjmp</code> or <code class="language-plaintext highlighter-rouge">setjmp</code></li>
+  <li>use structured exception handling</li>
+</ul>
+
+<h3 id="meaning-1"><strong>Meaning</strong></h3>
+<p>Failure cannot escape the linear execution flow.</p>
+
+<hr />
+
+<h1 id="673-failure-principle-3--no-early-termination"><strong>6.7.3 Failure Principle 3 — No Early Termination</strong></h1>
+
+<p>The Runtime MUST NOT:</p>
+
+<ul>
+  <li>stop execution early</li>
+  <li>skip remaining verbs</li>
+  <li>return prematurely</li>
+</ul>
+
+<h3 id="forbidden"><strong>Forbidden</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="n">r1</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="n">r1</span><span class="p">;</span>    <span class="c1">// ❌ illegal early return</span>
+</code></pre></div></div>
+
+<h3 id="required"><strong>Required</strong></h3>
+<p>All verbs MUST execute.</p>
+
+<hr />
+
+<h1 id="674-failure-principle-4--no-recovery"><strong>6.7.4 Failure Principle 4 — No Recovery</strong></h1>
+
+<p>The Runtime MUST NOT:</p>
+
+<ul>
+  <li>retry operations</li>
+  <li>repair state</li>
+  <li>roll back changes</li>
+  <li>reset context</li>
+  <li>perform cleanup logic</li>
+</ul>
+
+<h3 id="meaning-2"><strong>Meaning</strong></h3>
+<p>Failure is <strong>final</strong> and <strong>unrecoverable</strong> within the module.</p>
+
+<hr />
+
+<h1 id="675-failure-principle-5--no-logging-or-reporting"><strong>6.7.5 Failure Principle 5 — No Logging or Reporting</strong></h1>
+
+<p>The Runtime MUST NOT:</p>
+
+<ul>
+  <li>print error messages</li>
+  <li>log error messages</li>
+  <li>write to stderr</li>
+  <li>write to stdout</li>
+  <li>write to files</li>
+  <li>write to network</li>
+</ul>
+
+<h3 id="meaning-3"><strong>Meaning</strong></h3>
+<p>Failure is <strong>silent</strong>.</p>
+
+<hr />
+
+<h1 id="676-failure-principle-6--no-host-notification-beyond-return-value"><strong>6.7.6 Failure Principle 6 — No Host Notification Beyond Return Value</strong></h1>
+
+<p>The Runtime MUST NOT:</p>
+
+<ul>
+  <li>send signals</li>
+  <li>raise events</li>
+  <li>throw exceptions to the host</li>
+  <li>modify host state</li>
+</ul>
+
+<p>The only communication is:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span> <span class="o">||</span> <span class="n">r3</span> <span class="p">...);</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="677-failure-principle-7--no-context-mutation-on-failure"><strong>6.7.7 Failure Principle 7 — No Context Mutation on Failure</strong></h1>
+
+<p>The Runtime MUST NOT:</p>
+
+<ul>
+  <li>modify the context due to failure</li>
+  <li>mark failure inside the context</li>
+  <li>encode failure state in fields</li>
+</ul>
+
+<h3 id="exception"><strong>Exception</strong></h3>
+<p>If <code class="language-plaintext highlighter-rouge">build</code> modifies the context before failing, the Runtime MUST NOT undo it.</p>
+
+<hr />
+
+<h1 id="678-failure-principle-8--deterministic-failure-behavior"><strong>6.7.8 Failure Principle 8 — Deterministic Failure Behavior</strong></h1>
+
+<p>Failure MUST behave identically across:</p>
+
+<ul>
+  <li>platforms</li>
+  <li>compilers</li>
+  <li>architectures</li>
+  <li>optimization levels</li>
+</ul>
+
+<h3 id="meaning-4"><strong>Meaning</strong></h3>
+<p>Failure is <strong>platform‑invariant</strong>.</p>
+
+<hr />
+
+<h1 id="679-failure-principle-9--failure-cannot-cascade"><strong>6.7.9 Failure Principle 9 — Failure Cannot Cascade</strong></h1>
+
+<p>Failure in one verb:</p>
+
+<ul>
+  <li>MUST NOT prevent other verbs from executing</li>
+  <li>MUST NOT modify the behavior of other verbs</li>
+  <li>MUST NOT alter execution order</li>
+</ul>
+
+<h3 id="meaning-5"><strong>Meaning</strong></h3>
+<p>Failure is <strong>local</strong>, not systemic.</p>
+
+<hr />
+
+<h1 id="6710-failure-principle-10--failure-is-not-fatal-to-the-runtime"><strong>6.7.10 Failure Principle 10 — Failure Is Not Fatal to the Runtime</strong></h1>
+
+<p>The Runtime MUST NOT:</p>
+
+<ul>
+  <li>abort</li>
+  <li>crash</li>
+  <li>terminate the process</li>
+  <li>exit the program</li>
+</ul>
+
+<h3 id="meaning-6"><strong>Meaning</strong></h3>
+<p>Failure is <strong>contained</strong>.</p>
+
+<hr />
+
+<h1 id="6711-full-failure-example"><strong>6.7.11 Full Failure Example</strong></h1>
+
+<h3 id="ir"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = FILE
+OPEN_PAYLOAD
+EXEC_VALIDATE
+EXEC_SCAN
+EXEC_BUILD
+EXEC_GIVE
+SEAL
+</code></pre>
+
+<h3 id="c-output"><strong>C Output</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="n">CyborgFile</span><span class="o">*</span> <span class="n">file</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">validate_context</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">scan_context</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r3</span> <span class="o">=</span> <span class="n">build_context</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r4</span> <span class="o">=</span> <span class="n">give_context</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span> <span class="o">||</span> <span class="n">r3</span> <span class="o">||</span> <span class="n">r4</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="failure-interpretation"><strong>Failure Interpretation</strong></h3>
+<ul>
+  <li>If any verb returns non‑zero → module returns non‑zero</li>
+  <li>All verbs still execute</li>
+  <li>No exceptions</li>
+  <li>No logs</li>
+  <li>No recovery</li>
+  <li>No early termination</li>
+  <li>No mutation of context (except build)</li>
+  <li>No host notification beyond return value</li>
+</ul>
+
+<p>This is the <strong>canonical failure model</strong>.</p>
+
+<hr />
+
+<h1 id="6712-summary"><strong>6.7.12 Summary</strong></h1>
+
+<p>Page 6.7 defines the <strong>Runtime Failure Model</strong>:</p>
+
+<ul>
+  <li>failure is numeric</li>
+  <li>failure is silent</li>
+  <li>failure is non‑recovering</li>
+  <li>failure is non‑exceptional</li>
+  <li>failure does not interrupt execution</li>
+  <li>failure does not propagate</li>
+  <li>failure does not mutate context</li>
+  <li>failure does not notify the host</li>
+  <li>failure is deterministic</li>
+  <li>failure is contained</li>
+</ul>
+
+<p>This model ensures that failure in the Cyborg Runtime is <strong>pure, predictable, and ceremonially bounded</strong>.</p>
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.2/20_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

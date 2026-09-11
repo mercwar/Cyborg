@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>📘 PAGE 5.3 — VERB FUNCTION SEMANTICS (DEEP SPECIFICATION) | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="📘 PAGE 5.3 — VERB FUNCTION SEMANTICS (DEEP SPECIFICATION)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/05_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/05_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="📘 PAGE 5.3 — VERB FUNCTION SEMANTICS (DEEP SPECIFICATION)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"📘 PAGE 5.3 — VERB FUNCTION SEMANTICS (DEEP SPECIFICATION)","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/05_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      
+<h1 id="-page-53--verb-function-semantics-deep-specification"><strong>📘 PAGE 5.3 — VERB FUNCTION SEMANTICS (DEEP SPECIFICATION)</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="53-overview"><strong>5.3 Overview</strong></h2>
+
+<p>Page 5.3 defines the <strong>true semantic meaning</strong> of each verb function at the C Layer.<br />
+This is not about syntax, structure, or IR mapping — those are already fixed.<br />
+This page defines:</p>
+
+<ul>
+  <li>what each verb <em>means</em></li>
+  <li>what each verb <em>must do</em></li>
+  <li>what each verb <em>must never do</em></li>
+  <li>how each verb interacts with the target context</li>
+  <li>how each verb participates in deterministic execution</li>
+</ul>
+
+<p>These semantics are <strong>strict</strong>, <strong>non‑inferential</strong>, and <strong>non‑negotiable</strong>.</p>
+
+<p>This section is <strong>normative</strong>.</p>
+
+<hr />
+
+<h1 id="531-semantic-principle--verbs-are-atomic"><strong>5.3.1 Semantic Principle — Verbs Are Atomic</strong></h1>
+
+<p>Each verb function is a <strong>semantic atom</strong>:</p>
+
+<ul>
+  <li>indivisible</li>
+  <li>non‑composable</li>
+  <li>non‑overloaded</li>
+  <li>non‑contextual</li>
+  <li>deterministic</li>
+</ul>
+
+<p>Each verb performs <strong>exactly one conceptual action</strong>, regardless of target.</p>
+
+<hr />
+
+<h1 id="532-the-five-canonical-verb-semantics"><strong>5.3.2 The Five Canonical Verb Semantics</strong></h1>
+
+<p>The Cyborg Language defines exactly <strong>five</strong> verbs.<br />
+Their semantics are universal across all targets.</p>
+
+<hr />
+
+<h2 id="5321-validate--semantic-definition"><strong>5.3.2.1 <code class="language-plaintext highlighter-rouge">validate</code> — Semantic Definition</strong></h2>
+
+<h3 id="meaning"><strong>Meaning</strong></h3>
+<p><code class="language-plaintext highlighter-rouge">validate</code> performs <strong>integrity checking</strong> on the target context.</p>
+
+<h3 id="semantic-guarantees"><strong>Semantic Guarantees</strong></h3>
+<ul>
+  <li>MUST NOT modify the context</li>
+  <li>MUST NOT allocate memory</li>
+  <li>MUST NOT perform I/O</li>
+  <li>MUST return an integer status</li>
+  <li>MUST be deterministic</li>
+</ul>
+
+<h3 id="examples-of-valid-behavior"><strong>Examples of Valid Behavior</strong></h3>
+<ul>
+  <li>checking structural consistency</li>
+  <li>verifying required fields</li>
+  <li>confirming internal invariants</li>
+</ul>
+
+<h3 id="forbidden"><strong>Forbidden</strong></h3>
+<ul>
+  <li>repairing errors</li>
+  <li>inferring missing data</li>
+  <li>modifying the context</li>
+</ul>
+
+<hr />
+
+<h2 id="5322-scan--semantic-definition"><strong>5.3.2.2 <code class="language-plaintext highlighter-rouge">scan</code> — Semantic Definition</strong></h2>
+
+<h3 id="meaning-1"><strong>Meaning</strong></h3>
+<p><code class="language-plaintext highlighter-rouge">scan</code> performs <strong>inspection or traversal</strong> of the target context.</p>
+
+<h3 id="semantic-guarantees-1"><strong>Semantic Guarantees</strong></h3>
+<ul>
+  <li>MUST NOT modify the context</li>
+  <li>MUST NOT allocate memory</li>
+  <li>MUST NOT perform I/O</li>
+  <li>MUST return an integer status</li>
+  <li>MUST be deterministic</li>
+</ul>
+
+<h3 id="examples-of-valid-behavior-1"><strong>Examples of Valid Behavior</strong></h3>
+<ul>
+  <li>iterating through fields</li>
+  <li>reading metadata</li>
+  <li>enumerating components</li>
+</ul>
+
+<h3 id="forbidden-1"><strong>Forbidden</strong></h3>
+<ul>
+  <li>writing</li>
+  <li>restructuring</li>
+  <li>reordering</li>
+</ul>
+
+<hr />
+
+<h2 id="5323-build--semantic-definition"><strong>5.3.2.3 <code class="language-plaintext highlighter-rouge">build</code> — Semantic Definition</strong></h2>
+
+<h3 id="meaning-2"><strong>Meaning</strong></h3>
+<p><code class="language-plaintext highlighter-rouge">build</code> performs <strong>construction or assembly</strong> within the target context.</p>
+
+<h3 id="semantic-guarantees-2"><strong>Semantic Guarantees</strong></h3>
+<ul>
+  <li>MAY modify the context</li>
+  <li>MUST NOT allocate memory</li>
+  <li>MUST NOT perform I/O</li>
+  <li>MUST return an integer status</li>
+  <li>MUST be deterministic</li>
+</ul>
+
+<h3 id="examples-of-valid-behavior-2"><strong>Examples of Valid Behavior</strong></h3>
+<ul>
+  <li>assembling structures</li>
+  <li>linking components</li>
+  <li>generating internal representations</li>
+</ul>
+
+<h3 id="forbidden-2"><strong>Forbidden</strong></h3>
+<ul>
+  <li>allocating new memory</li>
+  <li>performing external writes</li>
+  <li>performing I/O</li>
+</ul>
+
+<hr />
+
+<h2 id="5324-give--semantic-definition"><strong>5.3.2.4 <code class="language-plaintext highlighter-rouge">give</code> — Semantic Definition</strong></h2>
+
+<h3 id="meaning-3"><strong>Meaning</strong></h3>
+<p><code class="language-plaintext highlighter-rouge">give</code> produces <strong>output or extracted information</strong> from the context.</p>
+
+<h3 id="semantic-guarantees-3"><strong>Semantic Guarantees</strong></h3>
+<ul>
+  <li>MUST NOT modify the context</li>
+  <li>MUST NOT perform I/O</li>
+  <li>MUST return an integer status</li>
+  <li>MUST be deterministic</li>
+</ul>
+
+<h3 id="examples-of-valid-behavior-3"><strong>Examples of Valid Behavior</strong></h3>
+<ul>
+  <li>extracting computed values</li>
+  <li>returning summaries</li>
+  <li>emitting internal signals</li>
+</ul>
+
+<h3 id="forbidden-3"><strong>Forbidden</strong></h3>
+<ul>
+  <li>printing</li>
+  <li>logging</li>
+  <li>writing to disk</li>
+</ul>
+
+<hr />
+
+<h2 id="5325-explain--semantic-definition"><strong>5.3.2.5 <code class="language-plaintext highlighter-rouge">explain</code> — Semantic Definition</strong></h2>
+
+<h3 id="meaning-4"><strong>Meaning</strong></h3>
+<p><code class="language-plaintext highlighter-rouge">explain</code> produces <strong>diagnostic or descriptive information</strong> about the context.</p>
+
+<h3 id="semantic-guarantees-4"><strong>Semantic Guarantees</strong></h3>
+<ul>
+  <li>MUST NOT modify the context</li>
+  <li>MUST NOT perform I/O</li>
+  <li>MUST return an integer status</li>
+  <li>MUST be deterministic</li>
+</ul>
+
+<h3 id="examples-of-valid-behavior-4"><strong>Examples of Valid Behavior</strong></h3>
+<ul>
+  <li>generating internal diagnostics</li>
+  <li>producing structured descriptions</li>
+  <li>summarizing state</li>
+</ul>
+
+<h3 id="forbidden-4"><strong>Forbidden</strong></h3>
+<ul>
+  <li>printing</li>
+  <li>logging</li>
+  <li>writing to disk</li>
+</ul>
+
+<hr />
+
+<h1 id="533-crossverb-semantic-rules"><strong>5.3.3 Cross‑Verb Semantic Rules</strong></h1>
+
+<p>All verbs share the following universal constraints:</p>
+
+<h3 id="rule-1--determinism"><strong>Rule 1 — Determinism</strong></h3>
+<p>Given the same context, a verb MUST return the same result.</p>
+
+<h3 id="rule-2--purity-except-build"><strong>Rule 2 — Purity (Except <code class="language-plaintext highlighter-rouge">build</code>)</strong></h3>
+<p>All verbs except <code class="language-plaintext highlighter-rouge">build</code> MUST NOT modify the context.</p>
+
+<h3 id="rule-3--no-io"><strong>Rule 3 — No I/O</strong></h3>
+<p>No verb may perform:</p>
+
+<ul>
+  <li>file I/O</li>
+  <li>network I/O</li>
+  <li>console I/O</li>
+  <li>logging</li>
+</ul>
+
+<h3 id="rule-4--no-memory-allocation"><strong>Rule 4 — No Memory Allocation</strong></h3>
+<p>Verbs MUST NOT allocate or free memory.</p>
+
+<h3 id="rule-5--no-crossverb-calls"><strong>Rule 5 — No Cross‑Verb Calls</strong></h3>
+<p>Verbs MUST NOT call other verb functions.</p>
+
+<h3 id="rule-6--no-global-state"><strong>Rule 6 — No Global State</strong></h3>
+<p>Verbs MUST NOT read or write global variables.</p>
+
+<h3 id="rule-7--no-exceptions"><strong>Rule 7 — No Exceptions</strong></h3>
+<p>Verbs MUST NOT throw or propagate exceptions.</p>
+
+<hr />
+
+<h1 id="534-targetspecific-semantic-domains"><strong>5.3.4 Target‑Specific Semantic Domains</strong></h1>
+
+<p>Each verb operates within the semantic domain defined by the target.</p>
+
+<h3 id="target-ai"><strong>Target: AI</strong></h3>
+<ul>
+  <li>context is an AI execution environment</li>
+  <li>verbs operate on internal AI state</li>
+</ul>
+
+<h3 id="target-file"><strong>Target: FILE</strong></h3>
+<ul>
+  <li>context is a file structure</li>
+  <li>verbs operate on file metadata or content</li>
+</ul>
+
+<h3 id="target-layer"><strong>Target: LAYER</strong></h3>
+<ul>
+  <li>context is a layered structure</li>
+  <li>verbs operate on layer components</li>
+</ul>
+
+<h3 id="universal-rule"><strong>Universal Rule</strong></h3>
+<p>The verb semantics DO NOT CHANGE — only the <em>domain</em> changes.</p>
+
+<hr />
+
+<h1 id="535-full-semantic-example"><strong>5.3.5 Full Semantic Example</strong></h1>
+
+<h3 id="ir"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = LAYER
+OPEN_PAYLOAD
+EXEC_VALIDATE
+EXEC_SCAN
+EXEC_BUILD
+EXEC_EXPLAIN
+SEAL
+</code></pre>
+
+<h3 id="c-output"><strong>C Output</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="n">CyborgLayer</span><span class="o">*</span> <span class="n">layer</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">validate_context</span><span class="p">(</span><span class="n">layer</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">scan_context</span><span class="p">(</span><span class="n">layer</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r3</span> <span class="o">=</span> <span class="n">build_context</span><span class="p">(</span><span class="n">layer</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r4</span> <span class="o">=</span> <span class="n">explain_context</span><span class="p">(</span><span class="n">layer</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span> <span class="o">||</span> <span class="n">r3</span> <span class="o">||</span> <span class="n">r4</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="semantic-interpretation"><strong>Semantic Interpretation</strong></h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">validate</code> checks layer integrity</li>
+  <li><code class="language-plaintext highlighter-rouge">scan</code> inspects layer structure</li>
+  <li><code class="language-plaintext highlighter-rouge">build</code> constructs or assembles layer components</li>
+  <li><code class="language-plaintext highlighter-rouge">explain</code> produces diagnostics</li>
+  <li>results are OR‑aggregated</li>
+  <li>execution is linear and deterministic</li>
+</ul>
+
+<hr />
+
+<h1 id="536-summary"><strong>5.3.6 Summary</strong></h1>
+
+<p>Page 5.3 defines the <strong>deep semantics</strong> of verb functions:</p>
+
+<ul>
+  <li>five verbs, each with fixed meaning</li>
+  <li>deterministic behavior</li>
+  <li>strict purity rules</li>
+  <li>no I/O</li>
+  <li>no memory allocation</li>
+  <li>no inference</li>
+  <li>no cross‑verb calls</li>
+  <li>domain‑bound but domain‑invariant semantics</li>
+</ul>
+
+<p>These semantics form the <strong>behavioral core</strong> of the Cyborg Language.</p>
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.2/05_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

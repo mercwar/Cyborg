@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>📘 PAGE 9.3 — IR EXECUTION MODEL (FORMAL) | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="📘 PAGE 9.3 — IR EXECUTION MODEL (FORMAL)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/40_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/40_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="📘 PAGE 9.3 — IR EXECUTION MODEL (FORMAL)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"📘 PAGE 9.3 — IR EXECUTION MODEL (FORMAL)","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/40_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      
+<h1 id="-page-93--ir-execution-model-formal"><strong>📘 PAGE 9.3 — IR EXECUTION MODEL (FORMAL)</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="93-overview"><strong>9.3 Overview</strong></h2>
+
+<p>The <strong>IR Execution Model</strong> defines how the Runtime Layer interprets and executes the IR.<br />
+This is the bridge between:</p>
+
+<ul>
+  <li><strong>IR</strong> (semantic declaration)</li>
+  <li><strong>C Layer</strong> (generated code)</li>
+  <li><strong>Runtime Layer</strong> (execution environment)</li>
+</ul>
+
+<p>The execution model is:</p>
+
+<ul>
+  <li>deterministic</li>
+  <li>linear</li>
+  <li>non‑interactive</li>
+  <li>non‑inferential</li>
+  <li>non‑optimizing</li>
+  <li>non‑branching</li>
+</ul>
+
+<p>This section is <strong>normative</strong>.</p>
+
+<hr />
+
+<h1 id="931-execution-rule-1--ir-is-executed-topdown"><strong>9.3.1 Execution Rule 1 — IR Is Executed Top‑Down</strong></h1>
+
+<p>Execution begins at the first line of the IR and proceeds downward.</p>
+
+<p>Order is:</p>
+
+<ol>
+  <li>TARGET</li>
+  <li>OPEN_PAYLOAD</li>
+  <li>verb sequence</li>
+  <li>SEAL</li>
+</ol>
+
+<h3 id="meaning"><strong>Meaning</strong></h3>
+<p>Execution is <strong>strictly linear</strong>.</p>
+
+<hr />
+
+<h1 id="932-execution-rule-2--target-determines-context-allocation"><strong>9.3.2 Execution Rule 2 — TARGET Determines Context Allocation</strong></h1>
+
+<p>When the runtime encounters:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TARGET = AI
+</code></pre></div></div>
+
+<p>it MUST:</p>
+
+<ul>
+  <li>allocate a <code class="language-plaintext highlighter-rouge">CyborgContext</code></li>
+  <li>initialize it</li>
+  <li>pass it to all verbs</li>
+</ul>
+
+<p>Likewise:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TARGET = FILE
+</code></pre></div></div>
+<p>→ allocate <code class="language-plaintext highlighter-rouge">CyborgFile</code></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TARGET = LAYER
+</code></pre></div></div>
+<p>→ allocate <code class="language-plaintext highlighter-rouge">CyborgLayer</code></p>
+
+<h3 id="meaning-1"><strong>Meaning</strong></h3>
+<p>The target determines the <strong>semantic universe</strong> of execution.</p>
+
+<hr />
+
+<h1 id="933-execution-rule-3--open_payload-begins-verb-invocation"><strong>9.3.3 Execution Rule 3 — OPEN_PAYLOAD Begins Verb Invocation</strong></h1>
+
+<p>Upon encountering:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>OPEN_PAYLOAD
+</code></pre></div></div>
+
+<p>the runtime MUST:</p>
+
+<ul>
+  <li>begin reading verb lines</li>
+  <li>prepare to invoke verbs in order</li>
+  <li>NOT perform any action itself</li>
+</ul>
+
+<h3 id="meaning-2"><strong>Meaning</strong></h3>
+<p>OPEN_PAYLOAD is a <strong>boundary marker</strong>, not an operation.</p>
+
+<hr />
+
+<h1 id="934-execution-rule-4--each-exec-line-invokes-a-verb"><strong>9.3.4 Execution Rule 4 — Each EXEC Line Invokes a Verb</strong></h1>
+
+<p>Each line of the form:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>EXEC_&lt;VERB&gt;
+</code></pre></div></div>
+
+<p>MUST cause the runtime to:</p>
+
+<ul>
+  <li>call the corresponding verb function</li>
+  <li>pass the context as the sole argument</li>
+  <li>capture the integer return value</li>
+  <li>OR‑aggregate it into the final result</li>
+</ul>
+
+<h3 id="meaning-3"><strong>Meaning</strong></h3>
+<p>Each EXEC line is a <strong>mandatory execution step</strong>.</p>
+
+<hr />
+
+<h1 id="935-execution-rule-5--verbs-execute-in-ir-order"><strong>9.3.5 Execution Rule 5 — Verbs Execute in IR Order</strong></h1>
+
+<p>The runtime MUST:</p>
+
+<ul>
+  <li>execute verbs in the exact order written</li>
+  <li>never reorder</li>
+  <li>never optimize</li>
+  <li>never skip</li>
+  <li>never infer missing verbs</li>
+</ul>
+
+<h3 id="meaning-4"><strong>Meaning</strong></h3>
+<p>Order is <strong>absolute</strong> and <strong>non‑negotiable</strong>.</p>
+
+<hr />
+
+<h1 id="936-execution-rule-6--no-shortcircuiting"><strong>9.3.6 Execution Rule 6 — No Short‑Circuiting</strong></h1>
+
+<p>Even if a verb returns non‑zero:</p>
+
+<ul>
+  <li>execution MUST continue</li>
+  <li>all remaining verbs MUST run</li>
+  <li>no early termination is allowed</li>
+</ul>
+
+<h3 id="meaning-5"><strong>Meaning</strong></h3>
+<p>Failure does <strong>not</strong> interrupt execution.</p>
+
+<hr />
+
+<h1 id="937-execution-rule-7--seal-ends-execution"><strong>9.3.7 Execution Rule 7 — SEAL Ends Execution</strong></h1>
+
+<p>Upon encountering:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SEAL
+</code></pre></div></div>
+
+<p>the runtime MUST:</p>
+
+<ul>
+  <li>stop reading verb lines</li>
+  <li>finalize OR‑aggregation</li>
+  <li>return the aggregated result</li>
+</ul>
+
+<h3 id="meaning-6"><strong>Meaning</strong></h3>
+<p>SEAL is the <strong>end of semantic intent</strong>.</p>
+
+<hr />
+
+<h1 id="938-execution-rule-8--aggregation-model"><strong>9.3.8 Execution Rule 8 — Aggregation Model</strong></h1>
+
+<p>The runtime MUST aggregate verb results using logical OR:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>final_result = r1 || r2 || r3 || ... || rn
+</code></pre></div></div>
+
+<p>Where:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">0</code> = success</li>
+  <li>non‑zero = failure</li>
+</ul>
+
+<h3 id="meaning-7"><strong>Meaning</strong></h3>
+<p>The final result is a <strong>binary truth value</strong>.</p>
+
+<hr />
+
+<h1 id="939-execution-rule-9--no-exceptions-no-branching"><strong>9.3.9 Execution Rule 9 — No Exceptions, No Branching</strong></h1>
+
+<p>The runtime MUST NOT:</p>
+
+<ul>
+  <li>throw exceptions</li>
+  <li>catch exceptions</li>
+  <li>branch</li>
+  <li>loop</li>
+  <li>retry verbs</li>
+  <li>skip verbs</li>
+</ul>
+
+<h3 id="meaning-8"><strong>Meaning</strong></h3>
+<p>Execution is <strong>branchless and linear</strong>.</p>
+
+<hr />
+
+<h1 id="9310-execution-rule-10--deterministic-completion"><strong>9.3.10 Execution Rule 10 — Deterministic Completion</strong></h1>
+
+<p>Given the same IR and same context initialization:</p>
+
+<ul>
+  <li>the same verbs MUST run</li>
+  <li>in the same order</li>
+  <li>with the same results</li>
+  <li>producing the same final value</li>
+</ul>
+
+<h3 id="meaning-9"><strong>Meaning</strong></h3>
+<p>Execution is <strong>mathematically reproducible</strong>.</p>
+
+<hr />
+
+<h1 id="9311-full-execution-example"><strong>9.3.11 Full Execution Example</strong></h1>
+
+<h3 id="ir"><strong>IR</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TARGET = FILE
+OPEN_PAYLOAD
+EXEC_VALIDATE
+EXEC_SCAN
+EXEC_BUILD
+EXEC_GIVE
+EXEC_EXPLAIN
+SEAL
+</code></pre></div></div>
+
+<h3 id="execution-flow"><strong>Execution Flow</strong></h3>
+<ol>
+  <li>allocate <code class="language-plaintext highlighter-rouge">CyborgFile</code></li>
+  <li>initialize context</li>
+  <li>call <code class="language-plaintext highlighter-rouge">validate_context</code></li>
+  <li>call <code class="language-plaintext highlighter-rouge">scan_context</code></li>
+  <li>call <code class="language-plaintext highlighter-rouge">build_context</code></li>
+  <li>call <code class="language-plaintext highlighter-rouge">give_context</code></li>
+  <li>call <code class="language-plaintext highlighter-rouge">explain_context</code></li>
+  <li>OR‑aggregate results</li>
+  <li>return final result</li>
+</ol>
+
+<h3 id="meaning-10"><strong>Meaning</strong></h3>
+<p>This is the <strong>canonical IR execution model</strong>.</p>
+
+<hr />
+
+<h1 id="9312-summary"><strong>9.3.12 Summary</strong></h1>
+
+<p>Page 9.3 defines the <strong>IR Execution Model</strong>:</p>
+
+<ul>
+  <li>top‑down execution</li>
+  <li>target determines context</li>
+  <li>OPEN_PAYLOAD begins verb sequence</li>
+  <li>SEAL ends verb sequence</li>
+  <li>verbs invoked in strict order</li>
+  <li>no skipping, no inference</li>
+  <li>no branching, no exceptions</li>
+  <li>deterministic OR‑aggregation</li>
+  <li>deterministic completion</li>
+</ul>
+
+<p>This model ensures that IR is executed with <strong>absolute fidelity</strong>.</p>
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.2/40_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>📘 PAGE 7.4 — VERB: GIVE (FORMAL SPECIFICATION) | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="📘 PAGE 7.4 — VERB: GIVE (FORMAL SPECIFICATION)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/26_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/26_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="📘 PAGE 7.4 — VERB: GIVE (FORMAL SPECIFICATION)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"📘 PAGE 7.4 — VERB: GIVE (FORMAL SPECIFICATION)","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.2/26_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      
+<h1 id="-page-74--verb-give-formal-specification"><strong>📘 PAGE 7.4 — VERB: GIVE (FORMAL SPECIFICATION)</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="74-overview"><strong>7.4 Overview</strong></h2>
+
+<p><code class="language-plaintext highlighter-rouge">GIVE</code> is the <strong>fourth canonical verb</strong> of the Cyborg Language.<br />
+Where:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">VALIDATE</code> confirms structure</li>
+  <li><code class="language-plaintext highlighter-rouge">SCAN</code> reveals structure</li>
+  <li><code class="language-plaintext highlighter-rouge">BUILD</code> transforms structure</li>
+</ul>
+
+<p><strong>GIVE extracts meaning from the context and produces a semantic output.</strong></p>
+
+<blockquote>
+  <p><strong>GIVE is the verb of semantic delivery.</strong></p>
+</blockquote>
+
+<p>It does not mutate.<br />
+It does not infer.<br />
+It does not construct.<br />
+It simply <em>extracts</em>.</p>
+
+<p>This section is <strong>normative</strong>.</p>
+
+<hr />
+
+<h1 id="741-give--semantic-definition"><strong>7.4.1 GIVE — Semantic Definition</strong></h1>
+
+<p><code class="language-plaintext highlighter-rouge">GIVE</code> MUST:</p>
+
+<ul>
+  <li>read the context</li>
+  <li>extract meaningful semantic content</li>
+  <li>interpret constructed structures</li>
+  <li>derive output‑ready values</li>
+  <li>confirm semantic completeness</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">GIVE</code> MUST NOT:</p>
+
+<ul>
+  <li>modify the context</li>
+  <li>allocate memory</li>
+  <li>free memory</li>
+  <li>perform I/O</li>
+  <li>call other verbs</li>
+  <li>depend on external state</li>
+  <li>infer missing fields</li>
+</ul>
+
+<h3 id="meaning"><strong>Meaning</strong></h3>
+<p><code class="language-plaintext highlighter-rouge">GIVE</code> is the <strong>semantic extractor</strong>.</p>
+
+<hr />
+
+<h1 id="742-give--determinism-rules"><strong>7.4.2 GIVE — Determinism Rules</strong></h1>
+
+<p><code class="language-plaintext highlighter-rouge">GIVE</code> MUST:</p>
+
+<ul>
+  <li>produce the same result for the same context</li>
+  <li>never depend on timing</li>
+  <li>never depend on randomness</li>
+  <li>never depend on environment variables</li>
+  <li>never depend on global state</li>
+</ul>
+
+<h3 id="meaning-1"><strong>Meaning</strong></h3>
+<p><code class="language-plaintext highlighter-rouge">GIVE</code> is <strong>mathematically reproducible</strong>.</p>
+
+<hr />
+
+<h1 id="743-give--purity-rules"><strong>7.4.3 GIVE — Purity Rules</strong></h1>
+
+<p><code class="language-plaintext highlighter-rouge">GIVE</code> MUST NOT:</p>
+
+<ul>
+  <li>write to context</li>
+  <li>write to global memory</li>
+  <li>write to static memory</li>
+  <li>write to external systems</li>
+  <li>perform I/O</li>
+  <li>allocate or free memory</li>
+</ul>
+
+<h3 id="meaning-2"><strong>Meaning</strong></h3>
+<p><code class="language-plaintext highlighter-rouge">GIVE</code> is <strong>pure</strong>.</p>
+
+<hr />
+
+<h1 id="744-give--isolation-rules"><strong>7.4.4 GIVE — Isolation Rules</strong></h1>
+
+<p><code class="language-plaintext highlighter-rouge">GIVE</code> MUST NOT:</p>
+
+<ul>
+  <li>call other verbs</li>
+  <li>communicate with other verbs</li>
+  <li>rely on execution order</li>
+  <li>share state with other verbs</li>
+</ul>
+
+<h3 id="meaning-3"><strong>Meaning</strong></h3>
+<p><code class="language-plaintext highlighter-rouge">GIVE</code> is a <strong>semantic island</strong>, just like VALIDATE and SCAN.</p>
+
+<hr />
+
+<h1 id="745-give--return-semantics"><strong>7.4.5 GIVE — Return Semantics</strong></h1>
+
+<p><code class="language-plaintext highlighter-rouge">GIVE</code> MUST return:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">0</code> → semantic extraction successful</li>
+  <li>non‑zero → semantic extraction failed</li>
+</ul>
+
+<h3 id="meaning-4"><strong>Meaning</strong></h3>
+<p><code class="language-plaintext highlighter-rouge">GIVE</code> is a <strong>binary semantic delivery test</strong>.</p>
+
+<hr />
+
+<h1 id="746-give--context-rules"><strong>7.4.6 GIVE — Context Rules</strong></h1>
+
+<p><code class="language-plaintext highlighter-rouge">GIVE</code> MUST:</p>
+
+<ul>
+  <li>treat the context as read‑only</li>
+  <li>operate only on fields defined by the target</li>
+  <li>never reinterpret the context</li>
+  <li>never cast the context</li>
+  <li>never infer missing fields</li>
+</ul>
+
+<h3 id="meaning-5"><strong>Meaning</strong></h3>
+<p><code class="language-plaintext highlighter-rouge">GIVE</code> consumes <strong>exactly what BUILD produced</strong>, nothing more.</p>
+
+<hr />
+
+<h1 id="747-give--failure-semantics"><strong>7.4.7 GIVE — Failure Semantics</strong></h1>
+
+<p>If <code class="language-plaintext highlighter-rouge">GIVE</code> returns non‑zero:</p>
+
+<ul>
+  <li>the C Layer MUST still execute remaining verbs (if any)</li>
+  <li>the Runtime MUST NOT stop execution</li>
+  <li>the Runtime MUST NOT attempt recovery</li>
+  <li>the Runtime MUST NOT modify context</li>
+  <li>the Runtime MUST NOT log or report the failure</li>
+</ul>
+
+<h3 id="meaning-6"><strong>Meaning</strong></h3>
+<p>Failure is <strong>silent</strong>, <strong>contained</strong>, and <strong>non‑interrupting</strong>.</p>
+
+<hr />
+
+<h1 id="748-give--canonical-implementation-pattern"><strong>7.4.8 GIVE — Canonical Implementation Pattern</strong></h1>
+
+<h3 id="ai-target"><strong>AI Target</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">give_context</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="file-target"><strong>FILE Target</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">give_context</span><span class="p">(</span><span class="n">CyborgFile</span><span class="o">*</span> <span class="n">file</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="layer-target"><strong>LAYER Target</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">give_context</span><span class="p">(</span><span class="n">CyborgLayer</span><span class="o">*</span> <span class="n">layer</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="meaning-7"><strong>Meaning</strong></h3>
+<p>The signature is <strong>fixed</strong>, <strong>target‑bound</strong>, and <strong>non‑overridable</strong>.</p>
+
+<hr />
+
+<h1 id="749-give--canonical-behavior-examples"><strong>7.4.9 GIVE — Canonical Behavior Examples</strong></h1>
+
+<h3 id="successful-give"><strong>Successful GIVE</strong></h3>
+<ul>
+  <li>context contains required semantic structures</li>
+  <li>extraction succeeds</li>
+  <li>returns <code class="language-plaintext highlighter-rouge">0</code></li>
+</ul>
+
+<h3 id="failed-give"><strong>Failed GIVE</strong></h3>
+<ul>
+  <li>missing semantic structures</li>
+  <li>incomplete BUILD</li>
+  <li>contradictory semantic state</li>
+  <li>returns non‑zero</li>
+</ul>
+
+<h3 id="meaning-8"><strong>Meaning</strong></h3>
+<p><code class="language-plaintext highlighter-rouge">GIVE</code> is the <strong>semantic delivery checkpoint</strong>.</p>
+
+<hr />
+
+<h1 id="7410-give--full-canonical-example"><strong>7.4.10 GIVE — Full Canonical Example</strong></h1>
+
+<h3 id="ir"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = AI
+OPEN_PAYLOAD
+EXEC_VALIDATE
+EXEC_SCAN
+EXEC_BUILD
+EXEC_GIVE
+SEAL
+</code></pre>
+
+<h3 id="c-output"><strong>C Output</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">validate_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">scan_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r3</span> <span class="o">=</span> <span class="n">build_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r4</span> <span class="o">=</span> <span class="n">give_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span> <span class="o">||</span> <span class="n">r3</span> <span class="o">||</span> <span class="n">r4</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="interpretation"><strong>Interpretation</strong></h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">VALIDATE</code> checks structure</li>
+  <li><code class="language-plaintext highlighter-rouge">SCAN</code> reveals structure</li>
+  <li><code class="language-plaintext highlighter-rouge">BUILD</code> transforms structure</li>
+  <li><code class="language-plaintext highlighter-rouge">GIVE</code> extracts meaning from the transformed structure</li>
+</ul>
+
+<p>This is the <strong>canonical GIVE flow</strong>.</p>
+
+<hr />
+
+<h1 id="7411-summary"><strong>7.4.11 Summary</strong></h1>
+
+<p>Page 7.4 defines the verb <strong>GIVE</strong>:</p>
+
+<ul>
+  <li>pure</li>
+  <li>deterministic</li>
+  <li>read‑only</li>
+  <li>isolated</li>
+  <li>non‑inferential</li>
+  <li>non‑mutating</li>
+  <li>returns binary truth</li>
+  <li>consumes the results of BUILD</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">GIVE</code> is the <strong>semantic extractor</strong> of the Cyborg Language.</p>
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.2/26_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>
