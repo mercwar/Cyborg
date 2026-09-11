@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>📘 Cyborg ev2.1 Grammar Specification | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="📘 Cyborg ev2.1 Grammar Specification" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/Cyborg%20ev2.1/ev2-1_04.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/Cyborg%20ev2.1/ev2-1_04.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="📘 Cyborg ev2.1 Grammar Specification" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"📘 Cyborg ev2.1 Grammar Specification","url":"https://mercwar.github.io/Cyborg/Cyborg%20ev2.1/ev2-1_04.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      
+<h1 id="-cyborg-ev21-grammar-specification">📘 <strong>Cyborg ev2.1 Grammar Specification</strong></h1>
+<p><em>(Reference — Page 4)</em></p>
+<h1 id="-table-of-contents">📖 Table of Contents</h1>
+
+<p>✨ <strong>Navigation</strong></p>
+<ul>
+  <li>🔙 <strong><a href="/Cyborg/Cyborg%20ev2.1/readme.md">Back</a></strong> — Return to Overview</li>
+  <li>📝 <strong><a href="/Cyborg/Cyborg%20ev2.1/ev2-1_01.html">Page 1</a></strong> — Introduction &amp; Setup</li>
+  <li>📂 <strong><a href="/Cyborg/Cyborg%20ev2.1/ev2-1_02.html">Page 2</a></strong> — Configuration Details</li>
+  <li>⚙️ <strong><a href="/Cyborg/Cyborg%20ev2.1/ev2-1_03.html">Page 3</a></strong> — Engine Workflow</li>
+  <li>🖥️ <strong><a href="/Cyborg/Cyborg%20ev2.1/ev2-1_04.html">Page 4</a></strong> — Output &amp; Rendering</li>
+</ul>
+
+<p>#
+This is the <strong>formal grammar</strong> for the entire Cyborg ev2.1 patch language.<br />
+It is written in the same style as MSDN’s PE/COFF, MZ, and Win32 grammar pages.</p>
+
+<p>Below is the full page.</p>
+
+<hr />
+
+<h1 id="-cyborg-ev21-patch-language-grammar">📘 <strong>Cyborg ev2.1 Patch Language Grammar</strong></h1>
+<p><em>(Formal Syntax Specification)</em></p>
+
+<hr />
+
+<h2 id="overview"><strong>Overview</strong></h2>
+
+<p>This page defines the <strong>complete grammar</strong> for Cyborg ev2.1 patch files.<br />
+The grammar is expressed using <strong>EBNF‑style notation</strong>, consistent with MSDN documentation for:</p>
+
+<ul>
+  <li>PE/COFF</li>
+  <li>MZ executable format</li>
+  <li>MASM syntax</li>
+  <li>Win32 resource scripts</li>
+</ul>
+
+<p>This grammar is used by:</p>
+
+<ul>
+  <li>Constellation validators</li>
+  <li>Cyborg patch parsers</li>
+  <li>LLM‑HEX interpreters</li>
+  <li>Robot ingestion engines</li>
+</ul>
+
+<hr />
+
+<h2 id="1-file-structure"><strong>1. File Structure</strong></h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>patch-file   ::= header-block
+                 { asm-block | c-block | llm-block | bind-block }
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="2-header-block"><strong>2. Header Block</strong></h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>header-block ::= "MZ-PATCH" NEWLINE
+                  "TARGET:" path NEWLINE
+                  "MODE:"   mode NEWLINE
+                  "ARCH:"   arch NEWLINE
+                  "VERSION:" version NEWLINE
+
+mode         ::= "READ_ONLY" | "SIMULATE" | "APPLY"
+arch         ::= "x86" | "x86_64"
+version      ::= "EV2.1"
+path         ::= &lt;any valid file path&gt;
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="3-asm-block"><strong>3. ASM Block</strong></h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>asm-block    ::= "[ASM" [ ":" label ] "]" NEWLINE
+                 { asm-statement }
+                 "ENDASM"
+
+asm-statement ::= org-stmt
+                | hook-block
+                | instruction
+
+org-stmt      ::= "ORG" address
+
+hook-block    ::= "HOOK" "AT" address NEWLINE
+                  { instruction }
+                  "ENDHOOK"
+
+instruction   ::= mnemonic operand-list
+
+mnemonic      ::= "MOV" | "PUSH" | "POP" | "CALL" | "JMP"
+                | "CMP" | "TEST" | "RET" | "NOP"
+
+operand-list  ::= operand { "," operand }
+operand       ::= register | immediate | address
+
+register      ::= "AX" | "BX" | "CX" | "DX"
+                | "SP" | "BP" | "SI" | "DI"
+
+address       ::= hex-value
+immediate     ::= hex-value
+label         ::= identifier
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="4-c-block"><strong>4. C Block</strong></h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>c-block       ::= "[C]" NEWLINE
+                  { c-function }
+
+c-function    ::= abi return-type identifier "(" parameter-list ")" "{" 
+                  c-body 
+                  "}"
+
+abi           ::= "__stdcall" | "__fastcall" | "__thiscall" | "__cycall"
+
+return-type   ::= identifier
+parameter-list ::= [ parameter { "," parameter } ]
+parameter     ::= type identifier
+type          ::= identifier
+
+c-body        ::= &lt;freeform text until matching brace&gt;
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="5-llmhex-block"><strong>5. LLM‑HEX Block</strong></h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>llm-block     ::= "[LLM-HEX]" NEWLINE
+                  "FORMAT:" format NEWLINE
+                  "MODEL:"  model NEWLINE
+                  "MODE:"   llm-mode NEWLINE
+                  [ "SIZE:" hex-value NEWLINE ]
+                  [ data-block ]
+
+format        ::= "GGUF" | "LLAMA"
+model         ::= identifier | path
+llm-mode      ::= "EMBED" | "REFERENCE"
+
+data-block    ::= "DATA:" NEWLINE
+                  hex-stream
+                  "ENDDATA"
+
+hex-stream    ::= { hex-byte }
+hex-byte      ::= 2 hex-digits
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="6-bind-block"><strong>6. BIND Block</strong></h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bind-block    ::= "[BIND]" NEWLINE
+                  { bind-entry }
+
+bind-entry    ::= "ASM:" label NEWLINE
+                  "C:"   identifier NEWLINE
+                  [ "LLM:" model NEWLINE ]
+                  [ "MODE:" bind-mode NEWLINE ]
+
+bind-mode     ::= "STRICT" | "ADAPTIVE"
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="7-identifiers--values"><strong>7. Identifiers &amp; Values</strong></h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>identifier    ::= letter { letter | digit | "_" }
+hex-value     ::= "0x" hex-digits
+hex-digits    ::= hex-digit { hex-digit }
+hex-digit     ::= "0".."9" | "A".."F" | "a".."f"
+letter        ::= "A".."Z" | "a".."z"
+digit         ::= "0".."9"
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="remarks"><strong>Remarks</strong></h2>
+
+<ul>
+  <li>Grammar is case‑sensitive.</li>
+  <li>Blocks may appear in any order after the header.</li>
+  <li>Unknown blocks must be ignored by forward‑compatible parsers.</li>
+  <li>All offsets are symbolic until resolved by Constellation.</li>
+  <li>LLM‑HEX blocks must be validated before ingestion.</li>
+</ul>
+
+<hr />
+
+<h2 id="example-valid-patch-file"><strong>Example (Valid Patch File)</strong></h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MZ-PATCH
+TARGET: /Cyborg/engine/cyborg.exe
+MODE:   APPLY
+ARCH:   x86_64
+VERSION: EV2.1
+
+[ASM:HOOK_MAIN]
+HOOK AT 0x401050
+    PUSH EAX
+    CALL 0x500000
+    POP  EAX
+ENDHOOK
+
+[C]
+__stdcall void cyborg_main_hook(void) {
+    log_event("Cyborg ev2.1 patch engaged");
+}
+
+[LLM-HEX]
+FORMAT: LLAMA
+MODEL:  cyborg://models/patch/ev2.1/assistant
+MODE:   REFERENCE
+
+[BIND]
+ASM:   HOOK_MAIN
+C:     cyborg_main_hook
+LLM:   cyborg://models/patch/ev2.1/assistant
+MODE:  ADAPTIVE
+</code></pre></div></div>
+
+<hr />
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/Cyborg%20ev2.1/ev2-1_04.md">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

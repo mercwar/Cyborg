@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>📘 PAGE 1.3 — RELATIONSHIP BETWEEN VB‑STYLE SYNTAX AND C COMPLETION | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="📘 PAGE 1.3 — RELATIONSHIP BETWEEN VB‑STYLE SYNTAX AND C COMPLETION" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/03_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/03_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="📘 PAGE 1.3 — RELATIONSHIP BETWEEN VB‑STYLE SYNTAX AND C COMPLETION" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"📘 PAGE 1.3 — RELATIONSHIP BETWEEN VB‑STYLE SYNTAX AND C COMPLETION","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/03_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      <h1 id="-page-13--relationship-between-vbstyle-syntax-and-c-completion"><strong>📘 PAGE 1.3 — RELATIONSHIP BETWEEN VB‑STYLE SYNTAX AND C COMPLETION</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="13-overview"><strong>1.3 Overview</strong></h2>
+
+<p>The Cyborg Language is intentionally designed as a <strong>bridge</strong> between:</p>
+
+<ul>
+  <li><strong>VB‑style declarative syntax</strong> (human‑readable, command‑driven)</li>
+  <li><strong>C‑style deterministic syntax</strong> (machine‑ready, compiled)</li>
+</ul>
+
+<p>This section defines <em>how</em> and <em>why</em> the two syntaxes relate, how commands map across layers, and how the Cyborg engine transforms high‑level intent into low‑level C constructs.</p>
+
+<p>The relationship is <strong>not cosmetic</strong> — it is <strong>structural</strong>, <strong>semantic</strong>, and <strong>normative</strong>.</p>
+
+<hr />
+
+<h1 id="131-the-threelayer-model"><strong>1.3.1 The Three‑Layer Model</strong></h1>
+
+<p>The Cyborg Language operates across three layers:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[ Layer 1 ] VB‑Style Cyborg Syntax (Human Input)
+[ Layer 2 ] Cyborg IR (Deterministic Intermediate Representation)
+[ Layer 3 ] C Syntax Completion (Machine Output)
+</code></pre></div></div>
+
+<p>Each layer has a distinct purpose:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Layer</th>
+      <th>Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>VB‑Style Cyborg</strong></td>
+      <td>Human‑readable commands, UI communication</td>
+    </tr>
+    <tr>
+      <td><strong>Cyborg IR</strong></td>
+      <td>Deterministic, marker‑bound execution model</td>
+    </tr>
+    <tr>
+      <td><strong>C Completion</strong></td>
+      <td>Final machine‑ready function signatures</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h1 id="132-why-vbstyle-syntax"><strong>1.3.2 Why VB‑Style Syntax?</strong></h1>
+
+<p>VB‑style syntax was chosen because it is:</p>
+
+<h3 id="-declarative">✔ Declarative</h3>
+<p>Commands describe <em>what</em> to do, not <em>how</em> to do it.</p>
+
+<h3 id="-verbcentric">✔ Verb‑centric</h3>
+<p>The Cyborg Language is built around execution verbs:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>validate
+scan
+build
+give
+explain
+</code></pre></div></div>
+
+<h3 id="-aifriendly">✔ AI‑friendly</h3>
+<p>The syntax is simple, predictable, and easy for AI systems to parse.</p>
+
+<h3 id="-structurally-compatible-with-c">✔ Structurally compatible with C</h3>
+<p>VB‑style declarations map cleanly to C function signatures.</p>
+
+<hr />
+
+<h1 id="133-why-c-as-the-completion-layer"><strong>1.3.3 Why C as the Completion Layer?</strong></h1>
+
+<p>C is used because it is:</p>
+
+<h3 id="-deterministic">✔ Deterministic</h3>
+<p>No hidden behavior, no implicit memory management.</p>
+
+<h3 id="-universal">✔ Universal</h3>
+<p>Every platform can compile C.</p>
+
+<h3 id="-lowlevel">✔ Low‑level</h3>
+<p>Perfect for representing the Cyborg IR without ambiguity.</p>
+
+<h3 id="-stable">✔ Stable</h3>
+<p>C has not changed in decades — ideal for long‑term protocol stability.</p>
+
+<hr />
+
+<h1 id="134-the-mapping-philosophy"><strong>1.3.4 The Mapping Philosophy</strong></h1>
+
+<p>The mapping between VB‑style Cyborg syntax and C completion follows three rules:</p>
+
+<hr />
+
+<h2 id="rule-1--every-cyborg-verb-maps-to-a-c-function"><strong>Rule 1 — Every Cyborg Verb Maps to a C Function</strong></h2>
+
+<p>Example:</p>
+
+<h3 id="vbstyle-cyborg"><strong>VB‑Style Cyborg</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">validate</span>
+</code></pre></div></div>
+
+<h3 id="c-output"><strong>C Output</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">validate_context</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">);</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="rule-2--every-target-declaration-maps-to-a-c-parameter"><strong>Rule 2 — Every Target Declaration Maps to a C Parameter</strong></h2>
+
+<h3 id="vbstyle-cyborg-1"><strong>VB‑Style Cyborg</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">set</span> <span class="n">to</span> <span class="n">you</span>
+</code></pre></div></div>
+
+<h3 id="c-output-1"><strong>C Output</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="rule-3--every-payload-becomes-a-c-function-body"><strong>Rule 3 — Every Payload Becomes a C Function Body</strong></h2>
+
+<h3 id="vbstyle-cyborg-2"><strong>VB‑Style Cyborg</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">scan</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<h3 id="c-output-2"><strong>C Output</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">scan_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="n">validate_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="135-example-full-mapping"><strong>1.3.5 Example: Full Mapping</strong></h1>
+
+<h3 id="vbstyle-cyborg-input"><strong>VB‑Style Cyborg Input</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">set</span> <span class="n">to</span> <span class="n">you</span>
+<span class="n">begin</span>
+<span class="n">scan</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<h3 id="cyborg-ir"><strong>Cyborg IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = AI
+OPEN_PAYLOAD
+EXEC_SCAN
+EXEC_VALIDATE
+SEAL
+</code></pre>
+
+<h3 id="c-output-3"><strong>C Output</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">scan_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">validate_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="136-marker-influence-on-c-output"><strong>1.3.6 Marker Influence on C Output</strong></h1>
+
+<p>Markers define boundaries:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Marker</th>
+      <th>Meaning</th>
+      <th>C Effect</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">#BGIN</code></td>
+      <td>Start payload</td>
+      <td>Begin function body</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">#!#</code></td>
+      <td>Seal payload</td>
+      <td>Close function body</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">end</code></td>
+      <td>Close transmission</td>
+      <td>End of translation unit</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Example:</p>
+
+<h3 id="vbstyle"><strong>VB‑Style</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<h3 id="c-output-4"><strong>C Output</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">validate_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="137-summary"><strong>1.3.7 Summary</strong></h1>
+
+<p>The relationship between VB‑style Cyborg syntax and C completion is:</p>
+
+<ul>
+  <li><strong>direct</strong></li>
+  <li><strong>deterministic</strong></li>
+  <li><strong>structural</strong></li>
+  <li><strong>rule‑bound</strong></li>
+</ul>
+
+<p>VB syntax expresses intent.<br />
+Cyborg IR expresses execution.<br />
+C syntax expresses implementation.</p>
+
+<p>This tri‑layer model ensures that human commands always produce predictable, machine‑ready output.</p>
+
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.1/03_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

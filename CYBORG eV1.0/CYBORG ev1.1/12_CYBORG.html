@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>📘 PAGE 3.1 — MODULE STRUCTURE | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="📘 PAGE 3.1 — MODULE STRUCTURE" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/12_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/12_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="📘 PAGE 3.1 — MODULE STRUCTURE" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"📘 PAGE 3.1 — MODULE STRUCTURE","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/12_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      <h1 id="-page-31--module-structure"><strong>📘 PAGE 3.1 — MODULE STRUCTURE</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="31-overview"><strong>3.1 Overview</strong></h2>
+
+<p>A <strong>Cyborg Module</strong> is the fundamental unit of structure in the AVIS Cyborg Language.<br />
+It defines:</p>
+
+<ul>
+  <li>the <strong>target</strong></li>
+  <li>the <strong>payload boundaries</strong></li>
+  <li>the <strong>execution verbs</strong></li>
+  <li>the <strong>ordering</strong></li>
+  <li>the <strong>conversion context</strong></li>
+  <li>the <strong>C output container</strong></li>
+</ul>
+
+<p>A module is <strong>not</strong> a file, class, or namespace.<br />
+It is a <strong>ceremonial execution block</strong> that transforms VB‑style commands into deterministic C.</p>
+
+<p>This section is <strong>normative</strong>.</p>
+
+<hr />
+
+<h1 id="311-required-components-of-a-module"><strong>3.1.1 Required Components of a Module</strong></h1>
+
+<p>Every Cyborg Module MUST contain the following components in order:</p>
+
+<ol>
+  <li><strong>Target Declaration</strong></li>
+  <li><strong>Payload Opening Marker</strong></li>
+  <li><strong>Execution Verbs</strong></li>
+  <li><strong>Payload Seal Marker</strong></li>
+  <li><strong>Transmission Terminator (optional but recommended)</strong></li>
+</ol>
+
+<h3 id="canonical-structure"><strong>Canonical Structure</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">set</span> <span class="n">to</span> <span class="o">&lt;</span><span class="n">target</span><span class="o">&gt;</span>
+<span class="n">begin</span>
+<span class="o">&lt;</span><span class="n">verbs</span><span class="o">&gt;</span>
+<span class="p">#!#</span>
+<span class="n">end</span>
+</code></pre></div></div>
+
+<p>This is the <strong>minimum valid module</strong>.</p>
+
+<hr />
+
+<h1 id="312-target-declaration"><strong>3.1.2 Target Declaration</strong></h1>
+
+<h3 id="purpose"><strong>Purpose</strong></h3>
+<p>Defines the execution context.</p>
+
+<h3 id="syntax"><strong>Syntax</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">set</span> <span class="n">to</span> <span class="n">you</span>
+<span class="n">set</span> <span class="n">to</span> <span class="n">file</span>
+<span class="n">set</span> <span class="n">to</span> <span class="n">layer</span>
+</code></pre></div></div>
+
+<h3 id="normative-rules"><strong>Normative Rules</strong></h3>
+
+<ul>
+  <li>MUST appear before <code class="language-plaintext highlighter-rouge">begin</code>.</li>
+  <li>MUST appear exactly once.</li>
+  <li>MUST map to a C parameter.</li>
+</ul>
+
+<h3 id="ir"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = &lt;context&gt;
+</code></pre>
+
+<hr />
+
+<h1 id="313-payload-opening"><strong>3.1.3 Payload Opening</strong></h1>
+
+<h3 id="syntax-options"><strong>Syntax Options</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+</code></pre></div></div>
+<p>or</p>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">#</span><span class="n">BGIN</span>
+</code></pre></div></div>
+
+<h3 id="normative-rules-1"><strong>Normative Rules</strong></h3>
+
+<ul>
+  <li>MUST appear after the target.</li>
+  <li>MUST appear before any verbs.</li>
+  <li>MUST NOT be nested.</li>
+</ul>
+
+<h3 id="ir-1"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">OPEN_PAYLOAD
+</code></pre>
+
+<hr />
+
+<h1 id="314-execution-block"><strong>3.1.4 Execution Block</strong></h1>
+
+<p>The execution block contains <strong>only verbs</strong>, in strict order.</p>
+
+<h3 id="allowed-verbs"><strong>Allowed Verbs</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>validate
+scan
+build
+give
+explain
+</code></pre></div></div>
+
+<h3 id="normative-rules-2"><strong>Normative Rules</strong></h3>
+
+<ul>
+  <li>Verbs MUST appear inside an open payload.</li>
+  <li>Verbs MUST NOT appear before <code class="language-plaintext highlighter-rouge">begin</code>.</li>
+  <li>Verbs MUST NOT appear after <code class="language-plaintext highlighter-rouge">#!#</code>.</li>
+  <li>Verbs MUST map to C functions.</li>
+</ul>
+
+<h3 id="example"><strong>Example</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">scan</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="315-payload-seal"><strong>3.1.5 Payload Seal</strong></h1>
+
+<h3 id="syntax-1"><strong>Syntax</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">#!#</span>
+</code></pre></div></div>
+
+<h3 id="normative-rules-3"><strong>Normative Rules</strong></h3>
+
+<ul>
+  <li>MUST appear exactly once.</li>
+  <li>MUST close the payload.</li>
+  <li>MUST NOT be followed by executable content.</li>
+  <li>MUST trigger C syntax completion.</li>
+</ul>
+
+<h3 id="ir-2"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">SEAL
+</code></pre>
+
+<hr />
+
+<h1 id="316-transmission-terminator"><strong>3.1.6 Transmission Terminator</strong></h1>
+
+<h3 id="syntax-2"><strong>Syntax</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">end</span>
+</code></pre></div></div>
+
+<h3 id="normative-rules-4"><strong>Normative Rules</strong></h3>
+
+<ul>
+  <li>SHOULD appear after <code class="language-plaintext highlighter-rouge">#!#</code>.</li>
+  <li>MUST NOT appear inside a payload.</li>
+  <li>MAY be omitted if the environment auto‑terminates.</li>
+</ul>
+
+<h3 id="ir-3"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">END_TRANSMISSION
+</code></pre>
+
+<hr />
+
+<h1 id="317-full-module-example"><strong>3.1.7 Full Module Example</strong></h1>
+
+<h3 id="vbstyle-cyborg-module"><strong>VB‑Style Cyborg Module</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">set</span> <span class="n">to</span> <span class="n">you</span>
+<span class="n">begin</span>
+<span class="n">scan</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+<span class="n">end</span>
+</code></pre></div></div>
+
+<h3 id="cyborg-ir"><strong>Cyborg IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = AI
+OPEN_PAYLOAD
+EXEC_SCAN
+EXEC_VALIDATE
+SEAL
+END_TRANSMISSION
+</code></pre>
+
+<h3 id="c-output"><strong>C Output</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">scan_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">validate_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="318-invalid-module-examples"><strong>3.1.8 Invalid Module Examples</strong></h1>
+
+<h3 id="-missing-target">❌ Missing Target</h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<h3 id="-missing-seal">❌ Missing Seal</h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">set</span> <span class="n">to</span> <span class="n">you</span>
+<span class="n">begin</span>
+<span class="n">validate</span>
+</code></pre></div></div>
+
+<h3 id="-trailing-content">❌ Trailing Content</h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">set</span> <span class="n">to</span> <span class="n">you</span>
+<span class="n">begin</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+<span class="n">extra</span>
+</code></pre></div></div>
+
+<h3 id="-nested-payloads">❌ Nested Payloads</h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">set</span> <span class="n">to</span> <span class="n">you</span>
+<span class="n">begin</span>
+<span class="n">begin</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<p>All MUST be rejected.</p>
+
+<hr />
+
+<h1 id="319-summary"><strong>3.1.9 Summary</strong></h1>
+
+<p>Page 3.1 defines the <strong>module structure</strong> of the Cyborg Language:</p>
+
+<ul>
+  <li>target → open → verbs → seal → end</li>
+  <li>strict ordering</li>
+  <li>no nesting</li>
+  <li>no inference</li>
+  <li>deterministic mapping to C</li>
+</ul>
+
+<p>This structure is the foundation for all syntax rules in Page 3.</p>
+
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.1/12_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

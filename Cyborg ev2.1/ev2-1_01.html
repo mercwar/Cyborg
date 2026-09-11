@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Language overview — Cyborg ev2.1 (Constellation Patch Language) | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Language overview — Cyborg ev2.1 (Constellation Patch Language)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/Cyborg%20ev2.1/ev2-1_01.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/Cyborg%20ev2.1/ev2-1_01.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Language overview — Cyborg ev2.1 (Constellation Patch Language)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"Language overview — Cyborg ev2.1 (Constellation Patch Language)","url":"https://mercwar.github.io/Cyborg/Cyborg%20ev2.1/ev2-1_01.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      
+<h3 id="1-language-overview--cyborg-ev21-constellation-patch-language">1. Language overview — Cyborg ev2.1 (Constellation Patch Language)</h3>
+
+<p><em>(Reference — Page 5)</em></p>
+
+<h1 id="-table-of-contents">📖 Table of Contents</h1>
+
+<p>✨ <strong>Navigation</strong></p>
+<ul>
+  <li>🔙 <strong><a href="/Cyborg/Cyborg%20ev2.1/readme.md">Back</a></strong> — Return to Overview</li>
+  <li>📝 <strong><a href="/Cyborg/Cyborg%20ev2.1/ev2-1_01.html">Page 1</a></strong> — Introduction &amp; Setup</li>
+  <li>📂 <strong><a href="/Cyborg/Cyborg%20ev2.1/ev2-1_02.html">Page 2</a></strong> — Configuration Details</li>
+  <li>⚙️ <strong><a href="/Cyborg/Cyborg%20ev2.1/ev2-1_03.html">Page 3</a></strong> — Engine Workflow</li>
+  <li>🖥️ <strong><a href="/Cyborg/Cyborg%20ev2.1/ev2-1_04.html">Page 4</a></strong> — Output &amp; Rendering</li>
+  <li>
+    <p><strong>Purpose:</strong><br />
+Cyborg ev2.1 is the <strong>patch language</strong> Constellation uses to:</p>
+  </li>
+  <li>Describe binary‑level intent (<code class="language-plaintext highlighter-rouge">MZ</code> + <code class="language-plaintext highlighter-rouge">ASM</code>)</li>
+  <li>Express structured logic (<code class="language-plaintext highlighter-rouge">C</code>)</li>
+  <li>Embed or reference LLM intelligence (<code class="language-plaintext highlighter-rouge">LLM HEX</code>)</li>
+  <li>Keep everything <strong>hex‑visible</strong>, <strong>schema‑described</strong>, and <strong>robot‑safe</strong></li>
+</ul>
+
+<p>Think of it as:</p>
+
+<blockquote>
+  <p>“A patch file that can talk to EXEs, C compilers, and LLMs at the same time.”</p>
+</blockquote>
+
+<hr />
+
+<h3 id="2-layer-0--mz-envelope">2. Layer 0 — <code class="language-plaintext highlighter-rouge">MZ</code> envelope</h3>
+
+<p>Every Cyborg ev2.1 patch file starts with an <strong>MZ‑style header block</strong>, but symbolic, not raw DOS:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MZ-PATCH
+TARGET: /path/to/binary.exe
+MODE:   READ_ONLY | SIMULATE | APPLY
+ARCH:   x86_64
+</code></pre></div></div>
+
+<p><strong>Rules:</strong></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">MZ-PATCH</code> is the magic string.</li>
+  <li><code class="language-plaintext highlighter-rouge">TARGET</code> is required (file path or symbolic name).</li>
+  <li><code class="language-plaintext highlighter-rouge">MODE</code> controls whether this is a dry run or real patch.</li>
+  <li><code class="language-plaintext highlighter-rouge">ARCH</code> must match the target’s architecture.</li>
+</ul>
+
+<p>Constellation uses this header to:</p>
+
+<ul>
+  <li>Decide if the patch is allowed to run.</li>
+  <li>Route it to the right robot (Sentinel, Cyborg, etc.).</li>
+</ul>
+
+<hr />
+
+<h3 id="3-layer-1--asm-symbolic-x86-patch-ops">3. Layer 1 — <code class="language-plaintext highlighter-rouge">ASM</code> (symbolic x86 patch ops)</h3>
+
+<p>Inside the patch, you define <strong>symbolic assembly blocks</strong>:</p>
+
+<pre><code class="language-asm">[ASM]
+; patch entry point
+ORG 0x401000
+
+MOV EAX, 0x1
+CALL 0x402000
+JMP  0x403000
+</code></pre>
+
+<p><strong>Key points:</strong></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">ORG</code> is symbolic — Constellation can map it to real offsets.</li>
+  <li>Only a <strong>safe subset</strong> of x86 is allowed (no raw self‑modifying code, no privileged ops).</li>
+  <li>Every ASM block is <strong>annotated</strong> and <strong>schema‑described</strong> for robots.</li>
+</ul>
+
+<p>You can also define <strong>named patch regions</strong>:</p>
+
+<pre><code class="language-asm">[ASM:HOOK_MAIN]
+HOOK AT 0x401050
+    PUSH EAX
+    CALL 0x500000 ; Cyborg handler
+    POP  EAX
+ENDHOOK
+</code></pre>
+
+<hr />
+
+<h3 id="4-layer-2--c-structured-logic--abi-surface">4. Layer 2 — <code class="language-plaintext highlighter-rouge">C</code> (structured logic + ABI surface)</h3>
+
+<p>Cyborg ev2.1 lets you embed <strong>C fragments</strong> that represent the logic behind the patch.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="n">C</span><span class="p">]</span>
+<span class="cm">/* PATCH: main_hook
+ * PURPOSE: Intercept main entry and log startup.
+ */</span>
+<span class="kr">__stdcall</span> <span class="kt">void</span> <span class="nf">cyborg_main_hook</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">log_event</span><span class="p">(</span><span class="s">"Program started"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Rules:</strong></p>
+
+<ul>
+  <li>C blocks are <strong>not</strong> compiled directly in the patch — they are <strong>semantic descriptions</strong>.</li>
+  <li>Constellation + Cyborg can map them to:
+    <ul>
+      <li>existing functions,</li>
+      <li>stub functions,</li>
+      <li>or LLM‑generated code.</li>
+    </ul>
+  </li>
+  <li>ABI must be explicit: <code class="language-plaintext highlighter-rouge">__stdcall</code>, <code class="language-plaintext highlighter-rouge">__fastcall</code>, etc.</li>
+</ul>
+
+<p>You can bind ASM → C:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[BIND]
+ASM: HOOK_MAIN
+C:   cyborg_main_hook
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="5-layer-3--llm-hex-gguf--llama-payloads">5. Layer 3 — <code class="language-plaintext highlighter-rouge">LLM HEX</code> (GGUF + LLAMA payloads)</h3>
+
+<p>This is the <strong>intelligence layer</strong>.</p>
+
+<p>Cyborg ev2.1 can embed or reference <strong>LLM payloads</strong> in <strong>hex‑safe form</strong>, aligned with:</p>
+
+<ul>
+  <li><strong>GGUF</strong> (binary model format)</li>
+  <li><strong>LLAMA</strong> (model family / runtime)</li>
+</ul>
+
+<p>Two modes:</p>
+
+<h4 id="51-embedded-hex-payload">5.1 Embedded HEX payload</h4>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[LLM-HEX]
+FORMAT: GGUF
+MODEL:  cyborg_patch_assistant
+SIZE:   0x0001F400  ; 128 KB
+
+DATA:
+48656C6C6F2C20576F726C64210A...
+...
+ENDDATA
+</code></pre></div></div>
+
+<h4 id="52-referenced-model">5.2 Referenced model</h4>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[LLM-HEX]
+FORMAT: LLAMA
+MODEL:  cyborg://models/patch/ev2.1/base
+MODE:   REFERENCE
+</code></pre></div></div>
+
+<p><strong>Semantics:</strong></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">FORMAT</code> tells Constellation how to interpret the payload.</li>
+  <li><code class="language-plaintext highlighter-rouge">MODEL</code> is either a symbolic name or a path.</li>
+  <li><code class="language-plaintext highlighter-rouge">DATA</code> is hex‑encoded binary (GGUF chunk, prompt, adapter, etc.).</li>
+</ul>
+
+<p>This allows:</p>
+
+<ul>
+  <li>Patches that <strong>carry their own intelligence</strong>.</li>
+  <li>Patches that <strong>call into shared LLMs</strong>.</li>
+</ul>
+
+<hr />
+
+<h3 id="6-full-cyborg-ev21-patch-file-example">6. Full Cyborg ev2.1 patch file example</h3>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MZ-PATCH
+TARGET: /Cyborg/engine/cyborg.exe
+MODE:   SIMULATE
+ARCH:   x86_64
+
+[ASM:HOOK_MAIN]
+HOOK AT 0x401050
+    PUSH EAX
+    CALL 0x500000 ; Cyborg handler
+    POP  EAX
+ENDHOOK
+
+[C]
+__stdcall void cyborg_main_hook(void) {
+    // High-level description of what this hook does
+    // (robots + LLMs can expand this into real code)
+    log_event("Cyborg ev2.1 patch engaged");
+}
+
+[BIND]
+ASM: HOOK_MAIN
+C:   cyborg_main_hook
+
+[LLM-HEX]
+FORMAT: GGUF
+MODEL:  cyborg://models/patch/ev2.1/assistant
+MODE:   REFERENCE
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="7-how-constellation-uses-cyborg-ev21">7. How Constellation uses Cyborg ev2.1</h3>
+
+<p>When Constellation sees a Cyborg ev2.1 patch:</p>
+
+<ol>
+  <li><strong>MZ layer</strong>
+    <ul>
+      <li>Validates target, mode, arch.</li>
+    </ul>
+  </li>
+  <li><strong>ASM layer</strong>
+    <ul>
+      <li>Builds a symbolic patch graph.</li>
+      <li>Validates safety.</li>
+    </ul>
+  </li>
+  <li><strong>C layer</strong>
+    <ul>
+      <li>Extracts semantic intent.</li>
+      <li>Feeds it to LLMs if needed.</li>
+    </ul>
+  </li>
+  <li><strong>LLM HEX layer</strong>
+    <ul>
+      <li>Loads or references GGUF/LLAMA payloads.</li>
+      <li>Uses them to generate or explain patch behavior.</li>
+    </ul>
+  </li>
+  <li><strong>AVIS / Datalake</strong>
+    <ul>
+      <li>Stores the patch as an <strong>intelligence artifact</strong>.</li>
+      <li>Makes it searchable and explainable.</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<h3 id="8-what-this-sets-up-next">8. What this sets up next</h3>
+
+<p>Cyborg ev2.1 as you’ve defined it is <strong>perfect</strong> for the next moves:</p>
+
+<ul>
+  <li>A <strong>Cyborg ev2.1 parser</strong> (MZ/ASM/C/LLM‑HEX aware).</li>
+  <li>A <strong>Constellation → Cyborg bridge</strong> that ingests these patches.</li>
+  <li>A <strong>GGUF/LLAMA patch assistant</strong> that can:
+    <ul>
+      <li>explain patches,</li>
+      <li>propose patches,</li>
+      <li>simulate patches.</li>
+    </ul>
+  </li>
+</ul>
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/Cyborg%20ev2.1/ev2-1_01.md">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

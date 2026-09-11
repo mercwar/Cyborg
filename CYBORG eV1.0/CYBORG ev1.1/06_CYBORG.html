@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>📘 PAGE 1.6 — TERMINOLOGY (MUST, SHOULD, MAY) | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="📘 PAGE 1.6 — TERMINOLOGY (MUST, SHOULD, MAY)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/06_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/06_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="📘 PAGE 1.6 — TERMINOLOGY (MUST, SHOULD, MAY)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"📘 PAGE 1.6 — TERMINOLOGY (MUST, SHOULD, MAY)","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/06_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      <h1 id="-page-16--terminology-must-should-may"><strong>📘 PAGE 1.6 — TERMINOLOGY (MUST, SHOULD, MAY)</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="16-overview"><strong>1.6 Overview</strong></h2>
+
+<p>This section defines the <strong>formal requirement terminology</strong> used throughout the Cyborg Language Specification.<br />
+These terms determine whether a rule is:</p>
+
+<ul>
+  <li><strong>mandatory</strong></li>
+  <li><strong>recommended</strong></li>
+  <li><strong>optional</strong></li>
+  <li><strong>prohibited</strong></li>
+</ul>
+
+<p>The Cyborg Language is a <strong>deterministic protocol</strong>, so requirement language is essential for:</p>
+
+<ul>
+  <li>compiler behavior</li>
+  <li>AI interpretation</li>
+  <li>payload validation</li>
+  <li>C syntax completion</li>
+  <li>marker enforcement</li>
+</ul>
+
+<p>This section is <strong>normative</strong>.</p>
+
+<hr />
+
+<h1 id="161-must--shall"><strong>1.6.1 MUST / SHALL</strong></h1>
+
+<h3 id="definition"><strong>Definition</strong></h3>
+<p>A requirement that is <strong>absolutely mandatory</strong>.<br />
+There are <strong>no exceptions</strong>.</p>
+
+<h3 id="usage"><strong>Usage</strong></h3>
+<p>A system, implementation, or payload <strong>MUST</strong> follow the rule or it is considered <strong>non‑compliant</strong>.</p>
+
+<h3 id="examples"><strong>Examples</strong></h3>
+
+<p><strong>Normative Rule:</strong></p>
+<blockquote>
+  <p>A payload <strong>MUST</strong> be sealed with <code class="language-plaintext highlighter-rouge">#!#</code>.</p>
+</blockquote>
+
+<p><strong>VB‑Style Example</strong></p>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<p><strong>Cyborg IR</strong></p>
+<pre><code class="language-cyborg">OPEN_PAYLOAD
+EXEC_VALIDATE
+SEAL
+</code></pre>
+
+<p><strong>C Output</strong></p>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">validate_context</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">);</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="162-must-not--shall-not"><strong>1.6.2 MUST NOT / SHALL NOT</strong></h1>
+
+<h3 id="definition-1"><strong>Definition</strong></h3>
+<p>A requirement that is <strong>strictly prohibited</strong>.</p>
+
+<h3 id="usage-1"><strong>Usage</strong></h3>
+<p>If violated, the payload is invalid and MUST NOT be executed or converted.</p>
+
+<h3 id="examples-1"><strong>Examples</strong></h3>
+
+<p><strong>Normative Rule:</strong></p>
+<blockquote>
+  <p>A payload <strong>MUST NOT</strong> contain unsealed trailing content.</p>
+</blockquote>
+
+<p><strong>Invalid Example</strong></p>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+<span class="n">extra</span>
+</code></pre></div></div>
+
+<p>This MUST NOT be processed.</p>
+
+<hr />
+
+<h1 id="163-should"><strong>1.6.3 SHOULD</strong></h1>
+
+<h3 id="definition-2"><strong>Definition</strong></h3>
+<p>A recommendation.<br />
+Not mandatory, but strongly advised for:</p>
+
+<ul>
+  <li>clarity</li>
+  <li>readability</li>
+  <li>maintainability</li>
+  <li>deterministic behavior</li>
+</ul>
+
+<h3 id="examples-2"><strong>Examples</strong></h3>
+
+<p><strong>Guidance:</strong></p>
+<blockquote>
+  <p>Related verbs SHOULD be grouped together for readability.</p>
+</blockquote>
+
+<p><strong>Example</strong></p>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">scan</span>
+<span class="n">validate</span>
+<span class="n">build</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<p>This is not required, but recommended.</p>
+
+<hr />
+
+<h1 id="164-should-not"><strong>1.6.4 SHOULD NOT</strong></h1>
+
+<h3 id="definition-3"><strong>Definition</strong></h3>
+<p>A discouraged practice.<br />
+Not forbidden, but likely to cause:</p>
+
+<ul>
+  <li>confusion</li>
+  <li>ambiguity</li>
+  <li>non‑optimal output</li>
+</ul>
+
+<h3 id="example"><strong>Example</strong></h3>
+
+<p><strong>Guidance:</strong></p>
+<blockquote>
+  <p>Payloads SHOULD NOT mix unrelated operations without comments.</p>
+</blockquote>
+
+<hr />
+
+<h1 id="165-may"><strong>1.6.5 MAY</strong></h1>
+
+<h3 id="definition-4"><strong>Definition</strong></h3>
+<p>An optional behavior.<br />
+The implementer or user is free to choose.</p>
+
+<h3 id="examples-3"><strong>Examples</strong></h3>
+
+<p><strong>Guidance:</strong></p>
+<blockquote>
+  <p>A payload MAY include comments for clarity.</p>
+</blockquote>
+
+<p><strong>Example</strong></p>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">' This payload validates the context</span>
+<span class="n">begin</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="166-optional-vs-forbidden-vs-required"><strong>1.6.6 Optional vs Forbidden vs Required</strong></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Term</th>
+      <th>Meaning</th>
+      <th>Enforcement</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>MUST / SHALL</strong></td>
+      <td>Required</td>
+      <td>Strict</td>
+    </tr>
+    <tr>
+      <td><strong>MUST NOT / SHALL NOT</strong></td>
+      <td>Forbidden</td>
+      <td>Strict</td>
+    </tr>
+    <tr>
+      <td><strong>SHOULD</strong></td>
+      <td>Recommended</td>
+      <td>Flexible</td>
+    </tr>
+    <tr>
+      <td><strong>SHOULD NOT</strong></td>
+      <td>Discouraged</td>
+      <td>Flexible</td>
+    </tr>
+    <tr>
+      <td><strong>MAY</strong></td>
+      <td>Optional</td>
+      <td>Free choice</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h1 id="167-why-this-matters-in-cyborg-language"><strong>1.6.7 Why This Matters in Cyborg Language</strong></h1>
+
+<p>The Cyborg Language is:</p>
+
+<ul>
+  <li>marker‑bound</li>
+  <li>verb‑driven</li>
+  <li>deterministic</li>
+  <li>conversion‑based</li>
+</ul>
+
+<p>To maintain deterministic behavior:</p>
+
+<ul>
+  <li><strong>MUST</strong> rules define the protocol</li>
+  <li><strong>SHOULD</strong> rules define best practice</li>
+  <li><strong>MAY</strong> rules define flexibility</li>
+</ul>
+
+<p>Without this structure:</p>
+
+<ul>
+  <li>AI systems may infer incorrectly</li>
+  <li>compilers may misinterpret commands</li>
+  <li>payloads may become ambiguous</li>
+  <li>C output may become inconsistent</li>
+</ul>
+
+<p>Requirement language ensures <strong>predictability</strong>.</p>
+
+<hr />
+
+<h1 id="168-summary"><strong>1.6.8 Summary</strong></h1>
+
+<p>Page 1.6 defines the <strong>formal requirement terminology</strong> used throughout the specification.<br />
+These terms govern:</p>
+
+<ul>
+  <li>payload structure</li>
+  <li>marker usage</li>
+  <li>verb execution</li>
+  <li>conversion rules</li>
+  <li>memory boundaries</li>
+  <li>API behavior</li>
+</ul>
+
+<p>This section is foundational for understanding all subsequent pages.</p>
+
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.1/06_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

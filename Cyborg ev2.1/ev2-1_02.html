@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>📘 Cyborg ev2.1 Patch Language Specification | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="📘 Cyborg ev2.1 Patch Language Specification" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/Cyborg%20ev2.1/ev2-1_02.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/Cyborg%20ev2.1/ev2-1_02.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="📘 Cyborg ev2.1 Patch Language Specification" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"📘 Cyborg ev2.1 Patch Language Specification","url":"https://mercwar.github.io/Cyborg/Cyborg%20ev2.1/ev2-1_02.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      
+<h1 id="-cyborg-ev21-patch-language-specification">📘 <strong>Cyborg ev2.1 Patch Language Specification</strong></h1>
+<p><em>(Reference — Page 2)</em></p>
+<h1 id="-table-of-contents">📖 Table of Contents</h1>
+
+<p>✨ <strong>Navigation</strong></p>
+<ul>
+  <li>🔙 <strong><a href="/Cyborg/Cyborg%20ev2.1/readme.md">Back</a></strong> — Return to Overview</li>
+  <li>📝 <strong><a href="/Cyborg/Cyborg%20ev2.1/ev2-1_01.html">Page 1</a></strong> — Introduction &amp; Setup</li>
+  <li>📂 <strong><a href="/Cyborg/Cyborg%20ev2.1/ev2-1_02.html">Page 2</a></strong> — Configuration Details</li>
+  <li>⚙️ <strong><a href="/Cyborg/Cyborg%20ev2.1/ev2-1_03.html">Page 3</a></strong> — Engine Workflow</li>
+  <li>🖥️ <strong><a href="/Cyborg/Cyborg%20ev2.1/ev2-1_04.html">Page 4</a></strong> — Output &amp; Rendering</li>
+</ul>
+
+<hr />
+
+<h2 id="cyborg-ev21-patch-file-format"><strong>Cyborg ev2.1 Patch File Format</strong></h2>
+
+<h3 id="header"><strong>Header</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MZ-PATCH
+TARGET: &lt;path&gt;
+MODE:   &lt;READ_ONLY | SIMULATE | APPLY&gt;
+ARCH:   &lt;x86 | x86_64&gt;
+VERSION: EV2.1
+</code></pre></div></div>
+
+<h3 id="syntax"><strong>Syntax</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MZ-PATCH
+TARGET: /path/to/binary.exe
+MODE:   SIMULATE
+ARCH:   x86_64
+VERSION: EV2.1
+</code></pre></div></div>
+
+<h3 id="members"><strong>Members</strong></h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>MZ-PATCH</strong></td>
+      <td>Required magic identifier. Must appear on line 1.</td>
+    </tr>
+    <tr>
+      <td><strong>TARGET</strong></td>
+      <td>Absolute or symbolic path to the binary being patched.</td>
+    </tr>
+    <tr>
+      <td><strong>MODE</strong></td>
+      <td>Execution mode. Determines whether the patch is applied or simulated.</td>
+    </tr>
+    <tr>
+      <td><strong>ARCH</strong></td>
+      <td>Target architecture. Must match binary architecture.</td>
+    </tr>
+    <tr>
+      <td><strong>VERSION</strong></td>
+      <td>Patch language version. Must be <code class="language-plaintext highlighter-rouge">EV2.1</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="remarks"><strong>Remarks</strong></h3>
+<ul>
+  <li>The header is parsed before any other block.</li>
+  <li>If the header is invalid, the patch is rejected.</li>
+  <li>The header does <strong>not</strong> modify the target binary; it describes intent only.</li>
+</ul>
+
+<h3 id="example"><strong>Example</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MZ-PATCH
+TARGET: /Cyborg/engine/cyborg.exe
+MODE:   APPLY
+ARCH:   x86_64
+VERSION: EV2.1
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="-cyborg-ev21-asm-block-specification">📘 <strong>Cyborg ev2.1 ASM Block Specification</strong></h1>
+<p><em>(MSDN‑Style Reference — Page 2)</em></p>
+
+<hr />
+
+<h2 id="asm-block"><strong>ASM Block</strong></h2>
+
+<h3 id="syntax-1"><strong>Syntax</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[ASM:&lt;label&gt;]
+ORG &lt;offset&gt;
+
+&lt;instruction&gt;
+&lt;instruction&gt;
+...
+
+ENDASM
+</code></pre></div></div>
+
+<h3 id="instructions"><strong>Instructions</strong></h3>
+<p>Cyborg ev2.1 supports a <strong>safe subset</strong> of x86:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MOV     &lt;reg&gt;, &lt;imm/reg&gt;
+PUSH    &lt;reg&gt;
+POP     &lt;reg&gt;
+CALL    &lt;addr&gt;
+JMP     &lt;addr&gt;
+CMP     &lt;reg&gt;, &lt;imm/reg&gt;
+TEST    &lt;reg&gt;, &lt;imm/reg&gt;
+RET
+NOP
+</code></pre></div></div>
+
+<h3 id="registers"><strong>Registers</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>AX  BX  CX  DX
+SP  BP  SI  DI
+</code></pre></div></div>
+
+<h3 id="members-1"><strong>Members</strong></h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Member</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>ORG</strong></td>
+      <td>Symbolic origin. Constellation resolves real offsets.</td>
+    </tr>
+    <tr>
+      <td><strong>CALL</strong></td>
+      <td>Calls a symbolic or absolute address.</td>
+    </tr>
+    <tr>
+      <td><strong>HOOK</strong></td>
+      <td>Declares a patch hook region.</td>
+    </tr>
+    <tr>
+      <td><strong>ENDASM</strong></td>
+      <td>Terminates the ASM block.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="hook-syntax"><strong>Hook Syntax</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[ASM:HOOK_MAIN]
+HOOK AT &lt;offset&gt;
+    &lt;instructions&gt;
+ENDHOOK
+</code></pre></div></div>
+
+<h3 id="remarks-1"><strong>Remarks</strong></h3>
+<ul>
+  <li>ASM blocks are symbolic and validated before execution.</li>
+  <li>Privileged instructions are not permitted.</li>
+  <li>Self‑modifying code is rejected.</li>
+  <li>All offsets are symbolic until Constellation resolves them.</li>
+</ul>
+
+<h3 id="example-1"><strong>Example</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[ASM:HOOK_MAIN]
+HOOK AT 0x401050
+    PUSH EAX
+    CALL 0x500000
+    POP  EAX
+ENDHOOK
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="-cyborg-ev21-c-block-specification">📘 <strong>Cyborg ev2.1 C Block Specification</strong></h1>
+<p><em>(MSDN‑Style Reference — Page 3)</em></p>
+
+<hr />
+
+<h2 id="c-block"><strong>C Block</strong></h2>
+
+<h3 id="syntax-2"><strong>Syntax</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[C]
+&lt;function declarations&gt;
+</code></pre></div></div>
+
+<h3 id="function-format"><strong>Function Format</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;abi&gt; &lt;return-type&gt; &lt;name&gt;(&lt;params&gt;) {
+    &lt;semantic description&gt;
+}
+</code></pre></div></div>
+
+<h3 id="supported-abis"><strong>Supported ABIs</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>__stdcall
+__fastcall
+__thiscall
+__cycall     // Cyborg-native ABI
+</code></pre></div></div>
+
+<h3 id="members-2"><strong>Members</strong></h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Member</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>ABI</strong></td>
+      <td>Required. Defines calling convention.</td>
+    </tr>
+    <tr>
+      <td><strong>Semantic Description</strong></td>
+      <td>High-level behavior description.</td>
+    </tr>
+    <tr>
+      <td><strong>Binding</strong></td>
+      <td>C functions may be bound to ASM hooks.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="remarks-2"><strong>Remarks</strong></h3>
+<ul>
+  <li>C blocks are <strong>not compiled</strong>; they are semantic descriptors.</li>
+  <li>Robots and LLMs use these blocks to generate or validate behavior.</li>
+  <li>ABI must be explicitly declared.</li>
+</ul>
+
+<h3 id="example-2"><strong>Example</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[C]
+__stdcall void cyborg_main_hook(void) {
+    // Logs startup event
+    log_event("Cyborg ev2.1 patch engaged");
+}
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="-cyborg-ev21-llmhex-block-specification">📘 <strong>Cyborg ev2.1 LLM‑HEX Block Specification</strong></h1>
+<p><em>(MSDN‑Style Reference — Page 4)</em></p>
+
+<hr />
+
+<h2 id="llmhex-block"><strong>LLM‑HEX Block</strong></h2>
+
+<h3 id="syntax-3"><strong>Syntax</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[LLM-HEX]
+FORMAT: &lt;GGUF | LLAMA&gt;
+MODEL:  &lt;symbolic-name-or-path&gt;
+MODE:   &lt;EMBED | REFERENCE&gt;
+SIZE:   &lt;hex-size&gt;        // required for EMBED
+
+DATA:
+&lt;hex bytes&gt;
+ENDDATA
+</code></pre></div></div>
+
+<h3 id="members-3"><strong>Members</strong></h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>FORMAT</strong></td>
+      <td>GGUF or LLAMA. Determines decoding rules.</td>
+    </tr>
+    <tr>
+      <td><strong>MODEL</strong></td>
+      <td>Symbolic model name or absolute path.</td>
+    </tr>
+    <tr>
+      <td><strong>MODE</strong></td>
+      <td>EMBED (inline hex) or REFERENCE (external model).</td>
+    </tr>
+    <tr>
+      <td><strong>SIZE</strong></td>
+      <td>Required for embedded payloads.</td>
+    </tr>
+    <tr>
+      <td><strong>DATA</strong></td>
+      <td>Hex‑encoded GGUF/LLAMA chunk.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="remarks-3"><strong>Remarks</strong></h3>
+<ul>
+  <li>Embedded payloads must be valid hex.</li>
+  <li>Referenced models must exist in the Constellation model registry.</li>
+  <li>LLM‑HEX blocks are used for:
+    <ul>
+      <li>patch reasoning</li>
+      <li>code generation</li>
+      <li>semantic expansion</li>
+      <li>AVIS‑Datalake ingestion</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="example-reference"><strong>Example (REFERENCE)</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[LLM-HEX]
+FORMAT: LLAMA
+MODEL:  cyborg://models/patch/ev2.1/base
+MODE:   REFERENCE
+</code></pre></div></div>
+
+<h3 id="example-embed"><strong>Example (EMBED)</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[LLM-HEX]
+FORMAT: GGUF
+MODEL:  cyborg_patch_assistant
+MODE:   EMBED
+SIZE:   0x0001F400
+
+DATA:
+48656C6C6F2C20576F726C64210A...
+ENDDATA
+</code></pre></div></div>
+
+<hr />
+
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/Cyborg%20ev2.1/ev2-1_02.md">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

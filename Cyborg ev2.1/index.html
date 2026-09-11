@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Repository Browser</title>
+    <style>
+        body { font-family: sans-serif; max-width: 800px; margin: 20px auto; padding: 0 10px; }
+        .input-group { margin-bottom: 20px; display: flex; gap: 10px; }
+        input { flex: 1; padding: 8px; font-size: 16px; }
+        button { padding: 8px 16px; font-size: 16px; cursor: pointer; }
+        ul { list-style: none; padding: 0; }
+        li { padding: 8px; border-bottom: 1px solid #eee; display: flex; align-items: center; }
+        .icon { margin-right: 10px; font-weight: bold; }
+        .file { color: #0366d6; text-decoration: none; }
+        .dir { color: #000; font-weight: bold; cursor: pointer; text-decoration: underline; }
+        .breadcrumb { margin-bottom: 15px; font-size: 14px; color: #555; }
+        .back-btn { margin-bottom: 15px; display: inline-block; cursor: pointer; color: #0366d6; }
+        .error { color: red; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <h1>GitHub Repository Browser</h1>
+    
+    <div class="input-group">
+        <input type="text" id="repoInput" value="facebook/react" placeholder="owner/repository (e.g., facebook/react)">
+        <button onclick="loadRoot()">Load Repo</button>
+    </div>
+
+    <div id="breadcrumb" class="breadcrumb"></div>
+    <div id="backButton" class="back-btn" style="display: none;" onclick="goBack()">📁 .. (Go Up)</div>
+    <div id="error" class="error"></div>
+    
+    <ul id="fileList"></ul>
+
+    <script>
+        let currentOwnerRepo = '';
+        let pathHistory = [];
+
+        function loadRoot() {
+            const input = document.getElementById('repoInput').value.trim();
+            if (!input) return;
+            currentOwnerRepo = input;
+            pathHistory = ['']; 
+            fetchDirectory('');
+        }
+
+        async function fetchDirectory(path) {
+            const listElement = document.getElementById('fileList');
+            const errorElement = document.getElementById('error');
+            listElement.innerHTML = 'Loading...';
+            errorElement.innerText = '';
+            
+            updateControls();
+
+            const url = `https://github.com{currentOwnerRepo}/contents/${path}`;
+            
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error(`Failed to fetch: ${response.statusText}`);
+                const data = await response.json();
+                
+                renderFiles(data);
+            } catch (err) {
+                listElement.innerHTML = '';
+                errorElement.innerText = `Error: ${err.message}. Make sure the repository is public and the format is correct.`;
+            }
+        }
+
+        function renderFiles(items) {
+            const listElement = document.getElementById('fileList');
+            listElement.innerHTML = '';
+
+            // Sort directories first, then files
+            items.sort((a, b) => (b.type === 'dir') - (a.type === 'dir'));
+
+            items.forEach(item => {
+                const li = document.createElement('li');
+                const icon = document.createElement('span');
+                icon.className = 'icon';
+                
+                const link = document.createElement('a');
+
+                if (item.type === 'dir') {
+                    icon.innerText = '📁';
+                    link.innerText = item.name;
+                    link.className = 'dir';
+                    link.onclick = () => {
+                        pathHistory.push(item.path);
+                        fetchDirectory(item.path);
+                    };
+                } else {
+                    icon.innerText = '📄';
+                    link.innerText = item.name;
+                    link.className = 'file';
+                    link.href = item.html_url;
+                    link.target = '_blank';
+                }
+
+                li.appendChild(icon);
+                li.appendChild(link);
+                listElement.appendChild(li);
+            });
+        }
+
+        function goBack() {
+            if (pathHistory.length > 1) {
+                pathHistory.pop(); // Remove current path
+                const previousPath = pathHistory[pathHistory.length - 1];
+                fetchDirectory(previousPath);
+            }
+        }
+
+        function updateControls() {
+            const backButton = document.getElementById('backButton');
+            const breadcrumb = document.getElementById('breadcrumb');
+            const currentPath = pathHistory[pathHistory.length - 1];
+
+            backButton.style.display = pathHistory.length > 1 ? 'block' : 'none';
+            breadcrumb.innerText = `Current Path: /${currentPath}`;
+        }
+
+        // Initial load on page open
+        window.onload = loadRoot;
+    </script>
+</body>
+</html>

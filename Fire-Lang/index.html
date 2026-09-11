@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Fire Lang Desktop</title>
+
+  <!-- CodeMirror 6 (via CDN) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@6.0.1/dist/codemirror.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/codemirror@6.0.1/dist/codemirror.min.js"></script>
+
+  <link rel="stylesheet" href="fire-desktop.css" />
+</head>
+<body>
+  <div id="app" class="desktop">
+    <header class="topbar">
+      <div class="brand">Fire Desktop</div>
+      <div class="controls">
+        <input id="repoInput" placeholder="repo (owner/repo) or ?index param" />
+        <button id="loadBtn">Load</button>
+        <button id="collapseBtn">Collapse</button>
+        <button id="expandBtn">Expand</button>
+        <button id="toggleEditBtn">Toggle Edit</button>
+      </div>
+    </header>
+
+    <div class="workspace">
+      <aside class="sidebar">
+        <div class="search">
+          <input id="searchInput" placeholder="Filter files (Ctrl+K)" />
+        </div>
+        <div id="fileTree" class="file-tree"></div>
+      </aside>
+
+      <main class="mainpanel">
+        <div class="pathbar">
+          <span>Path:</span>
+          <span id="currentPath">/</span>
+          <div class="path-actions">
+            <button id="openPagesBtn">Open Pages</button>
+            <button id="openRawBtn">Open Raw</button>
+            <button id="downloadBtn">Download</button>
+          </div>
+        </div>
+
+        <section class="viewer">
+          <div id="fileMeta" class="meta"></div>
+          <div id="viewerArea" class="viewer-area">
+            <pre id="textViewer" class="text-viewer" style="display:none;"></pre>
+            <div id="imageViewer" style="display:none;"></div>
+            <div id="binaryViewer" style="display:none;">Binary file — download to view.</div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <footer class="statusbar" id="statusBar">Ready</footer>
+  </div>
+
+  <script src="fire-desktop.js"></script>
+</body>
+</html>

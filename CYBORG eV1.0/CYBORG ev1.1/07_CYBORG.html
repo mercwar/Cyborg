@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>📘 PAGE 2.1 — DESIGN GOALS | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="📘 PAGE 2.1 — DESIGN GOALS" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/07_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/07_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="📘 PAGE 2.1 — DESIGN GOALS" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"📘 PAGE 2.1 — DESIGN GOALS","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/07_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      <h1 id="-page-21--design-goals"><strong>📘 PAGE 2.1 — DESIGN GOALS</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="21-overview"><strong>2.1 Overview</strong></h2>
+
+<p>The Cyborg Language was engineered with a set of <strong>explicit, non‑negotiable design goals</strong>.<br />
+These goals ensure that the language remains:</p>
+
+<ul>
+  <li>deterministic</li>
+  <li>marker‑bound</li>
+  <li>convertible</li>
+  <li>human‑operable</li>
+  <li>machine‑precise</li>
+  <li>C‑compatible</li>
+</ul>
+
+<p>This section defines the <strong>core principles</strong> that shaped the language and govern every rule in the specification.</p>
+
+<hr />
+
+<h1 id="211-determinism"><strong>2.1.1 Determinism</strong></h1>
+
+<h3 id="goal"><strong>Goal</strong></h3>
+<p>Every input MUST produce the same output, every time, on every system.</p>
+
+<h3 id="rationale"><strong>Rationale</strong></h3>
+<p>The Cyborg Language is used by:</p>
+
+<ul>
+  <li>AI systems</li>
+  <li>compilers</li>
+  <li>validators</li>
+  <li>automation pipelines</li>
+</ul>
+
+<p>These systems cannot tolerate ambiguity.</p>
+
+<h3 id="implications"><strong>Implications</strong></h3>
+
+<ul>
+  <li>No implicit behavior</li>
+  <li>No inference outside declared markers</li>
+  <li>No optional syntax that changes meaning</li>
+  <li>No context‑dependent interpretation</li>
+</ul>
+
+<h3 id="example"><strong>Example</strong></h3>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<p>Always produces:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">validate_context</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>No variation. No drift.</p>
+
+<hr />
+
+<h1 id="212-explicitness"><strong>2.1.2 Explicitness</strong></h1>
+
+<h3 id="goal-1"><strong>Goal</strong></h3>
+<p>Nothing is assumed. Everything is declared.</p>
+
+<h3 id="rationale-1"><strong>Rationale</strong></h3>
+<p>Explicit commands eliminate ambiguity and prevent AI inference errors.</p>
+
+<h3 id="implications-1"><strong>Implications</strong></h3>
+
+<ul>
+  <li>Targets MUST be declared (<code class="language-plaintext highlighter-rouge">set to you</code>, <code class="language-plaintext highlighter-rouge">set to file</code>)</li>
+  <li>Payloads MUST be opened (<code class="language-plaintext highlighter-rouge">begin</code> or <code class="language-plaintext highlighter-rouge">#BGIN</code>)</li>
+  <li>Payloads MUST be sealed (<code class="language-plaintext highlighter-rouge">#!#</code>)</li>
+  <li>Verbs MUST be explicit</li>
+</ul>
+
+<h3 id="example-1"><strong>Example</strong></h3>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">set</span> <span class="n">to</span> <span class="n">you</span>
+<span class="n">begin</span>
+<span class="n">scan</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="213-markerbound-execution"><strong>2.1.3 Marker‑Bound Execution</strong></h1>
+
+<h3 id="goal-2"><strong>Goal</strong></h3>
+<p>Markers define reality.<br />
+Nothing exists outside the payload.</p>
+
+<h3 id="markers"><strong>Markers</strong></h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Marker</th>
+      <th>Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">#BGIN</code></td>
+      <td>Start payload</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">#!#</code></td>
+      <td>Seal payload</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">end</code></td>
+      <td>Close transmission</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="implications-2"><strong>Implications</strong></h3>
+
+<ul>
+  <li>Unsealed content MUST NOT be processed</li>
+  <li>Payloads MUST NOT overlap</li>
+  <li>Markers MUST be respected by all implementations</li>
+</ul>
+
+<hr />
+
+<h1 id="214-humanreadable-machineexecutable"><strong>2.1.4 Human‑Readable, Machine‑Executable</strong></h1>
+
+<h3 id="goal-3"><strong>Goal</strong></h3>
+<p>The language must be readable by humans and executable by machines without translation ambiguity.</p>
+
+<h3 id="rationale-2"><strong>Rationale</strong></h3>
+
+<ul>
+  <li>Humans issue commands</li>
+  <li>AI interprets commands</li>
+  <li>C compilers execute the final form</li>
+</ul>
+
+<h3 id="implications-3"><strong>Implications</strong></h3>
+
+<ul>
+  <li>VB‑style syntax for readability</li>
+  <li>Cyborg IR for determinism</li>
+  <li>C output for execution</li>
+</ul>
+
+<hr />
+
+<h1 id="215-minimal-grammar"><strong>2.1.5 Minimal Grammar</strong></h1>
+
+<h3 id="goal-4"><strong>Goal</strong></h3>
+<p>The grammar MUST remain small, stable, and predictable.</p>
+
+<h3 id="rationale-3"><strong>Rationale</strong></h3>
+<p>A small grammar:</p>
+
+<ul>
+  <li>reduces inference</li>
+  <li>increases reliability</li>
+  <li>simplifies conversion</li>
+  <li>prevents drift</li>
+</ul>
+
+<h3 id="implications-4"><strong>Implications</strong></h3>
+
+<ul>
+  <li>No complex expressions</li>
+  <li>No nested structures</li>
+  <li>No implicit operators</li>
+  <li>No overloaded syntax</li>
+</ul>
+
+<hr />
+
+<h1 id="216-verbdriven-architecture"><strong>2.1.6 Verb‑Driven Architecture</strong></h1>
+
+<h3 id="goal-5"><strong>Goal</strong></h3>
+<p>All operations MUST be expressed through a fixed set of verbs.</p>
+
+<h3 id="core-verbs"><strong>Core Verbs</strong></h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>validate
+scan
+build
+give
+explain
+</code></pre></div></div>
+
+<h3 id="implications-5"><strong>Implications</strong></h3>
+
+<ul>
+  <li>Verbs map directly to C functions</li>
+  <li>No hidden behavior</li>
+  <li>No polymorphism</li>
+  <li>No dynamic dispatch</li>
+</ul>
+
+<hr />
+
+<h1 id="217-c-compatibility"><strong>2.1.7 C Compatibility</strong></h1>
+
+<h3 id="goal-6"><strong>Goal</strong></h3>
+<p>Every Cyborg construct MUST be convertible into valid C.</p>
+
+<h3 id="rationale-4"><strong>Rationale</strong></h3>
+
+<ul>
+  <li>C is universal</li>
+  <li>C is deterministic</li>
+  <li>C is stable</li>
+  <li>C is portable</li>
+</ul>
+
+<h3 id="implications-6"><strong>Implications</strong></h3>
+
+<ul>
+  <li>All types MUST map to C types</li>
+  <li>All verbs MUST map to C functions</li>
+  <li>All payloads MUST map to C function bodies</li>
+</ul>
+
+<hr />
+
+<h1 id="218-zero-ambiguity"><strong>2.1.8 Zero Ambiguity</strong></h1>
+
+<h3 id="goal-7"><strong>Goal</strong></h3>
+<p>The language MUST eliminate all forms of ambiguity.</p>
+
+<h3 id="examples-of-forbidden-ambiguity"><strong>Examples of Forbidden Ambiguity</strong></h3>
+
+<ul>
+  <li>overloaded keywords</li>
+  <li>implicit type coercion</li>
+  <li>context‑dependent meaning</li>
+  <li>whitespace‑dependent meaning</li>
+  <li>optional markers</li>
+</ul>
+
+<h3 id="implications-7"><strong>Implications</strong></h3>
+
+<ul>
+  <li>The language is rigid by design</li>
+  <li>The language is predictable</li>
+  <li>The language is safe for AI interpretation</li>
+</ul>
+
+<hr />
+
+<h1 id="219-summary"><strong>2.1.9 Summary</strong></h1>
+
+<p>Page 2.1 defines the <strong>design goals</strong> of the Cyborg Language:</p>
+
+<ul>
+  <li>deterministic</li>
+  <li>explicit</li>
+  <li>marker‑bound</li>
+  <li>human‑readable</li>
+  <li>machine‑executable</li>
+  <li>verb‑driven</li>
+  <li>C‑compatible</li>
+  <li>unambiguous</li>
+</ul>
+
+<p>These goals shape every rule in the specification and ensure the language remains stable, predictable, and ceremonial.</p>
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.1/07_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

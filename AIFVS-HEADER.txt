@@ -1,4 +1,4 @@
-tore/* AIFVS-ARTIFACT
+/* AIFVS-ARTIFACT
    CY_NAME: CYBORG_CORE
    CY_TYPE: ai_hex_language
    CY_ROLE: Windows Message Translation Engine

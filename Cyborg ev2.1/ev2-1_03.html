@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Cyborg ev2.1 BIND Block | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Cyborg ev2.1 BIND Block" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/Cyborg%20ev2.1/ev2-1_03.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/Cyborg%20ev2.1/ev2-1_03.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Cyborg ev2.1 BIND Block" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"Cyborg ev2.1 BIND Block","url":"https://mercwar.github.io/Cyborg/Cyborg%20ev2.1/ev2-1_03.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      <h3 id="cyborg-ev21-bind-block"><strong>Cyborg ev2.1 BIND Block</strong></h3>
+<p><em>(Reference — Page 3)</em></p>
+<h1 id="-table-of-contents">📖 Table of Contents</h1>
+
+<p>✨ <strong>Navigation</strong></p>
+<ul>
+  <li>🔙 <strong><a href="/Cyborg/Cyborg%20ev2.1/readme.md">Back</a></strong> — Return to Overview</li>
+  <li>📝 <strong><a href="/Cyborg/Cyborg%20ev2.1/ev2-1_01.html">Page 1</a></strong> — Introduction &amp; Setup</li>
+  <li>📂 <strong><a href="/Cyborg/Cyborg%20ev2.1/ev2-1_02.html">Page 2</a></strong> — Configuration Details</li>
+  <li>⚙️ <strong><a href="/Cyborg/Cyborg%20ev2.1/ev2-1_03.html">Page 3</a></strong> — Engine Workflow</li>
+  <li>
+    <h2 id="️-page-4--output--rendering">🖥️ <strong><a href="/Cyborg/Cyborg%20ev2.1/ev2-1_04.html">Page 4</a></strong> — Output &amp; Rendering</h2>
+  </li>
+</ul>
+
+<h4 id="overview"><strong>Overview</strong></h4>
+
+<p>The <strong>BIND</strong> block associates <strong>ASM hooks</strong> with <strong>C functions</strong> and, optionally, <strong>LLM‑HEX models</strong>.<br />
+It defines how symbolic assembly, semantic C descriptions, and LLM payloads are logically connected.</p>
+
+<hr />
+
+<h4 id="syntax"><strong>Syntax</strong></h4>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[BIND]
+ASM:   &lt;asm-label&gt;
+C:     &lt;c-function-name&gt;
+LLM:   &lt;model-symbolic-name&gt;    // optional
+MODE:  &lt;STRICT | ADAPTIVE&gt;      // optional
+</code></pre></div></div>
+
+<p>Multiple bindings may be declared in a single block:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[BIND]
+ASM:   HOOK_MAIN
+C:     cyborg_main_hook
+LLM:   cyborg://models/patch/ev2.1/assistant
+MODE:  ADAPTIVE
+
+ASM:   HOOK_EXIT
+C:     cyborg_exit_hook
+</code></pre></div></div>
+
+<hr />
+
+<h4 id="members"><strong>Members</strong></h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>ASM</strong></td>
+      <td>Label of an ASM block or hook (e.g., <code class="language-plaintext highlighter-rouge">HOOK_MAIN</code>). Required.</td>
+    </tr>
+    <tr>
+      <td><strong>C</strong></td>
+      <td>Name of a C function declared in a <code class="language-plaintext highlighter-rouge">[C]</code> block. Required.</td>
+    </tr>
+    <tr>
+      <td><strong>LLM</strong></td>
+      <td>Symbolic name or path of an LLM‑HEX model. Optional.</td>
+    </tr>
+    <tr>
+      <td><strong>MODE</strong></td>
+      <td>Binding mode: <code class="language-plaintext highlighter-rouge">STRICT</code> (must match exactly) or <code class="language-plaintext highlighter-rouge">ADAPTIVE</code> (LLM may adjust behavior). Optional; default is <code class="language-plaintext highlighter-rouge">STRICT</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h4 id="behavior"><strong>Behavior</strong></h4>
+
+<ul>
+  <li>The <strong>ASM</strong> label must match a previously defined <code class="language-plaintext highlighter-rouge">[ASM:&lt;label&gt;]</code> or <code class="language-plaintext highlighter-rouge">HOOK</code> name.</li>
+  <li>The <strong>C</strong> function must exist in a <code class="language-plaintext highlighter-rouge">[C]</code> block in the same patch file.</li>
+  <li>If <strong>LLM</strong> is specified, Constellation may use the referenced model to:
+    <ul>
+      <li>generate code,</li>
+      <li>validate behavior,</li>
+      <li>or explain the patch.</li>
+    </ul>
+  </li>
+  <li><strong>MODE</strong> controls how strictly the binding is enforced:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">STRICT</code> → ASM and C must match declared semantics.</li>
+      <li><code class="language-plaintext highlighter-rouge">ADAPTIVE</code> → LLM may refine or extend behavior within AVIS law.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h4 id="remarks"><strong>Remarks</strong></h4>
+
+<ul>
+  <li>A single ASM hook may be bound to exactly one C function in a given patch.</li>
+  <li>Multiple ASM hooks may bind to the same C function.</li>
+  <li>If a BIND entry is invalid, the entire patch is rejected during validation.</li>
+  <li>BIND blocks are processed <strong>after</strong> <code class="language-plaintext highlighter-rouge">[ASM]</code>, <code class="language-plaintext highlighter-rouge">[C]</code>, and <code class="language-plaintext highlighter-rouge">[LLM-HEX]</code> blocks are parsed.</li>
+</ul>
+
+<hr />
+
+<h4 id="example"><strong>Example</strong></h4>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MZ-PATCH
+TARGET: /Cyborg/engine/cyborg.exe
+MODE:   SIMULATE
+ARCH:   x86_64
+VERSION: EV2.1
+
+[ASM:HOOK_MAIN]
+HOOK AT 0x401050
+    PUSH EAX
+    CALL 0x500000
+    POP  EAX
+ENDHOOK
+
+[C]
+__stdcall void cyborg_main_hook(void) {
+    // Logs startup event
+    log_event("Cyborg ev2.1 patch engaged");
+}
+
+[LLM-HEX]
+FORMAT: LLAMA
+MODEL:  cyborg://models/patch/ev2.1/assistant
+MODE:   REFERENCE
+
+[BIND]
+ASM:   HOOK_MAIN
+C:     cyborg_main_hook
+LLM:   cyborg://models/patch/ev2.1/assistant
+MODE:  ADAPTIVE
+</code></pre></div></div>
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/Cyborg%20ev2.1/ev2-1_03.md">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

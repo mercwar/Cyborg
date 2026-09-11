@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>📘 PAGE 2.5 — ROLE OF MARKERS (#BGIN, #!#, end) | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="📘 PAGE 2.5 — ROLE OF MARKERS (#BGIN, #!#, end)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/11_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/11_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="📘 PAGE 2.5 — ROLE OF MARKERS (#BGIN, #!#, end)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"📘 PAGE 2.5 — ROLE OF MARKERS (#BGIN, #!#, end)","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/11_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      <h1 id="-page-25--role-of-markers-bgin--end"><strong>📘 PAGE 2.5 — ROLE OF MARKERS (<code class="language-plaintext highlighter-rouge">#BGIN</code>, <code class="language-plaintext highlighter-rouge">#!#</code>, <code class="language-plaintext highlighter-rouge">end</code>)</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="25-overview"><strong>2.5 Overview</strong></h2>
+
+<p>Markers are the <strong>structural backbone</strong> of the Cyborg Language.<br />
+They define:</p>
+
+<ul>
+  <li>where execution begins</li>
+  <li>where execution ends</li>
+  <li>what content is real</li>
+  <li>what content is ignored</li>
+  <li>when C syntax completion is triggered</li>
+</ul>
+
+<p>Markers are <strong>not optional</strong>, <strong>not decorative</strong>, and <strong>not flexible</strong>.<br />
+They are <strong>law</strong>.</p>
+
+<p>This section is <strong>normative</strong>.</p>
+
+<hr />
+
+<h1 id="251-the-three-canonical-markers"><strong>2.5.1 The Three Canonical Markers</strong></h1>
+
+<p>The Cyborg Language uses exactly <strong>three</strong> structural markers:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Marker</th>
+      <th>Meaning</th>
+      <th>Required?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">#BGIN</code> / <code class="language-plaintext highlighter-rouge">begin</code></td>
+      <td>Start of payload</td>
+      <td><strong>MUST</strong></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">#!#</code></td>
+      <td>Seal payload</td>
+      <td><strong>MUST</strong></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">end</code></td>
+      <td>Close transmission</td>
+      <td><strong>SHOULD</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>These markers define the <strong>execution boundaries</strong> of the language.</p>
+
+<hr />
+
+<h1 id="252-marker-1--bgin-or-begin"><strong>2.5.2 Marker 1 — <code class="language-plaintext highlighter-rouge">#BGIN</code> (or <code class="language-plaintext highlighter-rouge">begin</code>)</strong></h1>
+
+<h3 id="purpose"><strong>Purpose</strong></h3>
+<p>Open a payload block.</p>
+
+<h3 id="syntax-options"><strong>Syntax Options</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+</code></pre></div></div>
+<p>or</p>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">#</span><span class="n">BGIN</span>
+</code></pre></div></div>
+
+<h3 id="normative-rules"><strong>Normative Rules</strong></h3>
+
+<ul>
+  <li>A payload <strong>MUST</strong> begin with <code class="language-plaintext highlighter-rouge">begin</code> or <code class="language-plaintext highlighter-rouge">#BGIN</code>.</li>
+  <li>Only one payload may be open at a time.</li>
+  <li>Nested payloads are forbidden.</li>
+  <li>No verbs may appear before the payload opens.</li>
+</ul>
+
+<h3 id="ir-representation"><strong>IR Representation</strong></h3>
+<pre><code class="language-cyborg">OPEN_PAYLOAD
+</code></pre>
+
+<h3 id="c-effect"><strong>C Effect</strong></h3>
+<p>Begins the function body.</p>
+
+<hr />
+
+<h1 id="253-marker-2---seal-marker"><strong>2.5.3 Marker 2 — <code class="language-plaintext highlighter-rouge">#!#</code> (Seal Marker)</strong></h1>
+
+<h3 id="purpose-1"><strong>Purpose</strong></h3>
+<p>Seal the payload and finalize the command set.</p>
+
+<h3 id="syntax"><strong>Syntax</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">#!#</span>
+</code></pre></div></div>
+
+<h3 id="normative-rules-1"><strong>Normative Rules</strong></h3>
+
+<ul>
+  <li>A payload <strong>MUST</strong> be sealed.</li>
+  <li>Unsealed payloads <strong>MUST NOT</strong> be executed.</li>
+  <li>No content after <code class="language-plaintext highlighter-rouge">#!#</code> may be processed.</li>
+  <li>Sealing triggers C syntax completion.</li>
+</ul>
+
+<h3 id="ir-representation-1"><strong>IR Representation</strong></h3>
+<pre><code class="language-cyborg">SEAL
+</code></pre>
+
+<h3 id="c-effect-1"><strong>C Effect</strong></h3>
+<p>Closes the function body and finalizes the translation unit.</p>
+
+<hr />
+
+<h1 id="254-marker-3--end-transmission-terminator"><strong>2.5.4 Marker 3 — <code class="language-plaintext highlighter-rouge">end</code> (Transmission Terminator)</strong></h1>
+
+<h3 id="purpose-2"><strong>Purpose</strong></h3>
+<p>Indicate the end of the entire transmission.</p>
+
+<h3 id="syntax-1"><strong>Syntax</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">end</span>
+</code></pre></div></div>
+
+<h3 id="normative-rules-2"><strong>Normative Rules</strong></h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">end</code> <strong>SHOULD</strong> appear after the sealed payload.</li>
+  <li><code class="language-plaintext highlighter-rouge">end</code> <strong>MUST NOT</strong> appear inside a payload.</li>
+  <li><code class="language-plaintext highlighter-rouge">end</code> <strong>MAY</strong> be omitted if the environment auto‑terminates.</li>
+</ul>
+
+<h3 id="ir-representation-2"><strong>IR Representation</strong></h3>
+<pre><code class="language-cyborg">END_TRANSMISSION
+</code></pre>
+
+<h3 id="c-effect-2"><strong>C Effect</strong></h3>
+<p>No direct effect — used for validation only.</p>
+
+<hr />
+
+<h1 id="255-marker-interaction-rules"><strong>2.5.5 Marker Interaction Rules</strong></h1>
+
+<h3 id="rule-1--markers-must-appear-in-order"><strong>Rule 1 — Markers MUST appear in order</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>begin → verbs → #!# → end
+</code></pre></div></div>
+
+<h3 id="rule-2--markers-must-not-overlap"><strong>Rule 2 — Markers MUST NOT overlap</strong></h3>
+<p>Invalid:</p>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="p">#!#</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<h3 id="rule-3--markers-must-not-be-nested"><strong>Rule 3 — Markers MUST NOT be nested</strong></h3>
+<p>Invalid:</p>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">begin</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<h3 id="rule-4--markers-define-reality"><strong>Rule 4 — Markers define reality</strong></h3>
+<p>Anything outside the markers is ignored.</p>
+
+<h3 id="rule-5--markers-must-not-be-inferred"><strong>Rule 5 — Markers MUST NOT be inferred</strong></h3>
+<p>AI systems MUST NOT assume missing markers.</p>
+
+<hr />
+
+<h1 id="256-valid-marker-example"><strong>2.5.6 Valid Marker Example</strong></h1>
+
+<h3 id="vbstyle-cyborg"><strong>VB‑Style Cyborg</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">set</span> <span class="n">to</span> <span class="n">you</span>
+<span class="n">begin</span>
+<span class="n">scan</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+<span class="n">end</span>
+</code></pre></div></div>
+
+<h3 id="cyborg-ir"><strong>Cyborg IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = AI
+OPEN_PAYLOAD
+EXEC_SCAN
+EXEC_VALIDATE
+SEAL
+END_TRANSMISSION
+</code></pre>
+
+<h3 id="c-output"><strong>C Output</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">scan_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">validate_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="257-invalid-marker-examples"><strong>2.5.7 Invalid Marker Examples</strong></h1>
+
+<h3 id="-missing-seal">❌ Missing Seal</h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">validate</span>
+</code></pre></div></div>
+
+<h3 id="-trailing-content">❌ Trailing Content</h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+<span class="n">extra</span>
+</code></pre></div></div>
+
+<h3 id="-nested-payloads">❌ Nested Payloads</h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">begin</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<h3 id="-seal-without-open">❌ Seal Without Open</h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">#!#</span>
+</code></pre></div></div>
+
+<p>All MUST be rejected.</p>
+
+<hr />
+
+<h1 id="258-summary"><strong>2.5.8 Summary</strong></h1>
+
+<p>Page 2.5 defines the <strong>role of markers</strong> in the Cyborg Language:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">begin</code> / <code class="language-plaintext highlighter-rouge">#BGIN</code> opens reality</li>
+  <li><code class="language-plaintext highlighter-rouge">#!#</code> seals reality</li>
+  <li><code class="language-plaintext highlighter-rouge">end</code> terminates transmission</li>
+  <li>markers MUST appear in order</li>
+  <li>markers MUST NOT be nested</li>
+  <li>markers define the boundaries of truth</li>
+</ul>
+
+<p>Markers are the <strong>ceremonial and structural law</strong> of the language.</p>
+
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.1/11_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

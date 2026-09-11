@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>📘 PAGE 2.2 — EXECUTION MODEL | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="📘 PAGE 2.2 — EXECUTION MODEL" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/08_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/08_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="📘 PAGE 2.2 — EXECUTION MODEL" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"📘 PAGE 2.2 — EXECUTION MODEL","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/08_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      <h1 id="-page-22--execution-model"><strong>📘 PAGE 2.2 — EXECUTION MODEL</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="22-overview"><strong>2.2 Overview</strong></h2>
+
+<p>The <strong>Execution Model</strong> defines <em>how</em> the Cyborg Language processes commands, interprets payloads, enforces boundaries, and produces deterministic C output.<br />
+It is the <strong>core operational logic</strong> of the entire system.</p>
+
+<p>The execution model is:</p>
+
+<ul>
+  <li><strong>marker‑driven</strong></li>
+  <li><strong>verb‑driven</strong></li>
+  <li><strong>target‑bound</strong></li>
+  <li><strong>deterministic</strong></li>
+  <li><strong>single‑pass</strong></li>
+  <li><strong>non‑inferential</strong></li>
+</ul>
+
+<p>This section is <strong>normative</strong>.</p>
+
+<hr />
+
+<h1 id="221-the-fivestage-execution-pipeline"><strong>2.2.1 The Five‑Stage Execution Pipeline</strong></h1>
+
+<p>Every Cyborg payload moves through the same five stages:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] Target Declaration
+[2] Payload Opening
+[3] Verb Execution
+[4] Payload Sealing
+[5] C Syntax Completion
+</code></pre></div></div>
+
+<p>Each stage is mandatory and MUST occur in this order.</p>
+
+<hr />
+
+<h1 id="222-stage-1--target-declaration"><strong>2.2.2 Stage 1 — Target Declaration</strong></h1>
+
+<h3 id="purpose"><strong>Purpose</strong></h3>
+<p>Define <em>what</em> the commands apply to.</p>
+
+<h3 id="syntax"><strong>Syntax</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">set</span> <span class="n">to</span> <span class="n">you</span>
+<span class="n">set</span> <span class="n">to</span> <span class="n">file</span>
+<span class="n">set</span> <span class="n">to</span> <span class="n">layer</span>
+</code></pre></div></div>
+
+<h3 id="normative-rules"><strong>Normative Rules</strong></h3>
+
+<ul>
+  <li>A target <strong>MUST</strong> be declared before any verbs execute.</li>
+  <li>A payload <strong>MUST NOT</strong> begin without a target.</li>
+  <li>The target <strong>MUST</strong> map to a C parameter.</li>
+</ul>
+
+<h3 id="c-output-example"><strong>C Output Example</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="223-stage-2--payload-opening"><strong>2.2.3 Stage 2 — Payload Opening</strong></h1>
+
+<h3 id="purpose-1"><strong>Purpose</strong></h3>
+<p>Begin a marker‑bound execution block.</p>
+
+<h3 id="syntax-1"><strong>Syntax</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+</code></pre></div></div>
+<p>or</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#BGIN
+</code></pre></div></div>
+
+<h3 id="normative-rules-1"><strong>Normative Rules</strong></h3>
+
+<ul>
+  <li>A payload <strong>MUST</strong> begin with <code class="language-plaintext highlighter-rouge">begin</code> or <code class="language-plaintext highlighter-rouge">#BGIN</code>.</li>
+  <li>Only one payload may be open at a time.</li>
+  <li>Nested payloads are forbidden.</li>
+</ul>
+
+<h3 id="ir-representation"><strong>IR Representation</strong></h3>
+<pre><code class="language-cyborg">OPEN_PAYLOAD
+</code></pre>
+
+<hr />
+
+<h1 id="224-stage-3--verb-execution"><strong>2.2.4 Stage 3 — Verb Execution</strong></h1>
+
+<h3 id="purpose-2"><strong>Purpose</strong></h3>
+<p>Perform operations in deterministic order.</p>
+
+<h3 id="allowed-verbs"><strong>Allowed Verbs</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>validate
+scan
+build
+give
+explain
+</code></pre></div></div>
+
+<h3 id="normative-rules-2"><strong>Normative Rules</strong></h3>
+
+<ul>
+  <li>Verbs <strong>MUST</strong> appear inside an open payload.</li>
+  <li>Verbs <strong>MUST</strong> map to C functions.</li>
+  <li>Verbs <strong>MUST</strong> execute in the order written.</li>
+  <li>Verbs <strong>MUST NOT</strong> be inferred or reordered.</li>
+</ul>
+
+<h3 id="example"><strong>Example</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">scan</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<h3 id="ir"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">EXEC_SCAN
+EXEC_VALIDATE
+</code></pre>
+
+<hr />
+
+<h1 id="225-stage-4--payload-sealing"><strong>2.2.5 Stage 4 — Payload Sealing</strong></h1>
+
+<h3 id="purpose-3"><strong>Purpose</strong></h3>
+<p>Close the execution block and finalize the command set.</p>
+
+<h3 id="syntax-2"><strong>Syntax</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">#!#</span>
+</code></pre></div></div>
+
+<h3 id="normative-rules-3"><strong>Normative Rules</strong></h3>
+
+<ul>
+  <li>A payload <strong>MUST</strong> be sealed.</li>
+  <li>Unsealed payloads <strong>MUST NOT</strong> be executed.</li>
+  <li>No content after <code class="language-plaintext highlighter-rouge">#!#</code> may be processed.</li>
+  <li>Sealing triggers C syntax completion.</li>
+</ul>
+
+<h3 id="ir-1"><strong>IR</strong></h3>
+<pre><code class="language-cyborg">SEAL
+</code></pre>
+
+<hr />
+
+<h1 id="226-stage-5--c-syntax-completion"><strong>2.2.6 Stage 5 — C Syntax Completion</strong></h1>
+
+<h3 id="purpose-4"><strong>Purpose</strong></h3>
+<p>Convert the sealed payload into deterministic C output.</p>
+
+<h3 id="normative-rules-4"><strong>Normative Rules</strong></h3>
+
+<ul>
+  <li>Every verb MUST produce a C function signature.</li>
+  <li>The payload MUST produce a C function body.</li>
+  <li>The target MUST become the first parameter.</li>
+  <li>The order of verbs MUST be preserved.</li>
+</ul>
+
+<h3 id="example-1"><strong>Example</strong></h3>
+
+<h4 id="vbstyle-cyborg"><strong>VB‑Style Cyborg</strong></h4>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">set</span> <span class="n">to</span> <span class="n">you</span>
+<span class="n">begin</span>
+<span class="n">scan</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<h4 id="c-output"><strong>C Output</strong></h4>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">scan_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">validate_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="227-execution-flow-diagram"><strong>2.2.7 Execution Flow Diagram</strong></h1>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> ┌──────────────────────────┐
+ │ 1. Target Declaration     │
+ └──────────────┬───────────┘
+                ↓
+ ┌──────────────────────────┐
+ │ 2. Payload Opening        │
+ └──────────────┬───────────┘
+                ↓
+ ┌──────────────────────────┐
+ │ 3. Verb Execution         │
+ └──────────────┬───────────┘
+                ↓
+ ┌──────────────────────────┐
+ │ 4. Payload Sealing        │
+ └──────────────┬───────────┘
+                ↓
+ ┌──────────────────────────┐
+ │ 5. C Syntax Completion    │
+ └──────────────────────────┘
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="228-forbidden-execution-patterns"><strong>2.2.8 Forbidden Execution Patterns</strong></h1>
+
+<p>The following patterns MUST NOT occur:</p>
+
+<h3 id="-missing-target">❌ Missing Target</h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<h3 id="-missing-seal">❌ Missing Seal</h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">set</span> <span class="n">to</span> <span class="n">you</span>
+<span class="n">begin</span>
+<span class="n">validate</span>
+</code></pre></div></div>
+
+<h3 id="-nested-payloads">❌ Nested Payloads</h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">begin</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<h3 id="-trailing-content">❌ Trailing Content</h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+<span class="n">extra</span>
+</code></pre></div></div>
+
+<p>All are invalid and MUST NOT be processed.</p>
+
+<hr />
+
+<h1 id="229-summary"><strong>2.2.9 Summary</strong></h1>
+
+<p>Page 2.2 defines the <strong>execution model</strong> of the Cyborg Language:</p>
+
+<ul>
+  <li>5 mandatory stages</li>
+  <li>marker‑bound execution</li>
+  <li>verb‑driven operations</li>
+  <li>deterministic C output</li>
+  <li>strict ordering</li>
+  <li>strict sealing rules</li>
+</ul>
+
+<p>This model ensures the language remains predictable, stable, and machine‑safe.</p>
+
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.1/08_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

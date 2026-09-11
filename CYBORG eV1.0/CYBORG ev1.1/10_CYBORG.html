@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>📘 PAGE 2.4 — DETERMINISTIC VS NON‑DETERMINISTIC CONSTRUCTS | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="📘 PAGE 2.4 — DETERMINISTIC VS NON‑DETERMINISTIC CONSTRUCTS" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/10_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/10_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="📘 PAGE 2.4 — DETERMINISTIC VS NON‑DETERMINISTIC CONSTRUCTS" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"📘 PAGE 2.4 — DETERMINISTIC VS NON‑DETERMINISTIC CONSTRUCTS","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/10_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      <h1 id="-page-24--deterministic-vs-nondeterministic-constructs"><strong>📘 PAGE 2.4 — DETERMINISTIC VS NON‑DETERMINISTIC CONSTRUCTS</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="24-overview"><strong>2.4 Overview</strong></h2>
+
+<p>The Cyborg Language is built on the principle that <strong>determinism is law</strong>.<br />
+This section defines:</p>
+
+<ul>
+  <li>what <em>deterministic constructs</em> are</li>
+  <li>what <em>non‑deterministic constructs</em> are</li>
+  <li>which constructs are allowed</li>
+  <li>which constructs are forbidden</li>
+  <li>how determinism affects VB‑style syntax, Cyborg IR, and C output</li>
+</ul>
+
+<p>This section is <strong>normative</strong>.</p>
+
+<hr />
+
+<h1 id="241-deterministic-constructs-allowed"><strong>2.4.1 Deterministic Constructs (Allowed)</strong></h1>
+
+<p>A construct is <strong>deterministic</strong> if:</p>
+
+<ul>
+  <li>it always produces the same IR</li>
+  <li>it always produces the same C output</li>
+  <li>it has no hidden behavior</li>
+  <li>it has no context‑dependent meaning</li>
+  <li>it does not rely on inference</li>
+</ul>
+
+<h3 id="examples-of-deterministic-constructs"><strong>Examples of Deterministic Constructs</strong></h3>
+
+<h3 id="1-explicit-targeting"><strong>1. Explicit Targeting</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">set</span> <span class="n">to</span> <span class="n">you</span>
+</code></pre></div></div>
+
+<h3 id="2-markerbound-payloads"><strong>2. Marker‑Bound Payloads</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="p">.</span><span class="err">..</span>
+<span class="err">#!#</span>
+</code></pre></div></div>
+
+<h3 id="3-fixed-verbs"><strong>3. Fixed Verbs</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>validate
+scan
+build
+give
+explain
+</code></pre></div></div>
+
+<h3 id="4-strict-ordering"><strong>4. Strict Ordering</strong></h3>
+<p>Commands execute in the order written — always.</p>
+
+<h3 id="5-direct-mapping-to-c"><strong>5. Direct Mapping to C</strong></h3>
+<p>Every verb → one C function.</p>
+
+<hr />
+
+<h1 id="242-nondeterministic-constructs-forbidden"><strong>2.4.2 Non‑Deterministic Constructs (Forbidden)</strong></h1>
+
+<p>A construct is <strong>non‑deterministic</strong> if:</p>
+
+<ul>
+  <li>its meaning changes based on context</li>
+  <li>it requires inference</li>
+  <li>it has multiple possible interpretations</li>
+  <li>it depends on whitespace</li>
+  <li>it depends on tone or intent</li>
+  <li>it produces inconsistent output</li>
+</ul>
+
+<p>These constructs are <strong>forbidden</strong>.</p>
+
+<h3 id="forbidden-examples"><strong>Forbidden Examples</strong></h3>
+
+<h3 id="1-implicit-targets"><strong>1. Implicit Targets</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">validate</span>   <span class="c1">' no target declared</span>
+</code></pre></div></div>
+
+<h3 id="2-unsealed-payloads"><strong>2. Unsealed Payloads</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">validate</span>
+</code></pre></div></div>
+
+<h3 id="3-trailing-content"><strong>3. Trailing Content</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">#!#</span>
+<span class="n">extra</span>
+</code></pre></div></div>
+
+<h3 id="4-overloaded-keywords"><strong>4. Overloaded Keywords</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">validate</span> <span class="n">build</span>   <span class="c1">' ambiguous</span>
+</code></pre></div></div>
+
+<h3 id="5-contextdependent-meaning"><strong>5. Context‑Dependent Meaning</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">scan</span>   <span class="c1">' meaning changes based on prior conversation</span>
+</code></pre></div></div>
+
+<h3 id="6-optional-markers"><strong>6. Optional Markers</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">validate</span>
+<span class="n">end</span>   <span class="c1">' missing seal</span>
+</code></pre></div></div>
+
+<h3 id="7-whitespacedependent-syntax"><strong>7. Whitespace‑Dependent Syntax</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">v</span> <span class="n">a</span> <span class="n">l</span> <span class="n">i</span> <span class="n">d</span> <span class="n">a</span> <span class="n">t</span> <span class="n">e</span>   <span class="c1">' forbidden</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="243-deterministic-vs-nondeterministic-comparison-table"><strong>2.4.3 Deterministic vs Non‑Deterministic Comparison Table</strong></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Construct Type</th>
+      <th>Deterministic</th>
+      <th>Non‑Deterministic</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Explicit target</td>
+      <td>✔</td>
+      <td>✘</td>
+    </tr>
+    <tr>
+      <td>Implicit target</td>
+      <td>✘</td>
+      <td>✔</td>
+    </tr>
+    <tr>
+      <td>Marker‑bound payload</td>
+      <td>✔</td>
+      <td>✘</td>
+    </tr>
+    <tr>
+      <td>Unsealed payload</td>
+      <td>✘</td>
+      <td>✔</td>
+    </tr>
+    <tr>
+      <td>Fixed verbs</td>
+      <td>✔</td>
+      <td>✘</td>
+    </tr>
+    <tr>
+      <td>Overloaded verbs</td>
+      <td>✘</td>
+      <td>✔</td>
+    </tr>
+    <tr>
+      <td>Strict ordering</td>
+      <td>✔</td>
+      <td>✘</td>
+    </tr>
+    <tr>
+      <td>Context‑dependent meaning</td>
+      <td>✘</td>
+      <td>✔</td>
+    </tr>
+    <tr>
+      <td>Direct C mapping</td>
+      <td>✔</td>
+      <td>✘</td>
+    </tr>
+    <tr>
+      <td>Inference‑based behavior</td>
+      <td>✘</td>
+      <td>✔</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h1 id="244-why-nondeterminism-is-forbidden"><strong>2.4.4 Why Non‑Determinism Is Forbidden</strong></h1>
+
+<p>Non‑determinism introduces:</p>
+
+<ul>
+  <li>ambiguity</li>
+  <li>inconsistency</li>
+  <li>inference drift</li>
+  <li>unpredictable C output</li>
+  <li>unsafe execution</li>
+  <li>invalid payloads</li>
+</ul>
+
+<p>The Cyborg Language is designed for:</p>
+
+<ul>
+  <li>AI systems</li>
+  <li>compilers</li>
+  <li>validators</li>
+  <li>automation pipelines</li>
+</ul>
+
+<p>These systems require <strong>absolute predictability</strong>.</p>
+
+<hr />
+
+<h1 id="245-determinism-in-the-vb--cyborg--c-pipeline"><strong>2.4.5 Determinism in the VB → Cyborg → C Pipeline</strong></h1>
+
+<h3 id="vbstyle-input"><strong>VB‑Style Input</strong></h3>
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">set</span> <span class="n">to</span> <span class="n">you</span>
+<span class="n">begin</span>
+<span class="n">scan</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<h3 id="cyborg-ir"><strong>Cyborg IR</strong></h3>
+<pre><code class="language-cyborg">TARGET = AI
+OPEN_PAYLOAD
+EXEC_SCAN
+EXEC_VALIDATE
+SEAL
+</code></pre>
+
+<h3 id="c-output"><strong>C Output</strong></h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">cyborg_payload</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">scan_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">validate_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r1</span> <span class="o">||</span> <span class="n">r2</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This mapping is <strong>deterministic</strong>.</p>
+
+<hr />
+
+<h1 id="246-determinism-and-ai-behavior"><strong>2.4.6 Determinism and AI Behavior</strong></h1>
+
+<p>AI systems MUST:</p>
+
+<ul>
+  <li>not infer missing commands</li>
+  <li>not guess missing markers</li>
+  <li>not reorder verbs</li>
+  <li>not reinterpret ambiguous syntax</li>
+  <li>not assume context</li>
+</ul>
+
+<p>AI MUST treat the Cyborg Language as <strong>law</strong>, not suggestion.</p>
+
+<hr />
+
+<h1 id="247-summary"><strong>2.4.7 Summary</strong></h1>
+
+<p>Page 2.4 defines the difference between <strong>deterministic</strong> and <strong>non‑deterministic</strong> constructs:</p>
+
+<ul>
+  <li>deterministic constructs are allowed</li>
+  <li>non‑deterministic constructs are forbidden</li>
+  <li>determinism ensures predictable IR and C output</li>
+  <li>determinism prevents inference drift</li>
+  <li>determinism is the foundation of the Cyborg Language</li>
+</ul>
+
+<p>This section completes the philosophical and structural foundation of Page 2.</p>
+
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.1/10_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

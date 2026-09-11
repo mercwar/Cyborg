@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>📘 PAGE 1.5 — NORMATIVE VS INFORMATIVE SECTIONS | Cyborg</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="📘 PAGE 1.5 — NORMATIVE VS INFORMATIVE SECTIONS" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<meta property="og:description" content="A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control." />
+<link rel="canonical" href="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/05_CYBORG.html" />
+<meta property="og:url" content="https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/05_CYBORG.html" />
+<meta property="og:site_name" content="Cyborg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="📘 PAGE 1.5 — NORMATIVE VS INFORMATIVE SECTIONS" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A pure‑C Win64 (UCRT64) execution engine implementing CYBORG eV.2 a structured, EVL‑driven command language for deterministic Windows message dispatch, semantic automation, and AI‑grade system control.","headline":"📘 PAGE 1.5 — NORMATIVE VS INFORMATIVE SECTIONS","url":"https://mercwar.github.io/Cyborg/CYBORG%20eV1.0/CYBORG%20ev1.1/05_CYBORG.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Cyborg/assets/css/style.css?v=2e18a4d876a30f9799571e1ae527383529c82c6d">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/Cyborg/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/Cyborg/">Cyborg</a></h1>
+      
+
+      <h1 id="-page-15--normative-vs-informative-sections"><strong>📘 PAGE 1.5 — NORMATIVE VS INFORMATIVE SECTIONS</strong></h1>
+<h3 id="avis-cyborg-language-system--msdn--iso-hybrid-reference"><em>AVIS Cyborg Language System — MSDN + ISO Hybrid Reference</em></h3>
+<p><em>(Hybrid Markdown + Code‑Styled Blocks Edition)</em></p>
+
+<hr />
+
+<h2 id="15-overview"><strong>1.5 Overview</strong></h2>
+
+<p>This section defines the <strong>two types of content</strong> used throughout the Cyborg Language Specification:</p>
+
+<ul>
+  <li><strong>Normative Sections</strong> — rules that MUST be followed</li>
+  <li><strong>Informative Sections</strong> — guidance, examples, and explanations</li>
+</ul>
+
+<p>This distinction is critical because the Cyborg Language is a <strong>protocol</strong>, not a narrative.<br />
+Implementers MUST know which parts define <strong>required behavior</strong> and which parts provide <strong>contextual understanding</strong>.</p>
+
+<hr />
+
+<h1 id="151-normative-sections"><strong>1.5.1 Normative Sections</strong></h1>
+
+<p>Normative sections define:</p>
+
+<ul>
+  <li>required syntax</li>
+  <li>required behavior</li>
+  <li>required markers</li>
+  <li>required execution semantics</li>
+  <li>required conversion rules</li>
+  <li>required memory boundaries</li>
+  <li>required error conditions</li>
+</ul>
+
+<p>These sections use ISO‑style requirement language:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Keyword</th>
+      <th>Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>MUST / SHALL</strong></td>
+      <td>Required behavior</td>
+    </tr>
+    <tr>
+      <td><strong>MUST NOT / SHALL NOT</strong></td>
+      <td>Prohibited behavior</td>
+    </tr>
+    <tr>
+      <td><strong>SHOULD</strong></td>
+      <td>Recommended behavior</td>
+    </tr>
+    <tr>
+      <td><strong>MAY</strong></td>
+      <td>Optional behavior</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="normative-example"><strong>Normative Example</strong></h3>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">begin</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<h3 id="normative-interpretation">Normative Interpretation</h3>
+
+<ul>
+  <li>A payload <strong>MUST</strong> begin with <code class="language-plaintext highlighter-rouge">begin</code> or <code class="language-plaintext highlighter-rouge">#BGIN</code>.</li>
+  <li>A payload <strong>MUST</strong> end with <code class="language-plaintext highlighter-rouge">#!#</code>.</li>
+  <li>The verb <code class="language-plaintext highlighter-rouge">validate</code> <strong>MUST</strong> map to a C function.</li>
+  <li>The payload <strong>MUST NOT</strong> contain unsealed content.</li>
+</ul>
+
+<h3 id="normative-c-output">Normative C Output</h3>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">validate_context</span><span class="p">(</span><span class="n">CyborgContext</span><span class="o">*</span> <span class="n">ctx</span><span class="p">);</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="152-informative-sections"><strong>1.5.2 Informative Sections</strong></h1>
+
+<p>Informative sections provide:</p>
+
+<ul>
+  <li>examples</li>
+  <li>explanations</li>
+  <li>diagrams</li>
+  <li>usage notes</li>
+  <li>best practices</li>
+  <li>background information</li>
+</ul>
+
+<p>Informative content <strong>does not define required behavior</strong>.</p>
+
+<h3 id="informative-example"><strong>Informative Example</strong></h3>
+
+<blockquote>
+  <p>“Developers may find it useful to group related verbs together for readability.”</p>
+</blockquote>
+
+<p>This is <strong>guidance</strong>, not a rule.</p>
+
+<h3 id="informative-example-block">Informative Example Block</h3>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">' This example shows a typical validation payload</span>
+<span class="n">set</span> <span class="n">to</span> <span class="n">you</span>
+<span class="n">begin</span>
+<span class="n">scan</span>
+<span class="n">validate</span>
+<span class="p">#!#</span>
+</code></pre></div></div>
+
+<p>This example is <strong>informative</strong>, not normative.</p>
+
+<hr />
+
+<h1 id="153-how-to-identify-normative-vs-informative-sections"><strong>1.5.3 How to Identify Normative vs Informative Sections</strong></h1>
+
+<p>Normative sections:</p>
+
+<ul>
+  <li>use MUST / SHALL / REQUIRED</li>
+  <li>define rules</li>
+  <li>define constraints</li>
+  <li>define conversion behavior</li>
+  <li>define marker boundaries</li>
+</ul>
+
+<p>Informative sections:</p>
+
+<ul>
+  <li>use MAY / CAN / OPTIONAL</li>
+  <li>provide examples</li>
+  <li>provide commentary</li>
+  <li>provide diagrams</li>
+  <li>provide context</li>
+</ul>
+
+<hr />
+
+<h1 id="154-why-this-distinction-matters"><strong>1.5.4 Why This Distinction Matters</strong></h1>
+
+<p>The Cyborg Language is used by:</p>
+
+<ul>
+  <li>humans</li>
+  <li>AI systems</li>
+  <li>compilers</li>
+  <li>interpreters</li>
+  <li>validators</li>
+</ul>
+
+<p>These systems must know:</p>
+
+<ul>
+  <li><strong>what is required</strong></li>
+  <li><strong>what is optional</strong></li>
+  <li><strong>what is guidance</strong></li>
+  <li><strong>what is law</strong></li>
+</ul>
+
+<p>Without this distinction:</p>
+
+<ul>
+  <li>AI systems may infer incorrectly</li>
+  <li>compilers may misinterpret commands</li>
+  <li>validators may enforce optional behavior</li>
+  <li>payloads may become non‑deterministic</li>
+</ul>
+
+<p>The Cyborg Language is built on <strong>determinism</strong>, and determinism requires <strong>clear boundaries</strong>.</p>
+
+<hr />
+
+<h1 id="155-mixed-sections"><strong>1.5.5 Mixed Sections</strong></h1>
+
+<p>Some sections contain both normative and informative content.</p>
+
+<p>Example:</p>
+
+<h3 id="mixed-section-example">Mixed Section Example</h3>
+
+<p><strong>Normative:</strong></p>
+<blockquote>
+  <p>The payload MUST be sealed with <code class="language-plaintext highlighter-rouge">#!#</code>.</p>
+</blockquote>
+
+<p><strong>Informative:</strong></p>
+<blockquote>
+  <p>Sealing the payload ensures that the engine does not process trailing content.</p>
+</blockquote>
+
+<p>Mixed sections are allowed, but normative content MUST be clearly identifiable.</p>
+
+<hr />
+
+<h1 id="156-summary"><strong>1.5.6 Summary</strong></h1>
+
+<p>Page 1.5 establishes the <strong>rules of interpretation</strong> for the entire document:</p>
+
+<ul>
+  <li>Normative sections define <strong>required behavior</strong></li>
+  <li>Informative sections provide <strong>guidance and examples</strong></li>
+  <li>ISO requirement language is used consistently</li>
+  <li>Determinism depends on clear separation of rule vs guidance</li>
+</ul>
+
+<p>This prepares the reader for the technical depth of the remaining pages.</p>
+
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/Cyborg/edit/main/CYBORG%20eV1.0/CYBORG%20ev1.1/05_CYBORG.MD">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>
