@@ -1,7 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/cyhy/EditorIntegration.java</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/cyhy/syntax_parser.php</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/cyhy/comments.fl</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/sitemap.txt</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/tools/manifest.json</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/tools/AIBridge.java</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/tools/bridge.c</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/tools/universal_hook.fl</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/tools/bridge.js</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/tools/bridge.php</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/Cyborg%20ev2.1/cyborg_patch_ast.c</loc>
@@ -19,7 +46,13 @@
     <loc>https://github.com/mercwar/Cyborg/blob/main/Cyborg%20ev2.1/cyborg_lang_translate.c</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/Cyborg%20ev2.1/ev2-1_04.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/Cyborg%20ev2.1/cyborg_lang_syntax.c</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/Cyborg%20ev2.1/ev2-1_03.html</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/Cyborg%20ev2.1/cyborg_patch_runtime.h</loc>
@@ -76,6 +109,9 @@
     <loc>https://github.com/mercwar/Cyborg/blob/main/Cyborg%20ev2.1/cyborg_patch_tokens.h</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/Cyborg%20ev2.1/ev2-1_01.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/Cyborg%20ev2.1/readme.md</loc>
   </url>
   <url>
@@ -86,6 +122,9 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/Cyborg%20ev2.1/cyborg_lang_translate.h</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/Cyborg%20ev2.1/ev2-1_02.html</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/Cyborg%20ev2.1/cyborg_lang_grammar.c</loc>
@@ -124,6 +163,9 @@
     <loc>https://github.com/mercwar/Cyborg/blob/main/Cyborg%20ev2.1/cyborg_patch_lexer.c</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/manifest.json</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/favicon.ico</loc>
   </url>
   <url>
@@ -151,10 +193,22 @@
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/07_CYBORG.MD</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/46_CYBORG.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/55_CYBORG.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/18_CYBORG.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/42_CYBORG.MD</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/47_CYBORG.MD</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/45_CYBORG.html</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/34_CYBORG.MD</loc>
@@ -172,7 +226,28 @@
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/02_CYBORG.MD</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/24_CYBORG.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/30_CYBORG.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/20_CYBORG.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/16_CYBORG.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/13_CYBORG.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/23_CYBORG.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/43_CYBORG.MD</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/59_CYBORG.html</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/59_CYBORG.MD</loc>
@@ -181,10 +256,16 @@
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/58_CYBORG.MD</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/08_CYBORG.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/45_CYBORG.MD</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/01_CYBORG.MD</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/60_CYBORG.html</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/13_CYBORG.MD</loc>
@@ -196,13 +277,40 @@
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/48_CYBORG.MD</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/58_CYBORG.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/49_CYBORG.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/10_CYBORG.MD</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/15_CYBORG.html</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/03_CYBORG.MD</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/05_CYBORG.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/44_CYBORG.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/57_CYBORG.MD</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/28_CYBORG.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/48_CYBORG.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/25_CYBORG.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/54_CYBORG.html</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/23_CYBORG.MD</loc>
@@ -211,16 +319,52 @@
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/11_CYBORG.MD</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/02_CYBORG.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/10_CYBORG.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/39_CYBORG.MD</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/29_CYBORG.html</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/16_CYBORG.MD</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/06_CYBORG.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/09_CYBORG.MD</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/41_CYBORG.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/61_CYBORG.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/19_CYBORG.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/55_CYBORG.MD</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/37_CYBORG.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/26_CYBORG.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/07_CYBORG.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/31_CYBORG.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/27_CYBORG.html</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/50_CYBORG.MD</loc>
@@ -238,10 +382,19 @@
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/17_CYBORG.MD</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/43_CYBORG.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/33_CYBORG.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/46_CYBORG.MD</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/25_CYBORG.MD</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/39_CYBORG.html</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/38_CYBORG.MD</loc>
@@ -253,6 +406,9 @@
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/06_CYBORG.MD</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/57_CYBORG.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/56_CYBORG.MD</loc>
   </url>
   <url>
@@ -262,10 +418,28 @@
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/08_CYBORG.MD</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/40_CYBORG.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/52_CYBORG.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/34_CYBORG.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/01_CYBORG.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/09_CYBORG.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/28_CYBORG.MD</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/20_CYBORG.MD</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/14_CYBORG.html</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/61_CYBORG.MD</loc>
@@ -274,7 +448,19 @@
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/32_CYBORG.MD</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/36_CYBORG.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/32_CYBORG.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/26_CYBORG.MD</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/04_CYBORG.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/47_CYBORG.html</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/19_CYBORG.MD</loc>
@@ -289,13 +475,25 @@
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/60_CYBORG.MD</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/42_CYBORG.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/49_CYBORG.MD</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/56_CYBORG.html</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/14_CYBORG.MD</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/15_CYBORG.MD</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/53_CYBORG.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/03_CYBORG.html</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/04_CYBORG.MD</loc>
@@ -313,13 +511,34 @@
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/22_CYBORG.MD</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/22_CYBORG.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/51_CYBORG.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/29_CYBORG.MD</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/21_CYBORG.html</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/21_CYBORG.MD</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/11_CYBORG.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/38_CYBORG.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/17_CYBORG.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/31_CYBORG.MD</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.2/50_CYBORG.html</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/desktop.js</loc>
@@ -346,6 +565,12 @@
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/07_CYBORG.MD</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/13_32CYBORG.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/18_CYBORG.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/18_CYBORG.MD</loc>
   </url>
   <url>
@@ -355,13 +580,43 @@
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/02_CYBORG.MD</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/24_CYBORG.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/20_CYBORG.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/16_CYBORG.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/23_CYBORG.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/08_CYBORG.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/01_CYBORG.MD</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/10_CYBORG.MD</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/15_CYBORG.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/03_CYBORG.MD</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/05_CYBORG.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/12_CYBORG.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/28_CYBORG.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/25_CYBORG.html</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/23_CYBORG.MD</loc>
@@ -370,13 +625,37 @@
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/11_CYBORG.MD</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/02_CYBORG.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/10_CYBORG.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/013-33_CYBORG.MD</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/29_CYBORG.html</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/16_CYBORG.MD</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/06_CYBORG.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/09_CYBORG.MD</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/19_CYBORG.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/26_CYBORG.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/07_CYBORG.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/27_CYBORG.html</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/27_CYBORG.MD</loc>
@@ -397,13 +676,28 @@
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/08_CYBORG.MD</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/013-33_CYBORG.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/01_CYBORG.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/09_CYBORG.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/28_CYBORG.MD</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/20_CYBORG.MD</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/14_CYBORG.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/26_CYBORG.MD</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/04_CYBORG.html</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/19_CYBORG.MD</loc>
@@ -418,6 +712,9 @@
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/15_CYBORG.MD</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/03_CYBORG.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/04_CYBORG.MD</loc>
   </url>
   <url>
@@ -427,10 +724,22 @@
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/13_32CYBORG.MD</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/22_CYBORG.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/29_CYBORG.MD</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/21_CYBORG.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/21_CYBORG.MD</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/11_CYBORG.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/CYBORG%20ev1.1/17_CYBORG.html</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20eV1.0/cyborg_dir.json</loc>
@@ -565,6 +874,9 @@
     <loc>https://github.com/mercwar/Cyborg/blob/main/Robo-Knight-Demos/Mercwar_DirectX-FOR-_PellesC_AI_GEN_v1/mercwar.ppx</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/Robo-Knight-Demos/Mercwar_DirectX-FOR-_PellesC_AI_GEN_v1/index.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/Robo-Knight-Demos/Mercwar_DirectX-FOR-_PellesC_AI_GEN_v1/README.md</loc>
   </url>
   <url>
@@ -580,6 +892,9 @@
     <loc>https://github.com/mercwar/Cyborg/blob/main/Robo-Knight-Demos/Mercwar_DirectX-FOR-_PellesC_AI_GEN_v1.zip</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/Robo-Knight-Demos/index.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/Robo-Knight-Demos/Readme.md</loc>
   </url>
   <url>
@@ -587,6 +902,12 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/drive_report.txt</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/robot_directives.fl</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20HYBRID%20V2/COVENANT_SCROLL.html</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20HYBRID%20V2/Source/artifact_registry.h</loc>
@@ -667,6 +988,9 @@
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20HYBRID%20V2/Source/sys_msg_vectors.dat</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20HYBRID%20V2/spec/HYBRID_SPEC.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20HYBRID%20V2/spec/HYBRID_SPEC.md</loc>
   </url>
   <url>
@@ -680,6 +1004,9 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20HYBRID%20V2/HYBRID_GRAMMAR.txt</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20HYBRID%20V2/index.html</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CYBORG%20HYBRID%20V2/maps/language_map.json</loc>
@@ -703,16 +1030,40 @@
     <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/45_EV2_COMPAT_FIRELANG.md</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/17_EV2_SHELL_ENTRY.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/00_EV2_OVERVIEW.md</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/07_EV2_EVENT_ROUTER.md</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/03_EV2_HEX_STRING_ENGINE.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/22_EV2_THREAD_MODEL.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/38_EV2_LOGIC_TENSOR_MODEL.md</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/04_EV2_SEED_PROTOCOL.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/32_EV2_GDI_PRIMITIVES.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/05_EV2_CDATA_PIPE.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/37_EV2_HUMAN_INTERFACE_LAYER.md</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/28_EV2_ERROR_CODES.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/15_EV2_CONTROL_FLOW.html</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/28_EV2_ERROR_CODES.md</loc>
@@ -727,7 +1078,13 @@
     <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/06_EV2_WINAPI_BRIDGE.md</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/41_EV2_AUDIT_SYSTEM.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/36_EV2_AI_INTERACTION_MODEL.md</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/11_EV2_STRUCTS_WINDOW.html</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/favicon.ico</loc>
@@ -739,10 +1096,19 @@
     <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/49_EV2_FINAL_SEAL.md</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/01_EV2_SYNTAX_CORE.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/33_EV2_COLOR_SPACE.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/27_EV2_FINALIZER.md</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/10_EV2_STRUCTS_BASE.md</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/48_EV2_VERSIONING.html</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/13_EV2_STRUCTS_CDATA.md</loc>
@@ -760,6 +1126,9 @@
     <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/ev2.css</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/37_EV2_HUMAN_INTERFACE_LAYER.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/41_EV2_AUDIT_SYSTEM.md</loc>
   </url>
   <url>
@@ -769,10 +1138,19 @@
     <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/39_EV2_ADDRESS_LOCKING.md</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/16_EV2_INTERRUPT_MAP.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/13_EV2_STRUCTS_CDATA.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/46_EV2_COMPAT_EV1.md</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/md_viewer.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/27_EV2_FINALIZER.html</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/47_EV2_COMPAT_DN.md</loc>
@@ -781,10 +1159,31 @@
     <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/02_EV2_MEMORY_MODEL.md</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/39_EV2_ADDRESS_LOCKING.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/18_EV2_FIRE_CORE_LINK.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/02_EV2_MEMORY_MODEL.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/36_EV2_AI_INTERACTION_MODEL.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/24_EV2_COMPILER_SPEC.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/08_EV2_TENSOR_ROLES.md</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/48_EV2_VERSIONING.md</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/35_EV2_SEMANTIC_ACTIONS.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/49_EV2_FINAL_SEAL.html</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/43_EV2_BURST_DAEMON.md</loc>
@@ -796,7 +1195,28 @@
     <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/19_EV2_PERSISTENCE_LAYER.md</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/12_EV2_STRUCTS_SEED.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/readme.md</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/34_EV2_FILE_SYSTEM_MAP.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/45_EV2_COMPAT_FIRELANG.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/10_EV2_STRUCTS_BASE.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/09_EV2_REGISTRY_MAP.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/20_EV2_SENTINEL_SCROLL.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/14_EV2_OPCODE_TABLE.html</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/04_EV2_SEED_PROTOCOL.md</loc>
@@ -808,10 +1228,25 @@
     <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/index.html</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/29_EV2_SECURITY_MODEL.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/33_EV2_COLOR_SPACE.md</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/21_EV2_DAEMON_MODEL.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/42_EV2_MACRO_BLOCKS.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/42_EV2_MACRO_BLOCKS.md</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/43_EV2_BURST_DAEMON.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/38_EV2_LOGIC_TENSOR_MODEL.html</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/14_EV2_OPCODE_TABLE.md</loc>
@@ -820,13 +1255,28 @@
     <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/03_EV2_HEX_STRING_ENGINE.md</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/25_EV2_LINKER_SPEC.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/18_EV2_FIRE_CORE_LINK.md</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/09_EV2_REGISTRY_MAP.md</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/07_EV2_EVENT_ROUTER.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/19_EV2_PERSISTENCE_LAYER.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/40_EV2_TRUTH_GATE_MODEL.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/15_EV2_CONTROL_FLOW.md</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/44_EV2_THERMAL_MODEL.html</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/34_EV2_FILE_SYSTEM_MAP.md</loc>
@@ -859,16 +1309,43 @@
     <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/30_EV2_IO_MODEL.md</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/47_EV2_COMPAT_DN.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/31_EV2_HWND_BINDINGS.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/26_EV2_BOOT_SEQUENCE.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/23_EV2_RUNTIME_PIPELINE.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/46_EV2_COMPAT_EV1.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/favi-con.ico</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/16_EV2_INTERRUPT_MAP.md</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/30_EV2_IO_MODEL.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/20_EV2_SENTINEL_SCROLL.md</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/08_EV2_TENSOR_ROLES.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/06_EV2_WINAPI_BRIDGE.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/12_EV2_STRUCTS_SEED.md</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/00_EV2_OVERVIEW.html</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/ev-2/24_EV2_COMPILER_SPEC.md</loc>
@@ -905,6 +1382,9 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/Constellation/constellation_validator.h</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/Constellation/index.html</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/Constellation/PUBLISH.index</loc>
@@ -970,6 +1450,9 @@
     <loc>https://github.com/mercwar/Cyborg/blob/main/CITATION.cff</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/RobotValidator.java</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/README</loc>
   </url>
   <url>
@@ -979,7 +1462,13 @@
     <loc>https://github.com/mercwar/Cyborg/blob/main/CVBGOD/CVBGOD</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/CVBGOD/BASH</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/SYMSYS_NEW_KB_123000000_LIB.zip</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/app/README-11.html</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/app/README-10.md</loc>
@@ -988,7 +1477,16 @@
     <loc>https://github.com/mercwar/Cyborg/blob/main/app/README-4.md</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/app/README-9.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/app/README-8.md</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/app/README-4.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/app/README-6.html</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/app/README-13.md</loc>
@@ -1003,10 +1501,28 @@
     <loc>https://github.com/mercwar/Cyborg/blob/main/app/README-3.md</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/app/README-13.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/app/README-7.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/app/README-10.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/app/README-8.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/app/README-12.md</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/app/README-2.md</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/app/README-2.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/app/README-5.html</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/app/README-5.md</loc>
@@ -1016,6 +1532,12 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/app/README-9.md</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/app/README-12.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/app/README-3.html</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/images/mercwar_v014.png</loc>
@@ -1049,6 +1571,9 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/images/Gemini_Generated_Image_pbr10ppbr10ppbr1.png</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/images/index.html</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/images/mercwar_v011.png</loc>
@@ -1183,7 +1708,25 @@
     <loc>https://github.com/mercwar/Cyborg/blob/main/Fire-Lang/docs/GLOBAL_CYBORG_DN_MANIFEST.md</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/Fire-Lang/docs/FINAL_README.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/Fire-Lang/docs/CYBORG_CVBGOD.MD</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/Fire-Lang/docs/CYBORG_CVBGOD.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/Fire-Lang/docs/SUMMARY_SCROLL.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/Fire-Lang/docs/GLOBAL_CYBORG_DN_MANIFEST.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/Fire-Lang/docs/CVBGOD_DN_DEEP_PULSE_EXPANSION.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/Fire-Lang/docs/MSDN_CYBORG_FIRE_REF.html</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/Fire-Lang/docs/MASTER_REFERENCE.MD</loc>
@@ -1192,10 +1735,16 @@
     <loc>https://github.com/mercwar/Cyborg/blob/main/Fire-Lang/docs/CVBGOD_DN_DEEP_PULSE_EXPANSION.md</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/Fire-Lang/docs/MASTER_REFERENCE.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/Fire-Lang/docs/FINAL_README.md</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/Fire-Lang/docs/README.MD</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/Fire-Lang/docs/CVBGOD_DN_SPEC.html</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/Fire-Lang/src/security_gate.fire.avis</loc>
@@ -1283,6 +1832,9 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/Fire-Lang/bin/BINARY_OFFSET_MAP.md</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/Fire-Lang/bin/BINARY_OFFSET_MAP.html</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/CONTRIBUTING.md</loc>
@@ -1450,6 +2002,9 @@
     <loc>https://github.com/mercwar/Cyborg/blob/main/fire-gem/fire-macro.asm</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/universal_hook.fl</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/desktop.css</loc>
   </url>
   <url>
@@ -1463,285 +2018,6 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/index.js</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_011.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_061.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_015.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_046.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_022.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_048.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_050.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_060.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_068.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_012.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_076.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_023.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_088.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_077.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_065.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_038.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_028.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_051.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_025.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_013.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_035.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_055.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_085.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_018.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_036.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_058.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_016.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_045.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_081.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_026.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_052.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_005.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_004.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_082.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_009.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_064.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_001.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_020.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_092.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_032.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_008.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_066.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_040.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_019.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_091.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_042.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_010.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_079.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_007.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_021.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_062.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_078.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_014.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_033.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_059.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_030.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_087.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_017.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_069.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_093.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_053.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_080.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_003.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_084.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_000.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_074.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_044.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_034.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_029.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_071.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_031.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_006.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_054.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_041.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_075.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_056.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_002.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_083.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_039.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_067.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_024.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_057.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_073.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_047.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_043.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_089.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_049.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_072.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_086.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_063.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_027.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_090.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/Json%201/_070.md</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/Continuum/CVBGOD.json</loc>
@@ -1861,6 +2137,9 @@
     <loc>https://github.com/mercwar/Cyborg/blob/main/WebView2/My%20Files/WebView2_CAPI.h</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/WebView2/My%20Files/index.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/WebView2/My%20Files/WebView2_ctrl.h</loc>
   </url>
   <url>
@@ -1888,10 +2167,16 @@
     <loc>https://github.com/mercwar/Cyborg/blob/main/WebView2/SDK%20Files/WebView2_SDK.zip</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/WebView2/SDK%20Files/index.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/WebView2/SDK%20Files/Readme.md</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/WebView2/SDK%20Files/WebView2.h</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/WebView2/index.html</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/WebView2/Readme.md</loc>
@@ -2245,6 +2530,9 @@
     <loc>https://github.com/mercwar/Cyborg/blob/main/Direct%20X%20Standard%20C/Mercwar_DirectX-FOR-_PellesC_AI_GEN_v1/mercwar.ppx</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/Direct%20X%20Standard%20C/Mercwar_DirectX-FOR-_PellesC_AI_GEN_v1/index.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/Direct%20X%20Standard%20C/Mercwar_DirectX-FOR-_PellesC_AI_GEN_v1/README.md</loc>
   </url>
   <url>
@@ -2260,10 +2548,19 @@
     <loc>https://github.com/mercwar/Cyborg/blob/main/Direct%20X%20Standard%20C/Mercwar_DirectX-FOR-_PellesC_AI_GEN_v1.zip</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/Direct%20X%20Standard%20C/index.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/Direct%20X%20Standard%20C/Readme.md</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/favi-con.ico</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/environment_state.fl</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/assets/css/style.css</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/Robotics/A%20full-body%20cinemati.png</loc>
