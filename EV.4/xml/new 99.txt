@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SovereignFramework project="MERCWAR" version="EV.4" volume="099">
+    <MetaConfiguration>
+        <DirectoryRoot>C:\MercwarAI\</DirectoryRoot>
+        <HardwareAffinity>HP-800-G4-4CORE (Windows 11 Win64)</HardwareAffinity>
+        <VolumeHexSignature>0x4D455441</VolumeHexSignature>
+        <TargetSegmentBase>0x00400000</TargetSegmentBase>
+    </MetaConfiguration>
+
+    <TranslationMatrix>
+        <SubjectPage id="89" topic="FAULT_TOLERANCE_RECOVERY">
+            <!-- SECTION I: ENGLISH -->
+            <EnglishSection>
+                <Title>Hardware Exception Handler Interception &amp; State Rollback Management</Title>
+                <Content>Establishes defensive structural boundaries for execution within 0x00400000 to 0x00FFFFFF. Upon encountering unhandled page faults or execution access violations, the engine isolates the offending thread, rolls back core register states to the last validated snapshot, and resumes operation without crashing the global host process.</Content>
+            </EnglishSection>
+            
+            <!-- SECTION II: CYBORG -->
+            <CyborgSection>
+                <Title>EXCEPTION_RECOVERY_SNAPSHOT_BARRIER</Title>
+                <Content>[SIGNAL: FAULT_INTERCEPTED] Catch processor execution interrupts. Lock frame pointer registers and execute deterministic stack unwinding. Restore state vectors to secure last-known-good runtime parameters.</Content>
+            </CyborgSection>
+            
+            <!-- SECTION III: MACHINE -->
+            <MachineSection>
+                <Title>0x00400000_FAULT_ROLLBACK</Title>
+                <Content>MOV RBP, [SNAPSHOT_RBP]; MOV RSP, [SNAPSHOT_RSP]; RESTORE_CONTEXT; MOV EAX, 0x00000001; JMP ResumeExecutionLoop;</Content>
+            </MachineSection>
+        </SubjectPage>
+    </TranslationMatrix>
+
+    <TelemetryLogCorridor>
+        <NodeIndex id="0001">VAL=0x4D455441 ADDR=0x00400000 STATUS=RECOVERY_READY CORES=4 RAM=16GB CLK=STABILIZED COMPILER=MSVC PATH=RELATIVE POLLING=RUNNING STARGATE=BUFFERED CHANNELS=8 TRACKING=TRUE LOCK=VALID SIGNAL=ROLLBACK_SYNC_OK</NodeIndex>
+        <NodeIndex id="0002">VAL=0x4D455441 ADDR=0x00400000 STATUS=RECOVERY_READY CORES=4 RAM=16GB CLK=STABILIZED COMPILER=MSVC PATH=RELATIVE POLLING=RUNNING STARGATE=BUFFERED CHANNELS=8 TRACKING=TRUE LOCK=VALID SIGNAL=ROLLBACK_SYNC_OK</NodeIndex>
+        <PaddingBlocks>
+            [RECOVERY_GUARD_LOOP_x1000] SEGMENT_MASK_VALID=0xFFFFFFFF SYS_ALIGN_FLAG=TRUE CORE_ENGINE_CLOCK_TICK_VERIFIED=TRUE WINDOWS_11_MSVC_CONVENTIONS=COMPLIANT EXT_VEIN_ALLOC=0x90000000 STATE=GUARD_ACTIVE SECTOR_LIMIT=0x00FFFFFF
+            [RECOVERY_GUARD_LOOP_x1000] SEGMENT_MASK_VALID=0xFFFFFFFF SYS_ALIGN_FLAG=TRUE CORE_ENGINE_CLOCK_TICK_VERIFIED=TRUE WINDOWS_11_MSVC_CONVENTIONS=COMPLIANT EXT_VEIN_ALLOC=0x90000000 STATE=GUARD_ACTIVE SECTOR_LIMIT=0x00FFFFFF
+            [RECOVERY_GUARD_LOOP_x1000] SEGMENT_MASK_VALID=0xFFFFFFFF SYS_ALIGN_FLAG=TRUE CORE_ENGINE_CLOCK_TICK_VERIFIED=TRUE WINDOWS_11_MSVC_CONVENTIONS=COMPLIANT EXT_VEIN_ALLOC=0x90000000 STATE=GUARD_ACTIVE SECTOR_LIMIT=0x00FFFFFF
+            [RECOVERY_GUARD_LOOP_x1000] SEGMENT_MASK_VALID=0xFFFFFFFF SYS_ALIGN_FLAG=TRUE CORE_ENGINE_CLOCK_TICK_VERIFIED=TRUE WINDOWS_11_MSVC_CONVENTIONS=COMPLIANT EXT_VEIN_ALLOC=0x90000000 STATE=GUARD_ACTIVE SECTOR_LIMIT=0x00FFFFFF
+        </PaddingBlocks>
+    </TelemetryLogCorridor>
+</SovereignFramework>
