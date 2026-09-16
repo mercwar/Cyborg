@@ -1,74 +1,64 @@
-    const TARGET_DIR = 'xml/';
+const TARGET_DIR = 'xml/';
 
-    function safeUrlDecode(str) {
-        try {
-            return decodeURIComponent(str);
-        } catch (e) {
-            return unescape(str);
-        }
+function safeUrlDecode(str) {
+    try {
+        return decodeURIComponent(str);
+    } catch (e) {
+        return unescape(str);
     }
-    async function scanServerDirectory() {
-        const treeContainer = document.getElementById('file-tree');
-        treeContainer.innerHTML = '<div style="grid-column: span 2; padding: 10px; color: var(--text-muted); font-size: 0.8rem; text-align: center;">Reading...</div>';
+}
 
-        try {
-            let fileList = [];
-            const isGitHubPages = window.location.hostname.includes('github.io');
+async function scanServerDirectory() {
+    const treeContainer = document.getElementById('file-tree');
+    treeContainer.innerHTML = '<div style="grid-column: span 2; padding: 10px; color: var(--text-muted); font-size: 0.8rem; text-align: center;">Reading...</div>';
 
-            if (isGitHubPages) {
-                // Parse repository details directly from the URL structure: username.github.io/repo-name
-                const pathParts = window.location.pathname.split('/').filter(Boolean);
-                const username = window.location.hostname.split('.')[0];
-                const repo = pathParts[0]; 
+    try {
+        let fileList = [];
+        const isGitHubPages = window.location.hostname.includes('github.io');
 
-                if (username && repo) {
-                    // Fetch file list via GitHub Public Contents API
-                    const apiUrl = `https://api.github.com{username}/${repo}/contents/${TARGET_DIR.replace(/\/$/, '')}`;
-                    let ghResponse = await fetch(apiUrl).catch(() => null);
-                    
-                    if (ghResponse && ghResponse.ok) {
-                        const data = await ghResponse.json();
-                        fileList = data
-                            .filter(item => item.type === 'file' && (item.name.endsWith('.txt') || item.name.endsWith('.xml')))
-                            .map(item => item.name);
-                    }
+        if (isGitHubPages) {
+            // Parse username and repo name from URL
+            const pathParts = window.location.pathname.split('/').filter(Boolean);
+            const username = window.location.hostname.split('.')[0];
+            const repo = pathParts.length > 0 ? pathParts[0] : null;
+
+            if (username && repo) {
+                // Correct GitHub Contents API URL
+                const apiUrl = `https://api.github.com/repos/${username}/${repo}/contents/${TARGET_DIR.replace(/\/$/, '')}`;
+                let ghResponse = await fetch(apiUrl).catch(() => null);
+
+                if (ghResponse && ghResponse.ok) {
+                    const data = await ghResponse.json();
+                    fileList = data
+                        .filter(item => item.type === 'file' && (item.name.endsWith('.txt') || item.name.endsWith('.xml')))
+                        .map(item => item.name);
                 }
             }
+        }
 
-            // Fallback to local server methods if GitHub API path wasn't used or failed
-            if (fileList.length === 0) {
-                let response = await fetch('list_files.php').catch(() => null);
-
-                if (response && response.ok) {
-                    fileList = await response.json();
-                } else {
-                    response = await fetch(TARGET_DIR);
-                    if (!response.ok) throw new Error(`Directory index inaccessible at '${TARGET_DIR}'`);
-                    
-                    const htmlText = await response.text();
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(htmlText, 'text/html');
-                    
-                    const links = Array.from(doc.querySelectorAll('a'));
-                    fileList = links
-                        .map(a => a.getAttribute('href'))
-                        .filter(href => href && (href.endsWith('.txt') || href.endsWith('.xml')))
-                        .map(href => href.replace(/^.*[\\\/]/, ''));
-                }
-            }
-
-            fileList = fileList.map(name => safeUrlDecode(name));
-            renderSidebar(fileList);
-        } catch (err) {
-            console.warn("Server directory scan error:", err);
+        // If API failed or not on GitHub Pages, no files found
+        if (fileList.length === 0) {
             treeContainer.innerHTML = `
                 <div style="grid-column: span 2; padding: 10px; color: var(--text-muted); font-size: 0.8rem; text-align: center;">
-                    Auto-index off.<br><br>
+                    No files found.<br><br>
                     <a href="#" onclick="manualPagePrompt()" style="color: var(--text-accent);">[Enter Page #]</a>
                 </div>
             `;
+            return;
         }
+
+        fileList = fileList.map(name => safeUrlDecode(name));
+        renderSidebar(fileList);
+    } catch (err) {
+        console.warn("Server directory scan error:", err);
+        treeContainer.innerHTML = `
+            <div style="grid-column: span 2; padding: 10px; color: var(--text-muted); font-size: 0.8rem; text-align: center;">
+                Auto-index off.<br><br>
+                <a href="#" onclick="manualPagePrompt()" style="color: var(--text-accent);">[Enter Page #]</a>
+            </div>
+        `;
     }
+}
 
 
     function extractPageNumber(fileName, index) {
