@@ -1,50 +1,57 @@
 /* =========================================================================================
- * CORE ENGINE:   EV4_CORE.C
+ * CORE ENGINE:   EV4_CORE.C (WITH DIRECT ASSEMBLY LINKAGE)
  * LOCAL PATH:    .\Cyborg\src\core\ev4_core.c (Unified Framework Tree)
- * INSTRUCTION:   Implements the permanent event-driven validation loops
+ * INSTRUCTION:   Binds low-level ASM polling protocols to the high-level C validation loop
  * ========================================================================================= */
 
-#include "ev4_vectors.h"
+#include "../include/ev4_vectors.h"
 #include <stdbool.h>
 
+/* -----------------------------------------------------------------------------------------
+ * LOW-LEVEL ASSEMBLY EXTERNAL LINKAGE DECLARATIONS
+ * Matched directly to targets inside: .\Sentinel\src\core\asm\ev4_validator.asm
+ * ----------------------------------------------------------------------------------------- */
+extern uint64_t PollSentinelLogBlocks(void);
+extern void     ClearStargateVein(void);
+
 typedef struct {
-    uint64_t engine_cycle;
-    uint32_t validation_mask;
-    bool     is_aligned;
-} Ev4StatusMatrix;
+    uint64_t system_cycles;
+    uint64_t logs_processed;
+    bool     is_active;
+} Ev4RuntimeMatrix;
 
 /* -----------------------------------------------------------------------------------------
- * FUNCTION: ExecuteSingleDirectoryEvlLoop
- * DIRECTIVE: Runs native environment validation check intervals without path jumping
+ * FUNCTION: ExecuteSovereignFrameworkPass
+ * DIRECTIVE: Blends assembly hardware level polling loops cleanly into high-level C validation
  * ----------------------------------------------------------------------------------------- */
-void ExecuteSingleDirectoryEvlLoop(void) {
-    // 1. Establish absolute pointer links to localized memory boundaries
+void ExecuteSovereignFrameworkPass(void) {
     volatile uint32_t *identity_pulse = (volatile uint32_t *)IPC_TRAY_MENU_BASE;
     volatile uint32_t *stargate_vein   = (volatile uint32_t *)IPC_STARGATE_PIPE_BASE;
     
-    Ev4StatusMatrix local_node = { 0, 0, false };
+    Ev4RuntimeMatrix runtime_node = { 0, 0, true };
 
-    // 2. Start structural validation cycle pass
-    while (true) {
-        local_node.engine_cycle++;
+    while (runtime_node.is_active) {
+        runtime_node.system_cycles++;
 
-        // Verify workspace is bound cleanly to the project identity token
+        // 1. Identity Gate: Force fallback containment if framework breaks 'META' token alignment
         if (*identity_pulse != IDENTITY_MARKER_META) {
-            local_node.is_aligned = false;
-            *stargate_vein = 0xDEADBEEFU; // Broadcast memory segment isolation lock
-            break; 
+            runtime_node.is_active = false;
+            *stargate_vein = 0xDEADBEEFU; // Lock down virtual address space lines
+            break;
         }
 
-        // 3. Monitor for active virtual file changes passing through the pipeline channel
-        uint32_t active_telemetry_signal = *stargate_vein;
-        if (active_telemetry_signal != 0) {
-            local_node.is_aligned = true;
-            local_node.validation_mask = 0x00A400FFU; // Pulse state indicator back to stack
+        // 2. Invoke raw assembly routine to inspect uninitialized BSS buffer pools directly via registers
+        uint64_t polling_result = PollSentinelLogBlocks();
+        
+        if (polling_result == 1) {
+            runtime_node.logs_processed++;
             
-            // Clear current signal frame cleanly via native register interaction
-            *stargate_vein = 0x00000000U;
+            // 3. Process data frame validation stream, then scrub the data vein with assembly microcode
+            // [Robot Action Intercepts Hook here during user interactions]
+            
+            ClearStargateVein(); // Invoke MASM/NASM rep stosq string instruction mapping
         }
 
-        // Execution frequency timing is regulated by the host hardware constraints
+        // Execution speed steps directly alongside host machine 4-Core clock performance
     }
 }
