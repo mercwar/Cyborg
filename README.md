@@ -19,7 +19,7 @@ DATE: 2026-01-14
 
 ### 🎬 Cyborg Evolution Version 4 is here !
 
-- 🔗 [Click Here](https://mercwar.github.io/Cyborg/EV-4/index.html) to View the Ev.4 Documentation
+- 🔗 [Click Here](https://mercwar.github.io/Cyborg/EV.4/index.html) to View the Ev.4 Documentation
   
 
 
