@@ -5,7 +5,7 @@ AUTHOR: CGPT / MercWar
 DATE: 2026-01-14
 -->
 
-## 🧬 AVIS
+## 🧬 The Cyborg System
 <a target="_self" title="CLICK HERE to ENTER the GATEWAY FREE!" href="https://mercwar.github.io/Constellation/index.html">
 <img 
     src="https://raw.githubusercontent.com/mercwar/Robo-Knight-Gallery/refs/heads/main/Version%207/image_d2a07390.png" 
@@ -14,7 +14,23 @@ DATE: 2026-01-14
 />
 </a>
 
+
 ---
+
+### 🎬 Cyborg Evolution Version 4 is here !
+
+- 🔗 [Click Here](https://mercwar.github.io/Cyborg/EV-4/index.html) to View the Ev.4 Documentation
+  
+
+
+<a target="_self" title="CLICK HERE to ENTER  FREE!" href="https://mercwar.github.io/Cyborg/EV.4/">
+<img 
+    src="EV.4/image_d538c0f.jpg" 
+    alt="Mercwar EV" 
+    style="width:100%; height:auto;"
+/>
+</a>
+
 
 ### 
 - AI Visual Instruction System  
