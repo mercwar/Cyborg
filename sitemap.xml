@@ -901,6 +901,9 @@
     <loc>https://github.com/mercwar/Cyborg/blob/main/include/cyborg_engine.h</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/include/ev4_vectors.h</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/drive_report.txt</loc>
   </url>
   <url>
@@ -2516,6 +2519,9 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/src/package_deployer.c</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Cyborg/blob/main/src/core/ev4_core.c</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Cyborg/blob/main/src/core/ev4_controller.c</loc>
