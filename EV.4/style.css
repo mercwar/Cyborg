@@ -1196,3 +1196,313 @@ body::before {
 .refresh-btn:active {
     transform: scale(0.93);
 }
+
+/* ============================================================================
+   MERCWAR EV.4 SOVEREIGN GLOW MATRIX OVERLAY — FUTURISTIC INTERFACE PATCH
+   ============================================================================ */
+
+@import url('https://googleapis.com');
+
+:root {
+    --bg-main: #020205;
+    --bg-sidebar: #05070f;
+    --bg-panel: rgba(10, 14, 26, 0.75);
+    --border-color: #2ea043;
+    --text-main: #d1d9e3;
+    --text-muted: #627284;
+    --text-accent: #38ef7d;
+    --text-telemetry: #00f0ff;
+    --text-alert: #ff4a4a;
+    --glow-color: rgba(56, 239, 125, 0.25);
+    --font-stack: 'Orbitron', monospace;
+}
+
+/* 1. Holographic Workspace Shell */
+body {
+    background: radial-gradient(circle at 50% 50%, #0d1326 0%, #020205 100%) !important;
+    font-family: var(--font-stack) !important;
+}
+
+#sidebar, #workspace {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+/* 2. Tactical Scanning Borders & Title Enhancements */
+#app-title {
+    font-weight: 900 !important;
+    letter-spacing: 2px !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 12px var(--glow-color), 0 0 2px var(--text-accent) !important;
+}
+
+.sidebar-header {
+    background: linear-gradient(90deg, rgba(46, 160, 67, 0.1) 0%, transparent 100%);
+    border-bottom: 2px solid var(--border-color) !important;
+}
+
+/* 3. High-Velocity Cybernetic Sidebar Tree Toggles */
+.tree-item {
+    font-weight: 700;
+    letter-spacing: 1px;
+    border-left: 3px solid rgba(255, 255, 255, 0.1) !important;
+    background: linear-gradient(90deg, rgba(255,255,255,0.01) 0%, transparent 100%) !important;
+    text-shadow: 0 0 4px rgba(0,0,0,0.5);
+}
+
+.tree-item:hover {
+    border-left-color: var(--text-telemetry) !important;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.15) !important;
+}
+
+.tree-item.active {
+    border-left-color: var(--text-accent) !important;
+    color: var(--text-accent) !important;
+    text-shadow: 0 0 8px var(--text-accent) !important;
+    background: linear-gradient(90deg, rgba(56, 239, 125, 0.08) 0%, transparent 100%) !important;
+    animation: horizonPulse 2s infinite ease-in-out;
+}
+
+/* 4. Glass-Glass Console Configuration Modules */
+.meta-item {
+    background: var(--bg-panel) !important;
+    border: 1px solid rgba(46, 160, 67, 0.3) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), inset 0 0 12px rgba(56, 239, 125, 0.05) !important;
+}
+
+/* 5. Telemetry Corridor CRT Simulation HUD */
+.telemetry-corridor {
+    border: 1px solid rgba(0, 240, 255, 0.3) !important;
+    background: rgba(0, 3, 10, 0.9) !important;
+    box-shadow: inset 0 0 15px rgba(0, 240, 255, 0.1), 0 0 10px rgba(0, 0, 0, 0.8) !important;
+    position: relative;
+}
+
+/* Subtle diagnostic scanlines running through logging panel */
+.telemetry-corridor::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 2;
+    background-size: 100% 3px, 3px 100%;
+    pointer-events: none;
+}
+
+.status-bar {
+    border-top: 1px solid rgba(46, 160, 67, 0.4) !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px var(--text-accent);
+}
+
+/* 6. Mechanical System Pulse Signatures */
+@keyframes horizonPulse {
+    0% { box-shadow: inset 0 0 8px rgba(56, 239, 125, 0.05); }
+    50% { box-shadow: inset 0 0 16px rgba(56, 239, 125, 0.2), 0 0 8px rgba(56, 239, 125, 0.1); }
+    100% { box-shadow: inset 0 0 8px rgba(56, 239, 125, 0.05); }
+}
+
+        /* Sovereign Framework Theme Presets */
+        :root {
+            --bg-main: #020205;
+            --bg-sidebar: #070913;
+            --bg-panel: #0d1117;
+            --border-color: #2ea043;
+            --text-main: #c9d1d9;
+            --text-muted: #8b949e;
+            --text-accent: #52f87a;
+            --text-alert: #f85149;
+            --text-telemetry: #38bdf8;
+            --font-stack: 'Orbitron', 'Courier New', monospace;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: var(--font-stack);
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Sidebar Matrix */
+        #sidebar {
+            width: 300px;
+            background-color: var(--bg-sidebar);
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+        }
+
+        .sidebar-header {
+            padding: 16px;
+            border-bottom: 1px solid rgba(46, 160, 67, 0.4);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sidebar-title {
+            margin: 0;
+            font-size: 1rem;
+            color: #ffffff;
+            letter-spacing: 1px;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+        }
+
+        .refresh-btn {
+            background: rgba(46, 160, 67, 0.1);
+            color: var(--text-accent);
+            border: 1px solid var(--border-color);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            font-family: var(--font-stack);
+            transition: all 0.2s ease;
+        }
+
+        .refresh-btn:hover {
+            background: var(--border-color);
+            color: #000000;
+            box-shadow: 0 0 10px var(--text-accent);
+        }
+
+        .file-tree {
+            flex: 1;
+            padding: 12px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .tree-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 10px 14px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .tree-item:hover {
+            border-color: var(--text-telemetry);
+            background: rgba(56, 189, 248, 0.05);
+            color: #ffffff;
+        }
+
+        .tree-item.active {
+            border-color: var(--text-accent);
+            background: rgba(46, 160, 67, 0.1);
+            color: var(--text-accent);
+            box-shadow: inset 0 0 8px rgba(82, 248, 122, 0.1);
+        }
+
+        /* Main Workspace Content */
+        #workspace {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+            background: radial-gradient(circle at top right, rgba(7, 9, 19, 0.5), transparent);
+        }
+
+        .container {
+            flex: 1;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            box-sizing: border-box;
+        }
+
+        header {
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 12px;
+        }
+
+        #app-title {
+            margin: 0;
+            font-size: 1.4rem;
+            color: #ffffff;
+            letter-spacing: 1px;
+        }
+
+        /* Telemetry Dashboard Metadata Grid */
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .meta-item {
+            background: var(--bg-panel);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            line-height: 1.4;
+        }
+
+        .meta-label {
+            color: var(--text-muted);
+            margin-right: 6px;
+        }
+
+        /* Action/Translation Output Areas */
+        #translation-container {
+            flex: 1;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        .telemetry-corridor {
+            background: #000000;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            padding: 12px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.8rem;
+            line-height: 1.5;
+            color: var(--text-muted);
+            min-height: 60px;
+            max-height: 120px;
+            overflow-y: auto;
+        }
+
+        /* System Status Output Bar */
+        .status-bar {
+            background: var(--bg-sidebar);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 8px 14px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
+
+        /* WebKit Scrollbar Overrides */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-main);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--border-color);
+        }

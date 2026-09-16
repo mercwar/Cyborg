@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MERCWAR EV.4 Sovereign Framework Explorer</title>
-
-	<link rel="stylesheet" href="style.css?v=2" />
+    <link rel="stylesheet" href="style.css?v=6" />
 </head>
 
 <body>
@@ -19,7 +18,7 @@
         <button class="refresh-btn" onclick="scanServerDirectory()">[SCAN]</button>
     </div>
     <div id="file-tree" class="file-tree">
-        <div style="grid-column: span 2; padding: 10px; color: var(--text-muted); font-size: 0.8rem; text-align: center;">Scanning...</div>
+        <div style="padding: 10px; color: var(--text-muted); font-size: 0.8rem; text-align: center;">Click Scan</div>
     </div>
 </div>
 
@@ -27,7 +26,7 @@
     <div class="container">
         <header>
             <h1 id="app-title">MERCWAR EV.4 — SYSTEM INTERFACE</h1>
-            <div id="app-volume" style="color: var(--text-muted); font-size: 0.9rem;">VOL: --</div>
+            <div id="app-volume" style="color: var(--text-muted); font-size: 0.9rem; margin-top: 4px;">VOL: --</div>
         </header>
 
         <div id="meta-container" class="meta-grid">
@@ -36,7 +35,7 @@
 
         <div id="translation-container"></div>
 
-        <h2 style="font-size: 0.9rem; color: var(--text-accent); margin-top: 25px; letter-spacing: 1px;">TELEMETRY LOG CORRIDOR</h2>
+        <h2 style="font-size: 0.9rem; color: var(--text-telemetry); margin-top: 15px; letter-spacing: 1px;">TELEMETRY LOG CORRIDOR</h2>
         <div id="telemetry-container" class="telemetry-corridor">
             Awaiting telemetry pipeline connection...
         </div>
@@ -45,7 +44,7 @@
     </div>
 </div>
 
-<script src="script.js"></script>
+<script src="script.js?v=6"></script>
 
 </body>
 </html>

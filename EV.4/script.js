@@ -1,4 +1,7 @@
-const TARGET_DIR = 'xml/';
+const TARGET_DIR = 'EV.4/xml/';
+const USERNAME = 'mercwar';
+const REPO = 'Cyborg';
+const BRANCH = 'main'; // adjust if needed
 
 function safeUrlDecode(str) {
   try { return decodeURIComponent(str); }
@@ -7,184 +10,249 @@ function safeUrlDecode(str) {
 
 async function scanServerDirectory() {
   const treeContainer = document.getElementById('file-tree');
-  treeContainer.innerHTML = '<div style="grid-column: span 2; padding: 10px; color:#555;">Reading...</div>';
+  treeContainer.innerHTML = 'Reading...';
 
   try {
     let fileList = [];
-    const isGitHubPages = window.location.hostname.includes('github.io');
+    // Strips out any potential duplicate back-to-back slash configurations cleanly
+    const cleanPath = TARGET_DIR.replace(/^\/+|\/+$/g, '');
+    const apiUrl = `https://api.github.com/repos/${USERNAME}/${REPO}/contents/${cleanPath}`;
+    
+    const ghResponse = await fetch(apiUrl);
 
-    if (isGitHubPages) {
-      const pathParts = window.location.pathname.split('/').filter(Boolean);
-      const username = window.location.hostname.split('.')[0];
-      const repo = pathParts.length > 0 ? pathParts[0] : null;
-
-      if (username && repo) {
-        const apiUrl = `https://api.github.com/repos/${username}/${repo}/contents/${TARGET_DIR.replace(/\/$/, '')}`;
-        let ghResponse = await fetch(apiUrl).catch(() => null);
-
-        if (ghResponse && ghResponse.ok) {
-          const data = await ghResponse.json();
-          fileList = data
-            .filter(item => item.type === 'file' && (item.name.endsWith('.txt') || item.name.endsWith('.xml')))
-            .map(item => item.name);
-        }
+    if (ghResponse && ghResponse.ok) {
+      const data = await ghResponse.json();
+      if (Array.isArray(data)) {
+         fileList = data.filter(item => item.type === 'file' && item.name.endsWith('.txt')).map(item => item.name);
       }
-    }
-
-    if (fileList.length === 0) {
-      treeContainer.innerHTML = '<div style="grid-column: span 2; padding: 10px; color:#555;">No files found.</div>';
+    } else {
+      // Exposes any hidden HTTP status code blocks (like 404 or 403 Rate Limits) straight to the sidebar container
+      treeContainer.innerHTML = `API HTTP Error: ${ghResponse ? ghResponse.status : 'No response'}`;
       return;
     }
 
-    fileList = fileList.map(name => safeUrlDecode(name));
+    if (fileList.length === 0) {
+      treeContainer.innerHTML = 'No files found.';
+      return;
+    }
+
     renderSidebar(fileList);
   } catch (err) {
     console.warn("Server directory scan error:", err);
-    treeContainer.innerHTML = '<div style="grid-column: span 2; padding: 10px; color:#555;">Auto-index off.</div>';
+    treeContainer.innerHTML = 'Error loading directory.';
   }
-}
-
-function extractPageNumber(fileName, index) {
-  const decodedName = safeUrlDecode(fileName);
-  const match = decodedName.match(/\d+/g);
-  if (match) {
-    let numStr = match.join('');
-    return numStr.length === 1 ? '0' + numStr : numStr;
-  }
-  return String(index + 1).padStart(2, '0');
 }
 
 function renderSidebar(files) {
   const treeContainer = document.getElementById('file-tree');
   treeContainer.innerHTML = '';
 
-  const pages = files.map((fileName, idx) => {
-    const decoded = safeUrlDecode(fileName);
-    return {
-      numStr: extractPageNumber(decoded, idx),
-      numVal: parseInt(extractPageNumber(decoded, idx), 10) || (idx + 1),
-      fileName: decoded
-    };
-  }).sort((a, b) => a.numVal - b.numVal);
-
-  pages.forEach((page, index) => {
+  files.forEach((fileName, index) => {
     const item = document.createElement('div');
     item.className = 'tree-item';
     item.id = `page-btn-${index}`;
 
-    const pathParts = window.location.pathname.split('/').filter(Boolean);
-    const username = window.location.hostname.split('.')[0];
-    const repo = pathParts.length > 0 ? pathParts[0] : null;
-    const branch = 'main'; // adjust if your repo uses another branch
-    const fullPath = `https://raw.githubusercontent.com/${username}/${repo}/${branch}/${TARGET_DIR}${page.fileName}`;
+    // Fix raw file link construction to avoid string tracking assembly double slashes
+    const cleanDir = TARGET_DIR.endsWith('/') ? TARGET_DIR : TARGET_DIR + '/';
+    const fullPath = `https://raw.githubusercontent.com/${USERNAME}/${REPO}/${BRANCH}/${cleanDir}${fileName}`;
 
-    item.innerHTML = `<span class="item-label">PAGE</span><span class="item-number">${page.numStr}</span>`;
+    item.textContent = `PAGE ${index + 1}`;
     item.onclick = () => {
       document.querySelectorAll('.tree-item').forEach(el => el.classList.remove('active'));
       item.classList.add('active');
-      loadSovereignData(fullPath, page.fileName);
+      loadSovereignData(fullPath, fileName);
     };
 
     treeContainer.appendChild(item);
   });
-
-  const first = document.getElementById('page-btn-0');
-  if (first) first.click();
 }
 
 async function loadSovereignData(filepath, displayName) {
   const statusBar = document.getElementById('status-bar');
-  const readableName = safeUrlDecode(displayName || filepath);
-
   try {
-    statusBar.innerText = `FETCHING FILE: [${readableName}]...`;
+    statusBar.innerText = `FETCHING FILE: [${displayName}]...`;
     const response = await fetch(filepath);
-    if (!response.ok) throw new Error(`HTTP ${response.status}: Failed to load '${readableName}'`);
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
     const xmlText = await response.text();
-    parseAndRenderXML(xmlText, readableName);
+    parseAndRenderXML(xmlText, displayName);
   } catch (err) {
     statusBar.innerText = `ERROR: ${err.message}`;
-    document.getElementById('translation-container').innerHTML =
-      `<div class="error-msg">Load Failure: Unable to retrieve ${readableName}.</div>`;
   }
 }
 
 function parseAndRenderXML(xmlText, sourceName) {
   const statusBar = document.getElementById('status-bar');
+  const appVolume = document.getElementById('app-volume');
+  const metaContainer = document.getElementById('meta-container');
+  const translationContainer = document.getElementById('translation-container');
+  const telemetryContainer = document.getElementById('telemetry-container');
+
   const parser = new DOMParser();
   const xmlDoc = parser.parseFromString(xmlText, "text/xml");
 
-  const parserError = xmlDoc.querySelector("parsererror");
-  if (parserError) {
+  if (xmlDoc.querySelector("parsererror")) {
     statusBar.innerText = "ERROR: XML Parsing Failed";
+    if (telemetryContainer) {
+      telemetryContainer.innerHTML = '<div style="color: var(--text-alert);">[SYSTEM EXCEPTION]: Failed to interpret XML structure elements. Check encoding syntax.</div>';
+    }
     return;
   }
 
-  renderDHTML(xmlDoc);
-  statusBar.innerText = `SOURCE: [${safeUrlDecode(sourceName)}] LOADED & PARSED OK`;
-}
-
-function renderDHTML(xml) {
-  const root = xml.querySelector("SovereignFramework");
-  if (root) {
-    document.getElementById('app-title').innerText =
-      `${root.getAttribute("project")} ${root.getAttribute("version")} Sovereign Framework`;
-    document.getElementById('app-volume').innerText = `VOL: ${root.getAttribute("volume")}`;
+  // 1. Parse Root Attribute Metrics
+  const rootNode = xmlDoc.querySelector("SovereignFramework");
+  const volAttr = rootNode ? rootNode.getAttribute("volume") : null;
+  if (appVolume && volAttr) {
+    appVolume.innerText = `VOL: ${volAttr}`;
   }
 
-  const meta = xml.querySelector("MetaConfiguration");
-  if (meta) {
-    document.getElementById('meta-container').innerHTML = `
-      <div class="meta-item"><span class="meta-label">Directory Root:</span> ${getNodeText(meta, "DirectoryRoot")}</div>
-      <div class="meta-item"><span class="meta-label">Hardware:</span> ${getNodeText(meta, "HardwareAffinity")}</div>
-      <div class="meta-item"><span class="meta-label">Hex Signature:</span> ${getNodeText(meta, "VolumeHexSignature")}</div>
-      <div class="meta-item"><span class="meta-label">Target Base:</span> ${getNodeText(meta, "TargetSegmentBase")}</div>
+  // 2. Parse Meta Configuration Array Nodes Safely
+  if (metaContainer) {
+    const dirRoot = xmlDoc.querySelector("DirectoryRoot")?.textContent || "N/A";
+    const hwAffinity = xmlDoc.querySelector("HardwareAffinity")?.textContent || "N/A";
+    const segmentBase = xmlDoc.querySelector("TargetSegmentBase")?.textContent || "N/A";
+
+    metaContainer.innerHTML = `
+        <div class="meta-item"><span class="meta-label">Matrix Root:</span> <span style="color: var(--text-accent);">${dirRoot}</span></div>
+        <div class="meta-item"><span class="meta-label">Hardware Profile:</span> ${hwAffinity}</div>
+        <div class="meta-item"><span class="meta-label">Allocation Limit:</span> <span style="color: var(--text-telemetry);">${segmentBase}</span></div>
     `;
   }
 
-  const pages = xml.querySelectorAll("SubjectPage");
-  let translationHTML = '';
-  pages.forEach(page => {
-    const eng = page.querySelector("EnglishSection");
-    const cyborg = page.querySelector("CyborgSection");
-    const machine = page.querySelector("MachineSection");
+  // 3. Extract and Build Translation Matrix Workspace Rows
+  if (translationContainer) {
+    let matrixHTML = '';
+    const subjectPages = xmlDoc.querySelectorAll("SubjectPage");
 
-    translationHTML += `
-      <div style="margin-bottom: 20px;">
-        <h2 style="font-size: 1.0rem; color: var(--text-accent); border-bottom: 1px dashed var(--text-accent); padding-bottom: 4px;">
-          Vector #${page.getAttribute("id")} — ${page.getAttribute("topic")}
-        </h2>
-        ${eng ? `<div class="translation-block"><div class="section-header">ENGLISH // ${getNodeText(eng, "Title")}</div><div class="section-body">${getNodeText(eng, "Content")}</div></div>` : ''}
-        ${cyborg ? `<div class="translation-block"><div class="section-header">CYBORG // ${getNodeText(cyborg, "Title")}</div><div class="section-body">${getNodeText(cyborg, "Content")}</div></div>` : ''}
-        ${machine ? `<div class="translation-block"><div class="section-header">MACHINE // ${getNodeText(machine, "Title")}</div><div class="section-body"><div class="code-block">${getNodeText(machine, "Content")}</div></div></div>` : ''}
-      </div>
-    `;
-  });
+    subjectPages.forEach(page => {
+      const pageId = page.getAttribute("id") || "--";
+      const topicName = page.getAttribute("topic") || "GENERIC_VECTOR";
+      
+      const engTitle = page.querySelector("EnglishSection > Title")?.textContent || "Untitled Block";
+      const engContent = page.querySelector("EnglishSection > Content")?.textContent || "";
+      
+      const cyTitle = page.querySelector("CyborgSection > Title")?.textContent || "";
+      const cyContent = page.querySelector("CyborgSection > Content")?.textContent || "";
+      
+      const machTitle = page.querySelector("MachineSection > Title")?.textContent || "";
+      const machContent = page.querySelector("MachineSection > Content")?.textContent || "";
 
-  document.getElementById('translation-container').innerHTML = translationHTML;
+      matrixHTML += `
+        <div style="background: var(--bg-panel); border: 1px solid rgba(46, 160, 67, 0.3); border-radius: 6px; padding: 16px; margin-bottom: 20px;">
+          <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px; margin-bottom: 12px;">
+            <span style="color: var(--text-accent); font-weight: bold; font-size: 0.9rem;">PAGE IDENTIFIER: ${pageId}</span>
+            <span style="color: var(--text-muted); font-size: 0.8rem;">TOPIC: ${topicName}</span>
+          </div>
 
-  const telemetry = xml.querySelector("TelemetryLogCorridor");
-  if (telemetry) {
-    let telemetryHTML = '';
-    telemetry.querySelectorAll("NodeIndex").forEach(node => {
-      telemetryHTML += `<div class="node-index">[NODE ${node.getAttribute("id")}] ${node.textContent}</div>`;
+          <!-- Section I: English -->
+          <div style="margin-bottom: 12px;">
+            <div style="color: #ffffff; font-size: 0.85rem; margin-bottom: 4px; font-weight: bold;">[I] ${engTitle}</div>
+            <div style="color: var(--text-main); font-size: 0.8rem; line-height: 1.5; text-align: justify; font-family: sans-serif;">${engContent}</div>
+          </div>
+
+          <!-- Section II: Cyborg Code Definition -->
+          <div style="margin-bottom: 12px;">
+            <div style="color: var(--text-accent); font-size: 0.8rem; margin-bottom: 4px; font-weight: bold;">[II] ${cyTitle}</div>
+            <div style="color: #8b949e; background: rgba(0,0,0,0.3); border-left: 2px solid var(--border-color); padding: 6px 10px; font-size: 0.75rem; line-height: 1.4;">${cyContent}</div>
+          </div>
+
+          <!-- Section III: Direct Assembly Machine Block -->
+          <div>
+            <div style="color: var(--text-telemetry); font-size: 0.8rem; margin-bottom: 4px; font-weight: bold;">[III] ${machTitle}</div>
+            <div style="color: #52f87a; background: #000000; border: 1px solid rgba(255,255,255,0.05); padding: 8px; font-family: monospace; font-size: 0.75rem; white-space: pre-wrap; letter-spacing: 0.5px;">${machContent}</div>
+          </div>
+        </div>
+      `;
     });
 
-    const padding = telemetry.querySelector("PaddingBlocks");
+    translationContainer.innerHTML = matrixHTML || '<div style="color: var(--text-muted);">No conversion metrics inside matrix payload.</div>';
+  }
+
+  // 4. Populate Telemetry Corridor Streams
+  if (telemetryContainer) {
+    let telemetryHTML = '';
+    const indexNodes = xmlDoc.querySelectorAll("TelemetryLogCorridor > NodeIndex");
+    
+    indexNodes.forEach(node => {
+      const nodeId = node.getAttribute("id");
+      telemetryHTML += `<div style="margin-bottom: 4px;"><span style="color: var(--text-telemetry);">[NODE_${nodeId}]:</span> <span style="color: var(--text-main); font-family: monospace;">${node.textContent}</span></div>`;
+    });
+
+    // Check for trailing structural padding data blocks
+    const padding = xmlDoc.querySelector("PaddingBlocks")?.textContent;
     if (padding) {
-      telemetryHTML += `<div style="color: var(--text-muted); margin-top: 8px;">${padding.textContent.trim().replace(/\n/g, '<br>')}</div>`;
+      const cleanLines = padding.split('\n').map(line => line.trim()).filter(line => line.length > 0);
+      cleanLines.slice(0, 4).forEach(line => {
+        telemetryHTML += `<div style="color: var(--text-muted); opacity: 0.65; font-family: monospace;">[PADDING_STREAM]: ${line}</div>`;
+      });
+      if (cleanLines.length > 4) {
+        telemetryHTML += `<div style="color: var(--text-accent); font-size: 0.7rem; opacity: 0.5;">... [+${cleanLines.length - 4} High-Density Loop Snapshots Omitted from Display View]</div>`;
+      }
     }
 
-    document.getElementById('telemetry-container').innerHTML = telemetryHTML;
+    telemetryContainer.innerHTML = telemetryHTML || '<div style="color: var(--text-muted);">Pipeline stream idle.</div>';
+    telemetryContainer.scrollTop = telemetryContainer.scrollHeight; // Keep scrolling pushed down to current logs
   }
-}
 
-function getNodeText(parent, selector) {
-  const el = parent.querySelector(selector);
-  return el ? el.textContent : 'N/A';
+  statusBar.innerText = `SOURCE: [${sourceName}] LOADED & PARSED OK`;
 }
+// ============================================================================
+// MERCWAR EV.4 EVENT HANDLING PATCH — INTERACTION EXTENSIONS
+// ============================================================================
 
-window.addEventListener('DOMContentLoaded', () => {
-  scanServerDirectory();
-});
+(function injectSovereignEventHandlers() {
+    // Master Registry tracker for active file indices
+    let activeIndex = -1;
+
+    // 1. Keyboard Navigation Interface
+    window.addEventListener('keydown', (e) => {
+        const items = document.querySelectorAll('#file-tree .tree-item');
+        if (items.length === 0) return;
+
+        // Sync local index tracking to the active selection array state
+        const currentActive = document.querySelector('#file-tree .tree-item.active');
+        if (currentActive) {
+            activeIndex = Array.from(items).indexOf(currentActive);
+        }
+
+        if (e.key === 'ArrowDown' || e.key.toLowerCase() === 's') {
+            e.preventDefault();
+            activeIndex = (activeIndex + 1) % items.length;
+            triggerItemSelection(items[activeIndex]);
+        } else if (e.key === 'ArrowUp' || e.key.toLowerCase() === 'w') {
+            e.preventDefault();
+            activeIndex = (activeIndex - 1 + items.length) % items.length;
+            triggerItemSelection(items[activeIndex]);
+        }
+    });
+
+    // Auxiliary helper function to safely fire DOM clicks and focus targets
+    function triggerItemSelection(element) {
+        if (!element) return;
+        element.click();
+        element.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    }
+
+    // 2. Interactive Telemetry Tracking Overrides
+    const telemetryBox = document.getElementById('telemetry-container');
+    if (telemetryBox) {
+        // Pauses strict autoscroll lock loops if manual user inspection is ongoing
+        let isUserScrolling = false;
+        
+        telemetryBox.addEventListener('scroll', () => {
+            const isAtBottom = telemetryBox.scrollHeight - telemetryBox.scrollTop <= telemetryBox.clientHeight + 10;
+            isUserScrolling = !isAtBottom;
+        });
+
+        // Set up mutation configuration observer to snap current logs into view dynamically
+        const observer = new MutationObserver(() => {
+            if (!isUserScrolling) {
+                telemetryBox.scrollTop = telemetryBox.scrollHeight;
+            }
+        });
+
+        observer.observe(telemetryBox, { childList: true });
+    }
+
+    console.log("[EVENT_PATCH]: Vector map configurations initialized successfully.");
+})();
