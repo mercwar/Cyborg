@@ -1,4 +1,4 @@
-Go [🔄 HOME](../CONTRIBUTING.md)  or [FORWARD ➡️>>](README-11.md) 
+Go [🔄 HOME](../CONTRIBUTING.md)  or [FORWARD ➡️>>](README-3.md) 
 
 <a target="_self" title="CLICK HERE to ENTER the GATEWAY FREE!" href="https://mercwar.github.io/Constellation/index.html">
 <img 
@@ -134,7 +134,7 @@ Examples:
 
 ---
 
-Go [🔄 HOME](../CONTRIBUTING.md)  or [FORWARD ➡️>>](README-11.md) 
+Go [🔄 HOME](../CONTRIBUTING.md)  or [FORWARD ➡️>>](README-3.md) 
 
 <a target="_self" title="CLICK HERE to ENTER the GATEWAY FREE!" href="https://mercwar.github.io/Constellation/index.html">
 <img 
