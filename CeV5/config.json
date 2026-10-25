@@ -1,11 +1,11 @@
 {
   "conn": {
     "user": "mercwar",
-    "repo": "Navigator",
+    "repo": "Cyborg",
     "branch": "main"
   },
   "dirs": {
-	"HTML": "HTML",
-	"HTML": "MD"
+	"HTML": "CEv5/HTML",
+	"HTML": "CEv5/MD"
   }
 }
