@@ -1506,3 +1506,55 @@ body {
         ::-webkit-scrollbar-thumb:hover {
             background: var(--border-color);
         }
+/* ============================================================
+   MERCWAR EV.4 — ENHANCED ANCHOR TAG READABILITY STYLES
+   ============================================================ */
+
+a {
+    color: var(--text-accent); /* #00f0ff - Vibrant neon cyan */
+    text-decoration: none;
+    font-weight: 600;
+    padding: 1px 3px;
+    margin: 0 1px;
+    border-radius: 2px;
+    border-bottom: 1px dashed var(--border-cyan);
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    background: rgba(0, 240, 255, 0.03);
+}
+
+a:hover, 
+a:focus {
+    color: var(--text-bright); /* #ffffff - Pure white for maximum clarity */
+    background: rgba(0, 240, 255, 0.18); /* Brighter cyan highlight */
+    border-bottom: 2px solid var(--border-cyan);
+    text-shadow: 0 0 10px var(--glow-intense);
+    box-shadow: 0 0 12px var(--glow-cyan);
+    outline: none;
+}
+
+a:active {
+    color: var(--terminal-green); /* #00ff88 - Feedback pulse on click */
+    background: rgba(0, 255, 136, 0.15);
+    border-bottom-color: var(--terminal-green);
+}
+
+a:visited {
+    color: #80e5ff; /* Slightly desaturated cyan for visited links */
+    border-bottom-color: rgba(0, 240, 255, 0.4);
+}
+
+/* Contextual override for links inside code blocks or dark terminals */
+.code-block a, 
+.telemetry-corridor a {
+    color: var(--terminal-green);
+    border-bottom-color: rgba(0, 255, 136, 0.3);
+    background: rgba(0, 255, 136, 0.05);
+}
+
+.code-block a:hover, 
+.telemetry-corridor a:hover {
+    color: var(--text-bright);
+    background: rgba(0, 255, 136, 0.2);
+    border-bottom-color: var(--terminal-green);
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.4);
+}
