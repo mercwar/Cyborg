@@ -15,7 +15,15 @@ DATE: 2026-01-14
 </a>
 
 
+
+### 🌈 Cyborg Evolution Version 5 is here !
+- [Click Here](images/Cyborg%20Evolution_%20The%20Next%20Chapter.png) to View "<i>THE CYBORG eV5 CHRONICLES</i>"
+  
+![Click Here](images/Cyborg%20Evolution_%20The%20Next%20Chapter.png)
+  
 ---
+
+
 
 ### 🎬 Cyborg Evolution Version 4 is here !
 
