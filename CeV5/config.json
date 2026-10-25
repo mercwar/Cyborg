@@ -5,7 +5,7 @@
     "branch": "main"
   },
   "dirs": {
-	"HTML": "CeV5",
-	"MD": "CeV5"
+	"HTML": "CeV5/HTML",
+	"MD": "CeV5/MD"
   }
 }
