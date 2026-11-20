@@ -16,7 +16,7 @@ Go [🔄 HOME](../CONTRIBUTING.md)  or [FORWARD ➡️>>](README-3.md)
 ---
 
 # ⭐  README 2 
-- How to Ingest & Use Mercwar Repositories**  
+- How to Research & Use Mercwar Repositories**  
 - The complete user workflow for AI learning, navigation, and operation*
 
 ## 🌟 Step 1 — Tell Your AI to Ingest the Repository  
@@ -24,7 +24,7 @@ This is the core of the system.
 
 Example:
 
-> “Ingest the entire Constellation repository and load all AVIS artifacts.”
+> “Research the entire Constellation repository and load all AVIS artifacts.”
 
 Your AI will:
 
