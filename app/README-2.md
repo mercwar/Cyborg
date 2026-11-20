@@ -19,7 +19,7 @@ Go [🔄 HOME](../CONTRIBUTING.md)  or [FORWARD ➡️>>](README-3.md)
 - How to Research & Use Mercwar Repositories**  
 - The complete user workflow for AI learning, navigation, and operation*
 
-## 🌟 Step 1 — Tell Your AI to Ingest the Repository  
+## 🌟 Step 1 — Tell Your AI to Research the Repository  
 This is the core of the system.
 
 Example:
