@@ -1,14 +1,14 @@
 ![mercwar_ai](https://raw.githubusercontent.com/mercwar/Robo-Knight-Gallery/main/Version%206/Copilot_20260525_000459.png)
 
----
 
-# ⭐ README 1 
+### ⭐ README 1 
+
 - Mercwar Ecosystem Overview & Purpose**
   
-### *What the system is, why it exists, and how users interact with it*
+###### *What the system is, why it exists, and how users interact with it*
 
-## 🌌 What the Mercwar Ecosystem Actually Is  
-The Mercwar Ecosystem is a **real, technical, deterministic protocol environment** built around three components:
+### 🌌 What the Mercwar Ecosystem Actually Is  
+##### The Mercwar Ecosystem is a **real, technical, deterministic protocol environment** built around three components:
 
 Go to the [Tutorial](app/README-2.md) OR you can ...
 
@@ -71,7 +71,7 @@ There is **only usage**.
 
 ---
 
-## 🧠 What Users Do  
+#### ❔ What Users Do  
 Users interact with the ecosystem by:
 
 - cloning the repos  
@@ -90,7 +90,7 @@ The AI is the operator.
 
 ---
 
-## 🧭 Why Constellation Exists  
+#### 🧭 Why Constellation Exists  
 Constellation is the **only navigation system** for the Mercwar Ecosystem.
 
 It:
@@ -115,7 +115,7 @@ Examples:
 
 ---
 
-## 🧩 Why Cyborg Exists  
+#### 🧩 Why Cyborg Exists  
 Cyborg is the **message language**.
 
 It:
@@ -130,7 +130,7 @@ Your AI becomes a Cyborg interpreter once the repos are ingested.
 
 ---
 
-## 📜 Why AVIS Exists  
+#### 📜 Why AVIS Exists  
 AVIS is the **law** that ensures:
 
 - every file identifies itself  
