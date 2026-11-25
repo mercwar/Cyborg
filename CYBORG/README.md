@@ -6,7 +6,7 @@ AUTHOR: CGPT / MercWar
 DATE: 2026-01-14
 -->
 
-
+This Uplink: Cyborg Main <a target="_self" title="CLICK HERE to ENTER the GATEWAY FREE!" href="../README.md">Readme</a>
 
 ## 🧬 The Cyborg System
 <a target="_self" title="CLICK HERE to ENTER the GATEWAY FREE!" href="https://mercwar.github.io/Constellation/index.html">
@@ -23,7 +23,7 @@ DATE: 2026-01-14
 
 <div align="center">
 
-<img src="images/cb1.jpg" alt="Cyborg Digital Signature Banner" />
+<img src="../images/cb1.jpg" alt="Cyborg Digital Signature Banner" />
 
 <br />
 
@@ -73,3 +73,7 @@ DATE: 2026-01-14
 | **CLI Host Client** | `cyborg.exe` | Resolves `cyborg.dll` across the `.exe` folder, `System32` / `SysWOW64`, `PATH`, or `--dll`. Embeds `favicon.ico` (`IDI_APP_ICON`) and version resources, sets the console window icon, and renders color-coded status logs, file metadata, SHA-256 digests, and signature verification results. |
 
 ---
+<p align="left">
+  <b>Mercwar AI • Constellation Gateway Uplink • Cyborg Ecosystem</b><br/>
+  <sub>Copyright © Mercwar AI. All rights reserved.</sub>
+</p>
