@@ -1,0 +1,13 @@
+{
+  "Config": {
+    "Title": "Mercwar AI Cyborg Digital Signature",
+    "TimestampUrl": "http://timestamp.digicert.com",
+    "cert_cat": "out\\cyborg.cat",
+    "cert_ini": "cyborg.ini",
+    "cert_cdf": "out\\cyborg.cdf",
+    "cert_reset": "yes",
+    "cert_name": "certs\\cyborg.pfx",
+    "Subject": "CN=Mercwar AI (Joseph M. Catalano)",
+    "Password": "4g5t7j45qw7h5j8q56gv56q"
+  }
+}

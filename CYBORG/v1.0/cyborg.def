@@ -1,0 +1,7 @@
+LIBRARY cyborg
+
+EXPORTS
+    Cyborg_LoadConfigFromJson
+    Cyborg_SignFromConfig
+    Cyborg_SignFromJson
+    Cyborg_RunCli
