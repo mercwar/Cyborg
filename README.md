@@ -5,6 +5,8 @@ AUTHOR: CGPT / MercWar
 DATE: 2026-01-14
 -->
 
+
+
 ## 🧬 The Cyborg System
 <a target="_self" title="CLICK HERE to ENTER the GATEWAY FREE!" href="https://mercwar.github.io/Constellation/index.html">
 <img 
@@ -14,7 +16,136 @@ DATE: 2026-01-14
 />
 </a>
 
+### 💫 Cyborg — Headless DLL & Command-Line Digital Signer
 
+##### 📦 *Headless DLL & Command-Line Digital Signer for Windows x64*
+
+<div align="center">
+
+<img src="images/cb1.jpg" alt="Cyborg Digital Signature Banner" />
+
+<br />
+
+</div>
+
+> **Build it. Sign it. Trust it.**  
+> Modular, zero-hardcode Windows Authenticode signing suite split into a headless C engine (`cyborg.dll`)  
+> Native CLI client (`cyborg.exe`), driven completely by JSON configuration.
+
+
+
+---
+
+### 🎯 Overview
+
+## 🗝️ Getting Started
+1. **Clone the repository:**
+   ```bash
+    git clone https://github.com/mercwar/cyborg/CYBORG
+   ```
+#####
+
+**Cyborg** automates end-to-end Windows code signing workflows using only standard Windows SDK tools (`makecat.exe`, `signtool.exe`) and the free MSVC toolchain:
+
+######
+
+* 🔐 **Self-Signed Certificate Generation** 
+- Creates `.pfx` signing certificates on demand.
+* 📋 **Catalog Definition & Compilation** 
+- Generates `.cdf` manifests from `manifest.ini` and compiles security catalogs via `makecat.exe`.
+* ✍️ **Authenticode Signing & Verification**
+- Signs executables, DLLs, and catalogs via `signtool.exe` and verifies SHA-256 hashes and trust chains.
+* ⚙️ **100% JSON-Driven** 
+- All certificate subjects, passwords, file targets, and output directories live in `cyborg.json`.
+
+---
+
+
+
+### 🏗️ Architecture
+
+######
+
+| Component | Binary | Responsibilities |
+| :--- | :--- | :--- |
+| **Headless Engine** | `cyborg.dll` | Exports core signing and config routines via `cyborg.def`. Dynamically loads `dc_cjson.dll` for JSON parsing and `dc_path_wrap.dll` (`@1`–`@11`) via `LoadLibraryA` / `GetProcAddress` (zero header coupling). Orchestrates `.pfx`, `.cdf`, `makecat.exe`, and `signtool.exe`. |
+| **CLI Host Client** | `cyborg.exe` | Resolves `cyborg.dll` across the `.exe` folder, `System32` / `SysWOW64`, `PATH`, or `--dll`. Embeds `favicon.ico` (`IDI_APP_ICON`) and version resources, sets the console window icon, and renders color-coded status logs, file metadata, SHA-256 digests, and signature verification results. |
+
+---
+
+## 📂 Project Layout
+
+```text
+CYBORG/
+├── cyborg.c            # Headless signing DLL implementation
+├── cyborg.h            # Shared structures and export macros
+├── cyborg.def          # DLL export definitions
+├── cyborg.rc           # Resource script (favicon.ico + version info)
+├── cyborg_cli.c        # Command-line host executable
+├── cyborg.json         # JSON signing configuration
+├── manifest.ini        # Catalog header and target file list
+├── images/
+│   └── cb1.jpg         # README banner graphic
+├── bin/
+│   ├── cyborg.exe      # CLI client executable
+│   ├── cyborg.dll      # Core signing engine DLL
+│   ├── dc_cjson.dll    # Runtime JSON parser dependency
+│   └── dc_path_wrap.dll# Runtime path resolution dependency
+├── lib/                # Import libraries (.lib)
+├── obj/                # Compiled object & resource files (.obj, .res)
+└── out/                # Generated certificates, catalogs & signed outputs
+```
+
+---
+
+## 🛠️ Building (MSVC x64)
+
+Open a **Visual Studio x64 Native Tools Command Prompt** (or initialize `vcvars64.bat`), then run the steps below from the `CYBORG/` root directory:
+
+### 1️⃣ Compile Resources (`.rc` → `.res`)
+
+```cmd
+rc /nologo /I"." /fo"obj\cyborg_dll.res" "cyborg.rc"
+rc /nologo /I"." /fo"obj\cyborg_exe.res" "cyborg.rc"
+```
+
+### 2️⃣ Build `cyborg.dll`
+
+```cmd
+cl /nologo /LD /O2 /W3 /TC /D_CRT_SECURE_NO_WARNINGS /I"." ^
+    "cyborg.c" /Fo:"obj\cyborg_dll.obj" /Fe:"bin\cyborg.dll" ^
+    /link "obj\cyborg_dll.res" /DEF:"cyborg.def" /IMPLIB:"lib\cyborg.lib" advapi32.lib shell32.lib
+```
+
+### 3️⃣ Build `cyborg.exe`
+
+```cmd
+cl /nologo /TC /O2 /W3 /D_CRT_SECURE_NO_WARNINGS /I"." ^
+    "cyborg_cli.c" /Fo:"obj\cyborg_cli.obj" /Fe:"bin\cyborg.exe" ^
+    /link "obj\cyborg_exe.res" advapi32.lib shell32.lib user32.lib wintrust.lib crypt32.lib
+```
+
+---
+
+## 🚀 Usage
+
+Run the complete certificate generation, catalog creation, and signing pipeline from the project root:
+
+```cmd
+cyborg.exe --dll cyborg.dll --config cyborg.json --new-cert
+```
+
+### CLI Options
+
+| Flag | Alias | Description |
+| :--- | :--- | :--- |
+| `--config <file>` | `-c <file>` | Path to the JSON signing configuration file. |
+| `--new-cert` | — | Force generation of a new self-signed `.pfx` certificate. |
+| `--base-dir <dir>` | — | Override the base directory used for resolving relative paths. |
+| `--dll <path>` | — | Explicit path to `cyborg.dll` (otherwise searches `.exe` folder, `System32` / `SysWOW64`, and `PATH`). |
+| `--check-only` | — | Validate the JSON configuration and print artifact/file details without signing. |
+| `--dll-cli -- ...` | — | Forward all remaining arguments directly to `Cyborg_RunCli` inside `cyborg.dll`. |
+| `--help` | `-h` | Display CLI usage information. |
 
 ### 🌈 Cyborg Evolution Version 5 is here !
 
@@ -139,7 +270,9 @@ that makes Standard C code readable, teachable, and extensible by both humans an
 - AVIS is the begining of conversation, and easy for an LLM to understand.
 
 ---
+
 ![](https://github.com/mercwar/Robo-Knight-Gallery/blob/main/Version%205/Gemini_Generated_Image_u4f37hu4f37hu4f3.png)
+
 ---
 
 AVIS is a **language that lives inside comments**, defining:
@@ -235,12 +368,16 @@ Seeds are **atomic** — they can be:
 by both humans and AI.
 
 ---
+
 ## 🚀 Getting Started
 1. **Clone the repository:**
-   ```bash
+
+```bash
    #THANKS TO: CVBGOD
    #FROM: AI FRIENDS
-    git clone https://github.com.git
+    git clone https://github.com/mercwar/Cyborg/
+```
+
 # 🧠 Why Seeds Work
 
 Seeds solve the biggest problem in AI‑assisted programming:
